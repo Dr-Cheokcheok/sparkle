@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스파클몰</title>
-    <link rel="stylesheet" href="/static/css/reset.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
 </head>
 <body>
     <section id="wrap">
@@ -19,28 +17,28 @@
                 </h1>
                 <div class="h-top-icon">
                     <div class="h-basket">
-                        <a href="">
+                        <a href="@/cart">
                             <img src="/static/images/img/basket-icon.png" alt="장바구니">
                         </a>
                         <span>0</span>
                     </div>
                     <div class="h-my">
-                        <a href="">
+                        <a href="@/account">
                             <img src="/static/images/img/my-icon.png" alt="마이페이지">
                         </a>
                     </div>
                     <div class="h-heart">
-                        <a href="">
+                        <a href="@/interest">
                             <img src="/static/images/img/heart-icon.png" alt="관심상품">
                         </a>
                     </div>
                     <div class="h-del">
-                        <a href="">
+                        <a href="@/order">
                             <img src="/static/images/img/del-icon.png" alt="딜리버리">
                         </a>
                     </div>
                 </div>
-                
+                ::after
             </div>
             <!-- .h-top -->
             <div id="gnb">
@@ -48,34 +46,18 @@
                     <ul class="gnb clear">
                         <li class="menu1">
                             <a href="#none">
+                        </li>
                                 <span class="ico"></span>
                                 <span class="txt">
                                     "전체 카테고리"
-                                    
+                                    ::after
                                 </span>
                             </a>
-                            <div class="gnb_sub w1260">
-                                <ul>
-                                    <li>
-                                        <a href="">정기배송</a>
-                                    </li>
-                                    <li>
-                                        <a href="">생수</a>
-                                    </li>
-                                    <li>
-                                        <a href="">탄산</a>
-                                    </li>
-                                    <li>
-                                        <a href="">생수부자재</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                             <li class="menu2">
                                 <a href="">
                                     <span class="txt">
                                         "쇼핑하기"
-                                        
+                                        ::after
                                     </span>
                                 </a>
                             </li>
@@ -83,7 +65,7 @@
                                 <a href="">
                                     <span class="txt">
                                         "정기배송"
-                                        
+                                        ::after
                                     </span>
                                 </a>
                             </li>
@@ -91,31 +73,31 @@
                                 <a href="">
                                     <span class="txt">
                                         "자주묻는질문"
-                                        
+                                        ::after
                                     </span>
                                 </a>
                             </li>
-                            
+                            ::after
                     </ul>
                     <ul class="util-menu clear">
                         <li>
-                            <a href="">로그인</a>
+                            <a href="@/login">로그인</a>
                         </li>
                         <li>
-                            
-                            <a href="">회원가입</a>
+                            ::before
+                            <a href="@/register">회원가입</a>
                         </li>
                         <li>
-                            
-                            <a href="">고객센터</a>
+                            ::before
+                            <a href="@/support">고객센터</a>
                         </li>
-                        
+                        ::after
                     </ul>
-                    
+                    ::after
                 </div>
-                <!-- .gnb-in -->
+                <!-- #gnb-in -->
             </div>
-            <!-- #gnb -->
+            <!-- gnb -->
         </header>
     </section>
 </body>
