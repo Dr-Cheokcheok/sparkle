@@ -1,34 +1,40 @@
-body {
+body, html {
     height: 100%;
 }
 
 footer {
-    position: absolute;
+    display: inline-block;
+    padding-bottom: 100px;
     bottom: 0;
-
     height: 326px;
     width: 100%;
+    background-color: white;
 }
-
-.wrap {
-    position: relative;
-    min-height: 100%;
-    padding-bottom: 326px;
-  }
 
 .footer-top {
     display: flex;
-    padding: 10px 0px 10px 64px;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0px auto;
 
     height: 70px;
     width: 100%;
     background-color: #f7f7f7;
 }
 
-.footer-top-help {
+.f-help {
+    width: 1260px;
     display: flex;
+    justify-content: space-between;
+    margin: 0px auto;
+}
 
+.f-help .footer-top-help {
+    display: flex;
+    left: 0;
+    float: left;
     color: #333;
+    padding: 0;
 }
 
 .footer-top-help li {
@@ -38,6 +44,10 @@ footer {
     position: relative;
 
     color: #333333;
+}
+
+.footer-top-help li:nth-child(1) {
+    margin-left: 0;
 }
 
 .footer-top-help li::before {
@@ -56,8 +66,7 @@ footer {
 .f-site {
     width: 255px;
     height: 70px;
-    position: absolute;
-    right: 150px;
+    right: 0;
     float: right;
 }
 
@@ -83,30 +92,27 @@ footer {
 }
 
 .family-site-ul {
-    display: none;
-    padding: 0 47px 15px;
+    padding: 7px 30px 15px 40px;
     box-sizing: border-box;
     background-color: #f7f7f7;
 }
 
-.family-site-ul li a {
+.family-site-ul li {
     font-size: 15px;
     color: #777;
     font-weight: 400;
     line-height: 35px;
 }
 
-.family-site-ul li:hover a {
-    color: #000;
-}
-
 .sections {
     position: relative;
+    width: 1260px;
+    margin: 0px auto;
 }
 
 .left-section {
     position: relative;
-    margin: 40px 0px 0px 136px;
+    padding-top: 40px;
 
     width: 512px;
     font-size: 14px;
@@ -115,14 +121,18 @@ footer {
     line-height: 10px;
 }
 
+.left-section pre span {
+    color: #ebebeb;
+    font-size: 10px;
+}
+
 .right-section {
     display: flex;
     justify-content: flex-end;
     position: absolute;
 
-    top: -15px;
+    top: 40px;
     right: 0px;
-    margin-right: 136px;
 }
 
 .call-number {
@@ -148,13 +158,18 @@ footer {
 .call-number p:nth-child(3) {
     font-size: 14px;
     color: #888888;
-    
+    line-height: 0;
+}
+
+.call-number p:nth-child(4) {
+    font-size: 14px;
+    color: #888888;
 }
 
 .icon-list {
     display: flex;
     margin-top: 50px;
-    margin-left: 90px;
+    padding: 0;
 }
 
 .icon-list li {

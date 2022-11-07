@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 body {
     height: 100%;
     box-sizing: border-box;
@@ -5,7 +11,7 @@ body {
 
 .myInfo-box {
     width: 1260px;
-    margin: 0px auto;
+    margin: 0px auto 110px auto;
 }
 
 .myInfo-top {
@@ -15,31 +21,31 @@ body {
     border: 1px solid #ddd;
     border-radius: 10px;
 
-    width: 1168px;
-    height: 91px;
+    width: 1260px;
+    height: 203px;
 
     margin: 50px 0px 30px;
-    padding: 55px 0px 55px 90px;
+    padding: 55px 80px 55px 80px;
 }
 
 .myInfo-top ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    list-style: none;
 }
 
 .myInfo-top ul li {
-    display: inline-block;
     vertical-align: top;
     border-right: 1px solid #ddd;
     width: 160px;
+    height: 70px;
 }
 
 .myInfo-top ul li:nth-child(1) {
     border: 0;
     width: auto;
-    margin-top: 18px;
+    margin-top: 0px;
     margin-right: 25px;
 }
 
@@ -52,7 +58,7 @@ body {
 
 .myInfo-top ul li:nth-child(3) {
     text-align: left;
-    margin-top: 33px;
+    margin-top: 23px;
     margin-right: 60px;
     border: 0;
     width: auto;
@@ -64,10 +70,10 @@ body {
 
 .myInfo-top ul li p {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: -0.5px;
     color: #333;
-    margin-bottom: 28px;
+    margin: 0px 0px 15px 0px;
 }
 
 .myInfo-top li .username {
@@ -91,9 +97,14 @@ body {
 
 .myInfo-top li p.blue-t {
     font-size: 22px;
-    font-weight: 900;
+    font-weight: 700;
     color: #009eff;
     margin-bottom: 0;
+}
+
+.main-box {
+    height: 780px;
+    margin-bottom: 100px;
 }
 
 .mypage-box {
@@ -132,8 +143,8 @@ body {
 
     font-size: 16px;
 
-    width: 178px;
-    height: 40px;
+    width: 218px;
+    height: 50px;
 }
 
 .mypage-box ul li:hover {
@@ -143,19 +154,23 @@ body {
 }
 
 .mypage-likes {
+    display: inline-block;
     justify-content: space-between;
+    width: 990px;
+    height: 100%;
 }
 
 .mypage-likes h1 {
-    padding: 50px 0px 20px;
+    padding: 20px 0px 20px;
     font-size: 30px;
     font-weight: 700;
 }
 
 .likes-box {
+    position: relative;
     display: flex;
-    width: 928px;
-    height: 100px;
+    width: 990px;
+    height: 162px;
 
     padding: 30px;
     border: 1px solid #ddd;
@@ -185,7 +200,39 @@ body {
     color: #888;
 }
 
-.mypage-likes button {
-    float: right;
+.buttons {
+    position: absolute;
+    right: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 118px;
+    height: 100px;
+}
 
+.likes-box button {
+    width: 118px;
+    height: 45px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.likes-box button:hover { 
+    cursor: pointer;
+}
+
+.buttons .carier-plus {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    border: 1px solid #009eff;
+    color: #009eff;
+}
+
+.carier-img {
+    margin-right: 6px;
 }
