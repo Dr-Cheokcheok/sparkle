@@ -2,15 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Noto Sans KR";
 }
-/* main 화면의 모든 li 이미지에 적용*/
-li img {
-  border-radius: 20px;
-  border: 1px solid rgb(152, 152, 152);
-  width: 298px;
-}
-
 
 html{
   width: 100%;
@@ -23,8 +15,15 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
+
+.md-sec{
+  width: 100%;
+  background-color: rgba(181, 181, 181, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
 .outer {
     /* border: 6px solid royalblue; */
     width: 1898px;
@@ -34,7 +33,7 @@ main{
   
 .inner-list {
     display: flex;
-    transition: .3s ease-out;
+    transition: .5s ease-out;
     height: 100%;
   }
 
@@ -55,14 +54,14 @@ main{
   left: 80px;
   text-indent: -9999px;
   border: none;
-  height: 63px;
-  width: 63px;
+  height: 50px;
+  width: 50px;
   padding: 0;
   margin: 0;
   cursor: pointer;
   border-radius: 50%;
-  color: red
-
+  background-image: url('/static/images/img/prev-icon.png');
+  background-position: center;
 }
 .slick-next{
   user-select: none;
@@ -79,23 +78,20 @@ main{
   right: 80px;
   text-indent: -9999px;
   border: none;
-  height: 63px;
-  width: 63px;
+  height: 50px;
+  width: 50px;
   padding: 0;
   margin: 0;
   cursor: pointer;
   border-radius: 50%;
-  color: red
+  background-image: url('/static/images/img/next-icon.png');
+  background-position: center;
 
-}
-
-.fa-regular{
-  color: white;
 }
 
 .inner-list:hover .slick-arrow{
   opacity: 1;
-  color: red;
+  
 }
 
 .inner img{
@@ -113,8 +109,6 @@ main{
 .mid-area{
   width: 90%;
   overflow:hidden;
-  background-color: #009eff;
-
   display: flex;
   flex-direction: column;
   justify-content: center; 
@@ -124,7 +118,9 @@ main{
 
 .main-menu{
   height: 730px;
-  /* background-color: blue; */
+  width: 93%;
+
+  
   padding: 100px 0;
 }
 
@@ -174,7 +170,57 @@ main{
 .product{
   width: 25%;
   padding: 0 10px;
+  
 }
+.product figure{
+  position: relative;
+}
+
+.product figure:hover .time-icon{
+    opacity: 1;
+}
+
+.product figure a img{
+  width: 298px;
+
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.product figcaption {
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  font-weight: 700;
+  font-size: 15px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 100%;
+  background-color: #73c920;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.time-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 35px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.time-icon button {
+  display: inline-block;
+  width: 52px;
+  margin: 0 4px;
+}
+.time-icon button img{
+  width: 52px;
+  border-radius: 20px;
+}
+
 
 /* list의 text 설정 여기서*/
 .product-text{
@@ -228,7 +274,7 @@ font-weight: 700;
 
 .inner-list2{
   display: flex;
-  transition: .3s ease-out;
+  transition: .5s ease-out;
   height: 100%;
   overflow:hidden
 }
@@ -239,38 +285,40 @@ font-weight: 700;
 
 
 
+/*    md추천   */
 .md-sec3{
   padding: 100px 0;
-  width: 100%;
-  background-color: rgba(181, 181, 181, 0.1);
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .md-sec-in{
-  width: 85%;
-  /* background-color: yellowgreen; */
-  padding-left: 13px;
+  width: 93%;
 }
-.m-tit.box{
+
+.m-tit-box{
   line-height: 1;
   -webkit-tap-highlight-color: transparent;
    display: flex;
    align-items: baseline;
-   
+
+   margin-bottom: 42px;
 }
-.m-tit h4{
+
+.m-tit {
   font-size: 35px;
   font-weight: 700;
   margin-right: 14px;
 }
-.m-tit span{
+.m-sub-tit{
   color: #666;
   font-size: 20px;
 }
 
 
-/* todo: md tab부분  js처리 */
+/* md추천 todo: md tab부분  js처리 */
 .md-tab{
   display: flex;
   justify-content: space-between;
@@ -279,7 +327,7 @@ font-weight: 700;
   margin: 50px 0;
 }
 
-/* 카테고리 타원 버튼*/
+/*md추천 카테고리 타원 버튼*/
 
 .category-tab-btn{
   width: 250px;
@@ -349,9 +397,134 @@ font-weight: 700;
 .product4{
   display: flex;
 }
+.product.md img{
+  width: 298px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+
+}
 
 
 
+.exhibitions-box{
+  width: 93%;
+  padding: 100px 0;
+  
+}
+
+
+/*   기획전 배너  */
+
+.outer3 {
+  /* border: 6px solid royalblue; */
+  width: 1300px;
+  height: 100%;
+  position: relative;
+}
+
+.inner-list3 {
+  display: flex;
+  transition: .5s ease-out;
+  height: 100%;
+
+  overflow-x: hidden;
+}
+.exhibitions{
+  display: flex;
+  justify-content: flex-start;
+}
+.exhibition{
+  width: 625px;
+  border-radius:20px;
+  overflow: hidden;
+}
+
+.exhibitions img{
+  cursor: pointer;
+}
+
+
+.slick-prev.always{
+  top: 180px;
+  left: -18px;
+  opacity: 1;
+  background: url('/static/images/img/m-sec-prev.png') no-repeat center/cover;
+  z-index: 1;
+  box-shadow: 0 0 7px rgb(0 0 0 / 20%);
+}
+.slick-next.always{
+  top: 180px;
+  right: 37px;
+  opacity: 1;
+  background: url('/static/images/img/m-sec-next.png') no-repeat center/cover;
+  z-index: 1;
+  box-shadow: 0 0 7px rgb(0 0 0 / 20%);
+}
+
+.slick-prev.always:hover {
+  background: url('/static/images/img/m-sec-prev-on.png');
+  transition: all .3s;
+}
+.slick-next.always:hover {
+  background: url('/static/images/img/m-sec-next-on.png');
+  transition: all .3s;
+}
+
+
+/*   스파클의 다양한 서비스를 이용해 보세요!   */
+.m-sec6{
+  width: 93%;
+  padding: 100px 0 ;
+
+  
+}
+
+.m-link-box ul{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.m-link-box li+li {
+  margin-left: 74px;
+}
+
+
+.m-link-box li a .img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  background: #f9fafd;
+  border: 1px solid #edeff3;
+  border-radius: 30px;
+}
+
+.m-link-box li a img {
+  width: auto;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .3s;
+}
+
+.m-link-box li a:hover img {
+  transform: translate(-50%, -50%) rotate(15deg);
+  /* transform-origin: top; */
+}
+
+.m-link-box li span {
+  display: block;
+  font-size: 16px;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
 
 
 

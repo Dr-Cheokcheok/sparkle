@@ -76,3 +76,59 @@ const getInterval2 = () => {
 }
 
 let interval2 = getInterval2(); // interval 등록
+
+
+
+/*  기획전 배너    */ 
+
+/*
+  div사이즈 동적으로 구하기
+*/
+const outer3 = document.querySelector('.outer3');
+const innerList3 = document.querySelector('.inner-list3');
+const exhibitionsList = document.querySelectorAll('.exhibitions');
+let currentIndex3 = 0; // 현재 슬라이드 화면 인덱스
+
+exhibitionsList.forEach((exhibitions) => {
+  exhibitions.style.width = `${outer3.clientWidth}px`; // inner의 width를 모두 outer의 width로 만들기
+})
+
+innerList3.style.width = `${outer3.clientWidth * exhibitionsList.length}px`; // innerList의 width를 inner의 width * inner의 개수로 만들기
+
+
+/*
+  버튼에 이벤트 등록하기
+*/
+const buttonLeft2 = document.querySelector('.slick-prev.always');
+const buttonRight2 = document.querySelector('.slick-next.always');
+
+buttonLeft2.addEventListener('click', () => {
+  currentIndex3--;
+  currentIndex3 = currentIndex3 < 0 ? exhibitionsList.length - 1 : currentIndex3; // index값이 0보다 작아질 경우 0으로 변경
+  innerList3.style.marginLeft = `-${outer3.clientWidth * currentIndex3}px`; // index만큼 margin을 주어 옆으로 밀기
+  clearInterval(interval3); // 기존 동작되던 interval 제거
+  interval3 = getInterval3(); // 새로운 interval 등록
+});
+
+buttonRight2.addEventListener('click', () => {
+  currentIndex3++;
+  currentIndex3 = currentIndex3 >= exhibitionsList.length ? 0 : currentIndex3; // index값이 inner의 총 개수보다 많아질 경우 마지막 인덱스값으로 변경
+  innerList3.style.marginLeft = `-${outer3.clientWidth * currentIndex3}px`; // index만큼 margin을 주어 옆으로 밀기
+  clearInterval(interval3); // 기존 동작되던 interval 제거
+  interval3 = getInterval3(); // 새로운 interval 등록
+});
+
+
+
+/*
+  주기적으로 화면 넘기기
+*/
+const getInterval3 = () => {
+  return setInterval(() => {
+    currentIndex3++;
+    currentIndex3 = currentIndex3 >= exhibitionsList.length ? 0 : currentIndex3;
+    innerList3.style.marginLeft = `-${outer3.clientWidth * currentIndex3}px`;
+  }, 5000);
+}
+
+let interval3 = getInterval3(); // interval 등록
