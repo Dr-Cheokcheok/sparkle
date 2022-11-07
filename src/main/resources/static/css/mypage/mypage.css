@@ -1,0 +1,191 @@
+body {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.myInfo-box {
+    width: 1260px;
+    margin: 0px auto;
+}
+
+.myInfo-top {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    width: 1168px;
+    height: 91px;
+
+    margin: 50px 0px 30px;
+    padding: 55px 0px 55px 90px;
+}
+
+.myInfo-top ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+}
+
+.myInfo-top ul li {
+    display: inline-block;
+    vertical-align: top;
+    border-right: 1px solid #ddd;
+    width: 160px;
+}
+
+.myInfo-top ul li:nth-child(1) {
+    border: 0;
+    width: auto;
+    margin-top: 18px;
+    margin-right: 25px;
+}
+
+.myInfo-top ul li:nth-child(2) {
+    text-align: left;
+    margin: 0;
+    border: 0;
+    width: auto;
+}
+
+.myInfo-top ul li:nth-child(3) {
+    text-align: left;
+    margin-top: 33px;
+    margin-right: 60px;
+    border: 0;
+    width: auto;
+}
+
+.myInfo-top ul li:last-child {
+    border: 0;
+}
+
+.myInfo-top ul li p {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #333;
+    margin-bottom: 28px;
+}
+
+.myInfo-top li .username {
+    font-size: 25px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    margin-right: 38px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.myInfo-top li .user-id {
+    font-size: 20px;
+    font-weight: 500;
+    color: #777;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.myInfo-top li p.blue-t {
+    font-size: 22px;
+    font-weight: 900;
+    color: #009eff;
+    margin-bottom: 0;
+}
+
+.mypage-box {
+    justify-content: center;
+    width: 218px;
+    height: 779px;
+
+    padding: 0;
+    margin-right: 40px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    float: left;
+}
+
+.mypage-box ul {
+    padding: 0;
+    margin: 0;
+}
+
+.mypage-box h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #009eff;
+    padding: 48px 0px 48px 0px;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.mypage-box ul li {
+    list-style: none;
+    margin: 0px;
+    padding: 15px 20px 0px;
+
+    font-size: 16px;
+
+    width: 178px;
+    height: 40px;
+}
+
+.mypage-box ul li:hover {
+    cursor: pointer;
+    background-color: #009eff;
+    color: white;
+}
+
+.mypage-likes {
+    justify-content: space-between;
+}
+
+.mypage-likes h1 {
+    padding: 50px 0px 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.likes-box {
+    display: flex;
+    width: 928px;
+    height: 100px;
+
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.product-img {
+    width: 81px;
+    height: 81px;
+
+    padding: 10px;
+    margin-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-explan p {
+    line-height: 12px;
+    font-size: 16px;
+}
+
+.product-explan p:nth-child(2) {
+    font-weight: 700;
+}
+
+.product-explan p:nth-child(3) {
+    color: #888;
+}
+
+.mypage-likes button {
+    float: right;
+
+}
