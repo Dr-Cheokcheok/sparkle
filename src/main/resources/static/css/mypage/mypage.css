@@ -98,6 +98,10 @@ body {
     display: flex;
 }
 
+.right-sec {
+    width: 990px;
+}
+
 .mypage-box {
     justify-content: center;
     width: 218px;
@@ -131,10 +135,11 @@ body {
     list-style: none;
     margin: 0px;
     padding: 15px 20px 0px;
+    vertical-align: middle;
 
     font-size: 16px;
 
-    width: 218px;
+    width: 217px;
     height: 50px;
 }
 

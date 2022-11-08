@@ -1,0 +1,62 @@
+
+
+.date-select input {
+    width: 200px;
+    height: 50px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    margin-right: 10px;
+}
+
+.date-select img {
+    
+}
+
+.date-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.date-buttons .date-button {
+    width: 87px;
+    height: 50px;
+    
+    border: 1px solid #333;
+    color: #333;
+
+    font-size: 15px;
+}
+
+.date-buttons .date-button-1 {
+    width: 87px;
+    height: 50px;
+
+    border: 1px solid #333;
+    background-color: #333;
+    color: white;
+
+    font-size: 15px;
+}
+
+.prod-box {
+    position: relative;
+    display: flex;
+    width: 990px;
+    height: 162px;
+
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.img img {
+    width: 81px;
+    height: 81px;
+
+    padding: 10px;
+    margin-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
