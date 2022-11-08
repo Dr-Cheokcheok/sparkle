@@ -1,17 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
-* {
-    font-family: 'Noto Sans KR', sans-serif;
-}
 
 body {
     height: 100%;
     box-sizing: border-box;
-}
-
-.myInfo-box {
-    width: 1260px;
-    margin: 0px auto 110px auto;
 }
 
 .myInfo-top {
@@ -24,7 +14,7 @@ body {
     width: 1260px;
     height: 203px;
 
-    margin: 50px 0px 30px;
+    margin: 50px auto 30px auto;
     padding: 55px 80px 55px 80px;
 }
 
@@ -103,8 +93,9 @@ body {
 }
 
 .main-box {
-    height: 780px;
-    margin-bottom: 100px;
+    width: 1260px;
+    margin: 0px auto 100px auto;
+    display: flex;
 }
 
 .mypage-box {
@@ -153,86 +144,50 @@ body {
     color: white;
 }
 
-.mypage-likes {
-    display: inline-block;
-    justify-content: space-between;
-    width: 990px;
-    height: 100%;
-}
+.main-box button {
+    width: 120px;
+    height: 40px;
+    padding: auto;
+    margin-left: 5px;
 
-.mypage-likes h1 {
-    padding: 20px 0px 20px;
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.likes-box {
-    position: relative;
-    display: flex;
-    width: 990px;
-    height: 162px;
-
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-}
-
-.product-img {
-    width: 81px;
-    height: 81px;
-
-    padding: 10px;
-    margin-right: 50px;
-    border: 1px solid #ddd;
+    border: 1px solid #009EFF;
     border-radius: 5px;
+    color: #009EFF;
 }
 
-.product-explan p {
-    line-height: 12px;
+.main-box .add-btnbx {
+    text-align: center;
+    margin-top: 38px;
+}
+
+.main-box .cancel-btn {
+    height: 46px;
+}
+
+.main-box .confirm-btn {
+    height: 46px;
+    background-color: #009EFF;
+    border: 1px solid #009EFF;
+    color: white;
+}
+
+.new-tbl {
+    display: block;
+    width: 990px;
+    line-height: 1;
+    font-weight: 500;
     font-size: 16px;
 }
 
-.product-explan p:nth-child(2) {
-    font-weight: 700;
+.table-top {
+    border-top: 2px solid black;
 }
 
-.product-explan p:nth-child(3) {
-    color: #888;
+.new-tbl tr {
+    border-bottom: 1px solid #ddd;
 }
 
-.buttons {
-    position: absolute;
-    right: 30px;
-    justify-content: center;
-    align-items: center;
-    width: 118px;
-    height: 100px;
-}
-
-.likes-box button {
-    width: 118px;
-    height: 45px;
-
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: white;
-
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.likes-box button:hover { 
-    cursor: pointer;
-}
-
-.buttons .carier-plus {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    border: 1px solid #009eff;
-    color: #009eff;
-}
-
-.carier-img {
-    margin-right: 6px;
+.new-tbl tr td {
+    padding: 18px 0px;
+    font-size: 16px;
 }
