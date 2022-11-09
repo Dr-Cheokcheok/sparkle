@@ -191,3 +191,50 @@ pre{
 .icon-list li {
     margin: 5px;
 }
+
+@keyframes tel_ani {
+    0%, 6%, 12%, 18%, 22%, 26%, 30%, 34%, 38%, 42%, 48%, 50% {
+        transform: translate(0);
+    }
+    3%, 15%, 24%, 32%, 40% {
+        transform: translate(3px, -3px);
+    }
+    9%, 20%, 28%, 36%, 44% {
+        transform: translate(-3px, -3px);
+    }
+}
+
+.call-number-img {
+    animation: tel_ani 2s linear infinite;
+}
+
+.pop-box {
+    display: flex;
+    position: fixed;
+    width: 850px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 111;
+    background-color: #fff;
+    padding: 50px;
+}
+
+.pop-box p {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.pop-box img {
+    float: right;
+    right: 0;
+}
+
+.pop-box .pop-scroll {
+    overflow-y: scroll;
+    height: 485px;
+    border: 1px solid #ddd;
+    padding: 35px 30px;
+    
+}
+
