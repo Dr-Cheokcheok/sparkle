@@ -11,13 +11,19 @@
     border-bottom: 1px solid #ddd;
     box-sizing: border-box;
 }
+.cart-top.txt{
+    font-size: 25px;
+    color: #222;
+    font-weight: 700;
+}
 
-.chkAll-box {
+.chkAll-box{
     display: flex;
     align-items: center;
     margin-left: 0;
     font-size: 0;
 }
+
 #chkAll{
     margin: 0;
     width: 25px;

@@ -1,0 +1,10 @@
+diff a/src/main/resources/static/css/index.css b/src/main/resources/static/css/index.css	(rejected hunks)
+@@ -28,7 +28,7 @@
+ 
+ .outer {
+     /* border: 6px solid royalblue; */
+-    width: 1898px;
++    width: 100%;
+     display: flex;
+     overflow-x: hidden;
+   }

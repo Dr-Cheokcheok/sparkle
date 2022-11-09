@@ -5,7 +5,9 @@
 html {
     scroll-behavior: smooth;
 }
-
+ul{
+    padding: 0;
+}
 p{
     margin: 0;
 }
@@ -318,6 +320,7 @@ p{
     padding: 0 25px;
     cursor: pointer;
     box-sizing: border-box;
+    height: 70px;
 }
 .product-review .q-left span {
     font-size: 16px;
@@ -329,8 +332,8 @@ p{
     line-height: 85px;
     width: 76px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow:  ellipsis;
+    /* overflow: hidden;
+    text-overflow:  ellipsis; */
 }
 .product-review .q-left span:nth-child(1){
     margin-right: 50px;
@@ -347,7 +350,7 @@ p{
     letter-spacing: -0.5px;
     line-height: 85px;
     float: left;
-    width: 80%;
+    max-width: 708px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -472,6 +475,7 @@ p{
 }
 .review-bot {
     position: relative;
+   
 }
 
 .product-qna {
