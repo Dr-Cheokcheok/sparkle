@@ -1,0 +1,181 @@
+
+body {
+    height: 100%;
+    /* -ms-overflow-style:none; */
+    
+}
+/* body::-webkit-scrollbar { display:none; } */
+
+main{
+    position: relative;
+}
+footer {
+    
+    position: absolute;
+    bottom: 0;
+
+    height: 326px;
+    width: 100%;
+}
+
+.wrap{
+    
+  
+    padding-bottom: 326px;
+  }
+
+.footer-top {
+    display: flex;
+    padding: 25px 0px 10px 84px;
+
+    height: 70px;
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.footer-top-help {
+    display: flex;
+
+    color: #333;
+}
+
+.footer-top-help li {
+    font-weight: 400;
+    font-size: 15px;
+    margin-left: 36px;
+    position: relative;
+
+    color: #333333;
+}
+
+
+.footer-top-help li::before {
+    content: '·';
+    display: block;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    left: -18px;
+}
+
+.footer-top-help li:nth-child(1)::before{
+    content: '';
+}
+
+.f-site {
+    width: 255px;
+    height: 70px;
+
+    position: absolute;
+    top: 5px;
+    right: 150px;
+    
+}
+
+.family-site {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    padding: 14px 0px 0px 40px;
+}
+
+.family-site::after {
+    content: url(/static/images/img/fam-arrow.png);
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 12px;
+    width: 11px;
+    height: 6px;
+}
+
+.family-site-ul {
+    display: none;
+    padding: 0 47px 15px;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+}
+
+.family-site-ul li a {
+    font-size: 15px;
+    color: #777;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.family-site-ul li:hover a {
+    color: #000;
+}
+
+.sections {
+    position: relative;
+}
+
+.left-section {
+    position: relative;
+    margin: 60px 0px 0px 136px;
+
+    width: 512px;
+    font-size: 14px;
+    color: #888888;
+
+    line-height: 10px;
+}
+pre{
+    margin-top: 14px;
+}
+
+.right-section {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+
+    top: -15px;
+    right: -5px;
+    margin-right: 136px;
+}
+
+.call-number {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.call-number-img {
+    margin: 12px 15px 0px 0px;
+}
+.call-number p{
+    margin: 15px 0;
+}
+
+.call-number p:nth-child(1) {
+    font-size: 20px;
+    line-height: 0px;
+}
+
+.call-number p:nth-child(2) {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 0px;
+}
+
+.call-number p:nth-child(3) {
+    font-size: 14px;
+    color: #888888;
+    line-height: 1.3;
+    
+}
+
+.icon-list {
+    display: flex;
+    margin-top: 40px;
+    margin-left: 125px;
+}
+
+.icon-list li {
+    margin: 4px;
+}
