@@ -11,7 +11,7 @@ html{
   height: 100%;
 }
 main{
-  width: 100%;
+  margin: 0px auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,6 @@ main{
 
 .outer {
     /* border: 6px solid royalblue; */
-    width: 1898px;
     display: flex;
     overflow-x: hidden;
   }
@@ -53,7 +52,7 @@ main{
   opacity: 0;
   transition: opacity .3s;
   top: 240px;
-  left: 80px;
+  left: 240px;
   text-indent: -9999px;
   border: none;
   height: 50px;
@@ -77,7 +76,7 @@ main{
   opacity: 0;
   transition: opacity .3s;
   top: 240px;
-  right: 80px;
+  right: 240px;
   text-indent: -9999px;
   border: none;
   height: 50px;
@@ -120,9 +119,6 @@ main{
 
 .main-menu{
   height: 730px;
-  width: 93%;
-
-  
   padding: 100px 0;
 }
 
@@ -293,14 +289,10 @@ font-weight: 700;
 /*    md추천   */
 .md-sec3{
   padding: 100px 0;
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.md-sec-in{
-  width: 93%;
 }
 
 .m-tit-box{
@@ -412,7 +404,6 @@ font-weight: 700;
 
 
 .exhibitions-box{
-  width: 93%;
   padding: 100px 0;
   
 }
@@ -439,7 +430,7 @@ font-weight: 700;
   justify-content: flex-start;
 }
 .exhibition{
-  width: 625px;
+  width: 650px;
   border-radius:20px;
   overflow: hidden;
 }
@@ -478,7 +469,6 @@ font-weight: 700;
 
 /*   스파클의 다양한 서비스를 이용해 보세요!   */
 .m-sec6{
-  width: 93%;
   padding: 100px 0 ;
 
   

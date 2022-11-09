@@ -26,9 +26,8 @@
   
   
   #section-in{
-    background-color: bisque;
-    width: 90%;
     display: flex;
+    margin: 0px auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
