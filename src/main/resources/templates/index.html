@@ -6,11 +6,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스파클몰</title>
   <link rel="stylesheet" href="/static/css/style-main.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
   <link rel="stylesheet" href="/static/css/index.css">
   <link rel="stylesheet" href="/static/css/footer.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <section id="wrap">
+    <header id="header">
+        <div class="h-top w1260 clear">
+            <h1 class="logo">
+                <a href="">
+                    <img src="/static/images/img/logo.png" art="스파클몰 로고">
+                </a>
+            </h1>
+            <div class="h-top-icon">
+                <div class="h-basket">
+                    <a href="">
+                        <img src="/static/images/img/basket-icon.png" alt="장바구니">
+                    </a>
+                    <span>0</span>
+                </div>
+                <div class="h-my">
+                    <a href="">
+                        <img src="/static/images/img/my-icon.png" alt="마이페이지">
+                    </a>
+                </div>
+                <div class="h-heart">
+                    <a href="">
+                        <img src="/static/images/img/heart-icon.png" alt="관심상품">
+                    </a>
+                </div>
+                <div class="h-del">
+                    <a href="">
+                        <img src="/static/images/img/del-icon.png" alt="딜리버리">
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+                    
+        <div id="gnb">
+            <div class="gnb-in w1260 clear">
+                <ul class="gnb clear">
+                    <li class="menu1">
+                        <a href="#none">
+                            <span class="ico"></span>
+                            <span class="txt">
+                                전체 카테고리
+                            </span>
+                        </a>
+                        <div class="gnb_sub w1260">
+                            <ul>
+                                <li>
+                                    <a href="https://www.sparklemall.co.kr/product?category=149">생수</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.sparklemall.co.kr/product?category=17">탄산</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.sparklemall.co.kr/product?category=43">생수부자재</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                        <li class="menu3">
+                            <a href="">
+                                <span class="txt">
+                                    쇼핑하기
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu4">
+                            <a href="">
+                                <span class="txt">
+                                    정기배송
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu7">
+                            <a href="">
+                                <span class="txt">
+                                    자주묻는질문
+                                </span>
+                            </a>
+                        </li>
+                </ul>
+                <ul class="util-menu clear">
+                    <li>
+                        <a href="/static/html/login.html">로그인</a>
+                    </li>
+                    <li>
+                        <a href="/static/html/register.html">회원가입</a>
+                    </li>
+                    <li>
+                        <a href="/static/html/support.html">고객센터</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </header>
+    <div id="load" style="display: none;">
+        <img src="/static/images/img/loading.gif" alt="로딩">
+    </div>
+    
+</section>
+<script src="/static/js/function.js"></script>
+
     <main>
         <div class="outer">
             <div class="inner-list">
@@ -60,17 +164,17 @@
                       <!--- 뿌리기  time-icon 찜, 장바구니페이지 연결 --->
                         <li class="product">
                           <figure>
-                            <a href="https://www.sparklemall.co.kr/product/394">
+                            <a href="#">
                                 <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
                                   <figcaption>BEST</figcaption>
-                                </a>
+                            </a>
                                 <div class="time-icon">
                                   <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
                                   <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
                                 </div>
                           </figure>
                           <div class="product-text">
-                            <h4>스파클 2L 24병</h4>
+                            <a href="#">스파클 2L 24병</a>
                             <p class="price spoqa">
                                                 <span class="blue">25%</span>
                                     14,900원
@@ -90,7 +194,27 @@
                                 </div>
                           </figure>
                           <div class="product-text">
-                            <h4>스파클 2L 24병</h4>
+                            <a href="#">스파클 2L 24병</a>
+                            <p class="price spoqa">
+                                                <span class="blue">25%</span>
+                                    14,900원
+                                    <span class="gray spoqa">20,000원</span>
+                            </p>
+                            </div>
+                        </ll>
+                        <li class="product">
+                          <figure>
+                            <a href="https://www.sparklemall.co.kr/product/394">
+                                <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                                  <figcaption>BEST</figcaption>
+                                </a>
+                                <div class="time-icon">
+                                  <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                  <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                </div>
+                          </figure>
+                          <div class="product-text">
+                            <a href="#">스파클 2L 24병</a>
                             <p class="price spoqa">
                                                 <span class="blue">25%</span>
                                     14,900원
@@ -110,27 +234,7 @@
                                 </div>
                           </figure>
                           <div class="product-text">
-                            <h4>스파클 2L 24병</h4>
-                            <p class="price spoqa">
-                                                <span class="blue">25%</span>
-                                    14,900원
-                                    <span class="gray spoqa">20,000원</span>
-                                        </p>
-                            </div>
-                        </ll>
-                        <li class="product">
-                          <figure>
-                            <a href="https://www.sparklemall.co.kr/product/394">
-                                <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                  <figcaption>BEST</figcaption>
-                                </a>
-                                <div class="time-icon">
-                                  <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                  <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                </div>
-                          </figure>
-                          <div class="product-text">
-                            <h4>스파클 2L 24병</h4>
+                            <a href="#">스파클 2L 24병</a>
                             <p class="price spoqa">
                                                 <span class="blue">25%</span>
                                     14,900원
@@ -187,7 +291,7 @@
                   
                     <!--- group 버튼. li 지우고 js에서 group 별로 뿌리기 -->
                   <div class="tab-sub-btn">
-                    <ul class="sub-btn-ul clear"><!-- style="display: block;"-->
+                    <ul class="sub-btn-ul"><!-- style="display: block;"-->
                       <li class="sub-btn "><a href="javascript:;">2L</a></li>
                       <li class="sub-btn on"><a href="javascript:;">500mL</a></li>
                       <li class="sub-btn"><a href="javascript:;">330mL</a></li>
@@ -204,50 +308,82 @@
                       <ul class="product4">
 
                         <!--- 상세 페이지로 가기위해 group별로 가져온 product 뿌리기 js에서 onclick= location.href -->
-                        <li class="product md">
-                          <img src="/static/images/product/500ml120.jpg">
+                        <li class="product">
+                          <figure>
+                            <a href="#">
+                                <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                            </a>
+                                <div class="time-icon">
+                                  <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                  <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                </div>
+                          </figure>
                           <div class="product-text">
-                            <h4>스파클 500ml 24병</h4>
+                            <a href="#">스파클 2L 24병</a>
+                            <p class="price spoqa">
+                                                <span class="blue">25%</span>
+                                    14,900원
+                                    <span class="gray spoqa">20,000원</span>
+                            </p>
+                          </div>
+                        </ll>
+                        <li class="product">
+                          <figure>
+                            <a href="https://www.sparklemall.co.kr/product/394">
+                                <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                                </a>
+                                <div class="time-icon">
+                                  <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                  <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                </div>
+                          </figure>
+                          <div class="product-text">
+                            <a href="#">스파클 2L 24병</a>
                             <p class="price spoqa">
                                                 <span class="blue">25%</span>
                                     14,900원
                                     <span class="gray spoqa">20,000원</span>
                                         </p>
                             </div>
-                        </li>
-                        <li class="product md">
-                          <img src="/static/images/product/500ml20.jpg">
+                        </ll>
+                        <li class="product">
+                          <figure>
+                            <a href="https://www.sparklemall.co.kr/product/394">
+                                <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                                </a>
+                                <div class="time-icon">
+                                  <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                  <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                </div>
+                          </figure>
                           <div class="product-text">
-                            <h4>스파클 500ml 24병</h4>
+                            <a href="#">스파클 2L 24병</a>
                             <p class="price spoqa">
                                                 <span class="blue">25%</span>
                                     14,900원
                                     <span class="gray spoqa">20,000원</span>
                                         </p>
                             </div>
-                        </li>
-                        <li class="product md">
-                          <img src="/static/images/product/500ml200.jpg">
+                        </ll>
+                        <li class="product">
+                          <figure>
+                            <a href="https://www.sparklemall.co.kr/product/394">
+                                <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                                </a>
+                                <div class="time-icon">
+                                  <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                  <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                </div>
+                          </figure>
                           <div class="product-text">
-                            <h4>스파클 500ml 24병</h4>
+                            <a href="#">스파클 2L 24병</a>
                             <p class="price spoqa">
                                                 <span class="blue">25%</span>
                                     14,900원
                                     <span class="gray spoqa">20,000원</span>
                                         </p>
                             </div>
-                        </li>
-                        <li class="product md">
-                          <img src="/static/images/product/500ml40-80.jpg">
-                          <div class="product-text">
-                            <h4>스파클 500ml 24병</h4>
-                            <p class="price spoqa">
-                                                <span class="blue">25%</span>
-                                    14,900원
-                                    <span class="gray spoqa">20,000원</span>
-                                        </p>
-                            </div>
-                        </li>
+                        </ll>
                         
                       </ul>
                     </div>

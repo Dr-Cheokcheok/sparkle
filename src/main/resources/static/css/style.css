@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * {
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+figure { 
+    margin: 0;
 }
 
 ol, ul {
     list-style: none;
 }
 
-p{
-    display: block;
-    line-height: 1;
-}
+
 
 
 table {
@@ -37,3 +40,5 @@ button{
     padding:0; 
     overflow:visible; 
     cursor:pointer}
+
+   

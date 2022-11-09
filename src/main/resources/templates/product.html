@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/section.css">
+    <link rel="stylesheet" href="/static/css/product.css">
+
+    <title>스파클몰</title>
+</head>
+<body>
+    <section id="content-section">
+       
+        <div id="section">
+            <div class="goods-contents view">
+                <div class="goods-info left">
+                    <div class="photo-box">
+                        <img src="/static/images/product/spakling500ml40.jpg" alt="상품이미지">
+                    </div>
+                </div>
+                <div class="goods-info right">
+                    <form onsubmit="return false;">
+                        <div class="info">
+                            <p class="name">스파클링 500ml 40병</p>
+
+                            <div class="prdt-label">
+                                <div class="label-ico orange">
+                                    <span>클맨배송</span>
+                                </div>
+                                <div class="label-ico mint">
+                                    <span>40병</span>
+                                </div>
+                                <div class="label-ico blue">
+                                    <span>2박스</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-list-box">
+                                <dl class="info-list clear">
+                                    <dt class="gray">정가</dt>
+                                    <dd class="gray under">30,000원</dd>
+                                </dl>
+                                <dl class="info-list clear">
+                                    <dt>판매가</dt>
+                                    <dd class="bold spoqa">19,900원</dd>
+                                </dl>
+
+                                <dl class="info-list clear">
+                                    <dt>할인받은 금액</dt>
+                                    <dd class="blue spoqa">10,100 (33%)</dd>
+                                </dl>
+                                <dl class="info-list clear">
+                                    <dt>배송</dt>
+                                    <dd>무료배송</dd>
+                                </dl>
+                            </div>
+                            <div class="quanbx clear">
+                                <input type="hidden" id="productId" value="1301">
+                                <input type="hidden" id="calPrice" value="19900">
+                                <div class="quantity clear">
+                                    <button type="button" id="calMinus" class="bt_decrease"></button>
+                                    <input type="text" id="quantity" class="num" value="1">
+                                    <button type="button" id="calPlus" class="bt_increase"></button>
+                                </div>
+                                    <p class="price spoqa"><span class="calTotalPrice">19,900</span>원</p>
+                            </div>
+                            <div class="total-price">
+                                <span>총 상품금액</span>
+                                <span class="spoqa total"><span class="total calTotalPrice">19,900</span>원</span>
+                            </div>
+                            <div class="btn-box clear">
+                                <a href="javascript:;" class="heart" id="interestBtn"></a>
+                                <a href="javascript:;" id="cartBtn">장바구니 담기</a>
+                                <a href="javascript:;" class="purchase" id="buyBtn">바로 구매</a>
+                            </div>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </section>
+</body>
+</html>

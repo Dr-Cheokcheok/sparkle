@@ -148,6 +148,9 @@ pre{
 .call-number-img {
     margin: 12px 15px 0px 0px;
 }
+.call-number p{
+    margin: 15px 0;
+}
 
 .call-number p:nth-child(1) {
     font-size: 20px;

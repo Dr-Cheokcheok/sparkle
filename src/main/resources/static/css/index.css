@@ -1,3 +1,5 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 *{
   box-sizing: border-box;
   padding: 0;
@@ -236,6 +238,9 @@ font-family: 'Spoqa Han Sans';
 font-size: 25px;
 font-weight: 700;
 }
+.spoqa {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
 .gray{
   line-height: 1;
   list-style: none;
@@ -251,7 +256,7 @@ font-weight: 700;
   display: inline-block;
   text-decoration: line-through;
 }
-.product-text h4{
+.product-text a{
   margin-bottom: 15px;
   display: inline-block;
   font-size: 20px;
@@ -397,7 +402,7 @@ font-weight: 700;
 .product4{
   display: flex;
 }
-.product.md img{
+.product img{
   width: 298px;
   border: 1px solid #ddd;
   border-radius: 20px;

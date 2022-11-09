@@ -1,0 +1,274 @@
+.cart-box{
+    width: 100%;
+}
+
+.cart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.chkAll-box {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    font-size: 0;
+}
+#chkAll{
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    appearance: none;
+    box-sizing: border-box;
+}
+.chkAll-box input:checked {
+    border: none;
+    background: url(/static/images/sub/checked.png) no-repeat center;
+    background-size: cover;
+}
+.chkAll-box label {
+    margin-left: 12px;
+    font-size: 16PX;
+    color: #000;
+    font-weight: 400;
+}
+.del-box span {
+    display: inline-block;
+    width: 80px;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 32px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    box-sizing: border-box;
+}
+.cart_table {
+    width: 100%;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #ddd;
+}
+.cart_table thead {
+    border-bottom: 1px solid #e5e5e5;
+}
+.cart_table thead th {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 75px;
+}
+.cart_table tbody td {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.cart_table .taL {
+    text-align: left;
+    font-size: 0;
+}
+.cart_table .chk_style {
+    margin: 0;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    appearance: none;
+    box-sizing: border-box;
+}
+.cart_table input:checked {
+    border: none;
+    background: url(/static/images/sub/checked.png) no-repeat center;
+    background-size: cover;
+}
+
+.quantity {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: #fff;
+    display: inline-block;
+}
+.quantity button {
+    width: 35px;
+    height: 35px;
+    float: left;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    border-radius: 5px;
+}
+.quantity .bt_decrease {
+    background: url(/static/images/sub/minus.png) no-repeat center;
+}
+.quantity .bt_increase {
+    background: url(/static/images/sub/plus.png) no-repeat center;
+}
+.quantity input {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    color: #222;
+    font-weight: 500;
+    text-align: center;
+    float: left;
+    border: 0;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cart_table tbody tr {
+    font-size: 0;
+}
+.cart_table tbody tr.border-b {
+    border-bottom: 1px solid #ddd;
+}
+.cart_table .proImg {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 26px;
+}
+.cart_table .proImg a {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    line-height: 98px;
+}
+.cart_table .proImg a img {
+    width: 83%;
+    vertical-align: middle;
+}
+.cart_table .proTxt {
+    display: inline-block;
+    vertical-align: top;
+}
+.cart_table .proState {
+    background-color: #bbb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    width: 66px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+}
+.cart_table .proTxt p a{
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 11px;
+    display: block;
+}
+.cart_table .proTxt p span {
+    font-size: 15px;
+    color: #888;
+    display: block;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+.cart_table .pro-option {
+    display: flex;
+    align-items: center;
+}
+
+.calc-box {
+    border-top: 2px solid #333;
+    padding: 35px 0;
+    box-sizing: border-box;
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+}
+.calc-item p {
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+}
+.calc-item p:nth-child(2) {
+    font-size: 20px;
+    font-family: 'Spoqa Han Sans';
+    margin-top: 18px;
+}
+.calc-item .totalCost {
+    font-weight: 700;
+}
+.calc-box-in {
+    width: 918px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+}
+.cart-total-price {
+    text-align: right;
+    margin-top: 28px;
+}
+.cart-total-price p {
+    font-size: 25px;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+.cart-total-price .calc-tot-amount {
+    font-size: 30px;
+    font-weight: 700;
+    color: #009eff;
+    margin-left: 10px;
+}
+
+.order-btn-box {
+    text-align: center;
+    font-size: 0;
+    margin: 58px 0 85px;
+}
+.order-btn-box a {
+    width: 250px;
+    height: 55px;
+    line-height: 54px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    letter-spacing: -0.5px;
+    color: #009eff;
+    border: 1px solid #009eff;
+    margin: 0 7px;
+    transition: all .3s;
+}
+.order-btn-box .btn_style2 {
+    background-color: #009eff;
+    color: #fff;
+}
