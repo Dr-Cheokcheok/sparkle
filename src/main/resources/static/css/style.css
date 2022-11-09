@@ -5,7 +5,7 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-ol, ul {
+ol, ul, li {
     list-style: none;
 }
 
@@ -25,9 +25,9 @@ a{
  color: black;
  
 }
-a:link { color: black; text-decoration: none;}
+/* a:link { color: black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
-a:hover { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: none;} */
 
 button{
     background: inherit ; 

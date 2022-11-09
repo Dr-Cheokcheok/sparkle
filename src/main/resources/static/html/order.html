@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/sub.css">
-    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
-    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- <link rel="stylesheet" href="/static/css/reset.css"> -->
     <title>주문결제</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <header id="header">
             <div class="h-top w1260 clear">
                 <h1 class="logo">
-                    <a href="">
+                    <a href="/static/html/header.html">
                         <img src="/static/images/img/logo.png" art="스파클몰 로고">
                     </a>
                 </h1>
@@ -93,10 +93,7 @@
                     </ul>
                     <ul class="util-menu clear">
                         <li>
-                            <a href="/static/html/login.html">로그인</a>
-                        </li>
-                        <li>
-                            <a href="/static/html/register.html">회원가입</a>
+                            <a href="">로그아웃</a>
                         </li>
                         <li>
                             <a href="/static/html/support.html">고객센터</a>
@@ -142,11 +139,6 @@
             <a href="javascript:;" class="btn_style shipping">배송지변경</a>
         </div>
         <div class="order-detail od2">
-            <!-- <dl class="clear">
-                <dt>배송지 선택</dt>
-                <dd>
-                </dd>
-            </dl> -->
 
             <dl class="clear mb10">
                 <dt>이름</dt>
@@ -183,16 +175,16 @@
                 <dt>배송메세지</dt>
                 <dd>
                     <div class="flex">
-                        <div class="deli-select">
+                        <li class="deli-select">
                             <span class="sel">배송 메세지 선택</span>
-                            <ul>
+                            <ul style="display: none;">
                                 <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
                                 <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
                                 <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
                                 <li onclick="$('#message').val('')" class="selfText">직접입력</li>
                             </ul>
                             <span class="arrow"></span>
-                        </div>
+                        </li>
                         <div class="self">
                             <input type="text" class="self-input input_1" id="message" name="message" value="">
                         </div>
@@ -434,5 +426,7 @@
         <a href="" class="btn_style1">장바구니</a>
         <a href="" id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
     </div>
+    <script src="/static/js/function.js"></script>
+    
 </body>
 </html>
