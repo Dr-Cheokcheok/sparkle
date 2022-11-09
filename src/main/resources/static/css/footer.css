@@ -1,7 +1,13 @@
 body, html {
     height: 100%;
+    /* -ms-overflow-style:none; */
+    
 }
+/* body::-webkit-scrollbar { display:none; } */
 
+main{
+    position: relative;
+}
 footer {
     display: inline-block;
     padding-bottom: 100px;
@@ -54,7 +60,7 @@ footer {
     content: '·';
     display: block;
     position: absolute;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     left: -18px;
 }
@@ -120,6 +126,9 @@ footer {
 
     line-height: 10px;
 }
+pre{
+    margin-top: 14px;
+}
 
 .left-section pre span {
     color: #ebebeb;
@@ -137,11 +146,15 @@ footer {
 
 .call-number {
     margin-right: 10px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
 }
 
 .call-number-img {
     margin: 12px 15px 0px 0px;
+}
+.call-number p{
+    margin: 15px 0;
 }
 
 .call-number p:nth-child(1) {
