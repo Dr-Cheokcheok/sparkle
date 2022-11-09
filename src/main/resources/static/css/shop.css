@@ -170,8 +170,7 @@
     padding-left: 0;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
  
   }
 
@@ -185,10 +184,17 @@
   .product{
     width: 25%;
     padding: 0 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
     
   }
   .product figure{
     position: relative;
+    display: flex;
+    justify-content: center;
   }
   
   .product figure:hover .time-icon{
@@ -197,7 +203,7 @@
   
   .product figure a img{
     width: 298px;
-  
+    
     border: 1px solid #ddd;
     border-radius: 20px;
   }
