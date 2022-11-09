@@ -234,7 +234,7 @@ list-style: none;
 -webkit-tap-highlight-color: transparent;
 word-break: keep-all;
 
-font-family: 'Spoqa Han Sans';
+font-family: 'Spoqa Han Sans', 'sans-serif';
 font-size: 25px;
 font-weight: 700;
 }
