@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/reset.css">
-    <link rel="stylesheet" href="/static/css/sub.css">
-    <title>스파클몰-로그인</title>
+    <title>고객센터</title>
 </head>
 <body>
     <section id="wrap">
@@ -43,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            <!-- .h-top -->
             <div id="gnb">
                 <div class="gnb-in w1260 clear">
                     <ul class="gnb clear">
@@ -79,13 +79,13 @@
                     </ul>
                     <ul class="util-menu clear">
                         <li>
-                            <a href="">로그인</a>
+                            <a href="/static/html/login.html">로그인</a>
                         </li>
                         <li>
                             <a href="/static/html/register.html">회원가입</a>
                         </li>
                         <li>
-                            <a href="/static/html/support.html">고객센터</a>
+                            <a href="">고객센터</a>
                         </li>
                     </ul>
                 </div>
@@ -95,44 +95,5 @@
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
         </div>
-        <section id="content">
-            <section id="content" class="member">
-                <div class="new-box w1260" id="logIn">
-                    <div class="sub-title login-title">
-                        <p>로그인</p>
-                    </div>
-                    
-                    <div class="loginF-wrap">
-                        <div class="logForm on">
-                            <form method="POST" action="/static/html/login.html">
-                                <input type="hidden" name="_token" value="QYHjNiuiKOAmLopSgrD64aWPyyCYr288EIFHTjlW">
-                                <input class="id" type="text" name="username" placeholder="아이디를 입력해주세요." value="">
-                                <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
-                                <div class="login-mid">
-                                    
-                                    <label>
-                                        <input class="chk" id="" type="checkbox" name="remember">
-                                        로그인 유지
-                                    </label>
-                                    <p>
-                                        <a href="/static/html/forgot.html">아이디/비밀번호 찾기</a>
-                                    </p>
-                                </div>
-                                <div class="add-btnbx login-btn">
-                                    <input type="submit" class="confirm-btn" value="로그인">
-    
-                                    <a href="/static/html/register.html" class="cancel-btn mb0">회원가입</a>
-                                </div>
-                            </form>
-                        </div>
-    
-                    </div>
-                </div>
-            </section>
-        </section>
-        
-    </section>
-    
-    <script src="/static/js/function.js"></script>
 </body>
 </html>

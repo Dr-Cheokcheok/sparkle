@@ -1,5 +1,5 @@
 .w1260{width: 1260px; margin: 0 auto;}
-#wrap{position: relative; overflow: hidden;}
+#wrap{position: relative;}
 
 #load {
     width: 100%;
@@ -121,6 +121,8 @@ h1.logo {
 }
 .gnb {
     float: left;
+    margin: 0;
+    padding: 0;
 }
 .gnb > li {
     float: left;
@@ -142,11 +144,11 @@ h1.logo {
     color: #fff;
 }
 .gnb .menu1.on .ico {
-    background: url(/src/main/resources/static/images/img/menu-icon-on.png);
+    background: url(/static/images/img/menu-icon-on.png);
 }
 .gnb .menu1 .ico {
     display: inline-block;
-    background: url(/src/main/resources/static/images/img/menu-icon.png) no-repeat center/cover;
+    background: url(/static/images/img/menu-icon.png) no-repeat center/cover;
     vertical-align: -2px;
     width: 21px;
     height: 16px;
@@ -188,6 +190,8 @@ h1.logo {
 }
 .util-menu {
     float: right;
+    margin: 0;
+    padding: 0;
 }
 .util-menu li {
     position: relative;

@@ -74,7 +74,7 @@ html {
 
 #logIn label{ display: inline-block;  font-size: 16px; color: #666; line-height: 24px; }
 #logIn label input[type="checkbox"]{ margin: 0; float: left; width: 25px; height: 25px; border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; -webkit-appearance: none; -moz-appearance: none; appearance: none; margin-right: 12px; }
-#logIn label input[type="checkbox"]:checked{ background: transparent url(/src/main/resources/static/images/img/checked.png) center no-repeat; background-size: cover; border: none; }
+#logIn label input[type="checkbox"]:checked{ background: transparent url(/static/images/img/checked.png) center no-repeat; background-size: cover; border: none; }
 
 #logIn form p {float: right;}
 #logIn form p a{ font-weight: 400; font-size: 16px; color: #666; }
@@ -115,6 +115,10 @@ html {
     letter-spacing: -0.5px;
 }
 
+.logForm-invisible {
+    display: none;
+}
+
 /* 회원가입 */
 .join-tbl td input[type="text"],
 .join-tbl td input[type="password"] {
@@ -129,7 +133,7 @@ html {
     margin: 0 15px 0 0;
 }
 .join-tbl td input[type="checkbox"]:checked {
-    background: url(/src/main/resources/static/images/img/checked.png) no-repeat center;
+    background: url(/static/images/img/checked.png) no-repeat center;
     border: none;
     background-size: cover;
 }
@@ -290,4 +294,408 @@ html {
 }
 .new-tbl .address_inp input.mb0 {
     margin-bottom: 0;
+}
+
+/* 주문결제 */
+
+.com-tit {
+    font-size: 25px;
+    color: #222;
+    font-weight: 700;
+    margin-bottom: 21px;
+}
+.wid225 {
+    width: 225px;
+}
+
+.order-in {
+    margin-top: 70px;
+}
+.order-detail {
+    border-top: 2px solid #333;
+    padding: 18px 0;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+.order-detail dl dt {
+    float: left;
+    width: 225px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 40px;
+}
+.order-detail dl dd {
+    float: left;
+    width: calc(100% - 225px);
+    font-size: 16px;
+    color: #333;
+    letter-spacing: -0.5px;
+    line-height: 40px;
+    font-weight: 400;
+}
+.btn_style {
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    width: 90px;
+    height: 30px;
+    display: inline-block;
+    line-height: 29px;
+    text-align: center;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-bottom: 21px;
+}
+.btn2 {
+    width: 150px;
+    cursor: default;
+    margin-left: 0;
+}
+.order-detail input[type="checkbox"],
+.order-detail input[type="radio"] {
+    border: 1px solid #dfdfdf;
+    margin: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    vertical-align: -6px;
+    appearance: none;
+    margin-right: 11px;
+}
+.order-detail input[type="checkbox"]:checked,
+.order-detail input[type="radio"]:checked {
+    background: url(/static/images/img/pay_chk_circle.png) no-repeat center;
+    border-color: #009eff;
+    background-size: 10px;
+}
+.od2 dl dt, .od2 dl dd {
+    line-height: 45px;
+}
+
+
+
+.order-detail .deli-select {
+    position: relative;
+    width: 350px;
+}
+.deli-select .sel {
+    display: block;
+    padding-left: 20px;
+    width: 100%;
+    color: #888;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    height: 40px;
+    line-height: 37px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    text-align: left;
+    cursor: pointer;
+}
+.order-detail .deli-select.on .sel {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.order-detail .deli-select ul {
+    display: none;
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-bottom: none;
+    text-align: left;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    cursor: pointer;
+}
+.order-detail .deli-select ul li {
+    padding-left: 20px;
+    width: 100%;
+    height: 40px;
+    line-height: 37px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #888;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    display: block;
+}
+.order-detail .deli-select ul li:last-child {
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.deli-select .arrow {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 11px;
+    height: 6px;
+    background: url(/static/images/img/select-arrow.png) no-repeat center;
+    background-size: cover;
+}
+.deli-select.on .arrow {
+    transform: rotate(180deg);
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
+.order-detail .door-inp {
+    margin: 0 16px 0 0;
+}
+.order-detail .door-inp input {
+    width: 180px;
+    height: 40px;
+    line-height: 37px;
+    padding-left: 14px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    letter-spacing: -0.5px;
+    font-family: "Noto Sans KR", sans-serif;
+}
+.order-detail .door-inp input::placeholder {
+    color: #888;
+}
+.order-detail .mb10 {
+    margin-bottom: 10px;
+}
+.order-detail .input_1 {
+    width: 180px;
+    height: 40px;
+    line-height: 37px;
+    padding-left: 14px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    letter-spacing: -0.5px;
+    font-family: "Noto Sans KR", sans-serif;
+}
+.order-detail .input_1::placeholder {
+    color: #888;
+}
+.order-detail .self-input {
+    display: none;
+    margin-left: 10px;
+    width: 350px;
+}
+.order-detail .wid350 {
+    width: 350px;
+}
+.order-detail .event {
+    font-size: 0;
+}
+.order-detail input[type="checkbox"].eventChk {
+    border-radius: 5px;
+}
+.order-detail input[type="checkbox"].eventChk:checked {
+    background: url(/static/images/img/checked.png) no-repeat center;
+    border: none;
+    background-size: cover;
+}
+.order-detail .event label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 40px;
+}
+
+.order-detail .event label img.leaf {
+    vertical-align: middle;
+    max-width: 20px;
+}
+
+.order-detail dl dd ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+.order-detail dl#toss-info dd ul li{
+    display: block;
+}
+.order-detail dl .dd1 li {
+    width: 20%;
+}
+.order-detail dl .dd1 li .toss {
+    position: relative;
+}
+.order-detail dl .dd1 li .toss::after {
+    position: absolute;
+    content: '혜택';
+    left: 107%;
+    bottom: 55%;
+    font-size: 13px;
+    color: #fff;
+    background: #0063fe;
+    border-radius: 15px;
+    padding: 0 12px;
+    text-indent: 0;
+    line-height: 2;
+}
+.order-detail dl .dd1 li label {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+}
+.order-detail dl .dd1 li label.ti-9999 {
+    text-indent: -9999px;
+}
+.order-detail dl .dd1 .vam {
+    vertical-align: middle;
+}
+.order-detail dl .dd1 {
+    font-size: 0;
+}
+.order-detail dl .dd1 li label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+
+}
+.order-detail dl .dd1 li .s_pay {
+    background-image: url(/static/images/img/s_pay.png);
+    width: 113px;
+    height: 19px;
+}
+.order-detail dl .dd1 li .n_pay {
+    background-image: url(/static/images/img/n_pay.png);
+    width: 62px;
+    height: 26px;
+}
+.order-detail dl .dd1 li .k_pay {
+    background-image: url(/static/images/img/k_pay.png);
+    width: 57px;
+    height: 24px;
+}
+.order-detail dl .dd1 li .payco {
+    background-image: url(/static/images/img/payco.png);
+    width: 74px;
+    height: 18px;
+}
+.order-detail dl .dd1 li .toss {
+    background-image: url(/static/images/img/toss.png);
+    width: 99px;
+    height: 19px;
+}
+.od3 dl {
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    padding: 9px 0;
+    box-sizing: border-box;
+}
+.od3 dl:nth-child(1) {
+    padding: 0 0 20px;
+}
+.od3 dl dt {
+    line-height: 50px;
+}
+.order-detail dl .dd2 li {
+    margin-right: 45px;
+}
+.order-detail dl .point {
+    border: 1px solid #ddd;
+    padding: 0 16px;
+    box-sizing: border-box;
+    line-height: 40px;
+    width: 180px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    border-radius: 5px;
+}
+.order-detail dl .txt {
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-left: 5px;
+}
+.order-detail dl .useAll {
+    margin-bottom: 0;
+    width: 82px;
+    margin-left: 13px;
+}
+
+/* 결제 */
+.pay-box .top {
+    margin-bottom: 65px;
+    text-align: center;
+}
+.pay-box .top h4 {
+    font-size: 70px;
+    font-weight: 600;
+    color: #009fff;
+}
+.pay-box .top span {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: -0.5px;
+    line-height: 40px;
+}
+
+.order-detail dl b {
+    color: #000;
+    font-weight: 700;
+}
+.order-detail ul li {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: -0.5px;
+}
+.pay-order-detail ul li {
+    position: relative;
+    margin-left: 10px;
+}
+.pay-order-detail ul li:before {
+    content: 'Â·';
+    display: block;
+    position: absolute;
+    margin-left: -10px;
+}
+.order-detail ul li .blue {
+    color: #009eff;
+}
+.pay-order-detail ul {
+    margin-top: 10px;
+}
+.pay-btn {
+    background-color: #009eff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    display: block;
+    width: 250px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    margin: 0 auto 85px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
