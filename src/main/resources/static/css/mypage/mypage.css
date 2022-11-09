@@ -4,6 +4,12 @@ body {
     box-sizing: border-box;
 }
 
+.right-sec h1 {
+    padding: 20px 0px 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
 .myInfo-top {
     display: flex;
     align-items: center;
