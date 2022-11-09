@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/mypage/orderDetail.css">
+    <link rel="stylesheet" href="/static/css/mypage/mypage.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <title>주문상세</title>
+</head>
+<body>
+    <section id="wrap">
+        <header id="header">
+            <div class="h-top w1260 clear">
+                <h1 class="logo">
+                    <a href="">
+                        <img src="/static/images/img/logo.png" art="스파클몰 로고">
+                    </a>
+                </h1>
+                <div class="h-top-icon">
+                    <div class="h-basket">
+                        <a href="">
+                            <img src="/static/images/img/basket-icon.png" alt="장바구니">
+                        </a>
+                        <span>0</span>
+                    </div>
+                    <div class="h-my">
+                        <a href="">
+                            <img src="/static/images/img/my-icon.png" alt="마이페이지">
+                        </a>
+                    </div>
+                    <div class="h-heart">
+                        <a href="">
+                            <img src="/static/images/img/heart-icon.png" alt="관심상품">
+                        </a>
+                    </div>
+                    <div class="h-del">
+                        <a href="">
+                            <img src="/static/images/img/del-icon.png" alt="딜리버리">
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+                        
+            <div id="gnb">
+                <div class="gnb-in w1260 clear">
+                    <ul class="gnb clear">
+                        <li class="menu1">
+                            <a href="#none">
+                                <span class="ico"></span>
+                                <span class="txt">
+                                    전체 카테고리
+                                </span>
+                            </a>
+                            <div class="gnb_sub w1260">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.sparklemall.co.kr/product?category=82">정기배송</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.sparklemall.co.kr/product?category=149">생수</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.sparklemall.co.kr/product?category=17">탄산</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.sparklemall.co.kr/product?category=43">생수부자재</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                            <li class="menu3">
+                                <a href="">
+                                    <span class="txt">
+                                        쇼핑하기
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu4">
+                                <a href="">
+                                    <span class="txt">
+                                        정기배송
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu7">
+                                <a href="">
+                                    <span class="txt">
+                                        자주묻는질문
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+                    <ul class="util-menu clear">
+                        <li>
+                            <a href="/static/html/login.html">로그인</a>
+                        </li>
+                        <li>
+                            <a href="/static/html/register.html">회원가입</a>
+                        </li>
+                        <li>
+                            <a href="/static/html/support.html">고객센터</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+            </div>
+        </header>
+        <div id="load" style="display: none;">
+            <img src="/static/images/img/loading.gif" alt="로딩">
+        </div>
+        
+    </section>
+    <script src="/static/js/function.js"></script>
+    <div class="mypage-all">
+        <div class="myInfo-top">
+            <ul>
+                <li><img src="/static/images/img/my_face.png"></li>
+                <li><p class="username">temp</p><p class="user-id">username</p></li>
+                <li><a href=""><img src="/static/images/img/setting.png"></a></li>
+                <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>관심상품</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
+                <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
+            </ul>
+        </div>
+        <div class="main-box">
+            <section class="mypage-box">
+                <h1>MYPAGE</h1>
+                <ul>
+                    <li>관심상품</li>
+                    <li>주문&#183;배송</li>
+                    <li>상품후기</li>
+                    <li>고객센터</li>
+                    <li>개인정보관리</li>
+                    <li>회원탈퇴</li>
+                </ul>
+            </section>
+            <section class="right-sec">
+                <h1>주문상세</h1>
+                    <div class="txtbx">
+                        <span class="date-txt"><small>주문일 : </small>2022.11.08</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <span class="order-num"><small>주문번호 : </small>RKR4AJY9LQ8P</span>
+                    </div>
+                    <table class="new-tbl">
+                        <colgroup>
+                            <col width="">
+                            <col width="12%">
+                            <col width="12%">
+                            <col width="12%">
+                            <col width="12%">
+                            <col width="12%">
+                        </colgroup>
+                        <tr class="table-top" style="height: 66px;">
+                            <th>상품/옵션 정보</th>
+                            <th>수량</th>
+                            <th>판매가</th>
+                            <th>할인금액</th>
+                            <th>적립금</th>
+                            <th>주문상태</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="">
+                                    <div><img src="/static/images/product/500ml20.jpg"></div>
+                                    <p>스파클 500ml 20병</p>
+                                </a>
+                            </td>
+                            <td>1</td>
+                            <td>6000<span>원</span></td>
+                            <td>0<span>원</span></td>
+                            <td>60<span>원</span></td>
+                            <td>출고준비</td>
+                        </tr>
+                    </table>
+                    <h4>결제정보</h4>
+                    <div class="order-detail">
+                        <dl class="clear">
+                            <dt>주문번호</dt>
+                            <dd>RKR4AJY9LQ8P</dd>
+                        <dl class="clear">
+                            <dt>총 상품금액</dt>
+                            <dd>6000원</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>배송비</dt>
+                            <dd>0원</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>쿠폰사용</dt>
+                            <dd>0원</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>적립금사용</dt>
+                            <dd>0원</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>결제방법</dt>
+                            <dd>네이버페이</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt><b>총 결제금액</b></dt>
+                            <dd><b>6000<span>원</span></b></dd>
+                        </dl>
+                    </div>
+                    <h4>배송정보</h4>
+                    <div class="order-detail">
+                        <dl class="clear">
+                            <dt>받는사람</dt>
+                            <dd>name</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>휴대전화</dt>
+                            <dd>010-1234-5678</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>배송주소</dt>
+                            <dd>부산 앞바다</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>배송구분</dt>
+                            <dd>무료 배송</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>배송 요청사항</dt>
+                            <dd>집에 가고싶어요</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>공동현관</dt>
+                            <dd>없음</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer>
+            <div class="footer-top">
+                <div class="f-help">
+                    <ul class="footer-top-help">
+                        <li><a href="">회사소개</a></li>
+                        <li><a href="">고객센터</a></li>
+                        <li><a href="">이용약관</a></li>
+                        <li><a href="">개인정보취급방침</a></li>
+                        <li><a href="">사업자정보확인</a></li>
+                    </ul>
+                    <div class="f-site">
+                        <div class="family-site">FAMILY SITE</div>
+                        <ul class="family-site-ul invisible">
+                            <li><a href="">스파클 홈페이지</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="sections">
+                <section class="left-section">
+                    <pre>스파클(주)    <span>|</span>    대표 : 전동훈    <span>|</span>    본사주소 : 충청남도 천안시 동남구 대정1길 19-11 스파클주식회사</pre>
+                    <pre>사업자등록번호 : 117-81-31135    <span>|</span>    통신판매업신고 : 제2014-충남천안-297호TEL : 1577-0368</pre>
+                    <pre>COPYRIGHT (C) 2022 SPARKLE ALL RIGHTS RESERVED.</pre>
+                </section>
+                <section class="right-section">
+                    <div class="call-number-img"><img src="/static/images/img/cs-icon.png"></div>
+                    <div class="call-number">
+                        <p>고객센터</p>
+                        <p>1577-0368</p>
+                        <p>업무시간 : am 09:00 ~ pm 17:00<br/></p>
+                        <p>토,일,공휴일 휴무</p>
+                    </div>
+                </section>
+                <div class="link-icon">
+                    <ul class="icon-list">
+                        <li><a href="https://www.facebook.com/sparklemall/"><img src="/static/images/img/facebook.png" alt="페이스북"></a></li>
+                        <li><a href="https://www.instagram.com/"><img src="/static/images/img/instagram.png" alt="인스타그램"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCfZZvWhunoUr1wZY2GqnpAA/featured"><img src="/static/images/img/youtube.png" alt="유튜브"></a></li>
+                        <li><a href="https://blog.naver.com/sparklemall"><img src="/static/images/img/band.png" alt="네이버 밴드"></a></li>
+                    </ul>
+                </div>
+            </div>
+    </footer>
+</body>
+</html>
