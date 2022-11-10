@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * {
@@ -7,14 +8,20 @@
 
 }
 
-figure { 
-    margin: 0;
-}
-
-ol, ul {
+ol, ul, li {
     list-style: none;
 }
 
+p{
+    display: block;
+    line-height: 1;
+}
+
+
+
+figure { 
+    margin: 0;
+}
 
 
 
@@ -28,9 +35,9 @@ a{
  color: black;
  
 }
-a:link { color: black; text-decoration: none;}
+/* a:link { color: black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
-a:hover { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: none;} */
 
 button{
     background: inherit ; 
@@ -39,6 +46,5 @@ button{
     border-radius:0; 
     padding:0; 
     overflow:visible; 
-    cursor:pointer}
-
-   
+    cursor:pointer
+}
