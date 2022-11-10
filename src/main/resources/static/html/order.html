@@ -16,6 +16,7 @@
             <div class="h-top w1260 clear">
                 <h1 class="logo">
                     <a href="/static/html/header.html">
+                    <a href="">
                         <img src="/static/images/img/logo.png" art="스파클몰 로고">
                     </a>
                 </h1>
@@ -69,28 +70,29 @@
                                 </ul>
                             </div>
                         </li>
-                            <li class="menu3">
-                                <a href="">
-                                    <span class="txt">
-                                        쇼핑하기
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu4">
-                                <a href="">
-                                    <span class="txt">
-                                        정기배송
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu7">
-                                <a href="">
-                                    <span class="txt">
-                                        자주묻는질문
-                                    </span>
-                                </a>
-                            </li>
+                        <li class="menu3">
+                            <a href="">
+                                <span class="txt">
+                                    쇼핑하기
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu4">
+                            <a href="">
+                                <span class="txt">
+                                    정기배송
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu7">
+                            <a href="">
+                                <span class="txt">
+                                    자주묻는질문
+                                </span>
+                            </a>
+                        </li>
                     </ul>
+                    
                     <ul class="util-menu clear">
                         <li>
                             <a href="">로그아웃</a>
@@ -107,7 +109,10 @@
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
         </div>
-        
+
+        <section id="content">
+        <section id="content" class="member">
+            <div class="new-box w1260">
         <section id="content">
             <section id="content" class="member">
                 <div class="new-box w1260">
@@ -181,6 +186,9 @@
                         <li class="deli-select">
                             <span class="sel">배송 메세지 선택</span>
                             <ul style="display: none;">
+                        <div class="deli-select">
+                            <span class="sel">배송 메세지 선택</span>
+                            <ul>
                                 <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
                                 <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
                                 <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
@@ -188,6 +196,7 @@
                             </ul>
                             <span class="arrow"></span>
                         </li>
+                        </div>
                         <div class="self">
                             <input type="text" class="self-input input_1" id="message" name="message" value="">
                         </div>
@@ -430,6 +439,6 @@
         <a href="" id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
     </div>
     </section>
-    
+    <script src="/static/js/function.js"></script>
 </body>
 </html>
