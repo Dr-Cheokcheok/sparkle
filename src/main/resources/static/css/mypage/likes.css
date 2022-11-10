@@ -1,0 +1,83 @@
+.mypage-likes {
+    display: inline-block;
+    justify-content: space-between;
+    width: 990px;
+    height: 100%;
+}
+
+.mypage-likes h1 {
+    padding: 20px 0px 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.likes-box {
+    position: relative;
+    display: flex;
+    width: 990px;
+    height: 162px;
+
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.product-img {
+    width: 81px;
+    height: 81px;
+
+    padding: 10px;
+    margin-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-explan p {
+    line-height: 12px;
+    font-size: 16px;
+}
+
+.product-explan p:nth-child(2) {
+    font-weight: 700;
+}
+
+.product-explan p:nth-child(3) {
+    color: #888;
+}
+
+.buttons {
+    position: absolute;
+    right: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 118px;
+    height: 100px;
+}
+
+.likes-box button {
+    width: 118px;
+    height: 45px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.likes-box button:hover { 
+    cursor: pointer;
+}
+
+.buttons .carier-plus {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    border: 1px solid #009eff;
+    color: #009eff;
+}
+
+.carier-img {
+    margin-right: 6px;
+}

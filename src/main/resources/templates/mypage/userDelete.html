@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/mypage/mypage.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/mypage/userDelete.css">
+    <title>회원탈퇴</title>
+</head>
+<body>
+    <section th:replace="~{header :: headerFragment}"></section>
+    <div class="myInfo-top">
+        <ul>
+            <li><img src="/static/images/img/my_face.png"></li>
+            <li><p class="username">temp</p><p class="user-id">username</p></li>
+            <li><a href=""><img src="/static/images/img/setting.png"></a></li>
+            <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
+            <li><a href=""><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
+            <li><a href=""><p>관심상품</p><p class="blue-t">0</p></a></li>
+            <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
+            <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
+        </ul>
+    </div>
+    <div class="main-box">
+        <section class="mypage-box">
+            <h1>MYPAGE</h1>
+            <ul>
+                <li>관심상품</li>
+                <li>주문&#183;배송</li>
+                <li>상품후기</li>
+                <li>고객센터</li>
+                <li>개인정보관리</li>
+                <li>회원탈퇴</li>
+            </ul>
+        </section>
+        <section class="right-sec">
+            <h1>회원탈퇴</h1>
+            <table class="new-tbl">
+                <colgroup>
+                    <col width="200px">
+                    <col width="">
+                </colgroup>
+                <tr class="table-top">
+                    <td>탈퇴사유</td>
+                    <td>
+                        <div class="reason-td">
+                            <ul class="reason-list">
+                                <li>
+                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <label for="reason">기타</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <label for="reason">배송 주문 불만족</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <label for="reason">사이트 이용 불편</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <label for="reason">상품품질 불만족</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <label for="reason">서비스 불만족</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+                </tr>
+            </table>
+            <div class="attention">
+                <div class="att-left"><img src="/static/images/img/agree-icon01.png"></div>
+                <div class="att-right">
+                    <p>주의!</p>
+                    <p>회원 탈퇴 시 회원님의 모든 정보가 바로 삭제되어집니다.</p>
+                    <p>회원님의 개인정보, 주문내역, 적립금, 쿠폰 등 모든 정보가 쇼핑몰에서 삭제됩니다.</p>
+                </div>
+            </div>
+            <div class="dlt-agree">
+                <input type="checkbox" class="agree-ck">
+                <label for="agree">정보삭제에 동의합니다.</label>
+            </div>
+            <div class="add-btnbx">
+                <button class="confirm-btn">확인</button>
+                <button class="cancel-btn">취소</button>
+            </div>
+        </section>
+    </div>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
+</body>
+</html>

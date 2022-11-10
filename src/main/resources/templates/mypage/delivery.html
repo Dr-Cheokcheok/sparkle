@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/mypage/mypage.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/mypage/delivery.css">
+    <title>주문배송</title>
+</head>
+<body>
+    <section th:replace="~{header :: headerFragment}"></section>
+    <div class="mypage-all">
+        <div class="myInfo-top">
+            <ul>
+                <li><img src="/static/images/img/my_face.png"></li>
+                <li><p class="username">temp</p><p class="user-id">username</p></li>
+                <li><a href=""><img src="/static/images/img/setting.png"></a></li>
+                <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>관심상품</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
+                <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
+            </ul>
+        </div>
+        <div class="main-box">
+            <section class="mypage-box">
+                <h1>MYPAGE</h1>
+                <ul>
+                    <li>관심상품</li>
+                    <li>주문&#183;배송</li>
+                    <li>상품후기</li>
+                    <li>고객센터</li>
+                    <li>개인정보관리</li>
+                    <li>회원탈퇴</li>
+                </ul>
+            </section>
+            <section class="right-sec">
+                <h1>주문&#183;배송</h1>
+                <div class="delivery-box">
+                    <div class="date-buttons">
+                        <div class="date-box">
+                            <div class="date-select">
+                                <input type="text" class="date-show">
+                                <img src="/static/images/img/date.png">
+                            </div>
+                            <div class="date-select">
+                                <input type="text" class="date-show">
+                                <img src="/static/images/img/date.png">
+                            </div>
+                            <button class="date-button-1">조회</button>
+                        </div>
+                        <div class="date-btns">
+                            <button class="date-button">오늘</button>
+                            <button class="date-button">일주일</button>
+                            <button class="date-button">1개월</button>
+                            <button class="date-button">3개월</button>
+                            <button class="date-button">전체</button>
+                        </div>
+                    </div>
+
+                    <div class="txtbx">
+                        <span class="date-txt"><small>주문일 : </small>2022.11.08</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <span class="order-num"><small>주문번호 : </small>RKR4AJY9LQ8P</span>
+                        <a href="" class="blue-txt">
+                            <span>주문상세보기 <img src="/static/images/img/r-arrow.png"></span>
+                        </a>
+                    </div>
+                    <a href="" class="prod-box">
+                        <div class="img">
+                            <img src="/static/images/product/500ml20.jpg">
+                        </div>
+                        <div class="prod-txt">
+                            <p>스파클 500ml 20병</p>
+                            <span class="price spoqa">6,000원</span>
+                            <span>/ 1개</span>
+                            <p>
+                                출고준비 &nbsp;
+                                <img src="/static/images/img/r-arrow02.png">
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
+</body>
+</html>

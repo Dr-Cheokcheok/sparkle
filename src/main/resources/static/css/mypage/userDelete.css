@@ -1,0 +1,119 @@
+
+.reason-list {
+    display: block;
+    font-weight: 400;
+    color: #333;
+}
+
+.reason-td {
+    display: flex;
+    line-height: 40px;
+}
+
+.reason-list li {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.reason-list .dlt-reason {
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    appearance: none;
+    padding: 0;
+}
+
+.reason-list .dlt-reason:checked {
+    background: url(/static/images/img/pay_chk_circle.png) no-repeat center;
+    border-color: #009eff;
+    background-size: 10px;
+}
+
+.reason-list label {
+    margin-left: 5px;
+}
+
+.new-tbl textarea {
+    width: 790px;
+    height: 200px;
+
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px;
+    resize: none;
+}
+
+.attention {
+    display: flex;
+    width: 990px;
+    height: 210px;
+    margin-top: 30px;
+    padding: 45px 0px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+.att-left {
+    display: inline-block;
+    width: 240px;
+    text-align: center;
+
+    margin: 0;
+    padding: 0;
+}
+
+.att-left img {
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    border-radius: 50%;
+}
+
+.att-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.att-right p {
+    margin: 6px 0;
+}
+
+.att-right p:nth-child(1) {
+    font-size: 25px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dlt-agree {
+    text-align: center;
+    margin-top: 38px;
+}
+
+.dlt-agree .agree-ck {
+    vertical-align: middle;
+    border: 1px solid #dfdfdf;
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    appearance: none;
+    padding: 0;
+}
+
+.dlt-agree .agree-ck:checked {
+    background: url(/static/images/img/checked.png) no-repeat center;
+    border: none;
+    background-size: cover;
+}
+
+.dlt-agree label {
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 0 13px;
+}

@@ -297,8 +297,6 @@ font-weight: 700;
   align-items: center;
   justify-content: center;
 }
-.md-sec-in{
-}
 
 .m-tit-box{
   line-height: 1;
@@ -422,7 +420,7 @@ font-weight: 700;
   width: 1300px;
   height: 100%;
   position: absolute;
-  left: 22px;
+  left: 26px;
 }
 
 .inner-list3 {
@@ -443,7 +441,7 @@ font-weight: 700;
 }
 
 .exhibition{
-  width: 625px;
+  width: 650px;
   border-radius:20px;
   overflow: hidden;
 }
@@ -455,7 +453,7 @@ font-weight: 700;
 
 .slick-prev.always{
   top: 180px;
-  left: -18px;
+  left: -25px;
   opacity: 1;
   background: url('/static/images/img/m-sec-prev.png') no-repeat center/cover;
   z-index: 1;
@@ -463,7 +461,7 @@ font-weight: 700;
 }
 .slick-next.always{
   top: 180px;
-  right: 37px;
+  right: 15px;
   opacity: 1;
   background: url('/static/images/img/m-sec-next.png') no-repeat center/cover;
   z-index: 1;

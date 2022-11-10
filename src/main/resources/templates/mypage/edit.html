@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/mypage/mypage.css">
+    <link rel="stylesheet" href="/static/css/mypage/edit.css">
+    <title>edit</title>
+</head>
+<body>
+    <section th:replace="~{header :: headerFragment}"></section>
+        <div class="myInfo-top">
+            <ul>
+                <li><img src="/static/images/img/my_face.png"></li>
+                <li><p class="username">temp</p><p class="user-id">username</p></li>
+                <li><a href=""><img src="/static/images/img/setting.png"></a></li>
+                <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>관심상품</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
+                <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
+            </ul>
+        </div>
+        <div class="main-box">
+            <section class="mypage-box">
+                <h1>MYPAGE</h1>
+                <ul>
+                    <li>관심상품</li>
+                    <li>주문&#183;배송</li>
+                    <li>상품후기</li>
+                    <li>고객센터</li>
+                    <li>개인정보관리</li>
+                    <li>회원탈퇴</li>
+                </ul>
+            </section>
+            <section class="right-sec">
+                <div class="edit-page">
+                    <h1>개인정보관리</h1>
+                </div>
+                    <div class="userInfo-in">
+                            <table class="new-tbl">
+                                <colgroup>
+                                    <col width="200px">
+                                    <col width="">
+                                </colgroup>
+                                <tr class="table-top">
+                                    <td>이름</td>
+                                    <td>
+                                        <input type="text" placeholder="홍길동" name="name">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>아이디</td>
+                                    <td>username</td>
+                                </tr>
+                                <tr>
+                                    <td>비밀번호</td>
+                                    <td>
+                                        <input type="password" placeholder="비밀번호를 입력해주세요">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>비밀번호확인</td>
+                                    <td>
+                                        <input type="password" placeholder="비밀번호를 한 번 더 입력해주세요">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>휴대전화</td>
+                                    <td>
+                                        <input type="text" placeholder="010-1234-5678" class="update_phone">
+                                        <button type="button" class="find_post update_post btn_style3" id="btn_cert">인증요청</button>
+                                        <input type="text" class="w165" placeholder="인증번호" style="display:none;">
+                                        <button type="button" class="find_post btn_style3" id="btn_cert_confirm" style="display:none;">인증확인</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>이벤트 소식 수신 동의</td>
+                                    <td>
+                                        <div class="sns-box">
+                                            <input type="hidden">
+                                            <input type="radio" name="sns-ck" class="sns_inp">
+                                            <label for="sns">수신함</label>
+                                            <input type="radio" name="sns-ck" class="sns_inp">
+                                            <label for="no-sns">수신안함</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>주소</td>
+                                    <td class="address_inp">
+                                        <input type="text" readonly="readonly" class="w168" placeholder="00000">
+                                        <button type="button" class="find_post">우편번호찾기</button>
+                                        <input type="text" readonly="readonly" placeholder="서울 특별시 강동구 강일동 123">
+                                        <input type="text" class="mb0" placeholder="가나빌딩 1층">
+                                        <input type="hidden" name="address_data" value="">
+                                    </td>
+                                </tr>
+                            </table>
+                        <div class="add-btnbx">
+                            <button class="confirm-btn">수정</button>
+                            <button class="cancel-btn">취소</button>
+                        </diSv>
+                    </div>
+            </section>
+        </div>
+        <footer th:replace="~{footer :: footerFragment}"></footer>
+</body>
+</html>
