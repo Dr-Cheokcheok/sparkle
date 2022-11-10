@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,112 +12,7 @@
     <title>edit</title>
 </head>
 <body>
-    <section id="wrap">
-        <header id="header">
-            <div class="h-top w1260 clear">
-                <h1 class="logo">
-                    <a href="">
-                        <img src="/static/images/img/logo.png" art="스파클몰 로고">
-                    </a>
-                </h1>
-                <div class="h-top-icon">
-                    <div class="h-basket">
-                        <a href="">
-                            <img src="/static/images/img/basket-icon.png" alt="장바구니">
-                        </a>
-                        <span>0</span>
-                    </div>
-                    <div class="h-my">
-                        <a href="">
-                            <img src="/static/images/img/my-icon.png" alt="마이페이지">
-                        </a>
-                    </div>
-                    <div class="h-heart">
-                        <a href="">
-                            <img src="/static/images/img/heart-icon.png" alt="관심상품">
-                        </a>
-                    </div>
-                    <div class="h-del">
-                        <a href="">
-                            <img src="/static/images/img/del-icon.png" alt="딜리버리">
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-                        
-            <div id="gnb">
-                <div class="gnb-in w1260 clear">
-                    <ul class="gnb clear">
-                        <li class="menu1">
-                            <a href="#none">
-                                <span class="ico"></span>
-                                <span class="txt">
-                                    전체 카테고리
-                                </span>
-                            </a>
-                            <div class="gnb_sub w1260">
-                                <ul>
-                                    <li>
-                                        <a href="https://www.sparklemall.co.kr/product?category=82">정기배송</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.sparklemall.co.kr/product?category=149">생수</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.sparklemall.co.kr/product?category=17">탄산</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.sparklemall.co.kr/product?category=43">생수부자재</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                            <li class="menu3">
-                                <a href="">
-                                    <span class="txt">
-                                        쇼핑하기
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu4">
-                                <a href="">
-                                    <span class="txt">
-                                        정기배송
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu7">
-                                <a href="">
-                                    <span class="txt">
-                                        자주묻는질문
-                                    </span>
-                                </a>
-                            </li>
-                    </ul>
-                    <ul class="util-menu clear">
-                        <li>
-                            <a href="/static/html/login.html">로그인</a>
-                        </li>
-                        <li>
-                            <a href="/static/html/register.html">회원가입</a>
-                        </li>
-                        <li>
-                            <a href="/static/html/support.html">고객센터</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </div>
-            </div>
-        </header>
-        <div id="load" style="display: none;">
-            <img src="/static/images/img/loading.gif" alt="로딩">
-        </div>
-        
-    </section>
-    <script src="/static/js/function.js"></script>
-    <div class="wrap">
+    <section th:replace="~{header :: headerFragment}"></section>
         <div class="myInfo-top">
             <ul>
                 <li><img src="/static/images/img/my_face.png"></li>
@@ -213,49 +108,6 @@
                     </div>
             </section>
         </div>
-        <footer>
-                <div class="footer-top">
-                    <div class="f-help">
-                        <ul class="footer-top-help">
-                            <li><a href="">회사소개</a></li>
-                            <li><a href="">고객센터</a></li>
-                            <li><a href="">이용약관</a></li>
-                            <li><a href="">개인정보취급방침</a></li>
-                            <li><a href="">사업자정보확인</a></li>
-                        </ul>
-                        <div class="f-site">
-                            <div class="family-site">FAMILY SITE</div>
-                            <ul class="family-site-ul invisible">
-                                <li><a href="">스파클 홈페이지</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="sections">
-                    <section class="left-section">
-                        <pre>스파클(주)    <span>|</span>    대표 : 전동훈    <span>|</span>    본사주소 : 충청남도 천안시 동남구 대정1길 19-11 스파클주식회사</pre>
-                        <pre>사업자등록번호 : 117-81-31135    <span>|</span>    통신판매업신고 : 제2014-충남천안-297호TEL : 1577-0368</pre>
-                        <pre>COPYRIGHT (C) 2022 SPARKLE ALL RIGHTS RESERVED.</pre>
-                    </section>
-                    <section class="right-section">
-                        <div class="call-number-img"><img src="/static/images/img/cs-icon.png"></div>
-                        <div class="call-number">
-                            <p>고객센터</p>
-                            <p>1577-0368</p>
-                            <p>업무시간 : am 09:00 ~ pm 17:00<br/></p>
-                            <p>토,일,공휴일 휴무</p>
-                        </div>
-                    </section>
-                    <div class="link-icon">
-                        <ul class="icon-list">
-                            <li><a href="https://www.facebook.com/sparklemall/"><img src="/static/images/img/facebook.png" alt="페이스북"></a></li>
-                            <li><a href="https://www.instagram.com/"><img src="/static/images/img/instagram.png" alt="인스타그램"></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCfZZvWhunoUr1wZY2GqnpAA/featured"><img src="/static/images/img/youtube.png" alt="유튜브"></a></li>
-                            <li><a href="https://blog.naver.com/sparklemall"><img src="/static/images/img/band.png" alt="네이버 밴드"></a></li>
-                        </ul>
-                    </div>
-                </div>
-        </footer>
-    </div>
+        <footer th:replace="~{footer :: footerFragment}"></footer>
 </body>
 </html>
