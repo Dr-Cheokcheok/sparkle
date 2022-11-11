@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/section.css">
     <link rel="stylesheet" href="/static/css/product.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <title>스파클몰</title>
 </head>
 <body>
+<section th:replace="~{header :: headerFragment}"></section>
     <section id="content-section">
        
         <div id="section">
@@ -20,39 +24,42 @@
                 <div class="left-right">
                     <div class="goods-info left">
                         <div class="photo-box">
-                            <img src="/static/images/product/spakling500ml40.jpg" alt="상품이미지">
+                            <!---  상품 대표 이미지   -->
+                            <img src="/static/images/product/2L24-36.jpg" alt="상품이미지">
                         </div>
                     </div>
                     <div class="goods-info right">
                         <form onsubmit="return false;">
                             <div class="info">
-                                <p class="name">스파클링 500ml 40병</p>
+                                <p class="name">스파클 2L 24병</p>
 
                                 <div class="prdt-label">
+                                    <!---   클맨 배송 무조건 들어감  제품명에 (택배배송)이면 택배배송으로 들어감 --->
                                     <div class="label-ico orange">
                                         <span>클맨배송</span>
                                     </div>
+                                    <!----  제품명 마지막    ---->
                                     <div class="label-ico mint">
-                                        <span>40병</span>
+                                        <span>24병</span>
                                     </div>
                                     <div class="label-ico blue">
-                                        <span>2박스</span>
+                                        <span>4팩</span>
                                     </div>
                                 </div>
 
+                                <!---  가격 정보 (할인 없으면 판매가랑 배송만 표시)  --->
                                 <div class="info-list-box">
                                     <dl class="info-list clear">
                                         <dt class="gray">정가</dt>
-                                        <dd class="gray under">30,000원</dd>
+                                        <dd class="gray under">20,000원</dd>
                                     </dl>
                                     <dl class="info-list clear">
                                         <dt>판매가</dt>
-                                        <dd class="bold spoqa">19,900원</dd>
+                                        <dd class="bold spoqa">14,900원</dd>
                                     </dl>
-
                                     <dl class="info-list clear">
                                         <dt>할인받은 금액</dt>
-                                        <dd class="blue spoqa">10,100 (33%)</dd>
+                                        <dd class="blue spoqa">5,100 (25%)</dd>
                                     </dl>
                                     <dl class="info-list clear">
                                         <dt>배송</dt>
@@ -61,22 +68,22 @@
                                 </div>
 
                                 <div class="quanbx clear">
-                                    <input type="hidden" id="productId" value="1301">
-                                    <input type="hidden" id="calPrice" value="19900">
+                                    <input type="hidden" id="productId" value="${productId}" name="productId">
+                                    <input type="hidden" id="calPrice" value="19900" name="retailPrice">
                                     
                                     <div class="quantity clear">
-                                        <button type="button" id="calMinus" class="bt-decrease"></button>
-                                        <input type="text" id="quantity" class="num" value="1">
-                                        <button type="button" id="calPlus" class="bt-increase"></button>
+                                        <button type="button" id="calMinus" class="bt-decrease" onclick="down()"></button>
+                                        <input type="text" id="quantity" class="num" value="1" name="quantity">
+                                        <button type="button" id="calPlus" class="bt-increase" onclick="up()"></button>
                                     </div>
                                     
-                                    <p class="price spoqa"><span class="calTotalPrice">19,900</span>원</p>
+                                    <p class="price spoqa"><span class="calTotalPrice">14,900</span>원</p>
                                 </div>
 
                                 <div class="total-price">
                                     <span>총 상품금액</span>
                                     <span class="spoqa total">
-                                        <span class="total calTotalPrice">19,900</span>원
+                                        <span class="total calTotalPrice">14,900</span>원
                                     </span>
                                 </div>
                                 <div class="btn-box clear">
@@ -194,7 +201,7 @@
                                             <div class="a-right">
                                                 <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div> 
                                                 <div class="img">
-                                                    <img src="/static/images/product/spakling350ml40.jpg" alt="" style="width: 100%;">
+                                                    <img src="/static/static/images/product/spakling350ml40.jpg" alt="" style="width: 100%;">
                                                 </div>
                                             </div>
                                         </div> -->
@@ -301,5 +308,26 @@
             </div>
         </div>
     </section>
+    <div id="quick" style="opacity: 1;">
+        <a href="#" class="btn_gotop">
+          <span class="glyphicon glyphicon-chevron-up">
+          </span>
+        </a>
+    </div>
+<script>
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 300){
+            $('.btn_gotop').show();
+        } else{
+            $('.btn_gotop').hide();
+        }
+    });
+    $('.btn_gotop').click(function(){
+        $('html, body').animate({scrollTop:0},400);
+        return false;
+    });
+</script>
+<footer th:replace="~{footer :: footerFragment}"></footer>
+<script src="/static/js/product.js"></script>
 </body>
 </html>
