@@ -68,16 +68,16 @@
                                 </div>
 
                                 <div class="quanbx clear">
-                                    <input type="hidden" id="productId" value="${productId}" name="productId">
-                                    <input type="hidden" id="calPrice" value="19900" name="retailPrice">
+                                    <input type="hidden" id="productId" value="1" name="productId">
+                                    <input type="hidden" id="calPrice" value="14900" name="retailPrice">
                                     
                                     <div class="quantity clear">
-                                        <button type="button" id="calMinus" class="bt-decrease" onclick="down()"></button>
-                                        <input type="text" id="quantity" class="num" value="1" name="quantity">
-                                        <button type="button" id="calPlus" class="bt-increase" onclick="up()"></button>
+                                        <button type="button" id="calMinus" class="bt-decrease" onclick="down();"></button>
+                                        <input type="text" id="quantity" class="num" value="1" name="quantity" onchange="quantityCalc()">
+                                        <button type="button" id="calPlus" class="bt-increase" onclick="up();"></button>
                                     </div>
-                                    
-                                    <p class="price spoqa"><span class="calTotalPrice">14,900</span>원</p>
+                                    <!-- 변경되어야하는 금액  calTotalPrice-->
+                                    <p class="price spoqa"><span class="cal-total-price">14,900</span>원</p>
                                 </div>
 
                                 <div class="total-price">
@@ -193,18 +193,18 @@
                                             </div>
                                         </div> 
                                         <!-- 리뷰 클릭하면 크게 똭 나옴  -->
-                                        <!-- <div class="answer clear">
-                                            <div class="a-left">
-                                                <span>lov***</span> 
-                                                <span>2022.10.26</span>
-                                            </div> 
-                                            <div class="a-right">
-                                                <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div> 
-                                                <div class="img">
-                                                    <img src="/static/static/images/product/spakling350ml40.jpg" alt="" style="width: 100%;">
-                                                </div>
-                                            </div>
-                                        </div> -->
+<!--                                        <div class="answer clear">-->
+<!--                                            <div class="a-left">-->
+<!--                                                <span>lov***</span>-->
+<!--                                                <span>2022.10.26</span>-->
+<!--                                            </div>-->
+<!--                                            <div class="a-right">-->
+<!--                                                <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div>-->
+<!--                                                <div class="img">-->
+<!--                                                    <img src="/static/static/images/product/spakling350ml40.jpg" alt="" style="width: 100%;">-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
 
                                     </li>

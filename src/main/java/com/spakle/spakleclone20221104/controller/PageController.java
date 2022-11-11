@@ -16,4 +16,7 @@ public class PageController {
 
     @GetMapping("/index")
     public String loadMain() {return "index/index";}
+
+    @GetMapping("/bag")
+    public String loadBag() {return "bag";}
 }
