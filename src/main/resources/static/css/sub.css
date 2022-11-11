@@ -377,7 +377,6 @@ html {
     line-height: 45px;
 }
 
-
 .order-detail .deli-select {
     position: relative;
     width: 350px;
@@ -434,6 +433,18 @@ html {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+.deli-select .arrow {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 11px;
+    height: 6px;
+    background: url(/static/images/img/select-arrow.png) no-repeat center;
+    background-size: cover;
+}
+.deli-select.on .arrow {
+    transform: rotate(180deg);
+}
 .order-btn-box {
     text-align: center;
     font-size: 0;
@@ -459,18 +470,7 @@ html {
     background-color: #009eff;
     color: #fff;
 }
-.deli-select .arrow {
-    position: absolute;
-    top: 18px;
-    right: 22px;
-    width: 11px;
-    height: 6px;
-    background: url(/static/images/img/select-arrow.png) no-repeat center;
-    background-size: cover;
-}
-.deli-select.on .arrow {
-    transform: rotate(180deg);
-}
+
 .flex {
     display: flex;
     align-items: center;
