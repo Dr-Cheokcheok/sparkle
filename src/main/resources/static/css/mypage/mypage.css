@@ -140,7 +140,7 @@ body {
 .mypage-box ul li {
     list-style: none;
     margin: 0px;
-    padding: 15px 20px 0px;
+    padding: 0px 20px 0px;
     vertical-align: middle;
 
     font-size: 16px;
@@ -149,10 +149,22 @@ body {
     height: 50px;
 }
 
+.mypage-box ul li a {
+    line-height: 50px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    display: block;
+}
+
+.mypage-box ul li:hover a {
+    color: white;
+}
+
 .mypage-box ul li:hover {
     cursor: pointer;
     background-color: #009eff;
-    color: white;
 }
 
 .main-box button {

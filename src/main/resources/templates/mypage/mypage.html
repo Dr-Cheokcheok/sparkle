@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/mypage/mypage.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/mypage/likes.css">
-    <title>MyPage</title>
+    <title>스파클몰</title>
 </head>
 <body>
     <section th:replace="~{header :: headerFragment}"></section>
@@ -18,10 +19,10 @@
                 <ul>
                     <li><img src="/static/images/img/my_face.png"></li>
                     <li><p class="username">temp</p><p class="user-id">username</p></li>
-                    <li><a href=""><img src="/static/images/img/setting.png"></a></li>
+                    <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
                     <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
-                    <li><a href=""><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
-                    <li><a href=""><p>관심상품</p><p class="blue-t">0</p></a></li>
+                    <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
+                    <li><a href="/account"><p>관심상품</p><p class="blue-t">0</p></a></li>
                     <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
                     <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
                 </ul>
@@ -30,12 +31,12 @@
                 <section class="mypage-box">
                     <h1>MYPAGE</h1>
                     <ul>
-                        <li>관심상품</li>
-                        <li>주문&#183;배송</li>
-                        <li>상품후기</li>
-                        <li>고객센터</li>
-                        <li>개인정보관리</li>
-                        <li>회원탈퇴</li>
+                        <li><a href="/account">관심상품</a></li>
+                        <li><a href="/account/order">주문&#183;배송</a></li>
+                        <li><a>상품후기</a></li>
+                        <li><a>고객센터</a></li>
+                        <li><a href="/users/edit">개인정보관리</a></li>
+                        <li><a href="/users/delete">회원탈퇴</a></li>
                     </ul>
                 </section>
                 <section class="mypage-likes">

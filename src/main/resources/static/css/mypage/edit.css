@@ -61,3 +61,7 @@
 .userInfo-in .mb0 {
     margin-top: 12px;
 }
+
+.new-tbl tr td input:focus {
+    outline: 1px solid #009eff;
+}
