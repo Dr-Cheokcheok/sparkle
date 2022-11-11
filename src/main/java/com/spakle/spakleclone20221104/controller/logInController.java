@@ -10,10 +10,15 @@ public class logInController {
     public String loadlogin() {return "mypage/login";}
 
     @GetMapping("/register")
-    public String loadregister() {return "register/register";}
+    public String loadregister() {return "mypage/register";}
 
     @GetMapping("/forgot")
-    public String loadforgot() {return "forgot";}
+    public String loadforgot() {return "mypage/forgot";}
 
+    @GetMapping("/order")
+    public String loadorder() {return "order";}
+
+    @GetMapping("/bag")
+    public String loadbag() {return "bag";}
 }
 
