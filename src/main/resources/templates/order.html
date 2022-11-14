@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/css/bag.css">
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/sub.css">
-    <link rel="stylesheet" href="/static/css/orderReset.css">
+    <link rel="stylesheet" href="/static/css/order.css">
 
     <title>주문결제</title>
 </head>
@@ -343,46 +343,46 @@
             <dd>
                 <ul class="clear dd1">
                     <li>
-                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
+                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="" onclick="paymentchk(id)">
                         <label for="toss" class="vam ti-9999 toss">토스</label>
                     </li>
                     <li>
-                        <input type="radio" name="payment" value="card" id="credit">
+                        <input type="radio" name="payment" value="card" id="credit" onclick="paymentchk(id)">
                         <label for="credit">신용카드</label>
                     </li>
                     
                     <li>
-                            <input type="radio" name="payment" value="virtual" id="payMethodVirtual">
+                            <input type="radio" name="payment" value="virtual" id="payMethodVirtual" onclick="paymentchk(id)">
                             <label for="payMethodVirtual">무통장입금(가상계좌)</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="account" id="account">
+                            <input type="radio" name="payment" value="account" id="account" onclick="paymentchk(id)">
                             <label for="account">계좌이체</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="escrow_account" id="account2">
+                            <input type="radio" name="payment" value="escrow_account" id="account2" onclick="paymentchk(id)">
                             <label for="account2">계좌이체(에스크로)</label>
                         </li>
                         
                         <li>
-                            <input type="radio" name="payment" value="card" id="sspay-direct" class="vam">
+                            <input type="radio" name="payment" value="card" id="sspay-direct" class="vam" onclick="paymentchk(id)">
                             <label for="sspay-direct" class="vam ti-9999 s_pay">삼성페이</label>
                         </li>
                         
                         <li>
-                            <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam">
+                            <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam" onclick="paymentchk(id)">
                             <label for="naverpay-direct" class="vam ti-9999 n_pay">네이버페이</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam">
+                            <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam" onclick="paymentchk(id)">
                             <label for="kakaopay-direct" class="vam ti-9999 k_pay">카카오페이</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="payco" id="payco" class="vam">
+                            <input type="radio" name="payment" value="payco" id="payco" class="vam" onclick="paymentchk(id)">
                             <label for="payco" class="vam ti-9999 payco">페이코</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="cellphone" id="mobile">
+                            <input type="radio" name="payment" value="cellphone" id="mobile" onclick="paymentchk(id)">
                             <label for="mobile">휴대폰결제</label>
                         </li>
                     </ul>
