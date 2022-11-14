@@ -20,6 +20,6 @@ public class PageController {
     @GetMapping("/bag")
     public String loadBag() {return "bag";}
 
-    @GetMapping("/admin/additon")
+    @GetMapping("/admin/addition")
     public String loadAdmin() {return "admin-page";}
 }
