@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @Data
@@ -15,7 +16,8 @@ public class Product {
     private String name;
     private double price;
     private double retail_price;
-    private String img; //이미지 경로 (uploadPath)
+    private String img; //이미지 경로 (temp_name)
+    private List<ProductImgFile> files;
 
     private LocalDateTime create_date;
     private LocalDateTime update_date;

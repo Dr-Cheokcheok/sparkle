@@ -1,367 +1,263 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/section.css">
     <link rel="stylesheet" href="/static/css/bag.css">
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/sub.css">
-    
+    <link rel="stylesheet" href="/static/css/orderReset.css">
 
-    <!-- <link rel="stylesheet" href="/static/css/reset.css"> -->
     <title>주문결제</title>
 </head>
 <body>
-    <header id="header">
-        <div class="h-top w1260 clear">
-            <h1 class="logo">
-                <a href="/static/html/header.html">
-                    <img src="/static/images/img/logo.png" art="스파클몰 로고">
-                </a>
-            </h1>
-            <div class="h-top-icon">
-                <div class="h-basket">
-                    <a href="">
-                        <img src="/static/images/img/basket-icon.png" alt="장바구니">
-                    </a>
-                    <span>0</span>
-                </div>
-                <div class="h-my">
-                    <a href="">
-                        <img src="/static/images/img/my-icon.png" alt="마이페이지">
-                    </a>
-                </div>
-                <div class="h-heart">
-                    <a href="">
-                        <img src="/static/images/img/heart-icon.png" alt="관심상품">
-                    </a>
-                </div>
-                <div class="h-del">
-                    <a href="">
-                        <img src="/static/images/img/del-icon.png" alt="딜리버리">
-                    </a>
+    <section th:replace="~{header :: headerFragment}"></section>
+    <section id="wrap">
+        <section id="content" class="member">
+            <div class="new-box w1260">
+                <div class="sub-title">
+                    <p>주문결제</p>
                 </div>
             </div>
-            
-        </div>
+            <div id="cart" class="cart-box w1260">
+                <form name="cartForm" action="/order/prepare" method="post">
+                    <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
+                    <input type="hidden" name="cart_id" value="3033722">
+                    <div class="cart-top txt">
+                        상품정보
+                    </div>
                     
-        <div id="gnb">
-            <div class="gnb-in w1260 clear">
-                <ul class="gnb clear">
-                    <li class="menu1">
-                        <a href="#none">
-                            <span class="ico"></span>
-                            <span class="txt">
-                                전체 카테고리
-                            </span>
-                        </a>
-                        <div class="gnb_sub w1260">
-                            <ul>
-                                <li>
-                                    <a href="">생수</a>
-                                </li>
-                                <li>
-                                    <a href="">탄산</a>
-                                </li>
-                                <li>
-                                    <a href="">생수부자재</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                        <li class="menu3">
-                            <a href="">
-                                <span class="txt">
-                                    쇼핑하기
-                                </span>
-                            </a>
-                        </li>
-                        <li class="menu4">
-                            <a href="">
-                                <span class="txt">
-                                    정기배송
-                                </span>
-                            </a>
-                        </li>
-                        <li class="menu7">
-                            <a href="">
-                                <span class="txt">
-                                    자주묻는질문
-                                </span>
-                            </a>
-                        </li>
-                </ul>
-                <ul class="util-menu clear">
-                    <li>
-                        <a href="">로그아웃</a>
-                    </li>
-                    <li>
-                        <a href="/static/html/support.html">고객센터</a>
-                    </li>
-                    
-                </ul>
-                
-            </div>
-        </div>
-    </header>
-
-    <section id="content-section">
-        <div class="sub-title">
-            <p>주문결제</p>
-        </div>
-        <div id="section">
-            <div id="section-in">
-                <div id="cart" class="cart-box w1260">
-                    <form name="cartForm" action="/order/prepare" method="post">
-                        <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
-                        <input type="hidden" name="cart_id" value="3033722">
-                        <div class="cart-top txt">
-                            상품정보
-                        </div>
-                        
-                        <table class="cart_table">
-                            <colgroup>
-                                <col width="420px">
-                                <col width="59px">
-                                <col width="228px">
-                                <col width="198px">
-                                <col width="151px">
-                                <col width="205px">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>상품/옵션 정보</th>
-                                    <th>수량</th>
-                                    <th>판매가</th>
-                                    <th>할인금액</th>
-                                    <th>적립금</th>
-                                    <th>배송비</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!---- product --->
-                                <tr class="border-b">
-                                    <td class="taL pro-option">
-                                        <div class="proImg">
-                                            <!---- 상품 이미지, 상세 get 요청  --->
-                                            <a href="/product/1301">
-                                                <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
-                                            </a>
-                                        </div>
-                                        <div class="proTxt">
-                                            <!--- go-product-text test ---->
-                                            <span class="proState">스파클몰</span>
-                                            <p><a href="/product/1301">스파클링 500ml 40병</a>
-                                                <span>33% 할인상품</span>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td><!---   동일 상품 주문 개수 --->
-                                        <div class="spoqa">1</div>
-                                    </td>
-                                    <td class="spoqa">
-                                        <!---  상품 금액 * num ---->
-                                        <div>19,900원</div>
-                                    </td>
-                                    <td class="spoqa">0원</td>
-                                    <td class="spoqa">0원</td>
-                                    <td>무료배송</td>
-                                    
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="taL pro-option">
-                                        <div class="proImg">
-                                            <!---- 상품 이미지, 상세 get 요청  --->
-                                            <a href="/product/1301">
-                                                <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
-                                            </a>
-                                        </div>
-                                        <div class="proTxt">
-                                            <!--- go-product-text test ---->
-                                            <span class="proState">스파클몰</span>
-                                            <p><a href="/product/1301">스파클링 500ml 40병</a>
-                                                <span>33% 할인상품</span>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    
-                                    <td><!---   동일 상품 주문 개수 --->
-                                        <div class="spoqa">1</div>
-                                    </td>
-                                    <td class="spoqa">
-                                        <!---  상품 금액 * num ---->
-                                        <div>19,900원</div>
-                                    </td>
-                                    <td class="spoqa">0원</td>
-                                    <td class="spoqa">0원</td>
-                                    <td>무료배송</td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="calc-box">
-                            <div class="calc-box-in">
-                                <div class="calc-item">
-                                    <p class="title">총 판매가</p>
-                                    <p class="selPrice">28,300원</p>
-                                </div>
-                                <div class="symb plus-symbol">
-                                    <img src="/static/images/sub/plus-symbol.png" alt="">
-                                </div>
-                                <div class="calc-item">
-                                    <p class="title">배송비</p>
-                                    <p class="deliPrice">0원</p>
-                                </div>
-                                <div class="symb minus-symbol">
-                                    <img src="/static/images/sub/minus-symbol.png" alt="">
-                                </div>
-                                <div class="calc-item">
-                                    <p class="title">할인금액</p>
-                                    <p class="dcPrice">0원</p>
-                                </div>
-                                <div class="symb equal-symbol">
-                                    <img src="/static/images/sub/equal-symbol.png" alt="">
-                                </div>
-                                <div class="calc-item">
-                                    <p class="title">총결제금액</p>
-                                    <p class="totalCost">28,300원</p>
-                                </div>
-                                <div class="calc-item">
-                                    <p class="title">예상적립금</p>
-                                    <p class="deliPrice">84원</p>
-                                </div>
+                    <table class="cart_table">
+                        <colgroup>
+                            <col width="420px">
+                            <col width="59px">
+                            <col width="228px">
+                            <col width="198px">
+                            <col width="151px">
+                            <col width="205px">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>상품/옵션 정보</th>
+                                <th>수량</th>
+                                <th>판매가</th>
+                                <th>할인금액</th>
+                                <th>적립금</th>
+                                <th>배송비</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!---- product --->
+                            <tr class="border-b">
+                                <td class="taL pro-option">
+                                    <div class="proImg">
+                                        <!---- 상품 이미지, 상세 get 요청  --->
+                                        <a href="/product/1301">
+                                            <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
+                                        </a>
+                                    </div>
+                                    <div class="proTxt">
+                                        <!--- go-product-text test ---->
+                                        <span class="proState">스파클몰</span>
+                                        <p><a href="/product/1301">스파클링 500ml 40병</a>
+                                            <span>33% 할인상품</span>
+                                        </p>
+                                    </div>
+                                </td>
+                                <td><!---   동일 상품 주문 개수 --->
+                                    <div class="spoqa">1</div>
+                                </td>
+                                <td class="spoqa">
+                                    <!---  상품 금액 * num ---->
+                                    <div>19,900원</div>
+                                </td>
+                                <td class="spoqa">0원</td>
+                                <td class="spoqa">0원</td>
+                                <td>무료배송</td>
+                                
+                            </tr>
+                            <tr class="border-b">
+                                <td class="taL pro-option">
+                                    <div class="proImg">
+                                        <!---- 상품 이미지, 상세 get 요청  --->
+                                        <a href="/product/1301">
+                                            <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
+                                        </a>
+                                    </div>
+                                    <div class="proTxt">
+                                        <!--- go-product-text test ---->
+                                        <span class="proState">스파클몰</span>
+                                        <p><a href="/product/1301">스파클링 500ml 40병</a>
+                                            <span>33% 할인상품</span>
+                                        </p>
+                                    </div>
+                                </td>
+                                
+                                <td><!---   동일 상품 주문 개수 --->
+                                    <div class="spoqa">1</div>
+                                </td>
+                                <td class="spoqa">
+                                    <!---  상품 금액 * num ---->
+                                    <div>19,900원</div>
+                                </td>
+                                <td class="spoqa">0원</td>
+                                <td class="spoqa">0원</td>
+                                <td>무료배송</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="calc-box">
+                        <div class="calc-box-in">
+                            <div class="calc-item">
+                                <p class="title">총 판매가</p>
+                                <p class="selPrice">28,300원</p>
+                            </div>
+                            <div class="symb plus-symbol">
+                                <img src="/static/images/sub/plus-symbol.png" alt="">
+                            </div>
+                            <div class="calc-item">
+                                <p class="title">배송비</p>
+                                <p class="deliPrice">0원</p>
+                            </div>
+                            <div class="symb minus-symbol">
+                                <img src="/static/images/sub/minus-symbol.png" alt="">
+                            </div>
+                            <div class="calc-item">
+                                <p class="title">할인금액</p>
+                                <p class="dcPrice">0원</p>
+                            </div>
+                            <div class="symb equal-symbol">
+                                <img src="/static/images/sub/equal-symbol.png" alt="">
+                            </div>
+                            <div class="calc-item">
+                                <p class="title">총결제금액</p>
+                                <p class="totalCost">28,300원</p>
+                            </div>
+                            <div class="calc-item">
+                                <p class="title">예상적립금</p>
+                                <p class="deliPrice">84원</p>
                             </div>
                         </div>
-                        <div class="cart-total-price">
-                            <p>총 결제금액
-                                <span class="calc-tot-amount">28,300원</span>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="wrap">
-        
-        <div id="load" style="display: none;">
-            <img src="/static/images/img/loading.gif" alt="로딩">
-        </div>
-        
-    </section>
-    <div class="order-in">
-        <h4 class="com-tit">주문자정보</h4>
-        <div class="order-detail">
-            <dl class="clear">
-                <dt>이름</dt>
-                <dd>
-                    <input type="text" placeholder="홍길동" class="input_1" name="name" value="">
-                </dd>
-            </dl>
-            <dl class="clear">
-                <dt>휴대폰</dt>
-                <dd>
-                    <input type="hidden" name="phone" value="">
+                    </div>
+                    <div class="cart-total-price">
+                        <p>총 결제금액
+                            <span class="calc-tot-amount">28,300원</span>
+                        </p>
+                    </div>
                     
-                </dd>
-            </dl>
-        </div>
-
+                    <div class="order-in">
+                        <h4 class="com-tit">주문자정보</h4>
+                        <div class="order-detail">
+                            <dl class="clear">
+                                <dt>이름</dt>
+                                <dd>
+                                    <input type="text" placeholder="홍길동" class="input_1" name="name" value="">
+                                </dd>
+                            </dl>
+                            <dl class="clear">
+                                <dt>휴대폰</dt>
+                                <dd>
+                                    <input type="hidden" name="phone" value="">
+                        
+                                </dd>
+                            </dl>
+                        </div>
             <div style="display: none;">
                 <input type="hidden" name="user_postcode" value="49305" disabled="">
                 <input type="hidden" name="user_address" value="" disabled="">
                 <input type="hidden" name="user_address_detail" value="" disabled="">
             </div>
-        
-        <div class="flex">
-            <h4 class="com-tit wid225">배송지정보</h4>
-            <a href="javascript:;" class="btn_style btn2" onclick="fillRecipientInputs()">주문자 정보와 동일</a>
-            <a href="javascript:;" class="btn_style shipping">배송지변경</a>
-        </div>
-        <div class="order-detail od2">
-
-            <dl class="clear mb10">
-                <dt>이름</dt>
-                <dd>
-                    <input type="text" class="input_1" name="r_name" value="">
-                </dd>
-            </dl>
+            
+            <div class="flex">
+                <h4 class="com-tit wid225">배송지정보</h4>
+                <a href="javascript:;" class="btn_style btn2" onclick="fillRecipientInputs()">주문자 정보와 동일</a>
+                <a href="javascript:;" class="btn_style shipping">배송지변경</a>
+            </div>
+            <div class="order-detail od2">
+                
                 <dl class="clear mb10">
-                <dt>휴대폰</dt>
-                <dd>
-                    <input type="text" class="input_1" name="r_phone" value="">
-                </dd>
-            </dl>
-            <dl class="clear mb10">
-                <dt>주소</dt>
-                <dd>
-                    <div class="address_inp">
-                        <input type="text" name="postcode" readonly="readonly" class="input_1 mb12 wid350" placeholder="우편번호" value="" style="background: rgba(0,0,0,.1); cursor: default; width: 6em;" onclick="openPostcode('postcode', 'address', 'address_detail')">
-                        <input type="button" value="우편번호찾기" onclick="openPostcode('postcode', 'address', 'address_detail')" class="find_post"> <br>
-                        <input type="text" name="address" readonly="readonly" placeholder="주소" class="adr" value="" style="background: rgba(0,0,0,.1); cursor: default;">
-                        <input type="text" name="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" value="">
-                        <input type="hidden" name="address_data" value="">
-                        <input type="hidden" name="is_deliverable" value="">
-                        <p class="deliverable-show" style="display: none; color: #00f;">
-                            선택하신 배송지는 배송이 가능한 지역입니다.
-                        </p>
-                        <p class="deliverable-hide" style="display: none; color: #f00;">
-                            선택하신 배송지는 배송이 불가능한 지역입니다.
-                        </p>
-                    </div>
-                </dd>
-            </dl>
-            <dl class="clear">
-                <dt>배송메세지</dt>
-                <dd>
-                    <div class="flex">
-                        <li class="deli-select">
-                            <span class="sel">배송 메세지 선택</span>
-                            <ul style="display: none;">
-                                <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
-                                <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
-                                <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
-                                <li onclick="$('#message').val('')" class="selfText">직접입력</li>
-                            </ul>
-                            <span class="arrow"></span>
-                        </li>
-                        <div class="self">
-                            <input type="text" class="self-input input_1" id="message" name="message" value="">
+                    <dt>이름</dt>
+                    <dd>
+                        <input type="text" class="input_1" name="r_name" value="">
+                    </dd>
+                </dl>
+                <dl class="clear mb10">
+                    <dt>휴대폰</dt>
+                    <dd>
+                        <input type="text" class="input_1" name="r_phone" value="">
+                    </dd>
+                </dl>
+                <dl class="clear mb10">
+                    <dt>주소</dt>
+                    <dd>
+                        <div class="address_inp">
+                            <input type="text" name="postcode" readonly="readonly" class="input_1 mb12 wid350" placeholder="우편번호" value="" style="background: rgba(0,0,0,.1); cursor: default; width: 6em;" onclick="openPostcode('postcode', 'address', 'address_detail')">
+                            <input type="button" value="우편번호찾기" onclick="openPostcode('postcode', 'address', 'address_detail')" class="find_post"> <br>
+                            <input type="text" name="address" readonly="readonly" placeholder="주소" class="adr" value="" style="background: rgba(0,0,0,.1); cursor: default;">
+                            <input type="text" name="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" value="">
+                            <input type="hidden" name="address_data" value="">
+                            <input type="hidden" name="is_deliverable" value="">
+                            <p class="deliverable-show" style="display: none; color: #00f;">
+                                선택하신 배송지는 배송이 가능한 지역입니다.
+                            </p>
+                            <p class="deliverable-hide" style="display: none; color: #f00;">
+                                선택하신 배송지는 배송이 불가능한 지역입니다.
+                            </p>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="clear">
+                    <dt>배송메세지</dt>
+                    <dd>
+                        <div class="flex">
+                            <li class="deli-select">
+                                <span class="sel">배송 메세지 선택</span>
+                                <ul style="display: none;">
+                                    <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
+                                    <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
+                                    <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
+                                    <li onclick="$('#message').val('')" class="selfText">직접입력</li>
+                                </ul>
+                                <span class="arrow"></span>
+                            </li>
+                            <div class="self">
+                                <input type="text" class="self-input input_1" id="message" name="message" value="">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="door-inp"><input type="text" placeholder="공동현관" class="door" name="door_password" value=""></div>
+                            <div class="event">
+                            <input type="checkbox" id="eventChk" class="eventChk" name="recallpet" value="1">
+                            <label for="eventChk">
+                                <img src="/static/images/img/leaf_icon.png" alt="" class="leaf">
+                                페트병회수 참여하기 (사은품 2L 1병 증정)
+                            </label>
                         </div>
                     </div>
-                <div>
-                    <div class="door-inp"><input type="text" placeholder="공동현관" class="door" name="door_password" value=""></div>
-                    <div class="event">
-                        <input type="checkbox" id="eventChk" class="eventChk" name="recallpet" value="1">
-                        <label for="eventChk">
-                            <img src="/static/images/img/leaf_icon.png" alt="" class="leaf">
-                             페트병회수 참여하기 (사은품 2L 1병 증정)
-                        </label>
-                    </div>
-                </div>
-                </dd>
-            </dl>
-        </div>
-
-        <h4 class="com-tit">결제정보</h4>
-        <div class="order-detail od3">
-            <dl class="clear">
-                <dt>결제수단</dt>
-                <dd>
-                    <ul class="clear dd1">
-                        <li>
-                            <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
-                            <label for="toss" class="vam ti-9999 toss">토스</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="payment" value="card" id="credit">
-                            <label for="credit">신용카드</label>
-                        </li>
-                        
-                        <li>
+                    </dd>
+                </dl>
+            </div>
+    <h4 class="com-tit">결제정보</h4>
+    <div class="order-detail od3">
+        <dl class="clear">
+            <dt>결제수단</dt>
+            <dd>
+                <ul class="clear dd1">
+                    <li>
+                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
+                        <label for="toss" class="vam ti-9999 toss">토스</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="payment" value="card" id="credit">
+                        <label for="credit">신용카드</label>
+                    </li>
+                    
+                    <li>
                             <input type="radio" name="payment" value="virtual" id="payMethodVirtual">
                             <label for="payMethodVirtual">무통장입금(가상계좌)</label>
                         </li>
@@ -373,7 +269,7 @@
                             <input type="radio" name="payment" value="escrow_account" id="account2">
                             <label for="account2">계좌이체(에스크로)</label>
                         </li>
-
+                        
                         <li>
                             <input type="radio" name="payment" value="card" id="sspay-direct" class="vam">
                             <label for="sspay-direct" class="vam ti-9999 s_pay">삼성페이</label>
@@ -419,7 +315,7 @@
                             <p style="font-size:19px;">
                                 <span style="color:#0063fe">토스페이</span>
                                 <br>
-                            1만원 이상 생애 첫 결제 시, 3천원 캐시백 즉시 적립
+                                1만원 이상 생애 첫 결제 시, 3천원 캐시백 즉시 적립
                             </p>
                         </li>
                         <li>토스페이 생애첫결제 유의사항!</li>
@@ -433,7 +329,7 @@
                         <li>- 2022년 10월 12일부터 2023년 4월 11일까지 한정된 고객에게 선착순으로 적용되는 캐시백 행사로, 조기 종료될 수 있습니다. </li>
                         <li>- 행사 내용은 토스 및 스파클몰의 사정으로 중단 또는 변동될 수 있습니다. </li>
                         <li>- 관련 문의는 토스 고객센터(1599-4905)로 문의 부탁드립니다. </li>
-
+                        
                     </ul>
                 </dd>
             </dl>
@@ -461,17 +357,17 @@
                 <dd>
                     <table class="cash-tbl">
                         <tbody>
-                        <tr>
-                            <td>
-                                <span>발행용도</span>
-                                <input type="radio" name="cash_receipt[trade_usage]" class="cash-input" value="1" id="cash-ra" checked="">
-                                <label for="cash-ra" class="cashlabel">개인소득공제용</label>
-                                <input type="radio" name="cash_receipt[trade_usage]" class="busiinput e-tax" value="2" id="busi-tax">
-                                <label for="busi-tax" class="evidlabel">사업자 지출증빙용</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                            <tr>
+                                <td>
+                                    <span>발행용도</span>
+                                    <input type="radio" name="cash_receipt[trade_usage]" class="cash-input" value="1" id="cash-ra" checked="">
+                                    <label for="cash-ra" class="cashlabel">개인소득공제용</label>
+                                    <input type="radio" name="cash_receipt[trade_usage]" class="busiinput e-tax" value="2" id="busi-tax">
+                                    <label for="busi-tax" class="evidlabel">사업자 지출증빙용</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                 <label for="cashReceiptIdentityNum" style="">휴대폰번호</label>
                                 <label for="cashReceiptIdentityNum" style="display: none;">사업자등록번호</label>
                                 <input type="text" id="cashReceiptIdentityNum" class="input_1 mb10" name="cash_receipt[identity_num]" value="">
@@ -492,39 +388,39 @@
                 <dd>
                     <table class="tax-tbl">
                         <tbody>
-                        <tr>
-                            <td>상호명</td>
-                            <td>
-                                <input type="text" class="input_1 mb10" name="tax[corp_name]" value="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>대표자</td>
-                            <td>
-                                <input type="text" class="input_1 mb10" name="tax[ceo_name]" value="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>업태/업종</td>
-                            <td>
-                                <input type="text" class="input_1 mb10" name="tax[biz_type]" value="">
-                                <span>-</span>
-                                <input type="text" class="input_1" name="tax[biz_class]" value="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>사업자번호</td>
-                            <td>
-                                <input type="text" class="input_1 mb10" name="tax[corp_num]" value="">
-                                <span>ex)123-12-12345</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>주소</td>
-                            <td>
-                                <input type="text" class="mt25 w317 input_1 mb10" name="tax[addr]" value="">
-                                <input type="button" class="input-post find_post" value="주소 검색" onclick="openPostcode(null, 'tax[addr]', 'tax[addr]')">
-                            </td>
+                            <tr>
+                                <td>상호명</td>
+                                <td>
+                                    <input type="text" class="input_1 mb10" name="tax[corp_name]" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>대표자</td>
+                                <td>
+                                    <input type="text" class="input_1 mb10" name="tax[ceo_name]" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>업태/업종</td>
+                                <td>
+                                    <input type="text" class="input_1 mb10" name="tax[biz_type]" value="">
+                                    <span>-</span>
+                                    <input type="text" class="input_1" name="tax[biz_class]" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>사업자번호</td>
+                                <td>
+                                    <input type="text" class="input_1 mb10" name="tax[corp_num]" value="">
+                                    <span>ex)123-12-12345</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>주소</td>
+                                <td>
+                                    <input type="text" class="mt25 w317 input_1 mb10" name="tax[addr]" value="">
+                                    <input type="button" class="input-post find_post" value="주소 검색" onclick="openPostcode(null, 'tax[addr]', 'tax[addr]')">
+                                </td>
                         </tr>
                         <tr>
                             <td>담당자명</td>
@@ -544,7 +440,7 @@
                                 <input type="text" class="w383 input_1" name="tax[tel]" value="">
                             </td>
                         </tr>
-                        </tbody>
+                    </tbody>
                     </table>
                 </dd>
             </dl>
@@ -565,11 +461,16 @@
             </dl>
         </div>
     </div>
+        </form>
     <div class="order-btn-box">
-        <a href="" class="btn_style1">장바구니</a>
-        <a href="" id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
+        <a href="/bag" class="btn_style1">장바구니</a>
+        <a href="/orderComplete" id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
     </div>
-    <script src="/static/js/function.js"></script>
-    
+            </div>
+        </section>
+        <footer th:replace="~{footer :: footerFragment}"></footer>
+    </section>
+<script src="/static/js/function.js"></script>
+
 </body>
 </html>
