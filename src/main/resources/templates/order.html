@@ -10,12 +10,105 @@
     <link rel="stylesheet" href="/static/css/bag.css">
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/sub.css">
-    <link rel="stylesheet" href="/static/css/orderReset.css">
+    <link rel="stylesheet" href="/static/css/order.css">
 
     <title>주문결제</title>
 </head>
 <body>
-    <section th:replace="~{header :: headerFragment}"></section>
+    <section>
+
+        <div class="h-top w1260 clear">
+            <h1 class="logo">
+                <a href="/index">
+                    <img src="/static/images/img/logo.png" art="스파클몰 로고">
+                </a>
+            </h1>
+            <div class="h-top-icon">
+                <div class="h-basket">
+                    <a href="/bag">
+                        <img src="/static/images/img/basket-icon.png" alt="장바구니">
+                    </a>
+                    <span>0</span>
+                </div>
+                <div class="h-my">
+                    <a href="/mypage">
+                        <img src="/static/images/img/my-icon.png" alt="마이페이지">
+                    </a>
+                </div>
+                <div class="h-heart">
+                    <a href="">
+                        <img src="/static/images/img/heart-icon.png" alt="관심상품">
+                    </a>
+                </div>
+                <div class="h-del">
+                    <a href="/delivery">
+                        <img src="/static/images/img/del-icon.png" alt="딜리버리">
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+                    
+        <div id="gnb">
+            <div class="gnb-in w1260 clear">
+                <ul class="gnb clear">
+                    <li class="menu1">
+                        <a href="#none">
+                            <span class="ico"></span>
+                            <span class="txt">
+                                전체 카테고리
+                            </span>
+                        </a>
+                        <div class="gnb_sub w1260">
+                            <ul>
+                                <li>
+                                    <a href="/shop">생수</a>
+                                </li>
+                                <li>
+                                    <a href="">탄산</a>
+                                </li>
+                                <li>
+                                    <a href="">생수부자재</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                        <li class="menu3">
+                            <a href="/shop">
+                                <span class="txt">
+                                    쇼핑하기
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu4">
+                            <a href="">
+                                <span class="txt">
+                                    정기배송
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu7">
+                            <a href="">
+                                <span class="txt">
+                                    자주묻는질문
+                                </span>
+                            </a>
+                        </li>
+                </ul>
+                <ul class="util-menu clear">
+                    <li>
+                        <a href="">로그아웃</a>
+                    </li>
+                    <li>
+                        <a href="">고객센터</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </section>
+
     <section id="wrap">
         <section id="content" class="member">
             <div class="new-box w1260">
@@ -249,46 +342,46 @@
             <dd>
                 <ul class="clear dd1">
                     <li>
-                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
+                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="" onclick="paymentchk(id)">
                         <label for="toss" class="vam ti-9999 toss">토스</label>
                     </li>
                     <li>
-                        <input type="radio" name="payment" value="card" id="credit">
+                        <input type="radio" name="payment" value="card" id="credit" onclick="paymentchk(id)">
                         <label for="credit">신용카드</label>
                     </li>
                     
                     <li>
-                            <input type="radio" name="payment" value="virtual" id="payMethodVirtual">
+                            <input type="radio" name="payment" value="virtual" id="payMethodVirtual" onclick="paymentchk(id)">
                             <label for="payMethodVirtual">무통장입금(가상계좌)</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="account" id="account">
+                            <input type="radio" name="payment" value="account" id="account" onclick="paymentchk(id)">
                             <label for="account">계좌이체</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="escrow_account" id="account2">
+                            <input type="radio" name="payment" value="escrow_account" id="account2" onclick="paymentchk(id)">
                             <label for="account2">계좌이체(에스크로)</label>
                         </li>
                         
                         <li>
-                            <input type="radio" name="payment" value="card" id="sspay-direct" class="vam">
+                            <input type="radio" name="payment" value="card" id="sspay-direct" class="vam" onclick="paymentchk(id)">
                             <label for="sspay-direct" class="vam ti-9999 s_pay">삼성페이</label>
                         </li>
                         
                         <li>
-                            <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam">
+                            <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam" onclick="paymentchk(id)">
                             <label for="naverpay-direct" class="vam ti-9999 n_pay">네이버페이</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam">
+                            <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam" onclick="paymentchk(id)">
                             <label for="kakaopay-direct" class="vam ti-9999 k_pay">카카오페이</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="payco" id="payco" class="vam">
+                            <input type="radio" name="payment" value="payco" id="payco" class="vam" onclick="paymentchk(id)">
                             <label for="payco" class="vam ti-9999 payco">페이코</label>
                         </li>
                         <li>
-                            <input type="radio" name="payment" value="cellphone" id="mobile">
+                            <input type="radio" name="payment" value="cellphone" id="mobile" onclick="paymentchk(id)">
                             <label for="mobile">휴대폰결제</label>
                         </li>
                     </ul>
@@ -470,7 +563,9 @@
         </section>
         <footer th:replace="~{footer :: footerFragment}"></footer>
     </section>
-<script src="/static/js/function.js"></script>
+<script src="/static/js/header.js"></script>
+<script src="/static/js/order.js"></script>
+
 
 </body>
 </html>
