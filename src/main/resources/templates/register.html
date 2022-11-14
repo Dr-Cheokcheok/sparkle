@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
 </head>
 <body>
     <section id="wrap">
-        <header id="header">
+        <section th:replace="{header::headerFragment}">
             <div class="h-top w1260 clear">
                 <h1 class="logo">
                     <a href="/static/html/header.html">
@@ -92,7 +92,7 @@
                 </div>
             </div>
             
-        </header>
+        </section>
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
         </div>
@@ -690,6 +690,7 @@
                 </div>
             </div>
         </footer>
-</section>
+    </section>
+    <script src="/static/js/header.js"></script>
 </body>
 </html>
