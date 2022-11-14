@@ -1,6 +1,6 @@
-package com.spakle.spakleclone20221104.domain;
+package com.spakle.spakleclone20221104.domain.product;
 
-import com.spakle.spakleclone20221104.dto.ProductListRespDto;
+import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,8 +14,8 @@ public class Product {
     private String category;
     private String group;
     private String name;
-    private double price;
-    private double retail_price;
+    private int price;
+    private int rate;
     private String img; //이미지 경로 (temp_name)
     private List<ProductImgFile> files;
 
@@ -29,7 +29,7 @@ public class Product {
                 .group(group)
                 .name(name)
                 .price(price)
-                .retailPrice(retail_price) //할인 안하는 상품이면 0이 들어옴
+                .rate(rate) //할인 안하는 상품이면 0이 들어옴
                 .img(img)
                 .build();
     }

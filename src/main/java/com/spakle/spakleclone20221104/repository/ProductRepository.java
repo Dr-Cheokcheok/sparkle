@@ -1,7 +1,7 @@
 package com.spakle.spakleclone20221104.repository;
 
-import com.spakle.spakleclone20221104.domain.Product;
-import com.spakle.spakleclone20221104.domain.ProductImgFile;
+import com.spakle.spakleclone20221104.domain.product.Product;
+import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.spakle.spakleclone20221104.dto;
+package com.spakle.spakleclone20221104.dto.product;
 
-import com.spakle.spakleclone20221104.domain.ProductImgFile;
+import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,8 +16,8 @@ public class ProductListRespDto {
     private String category;
     private String group;
     private String name;
-    private double price;
-    private double retailPrice;
+    private int price;
+    private int rate;
     private String img;
 
     private List<ProductImgFile> productImgFiles;
