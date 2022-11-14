@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <title>스파클몰</title>
 </head>
 <body>
-    <section id="wrap">
+    <section id="wrap" th:fragment="headerFragment">
         <header id="header">
             <div class="h-top w1260 clear">
                 <h1 class="logo">

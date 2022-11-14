@@ -18,7 +18,5 @@ public class logInController {
     @GetMapping("/order")
     public String loadorder() {return "order";}
 
-    @GetMapping("/bag")
-    public String loadbag() {return "bag";}
 }
 
