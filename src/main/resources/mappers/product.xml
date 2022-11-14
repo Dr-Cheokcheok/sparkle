@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spakle.spakleclone20221104.repository.ProductRepository">
+    <insert
+            id="saveProduct"
+            parameterType="com.spakle.spakleclone20221104.domain.Product"
+            useGeneratedKeys="true"
+            keyProperty="id"
+    ><!-- id 받아와서 해당상품 이미지도 등록해줌-->
+        insert into
+            product
+        values
+            (
+                0,
+                #{category},
+                #{group},
+                #{name},
+                #{price},
+                #{retail_price},
+                #{img},
+                now(),
+                now()
+            )
+
+    </insert>
+    <insert id="saveImgFiles"
+            parameterType="java.util.List">
+        insert into
+            product_img
+        values
+        <foreach item="file" collection="list" separator=",">
+            (
+                0,
+                #{file.product_id},
+                #{file.origin_name},
+                #{file.temp_name},
+                now(),
+                now()
+            )
+        </foreach>
+
+    </insert>
+
+</mapper>
