@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/layout.css">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/sub.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/sub.css">
     <title>스파클몰-회원가입</title>
 </head>
 <body>
@@ -86,7 +87,7 @@
                                     </td>
                                     <td class="address_inp">
                                         <input type="text" id="registerPostcodeInput" name="postcode" value="" readonly="readonly" class="w165" placeholder="우편번호" required="">
-                                        <input type="button" value="우편번호찾기" onclick="openPostcode('postcode', 'address', 'address_detail', 'address_data')" class="find_post"> <br>
+                                        <input type="button" value="우편번호찾기" onclick="daumPostcode('postcode', 'address', 'address_detail', 'address_data')" class="find_post"> <br>
                                         <input type="text" name="address" readonly="readonly" placeholder="주소" value="" required="">
                                         <input type="text" name="address_detail" class="mb0" placeholder="상세주소를 입력하세요" value="" required="">
                                         <input type="hidden" name="address_data" value="">
@@ -148,6 +149,7 @@
                 </div>
             </section>
         </section>
+    <script type="text/javascript" src="/static/js/edit.js"></script>
         <footer th:replace="~{footer :: footerFragment}"></footer>
 </body>
 </html>
