@@ -120,26 +120,20 @@ $('input').click(function(){
 });
 
 // --------------------------------------
-(function() {
-  $('button1').click("click", function() {
-      $("category1-1").show();
-      $("category1-2").hide();
-      $("category1-3").hide();
-      $("category1-4").hide();
-  })
-})()
-
 
 function toggleBtn(s) {
   if(s == 'button1'){
+    document.getElementById('category1').checked = true;
     document.getElementById('category_button1').style.display = "block";
     document.getElementById('category_button2').style.display = "none";
     document.getElementById('category_button3').style.display = "none";
   }else if(s == 'button2'){
+    document.getElementById('category5').checked = true;
     document.getElementById('category_button1').style.display = "none";
     document.getElementById('category_button2').style.display = "block";
     document.getElementById('category_button3').style.display = "none";
   }else if(s == 'button3'){
+    document.getElementById('category6').checked = true;
     document.getElementById('category_button1').style.display = "none";
     document.getElementById('category_button2').style.display = "none";
     document.getElementById('category_button3').style.display = "block";
