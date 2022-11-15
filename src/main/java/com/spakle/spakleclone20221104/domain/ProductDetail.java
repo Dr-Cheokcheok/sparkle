@@ -18,5 +18,6 @@ public class ProductDetail {
     private int price;
     private int rate;
     private String img;
+    private int retailPrice;
     private List<ProductImgFile> productImgFiles;
 }

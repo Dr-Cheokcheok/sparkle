@@ -18,13 +18,18 @@ public class ShopServiceImpl implements ShopService {
 
     private final ShopRepository shopRepository;
     @Override
-    public List<ShopListRespDto> getCollections(String category) throws Exception {
+    public List<ShopListRespDto> getCollections(String category, String group) throws Exception {
         List<ShopListRespDto> responses = new ArrayList<ShopListRespDto>();
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("category", category);
+        map.put("group", group);
 
-        return null;
+        shopRepository.getCollectionList(map).forEach(collection -> {
+            responses.add(collection.toListRespDto());
+        });
+
+        return responses;
     }
 
     @Override
@@ -42,12 +47,10 @@ public class ShopServiceImpl implements ShopService {
                 .group(productDetails.get(0).getGroup())
                 .name(productDetails.get(0).getName())
                 .price(productDetails.get(0).getPrice())
-                .rate(productDetails.get(0).getPrice())
+                .rate(productDetails.get(0).getRate())
                 .img(productDetails.get(0).getImg())
                 .productImgFiles(imgNames)
                 .build();
-
-
 
         return productDetailRespDto;
     }

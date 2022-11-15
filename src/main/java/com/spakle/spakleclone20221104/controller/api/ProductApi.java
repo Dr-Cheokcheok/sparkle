@@ -1,7 +1,7 @@
 package com.spakle.spakleclone20221104.controller.api;
 
-import com.spakle.spakleclone20221104.dto.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,16 +1,46 @@
+const upButton = document.querySelector("#calPlus");
+const downButton = document.querySelector("#calMinus");
+
+upButton.onclick = () => {
+    up();
+}
+
+downButton.onclick = () => {
+    down();
+}
+
 /*  수량 버튼 기능   */
+
 function up() {
-    let count = document.getElementById("quantity").value;
-    document.getElementById("quantity").value = parseInt(count) + 1;
+    const quantity = document.querySelector("#quantity");
+    const calPrice = document.querySelector("#calPrice").value;
+    const totalPrice = document.querySelector(".price span");
+    const calTotalPrice = document.querySelector(".calTotalPrice");
+
+    let quantityValue = quantity.value;
+
+    quantity.value = parseInt(quantityValue) + 1;
+
+    totalPrice.textContent = calPrice * quantity.value;
+    calTotalPrice.textContent = calPrice * quantity.value;
+    
+     
 }
 
 function down() {
-    let count = document.getElementById("quantity").value;
-    if (count != 1) {
-        document.getElementById("quantity").value = parseInt(count) - 1;
+    const quantity = document.querySelector("#quantity");
+    const calPrice = document.querySelector("#calPrice").value;
+    const totalPrice = document.querySelector(".price span");
+    const calTotalPrice = document.querySelector(".calTotalPrice");
+
+    let quantityValue = quantity.value;
+
+    if (quantityValue != 1) {
+        quantity.value = parseInt(quantityValue) - 1;
+        totalPrice.textContent = calPrice * quantity.value;
+        calTotalPrice.textContent = calPrice * quantity.value;
     }
 }
-
 
 /* 상품 정보 찜으로 보내기  */
 

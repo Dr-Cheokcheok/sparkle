@@ -1,6 +1,6 @@
 package com.spakle.spakleclone20221104.domain.product;
 
-import com.spakle.spakleclone20221104.dto.ProductListRespDto;
+import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

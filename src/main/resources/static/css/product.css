@@ -187,6 +187,13 @@ p{
     font-weight: 700;
     margin-left: 20px;
 }
+
+.goods-contents .total-price .total span {
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
 .goods-contents .btn-box{
     width: 610px;
     display: flex;

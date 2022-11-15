@@ -15,5 +15,7 @@ public class ShopListRespDto {
 
     private int price;
     private int rate;
+    private int retailPrice;
+
     private String img;
 }

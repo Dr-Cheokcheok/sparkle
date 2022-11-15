@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ShopService {
 
-    public List<ShopListRespDto> getCollections(String category) throws Exception;
+    public List<ShopListRespDto> getCollections(String category, String group) throws Exception;
     public ProductDetailRespDto getProductDetails(int id) throws Exception;
 }

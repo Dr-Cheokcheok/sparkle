@@ -15,6 +15,7 @@ public class ProductDetailRespDto {
     private String name;
     private int price;
     private int rate;
+    private int retailPrice;
     private String img;
 
     private List<String> productImgFiles;
