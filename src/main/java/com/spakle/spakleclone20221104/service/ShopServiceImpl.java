@@ -34,21 +34,21 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public ProductDetailRespDto getProductDetails(int id) throws Exception {
-        List<ProductDetail> productDetails = shopRepository.getProduct(id);
+        ProductDetail productDetails = shopRepository.getProduct(id);
         List<String> imgNames = new ArrayList<>();
 
-        productDetails.get(0).getProductImgFiles().forEach(productFile -> {
+        productDetails.getProductImgFiles().forEach(productFile -> {
             imgNames.add(productFile.getTemp_name());
         });
 
         ProductDetailRespDto productDetailRespDto = ProductDetailRespDto.builder()
-                .id(productDetails.get(0).getId())
-                .category(productDetails.get(0).getCategory())
-                .group(productDetails.get(0).getGroup())
-                .name(productDetails.get(0).getName())
-                .price(productDetails.get(0).getPrice())
-                .rate(productDetails.get(0).getRate())
-                .img(productDetails.get(0).getImg())
+                .id(productDetails.getId())
+                .category(productDetails.getCategory())
+                .group(productDetails.getGroup())
+                .name(productDetails.getName())
+                .price(productDetails.getPrice())
+                .rate(productDetails.getRate())
+                .img(productDetails.getImg())
                 .productImgFiles(imgNames)
                 .build();
 
