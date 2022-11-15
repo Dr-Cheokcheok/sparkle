@@ -87,10 +87,10 @@
                                         주소<span class="ico">*</span>
                                     </td>
                                     <td class="address_inp">
-                                        <input type="text" id="registerPostcodeInput" name="openPostcode" value="" readonly="readonly" class="w165" placeholder="우편번호" required="">
-                                        <input type="button" value="우편번호찾기" onclick="daumPostcode('postcode', 'address', 'address_detail', 'address_data')" class="find_post"> <br>
-                                        <input type="text" name="address" readonly="readonly" placeholder="주소" value="" required="">
-                                        <input type="text" name="address_detail" class="mb0" placeholder="상세주소를 입력하세요" value="" required="">
+                                        <input type="text" id="postCode" name="openPostcode" value="" readonly="readonly" class="w165" placeholder="우편번호">
+                                        <input type="button" value="우편번호찾기" onclick="daumPostcode()" class="find_post"> <br>
+                                        <input type="text" id="roadAddress" readonly="readonly" placeholder="서울 특별시 강동구 강일동 123">
+                                        <input type="text" id="detailAddress" class="mb0" placeholder="가나빌딩 1층">
                                         <input type="hidden" name="address_data" value="">
                                         
                                         <div class="explain-text" style="margin-top: 0.7em;" id="registerPostcodeMessage">
