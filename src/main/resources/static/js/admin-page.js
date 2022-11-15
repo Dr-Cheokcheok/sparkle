@@ -96,7 +96,7 @@
       return div
     }
   }
-)('att_zone', 'imgadd')
+)('att_zone', 'img-add')
 // --------------------------------
 function readURL(input) {
   if (input.files && input.files[0]) {
@@ -108,7 +108,7 @@ function readURL(input) {
   }
 }
 
-$("#mainimgadd").change(function() {
+$("#main-img-add").change(function() {
   readURL(this);
 });
 
@@ -139,3 +139,89 @@ function toggleBtn(s) {
     document.getElementById('category_button3').style.display = "block";
   }
 }
+
+
+
+
+/*  폼 내보내기   */
+
+const submit = document.querySelector('.purchase');
+
+
+
+
+function createImgList() {
+
+    const formData = new FormData(document.querySelector("form"));
+    let productImageFiles = new Array();
+
+    formData.forEach(value => {
+        if (value.size !== 0) {
+            productImageFiles.push(value); //리스트에 담아주고
+        }
+
+    });
+
+    return productImageFiles;
+}
+
+
+submit.onclick = () => {
+    const categorySelects = document.querySelectorAll('.category-select');
+    const subSelects = document.querySelectorAll('.sub-select');
+    const productName = document.querySelector('#product_name');
+    const price = document.querySelector('#price');
+    const rate = document.querySelector('#rate');
+    const mainImg = document.querySelector('#main-img-add');
+
+    let formData = new FormData();
+
+    categorySelects.forEach(categorySelect => {
+        if (categorySelect.checked) {
+            formData.append("category", categorySelect.value);
+        }
+    });
+    subSelects.forEach(subSelect => {
+        if (subSelect.checked) {
+            formData.append("group", subSelect.value);
+        }
+    });
+    formData.append("name", productName.value);
+    formData.append("price", price.value);
+    formData.append("rate", rate.value);
+    let imgFile = mainImg.files[0];
+    if (imgFile.size !== 0){
+        formData.append("mainFile", imgFile);
+    }
+    let productImgFiles = createImgList();
+
+    productImgFiles.forEach(file => {
+       formData.append("files", file);
+    });
+
+request(formData)
+
+
+}
+
+function request(formData) {
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/api/admin/product",
+        enctype: "multipart/form-data", //formData 보낼때 꼭해주기
+        contentType: false,             //formData 보낼때 꼭해주기
+        processData: false,             //formData 보낼때 꼭해주기
+        data: formData,                 //formData 보낼때 꼭해주기
+        dataType: "json",
+        success: (response) => {
+            alert("상품 등록 완료");
+        },
+        error: (error) => {
+            alert("상품 등록 실패");
+            console.log(error);
+        }
+    });
+}
+
+

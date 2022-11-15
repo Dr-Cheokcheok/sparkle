@@ -16,11 +16,12 @@ public class ProductListRespDto {
     private String category;
     private String group;
     private String name;
-    private double price;
-    private double retailPrice;
+    private int price;
+    private int rate;
+    private int retailPrice;
+
     private String img;
 
-    private List<ProductImgFile> productImgFiles;
     private int productTotalCount;
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="/static/css/admin-page.css">
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript">   
-    $(document).ready( function() {
-    $("#footer").load("footer.html");
-    });
-    </script>
+
 
     <title>스파클몰</title>
 </head>
@@ -76,18 +72,16 @@
                 </div>
             </div>
             <div class="goods-info right">
-                <form onsubmit="return false;">
-                    <div class="info">
-                        <form>
+
                             <div class = "prdt-category clear">
 
-                                <input id="button1" name ="car" class = "select-button" type ="radio" value = "생수" onclick = "toggleBtn(id)" checked>
+                                <input id="button1" name ="car" class = "category-select " type ="radio" value = "생수" onclick = "toggleBtn(id)" checked>
                                 <label class="button-label" for="button1">생수</label>
 
-                                <input id="button2" name ="car" class = "select-button" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
+                                <input id="button2" name ="car" class = "category-select" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
                                 <label class="button-label" for="button2">탄산</label>
 
-                                <input id="button3" name = "car" class = "select-button" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
+                                <input id="button3" name = "car" class = "category-select" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
                                 <label class="button-label" for="button3">생수부자재</label>
 
                                 <!-- <a href="javascript:;" class="heart" id="interestBtn"><p>생수</p></a> -->
@@ -96,39 +90,42 @@
                             </div><p></p>
                             <div class = "prdt-category clear">
                                 <div id = "category_button1">
-                                    <input id="category1" name = "sub_car" class = "select-button" type = "radio" value = "2L"  checked >
+                                    <input id="category1" name = "sub_car" class = "-button sub-select" type = "radio" value = "2L">
                                     <label class="button-label" for = "category1">2L</label>
-                                    <input id="category2" name = "sub_car" class = "select-button" type = "radio" value = "500mL" >
+                                    <input id="category2" name = "sub_car" class = " sub-select" type = "radio" value = "500mL" >
                                     <label class="button-label" for = "category2">500mL</label>
-                                    <input id="category3" name = "sub_car" class = "select-button" type = "radio" value = "330mL" >
+                                    <input id="category3" name = "sub_car" class = " sub-select" type = "radio" value = "330mL" >
                                     <label class="button-label" for = "category3">330mL</label>
-                                    <input id="category4" name = "sub_car" class = "select-button" type = "radio" value = "18.9L" >
+                                    <input id="category4" name = "sub_car" class = " sub-select" type = "radio" value = "18.9L" >
                                     <label class="button-label" for = "category4">18.9L</label>
                                 </div>
 
                                 <div id = "category_button2" style = "display: none;">
-                                    <input id="category5" name = "sub_car" class = "select-button" type = "radio" value = "스파클링" checked >
+                                    <input id="category5" name = "sub_car" class = "select-button sub-select" type = "radio" value = "스파클링">
                                     <label class="button-label" for = "category5">스파클링</label>
                                 </div>
 
                                 <div id = "category_button3" style="display: none;">
-                                    <input id="category6" name = "sub_car" class = "select-button" type = "radio" value = "냉온수기" checked >
+                                    <input id="category6" name = "sub_car" class = "select-button sub-select" type = "radio" value = "냉온수기">
                                     <label class="button-label" for = "category6">냉온수기</label>
-                                    <input id="category7" name = "sub_car" class = "select-button" type = "radio" value = "거치대" >
+                                    <input id="category7" name = "sub_car" class = "select-button sub-select" type = "radio" value = "거치대" >
                                     <label class="button-label" for = "category7">거치대</label>
-                                    <input id="category8" name = "sub_car" class = "select-button" type = "radio" value = "펌프" >
+                                    <input id="category8" name = "sub_car" class = "select-button sub-select" type = "radio" value = "펌프" >
                                     <label class="button-label" for = "category8">펌프</label>
                                 </div>
                             </div>
 
                             <p class="name">상품명 : 
-                                <input id = "product" type="text" placeholder="상품명을 입력해주세요!!" value = "">
+                                <input id = "product_name" type="text" placeholder="상품명을 입력해주세요!!" value = "">
                             </p>
 
                             <div class="info-list-box">
                                 <dl class="info-list clear">
-                                    <dt>판매가 :
+                                    <dt>원가 :
                                         <input id = "price" type = "text" placeholder="판매가를 입력해주세요!!" value = "">
+                                    </dt>
+                                    <dt>할인율 :
+                                        <input id = "rate" type = "text" placeholder="할인율을 입력해주세요!!" value = "">
                                     </dt>
                                 </dl>
                                 <dl class="info-list clear">
@@ -136,25 +133,28 @@
                                     <dd>무료배송</dd>
                                 </dl>
                             </div>
-                        </form>
+
 
                         <div class="btn-box clear">
-                            <label class ="input-file-button" for="mainimgadd">
+                            <label class ="input-file-button" for="main-img-add">
                                 메인이미지 등록
                             </label>
-                            <input id = "mainimgadd" type = "file" style="display: none;"
-                            onchange="loadFile(this)"
-                            />
-                            
-                            <label class ="input-file-button" for="imgadd">
-                                상세이미지 등록
-                            </label>
-                            <input id = "imgadd" type = "file" multiple ="multiple" style="display: none;"/>
+                            <input id = "main-img-add" type = "file" name="mainFile" style="display: none;"
+                            onchange="loadFile(this)"/>
+
+                            <form>
+                                <label class ="input-file-button" for="img-add">
+                                    상세이미지 등록
+                                </label>
+                                <input id = "img-add" type = "file" name="file" multiple ="multiple" style="display: none;"/>
+                            </form>
                             
                             <a href="javascript:;" class="purchase" id="buyBtn">상품 등록</a>
                         </div>
+
+
                     </div>
-                </form>
+
             </div>
         </div>
         <div class="goods-cont" id="app">
@@ -171,8 +171,9 @@
         </div>
     </section>
 </section>   
-        <div id="footer"></div> 
+     <footer th:replace="~{footer :: footerFragment}"></footer>
     </section>
+
     <script type="text/javascript" src="/static/js/admin-page.js"></script> 
 </body>
 

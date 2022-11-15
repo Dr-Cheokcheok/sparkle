@@ -1,12 +1,16 @@
 package com.spakle.spakleclone20221104.domain;
 
 import com.spakle.spakleclone20221104.dto.ProductListRespDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Data
 public class Product {
@@ -14,8 +18,8 @@ public class Product {
     private String category;
     private String group;
     private String name;
-    private double price;
-    private double retail_price;
+    private int price;
+    private int rate;
     private String img; //이미지 경로 (temp_name)
     private List<ProductImgFile> files;
 
@@ -29,7 +33,7 @@ public class Product {
                 .group(group)
                 .name(name)
                 .price(price)
-                .retailPrice(retail_price) //할인 안하는 상품이면 0이 들어옴
+                .retailPrice(rate) //할인 안하는 상품이면 0이 들어옴
                 .img(img)
                 .build();
     }

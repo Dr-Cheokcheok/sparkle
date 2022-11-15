@@ -3,6 +3,7 @@ package com.spakle.spakleclone20221104.dto;
 import com.spakle.spakleclone20221104.domain.Product;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -15,11 +16,12 @@ public class ProductAdditionReqDto {
     private String group;
     private String name;
 
-    private double price;
-    private double retailPrice;
+    private int price;
+    @Nullable
+    private int rate;
 
     //mainImg랑 infoImg
-    private MultipartFile imgFile;
+    private MultipartFile mainFile;
     private String imgPath;
 
 
@@ -32,8 +34,8 @@ public class ProductAdditionReqDto {
                 .group(group)
                 .name(name)
                 .price(price)
+                .rate(rate)
                 .img(imgPath)
-                .retail_price(retailPrice)
                 .build();
     }
 }
