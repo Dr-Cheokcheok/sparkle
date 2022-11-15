@@ -1,12 +1,16 @@
 package com.spakle.spakleclone20221104.domain.product;
 
-import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
+import com.spakle.spakleclone20221104.dto.ProductListRespDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Data
 public class Product {

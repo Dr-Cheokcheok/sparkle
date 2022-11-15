@@ -18,9 +18,10 @@ public class ProductListRespDto {
     private String name;
     private int price;
     private int rate;
+    private int retailPrice;
+
     private String img;
 
-    private List<ProductImgFile> productImgFiles;
     private int productTotalCount;
 
 }

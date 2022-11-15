@@ -202,6 +202,7 @@ h1.logo {
     margin-top: 30px;
 }
 .goods_contents .info-list dt{
+    margin-bottom: 10px;
     font-size: 25px;
     color: #222;
     font-weight: 400;
@@ -391,11 +392,11 @@ h1.logo {
     background-color:#fff;
 }
 
-.select-button {
+.category-select, .sub-select {
     display: none;
 }
 
-.select-button:checked + .button-label {
+.category-select:checked + .button-label, .sub-select:checked + .button-label {
     background-color: #ff3d44;
     color: #fff;
 }

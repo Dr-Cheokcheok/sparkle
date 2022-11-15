@@ -34,19 +34,19 @@ public class ProductServiceImpl implements ProductService{
     public boolean addProduct(ProductAdditionReqDto productAdditionReqDto) throws Exception {
         int resultCount1 = 0;
         int resultCount2 = 0;
-        MultipartFile mainImg = productAdditionReqDto.getImgFile(); //->경로를 dto에 넣어줘야
-        List<MultipartFile> files = productAdditionReqDto.getFiles();
-
+        MultipartFile mainImg = productAdditionReqDto.getMainFile(); //->경로를 dto에 넣어줘야
+        List<MultipartFile> files = productAdditionReqDto.getFiles(); //dto의 files를 가져옴
+        log.info("mainImg : " + mainImg);
+        log.info("files : " + files);
 
             //경로 있으려면 temp_name생성, origin_name 필요한가?
         List<ProductImgFile> productImgFiles = null;
         Product product = productAdditionReqDto.toProductEntity();
-        resultCount1 = productRepository.saveProduct(product);
 
 
         //if 없앨ㄸ까?
         if(!mainImg.isEmpty() && files != null){
-            int productId = product.getId();
+
             String originName = mainImg.getOriginalFilename();
             String extension = originName.substring(originName.lastIndexOf("."));
             String tempName = "main_" + UUID.randomUUID().toString() + extension;
@@ -64,12 +64,16 @@ public class ProductServiceImpl implements ProductService{
             }catch (IOException e){
                 throw new RuntimeException(e);
             }
-            //imgPath 넣어줌
-            productAdditionReqDto.setImgPath(imgPath.toString());
+            //imgPath 넣어줌 - tempName 넣을지 imgPath.toString() 넣을지 !!!!!!!!!!!!!!!!!
+            product.setImg(tempName);
 
+            resultCount1 = productRepository.saveProduct(product);
+            int productId = product.getId();
             productImgFiles = getProductImgFiles(files, productId);
-            resultCount1 = productRepository.saveProduct(productAdditionReqDto.toProductEntity());
             resultCount2 = productRepository.saveImgFiles(productImgFiles);
+        }else{
+            log.info("mainImg : " + mainImg);
+            log.info("files : " + files);
         }
 
         if(resultCount1 == 0 || resultCount2 == 0){
