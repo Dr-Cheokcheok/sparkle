@@ -17,5 +17,5 @@ public class ProductDetailRespDto {
     private int rate;
     private String img;
 
-    private List<ProductImgFile> productImgFiles;
+    private List<String> productImgFiles;
 }

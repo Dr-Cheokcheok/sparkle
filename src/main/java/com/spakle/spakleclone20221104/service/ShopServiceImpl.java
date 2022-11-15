@@ -32,7 +32,23 @@ public class ShopServiceImpl implements ShopService {
         List<ProductDetail> productDetails = shopRepository.getProduct(id);
         List<String> imgNames = new ArrayList<>();
 
-        productDetails.get(0).getProductImgFiles()
-        return null;
+        productDetails.get(0).getProductImgFiles().forEach(productFile -> {
+            imgNames.add(productFile.getTemp_name());
+        });
+
+        ProductDetailRespDto productDetailRespDto = ProductDetailRespDto.builder()
+                .id(productDetails.get(0).getId())
+                .category(productDetails.get(0).getCategory())
+                .group(productDetails.get(0).getGroup())
+                .name(productDetails.get(0).getName())
+                .price(productDetails.get(0).getPrice())
+                .rate(productDetails.get(0).getPrice())
+                .img(productDetails.get(0).getImg())
+                .productImgFiles(imgNames)
+                .build();
+
+
+
+        return productDetailRespDto;
     }
 }
