@@ -482,3 +482,26 @@ p{
     border-top: 2px solid #333;
     box-sizing: border-box;
 }
+
+
+/* 퀵버튼    */
+
+#quick{
+    background-color: red;
+}
+
+.btn_gotop {
+    display:none;
+    position:fixed;
+    bottom:150px;
+    right:150px;
+    z-index:999;
+    border:1px solid #ccc;
+    outline:none;
+    background: url("/static/images/sub/quick-icon.png");
+    color:#333;
+    cursor:pointer;
+    padding:15px 20px;
+    border-radius:50%;
+}
+

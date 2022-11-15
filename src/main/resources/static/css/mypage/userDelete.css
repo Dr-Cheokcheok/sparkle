@@ -48,6 +48,10 @@
     resize: none;
 }
 
+.new-tbl textarea:focus {
+    border: 1px solid #009eff;
+}
+
 .attention {
     display: flex;
     width: 990px;

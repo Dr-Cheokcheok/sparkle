@@ -10,149 +10,53 @@
     <title>아이디/비밀번호찾기</title>
 </head>
 <body>
-    <section id="wrap">
-        <section th:replace="{header::headerFragment}">
-            <div class="h-top w1260 clear">
-                <h1 class="logo">
-                    <a href="/index">
-                        <img src="/static/images/img/logo.png" art="스파클몰 로고">
-                    </a>
-                </h1>
-                <div class="h-top-icon">
-                    <div class="h-basket">
-                        <a href="/bag">
-                            <img src="/static/images/img/basket-icon.png" alt="장바구니">
-                        </a>
-                        <span>0</span>
-                    </div>
-                    <div class="h-my">
-                        <a href="/mypage">
-                            <img src="/static/images/img/my-icon.png" alt="마이페이지">
-                        </a>
-                    </div>
-                    <div class="h-heart">
-                        <a href="">
-                            <img src="/static/images/img/heart-icon.png" alt="관심상품">
-                        </a>
-                    </div>
-                    <div class="h-del">
-                        <a href="/delivery">
-                            <img src="/static/images/img/del-icon.png" alt="딜리버리">
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-                        
-            <div id="gnb">
-                <div class="gnb-in w1260 clear">
-                    <ul class="gnb clear">
-                        <li class="menu1">
-                            <a href="#none">
-                                <span class="ico"></span>
-                                <span class="txt">
-                                    전체 카테고리
-                                </span>
-                            </a>
-                            <div class="gnb_sub w1260">
-                                <ul>
-                                    <li>
-                                        <a href="/shop">생수</a>
-                                    </li>
-                                    <li>
-                                        <a href="">탄산</a>
-                                    </li>
-                                    <li>
-                                        <a href="">생수부자재</a>
-                                    </li>
-                                </ul>
+    <section id="wrap">            
+        <header th:replace="~{header :: headerFragment}"></header>
+            <section id="content">
+                <section id="content-in" class="member">
+                    <div class="new-box w1260" id="logIn">
+                        <div class="sub-title login-title">
+                        </div>
+                        <div class="login-tab">
+                            <ul>
+                                <li class="on">아이디 찾기</li>
+                                <li>비밀번호 찾기</li>
+                            </ul>
+                        </div>
+                        <div class="loginF-wrap">
+                            <div class="logForm logForm-invisible">
+                                <form name="findIdForm" method="post" action="">
+                                    <input type="hidden" name="_token" value="">
+                                    <label for="" class="log_label">이름</label>
+                                    <input class="order-num" type="text" placeholder="이름을 입력해주세요." name="name" required="">
+                                    <label for="" class="log_label">휴대폰번호</label>
+                                    <input class="order-phone" type="text" placeholder="숫자만 입력해주세요." name="phone" required="">
+                                    <div class="add-btnbx login-btn log2">
+                                        <a href="" class="confirm-btn">확인</a>
+                                    </div>
+                                </form>
                             </div>
-                        </li>
-                            <li class="menu3">
-                                <a href="">
-                                    <span class="txt">
-                                        쇼핑하기
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu4">
-                                <a href="">
-                                    <span class="txt">
-                                        정기배송
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu7">
-                                <a href="">
-                                    <span class="txt">
-                                        자주묻는질문
-                                    </span>
-                                </a>
-                            </li>
-                    </ul>
-                    <ul class="util-menu clear">
-                        <li>
-                            <a href="/login">로그인</a>
-                        </li>
-                        <li>
-                            <a href="/register">회원가입</a>
-                        </li>
-                        <li>
-                            <a href="">고객센터</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </div>
-            </div>
-        </section>
-        <div id="load" style="display: none;">
-            <img src="/static/images/img/loading.gif" alt="로딩">
-        </div>
-        <section id="content">
-            <section id="content-in" class="member">
-                <div class="new-box w1260" id="logIn">
-                    <div class="sub-title login-title">
-                    </div>
-                    <div class="login-tab">
-                        <ul>
-                            <li class="on">아이디 찾기</li>
-                            <li>비밀번호 찾기</li>
-                        </ul>
-                    </div>
-                    <div class="loginF-wrap">
-                        <div class="logForm logForm-invisible">
-                            <form name="findIdForm" method="post" action="">
-                                <input type="hidden" name="_token" value="">
-                                <label for="" class="log_label">이름</label>
-                                <input class="order-num" type="text" placeholder="이름을 입력해주세요." name="name" required="">
-                                <label for="" class="log_label">휴대폰번호</label>
-                                <input class="order-phone" type="text" placeholder="숫자만 입력해주세요." name="phone" required="">
-                                <div class="add-btnbx login-btn log2">
-                                    <a href="" class="confirm-btn">확인</a>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="logForm2">
-                            <form name="findPwForm" method="post" action="">
-                                <input type="hidden" name="_token" value="">
-                                <label for="" class="log_label">이름</label>
-                                <input class="order-num" type="text" placeholder="이름을 입력해주세요." name="name" required="">
-                                <label for="" class="log_label">아이디</label>
-                                <input class="order-num" type="text" placeholder="아이디를 입력해주세요." name="username" required="">
-                                <label for="" class="log_label">휴대폰번호</label>
-                                <input class="order-phone" type="text" placeholder="숫자만 입력해주세요." name="phone" required="">
-                                <div class="add-btnbx login-btn log2">
-                                    <a href="" class="confirm-btn">확인</a>
-                                </div>
-                            </form>
+                            <div class="logForm2">
+                                <form name="findPwForm" method="post" action="">
+                                    <input type="hidden" name="_token" value="">
+                                    <label for="" class="log_label">이름</label>
+                                    <input class="order-num" type="text" placeholder="이름을 입력해주세요." name="name" required="">
+                                    <label for="" class="log_label">아이디</label>
+                                    <input class="order-num" type="text" placeholder="아이디를 입력해주세요." name="username" required="">
+                                    <label for="" class="log_label">휴대폰번호</label>
+                                    <input class="order-phone" type="text" placeholder="숫자만 입력해주세요." name="phone" required="">
+                                    <div class="add-btnbx login-btn log2">
+                                        <a href="" class="confirm-btn">확인</a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </section>
         </section>
     </section>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
     <script src="/static/js/forgot.js"></script>
-    <script src="/static/js/header.js"></script>
 </body>
 </html>
