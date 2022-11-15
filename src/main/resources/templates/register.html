@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/sub.css">
@@ -12,7 +13,7 @@
 </head>
 <body>
     <section id="wrap">
-        <section th:replace="{header::headerFragment}">
+        <section ></section>
             <div class="h-top w1260 clear">
                 <h1 class="logo">
                     <a href="/static/html/header.html">
@@ -92,7 +93,7 @@
                 </div>
             </div>
             
-        </section>
+
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
         </div>
@@ -169,8 +170,8 @@
                                         주소<span class="ico">*</span>
                                     </td>
                                     <td class="address_inp">
-                                        <input type="text" id="registerPostcodeInput" name="postcode" value="" readonly="readonly" class="w165" placeholder="우편번호" required="">
-                                        <input type="button" value="우편번호찾기" onclick="openPostcode('postcode', 'address', 'address_detail', 'address_data')" class="find_post"> <br>
+                                        <input type="text" id="registerPostcodeInput" name="openPostcode" value="" readonly="readonly" class="w165" placeholder="우편번호" required="">
+                                        <input type="button" value="우편번호찾기" onclick="daumPostcode('postcode', 'address', 'address_detail', 'address_data')" class="find_post"> <br>
                                         <input type="text" name="address" readonly="readonly" placeholder="주소" value="" required="">
                                         <input type="text" name="address_detail" class="mb0" placeholder="상세주소를 입력하세요" value="" required="">
                                         <input type="hidden" name="address_data" value="">
@@ -692,5 +693,7 @@
         </footer>
     </section>
     <script src="/static/js/header.js"></script>
+    <script src="/static/js/register.js"></script>
+
 </body>
 </html>
