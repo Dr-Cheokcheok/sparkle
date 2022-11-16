@@ -1,18 +1,14 @@
-package com.spakle.spakleclone20221104.dto;
+package com.spakle.spakleclone20221104.dto.shop;
 
-import com.spakle.spakleclone20221104.domain.ProductImgFile;
+import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import lombok.Builder;
 import lombok.Data;
 
-
-import java.time.LocalDateTime;
 import java.util.List;
 
-/* product 여기저기 뿌려줄때 */
 @Builder
 @Data
-public class ProductListRespDto {
-
+public class ProductDetailRespDto {
     private int id;
     private String category;
     private String group;
@@ -20,9 +16,7 @@ public class ProductListRespDto {
     private int price;
     private int rate;
     private int retailPrice;
-
     private String img;
 
-    private LocalDateTime updateDate;
-
+    private List<String> productImgFiles;
 }

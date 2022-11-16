@@ -1,4 +1,4 @@
-package com.spakle.spakleclone20221104.domain;
+package com.spakle.spakleclone20221104.domain.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

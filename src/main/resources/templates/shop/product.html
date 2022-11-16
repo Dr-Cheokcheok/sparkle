@@ -25,7 +25,6 @@
                     <div class="goods-info left">
                         <div class="photo-box">
                             <!---  상품 대표 이미지   -->
-                            <img src="/static/images/product/2L24-36.jpg" alt="상품이미지">
                         </div>
                     </div>
                     <div class="goods-info right">
@@ -50,40 +49,25 @@
                                 <!---  가격 정보 (할인 없으면 판매가랑 배송만 표시)  --->
                                 <div class="info-list-box">
                                     <dl class="info-list clear">
-                                        <dt class="gray">정가</dt>
-                                        <dd class="gray under">20,000원</dd>
-                                    </dl>
-                                    <dl class="info-list clear">
-                                        <dt>판매가</dt>
-                                        <dd class="bold spoqa">14,900원</dd>
-                                    </dl>
-                                    <dl class="info-list clear">
-                                        <dt>할인받은 금액</dt>
-                                        <dd class="blue spoqa">5,100 (25%)</dd>
-                                    </dl>
-                                    <dl class="info-list clear">
-                                        <dt>배송</dt>
-                                        <dd>무료배송</dd>
-                                    </dl>
+    
                                 </div>
-
                                 <div class="quanbx clear">
                                     <input type="hidden" id="productId" value="1" name="productId">
                                     <input type="hidden" id="calPrice" value="14900" name="retailPrice">
                                     
                                     <div class="quantity clear">
-                                        <button type="button" id="calMinus" class="bt-decrease" onclick="down();"></button>
-                                        <input type="text" id="quantity" class="num" value="1" name="quantity" onchange="quantityCalc()">
-                                        <button type="button" id="calPlus" class="bt-increase" onclick="up();"></button>
+                                        <button type="button" id="calMinus" class="bt-decrease"></button>
+                                        <input type="text" id="quantity" class="num" value="1" name="quantity">
+                                        <button type="button" id="calPlus" class="bt-increase"></button>
                                     </div>
                                     <!-- 변경되어야하는 금액  calTotalPrice-->
-                                    <p class="price spoqa"><span class="cal-total-price">14,900</span>원</p>
+                                    <p class="price spoqa"><span>14900</span>원</p>
                                 </div>
 
                                 <div class="total-price">
                                     <span>총 상품금액</span>
                                     <span class="spoqa total">
-                                        <span class="total calTotalPrice">14,900</span>원
+                                        <p class="total"><span class="calTotalPrice">14900</span>원</p>
                                     </span>
                                 </div>
                                 <div class="btn-box clear">

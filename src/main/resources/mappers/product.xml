@@ -5,7 +5,7 @@
 <mapper namespace="com.spakle.spakleclone20221104.repository.ProductRepository">
     <insert
             id="saveProduct"
-            parameterType="com.spakle.spakleclone20221104.domain.Product"
+            parameterType="com.spakle.spakleclone20221104.domain.product.Product"
             useGeneratedKeys="true"
             keyProperty="id"
     ><!-- id 받아와서 해당상품 이미지도 등록해줌-->

@@ -1,9 +1,9 @@
 package com.spakle.spakleclone20221104.service;
 
 
-import com.spakle.spakleclone20221104.domain.Product;
-import com.spakle.spakleclone20221104.domain.ProductImgFile;
-import com.spakle.spakleclone20221104.dto.ProductAdditionReqDto;
+import com.spakle.spakleclone20221104.domain.product.Product;
+import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
+import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;

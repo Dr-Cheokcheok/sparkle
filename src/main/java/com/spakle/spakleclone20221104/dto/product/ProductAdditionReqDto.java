@@ -1,6 +1,6 @@
-package com.spakle.spakleclone20221104.dto;
+package com.spakle.spakleclone20221104.dto.product;
 
-import com.spakle.spakleclone20221104.domain.Product;
+import com.spakle.spakleclone20221104.domain.product.Product;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.lang.Nullable;

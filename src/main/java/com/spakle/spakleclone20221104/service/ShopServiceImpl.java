@@ -1,8 +1,16 @@
 package com.spakle.spakleclone20221104.service;
 
+<<<<<<< HEAD
 import com.spakle.spakleclone20221104.dto.ProductListRespDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+=======
+import com.spakle.spakleclone20221104.domain.ProductDetail;
+import com.spakle.spakleclone20221104.dto.shop.ProductDetailRespDto;
+import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
+import com.spakle.spakleclone20221104.repository.ShopRepository;
+import lombok.RequiredArgsConstructor;
+>>>>>>> min
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +31,33 @@ public class ShopServiceImpl implements ShopService{
         map.put("category", category);
         map.put("group", group);
 
-        return null;
+        shopRepository.getCollectionList(map).forEach(collection -> {
+            responses.add(collection.toListRespDto());
+        });
+
+        return responses;
+    }
+
+    @Override
+    public ProductDetailRespDto getProductDetails(int id) throws Exception {
+        ProductDetail productDetails = shopRepository.getProduct(id);
+        List<String> imgNames = new ArrayList<>();
+
+        productDetails.getProductImgFiles().forEach(productFile -> {
+            imgNames.add(productFile.getTemp_name());
+        });
+
+        ProductDetailRespDto productDetailRespDto = ProductDetailRespDto.builder()
+                .id(productDetails.getId())
+                .category(productDetails.getCategory())
+                .group(productDetails.getGroup())
+                .name(productDetails.getName())
+                .price(productDetails.getPrice())
+                .rate(productDetails.getRate())
+                .img(productDetails.getImg())
+                .productImgFiles(imgNames)
+                .build();
+
+        return productDetailRespDto;
     }
 }

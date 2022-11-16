@@ -3,6 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spakle.spakleclone20221104.repository.ShopRepository">
+ 
+    <resultMap id="product_img_file" type="com.spakle.spakleclone20221104.domain.product.ProductImgFile">
+        <result property="id" column="id"></result>
+        <result property="product_id" column="product_id"></result>
+        <result property="origin_name" column="origin_name"></result>
+        <result property="temp_name" column="temp_name"></result>
+    </resultMap>
+
+    <resultMap id="product_detail" type="com.spakle.spakleclone20221104.domain.ProductDetail">
+        <result property="id" column="id"></result>
+        <result property="category" column="category"></result>
+        <result property="group" column="group"></result>
+        <result property="name" column="name"></result>
+        <result property="price" column="price"></result>
+        <result property="rate" column="rate"></result>
+        <result property="img" column="img"></result>
+
+        <collection property="productImgFiles" javaType="list" resultMap="product_img_file"></collection>
+    </resultMap>
 
 <select
         id="getCollectionList"
@@ -15,8 +34,31 @@
         category = #{category} and product.`group` = #{group}
 
 
-
-
 </select>
+
+    <select id="getProduct"
+            parameterType="Integer"
+            resultType="com.spakle.spakleclone20221104.domain.ProductDetail">
+
+        select
+            pt.id,
+            pt.category,
+            pt.group,
+            pt.name,
+            pt.price,
+            pt.rate,
+            pt.retail_price,
+            pt.img,
+            pim.id,
+            pim.origin_name,
+            pim.temp_name
+        from
+            product pt LEFT JOIN product_img pim ON(select
+                                                        id
+                                                    from
+                                                        product
+                                                    where
+                                                        id = #{id})
+    </select>
 
 </mapper>
