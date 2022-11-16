@@ -32,6 +32,25 @@
             parameterType="Integer"
             resultType="com.spakle.spakleclone20221104.domain.ProductDetail">
 
+        select
+            pt.id,
+            pt.category,
+            pt.group,
+            pt.name,
+            pt.price,
+            pt.rate,
+            pt.retail_price,
+            pt.img,
+            pim.id,
+            pim.origin_name,
+            pim.temp_name
+        from
+            product pt LEFT JOIN product_img pim ON(select
+                                                        id
+                                                    from
+                                                        product
+                                                    where
+                                                        id = #{id})
     </select>
 
 </mapper>
