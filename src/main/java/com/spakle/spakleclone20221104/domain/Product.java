@@ -20,8 +20,8 @@ public class Product {
     private String name;
     private int price;
     private int rate;
+    private int retail_price;
     private String img; //이미지 경로 (temp_name)
-    private List<ProductImgFile> files;
 
     private LocalDateTime create_date;
     private LocalDateTime update_date;
@@ -33,7 +33,8 @@ public class Product {
                 .group(group)
                 .name(name)
                 .price(price)
-                .retailPrice(rate) //할인 안하는 상품이면 0이 들어옴
+                .rate(rate) //할인 안하는 상품이면 0이 들어옴
+                .retailPrice(retail_price)
                 .img(img)
                 .build();
     }

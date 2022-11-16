@@ -19,6 +19,7 @@ public class ProductAdditionReqDto {
     private int price;
     @Nullable
     private int rate;
+    private int retailPrice;
 
     //mainImg랑 infoImg
     private MultipartFile mainFile;
@@ -35,6 +36,7 @@ public class ProductAdditionReqDto {
                 .name(name)
                 .price(price)
                 .rate(rate)
+                .retail_price(retailPrice)
                 .img(imgPath)
                 .build();
     }
