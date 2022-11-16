@@ -128,6 +128,7 @@ class ProductDetailService {
 
     getProductImg(img) {
         const productImg = document.querySelector(".photo-box")
+        console.log(img);
         productImg.innerHTML += `
         <img src="/image/product/${img}" alt="상품이미지">
         `;

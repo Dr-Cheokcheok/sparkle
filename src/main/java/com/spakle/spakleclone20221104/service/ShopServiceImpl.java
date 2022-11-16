@@ -1,16 +1,11 @@
 package com.spakle.spakleclone20221104.service;
 
-<<<<<<< HEAD
-import com.spakle.spakleclone20221104.dto.ProductListRespDto;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-=======
 import com.spakle.spakleclone20221104.domain.ProductDetail;
 import com.spakle.spakleclone20221104.dto.shop.ProductDetailRespDto;
 import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 import com.spakle.spakleclone20221104.repository.ShopRepository;
+import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
->>>>>>> min
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,19 +18,21 @@ import java.util.Map;
 @Slf4j
 public class ShopServiceImpl implements ShopService{
 
+    private final ShopRepository shopRepository;
+
     @Override   //반환은 카테고리-그룹 별로 묶인                                    //생수-2L/생수-500ml/
-    public List<ProductListRespDto> getCollections(String category, String group) throws Exception {
-        List<ProductListRespDto> response = new ArrayList<ProductListRespDto>();
+    public List<ShopListRespDto> getCollections(String category, String group) throws Exception {
+        List<ShopListRespDto> response = new ArrayList<ShopListRespDto>();
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("category", category);
         map.put("group", group);
 
         shopRepository.getCollectionList(map).forEach(collection -> {
-            responses.add(collection.toListRespDto());
+            response.add(collection.toListRespDto());
         });
 
-        return responses;
+        return response;
     }
 
     @Override

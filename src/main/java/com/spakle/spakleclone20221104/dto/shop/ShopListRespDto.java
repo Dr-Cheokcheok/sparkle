@@ -9,6 +9,7 @@ import java.util.List;
 @Builder
 @Data
 public class ShopListRespDto {
+    private int productId;
     private String category;
     private String group;
     private String name;
@@ -18,4 +19,5 @@ public class ShopListRespDto {
     private int retailPrice;
 
     private String img;
+
 }
