@@ -52,6 +52,7 @@ public class ShopServiceImpl implements ShopService{
                 .name(productDetails.getName())
                 .price(productDetails.getPrice())
                 .rate(productDetails.getRate())
+                .retailPrice(productDetails.getRetailPrice())
                 .img(productDetails.getImg())
                 .productImgFiles(imgNames)
                 .build();

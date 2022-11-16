@@ -120,39 +120,54 @@ class ProductDetailService {
 
     loadProductDetail() {
         const responseData = ProductApi.getInstance().getProduct();
-        console.log(responseData)
-        this.getProductImg(responseData.img);
-        this.getProductImgFiles(responseData.imgNames);
-        this.getProductInfo(responseData);
         console.log(responseData);
+        console.log(responseData.productImgFiles);
+        this.getProductImg(responseData.img);
+        this.getProductImgFiles(responseData.productImgFiles);
+        this.getProductInfo(responseData);
     }
 
     getProductImg(img) {
+        console.log
         const productImg = document.querySelector(".photo-box")
-        console.log(img);
         productImg.innerHTML += `
-        <img src="/image/product/${img}" alt="상품이미지">
+           <img src="/image/product/${img}">
         `;
     }
 
-    getProductImgFiles(imgNames) {
+    getProductImgFiles(productImgFiles) {
         const productImgs = document.querySelector("#goodsInfo");
-        imgNames.forEach(imgName => {
+
+        for(let i = 0; i < productImgFiles.length; i++) {
             productImgs.innerHTML += `
             <div class="edit-box">
-                <p style="text-align: center;">
-                    <img src="/image/product/${imgName}">
-                </p>
-            </div>
-            `;
-        });
+               <p style="text-align: center;">
+                   <img src="/image/product/${productImgFiles[i]}">
+               </p>
+           </div>
+             `;
+        }
+
+        // imgNames.forEach(productImgFiles => {
+        //     productImgs.innerHTML += `
+        //    <div class="edit-box">
+        //       <p style="text-align: center;">
+        //           <img src="/image/product/${imgName}">
+        //       </p>
+        //   </div>
+        //     `;
+        // });
     }
 
     getProductInfo(responseData) {
         const productTitle = document.querySelector(".name");
         const productPrice = document.querySelector(".info-list-box");
-
-        productTitle.value = responseData.name;
+        const calPrice = document.querySelector("#calPrice");
+        calPrice.value = responseData.retailPrice;
+        up();
+        down();
+        
+        productTitle.innerHTML += `${responseData.name}`;
         productPrice.innerHTML += `
         <dl class="info-list clear">
             <dt class="gray">정가</dt>
@@ -164,7 +179,7 @@ class ProductDetailService {
         </dl>
         <dl class="info-list clear">
             <dt>할인받은 금액</dt>
-            <dd class="blue spoqa">5,100 (${responseData.rate})</dd>
+            <dd class="blue spoqa"> ${responseData.price - responseData.retailPrice} (${responseData.rate}%)</dd>
         </dl>
         <dl class="info-list clear">
             <dt>배송</dt>
