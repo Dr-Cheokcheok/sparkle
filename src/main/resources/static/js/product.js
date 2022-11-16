@@ -94,7 +94,7 @@ class ProductApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "/product/" + groupId,
+            url: "/api/product/" + groupId,
             dataType: "json",
             success: (response) => {
                 responseData = response.data;
@@ -120,6 +120,7 @@ class ProductDetailService {
 
     loadProductDetail() {
         const responseData = ProductApi.getInstance().getProduct();
+        console.log(responseData)
         this.getProductImg(responseData.img);
         this.getProductImgFiles(responseData.imgNames);
         this.getProductInfo(responseData);

@@ -38,7 +38,7 @@
 
     <select id="getProduct"
             parameterType="Integer"
-            resultType="com.spakle.spakleclone20221104.domain.ProductDetail">
+            resultMap="product_detail">
 
         select
             pt.id,
@@ -53,12 +53,10 @@
             pim.origin_name,
             pim.temp_name
         from
-            product pt LEFT JOIN product_img pim ON(select
-                                                        id
-                                                    from
-                                                        product
-                                                    where
-                                                        id = #{id})
+            product pt
+            LEFT OUTER JOIN product_img pim ON(pim.product_id = pt.id)
+        where
+            pt.id = #{id}
     </select>
 
 </mapper>

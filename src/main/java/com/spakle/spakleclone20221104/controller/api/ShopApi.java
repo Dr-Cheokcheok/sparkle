@@ -19,7 +19,7 @@ public class ShopApi {
 
     private final ShopService shopService;
 
-    @GetMapping("/product/{category}")
+    @GetMapping("/product/category/{category}")
     public ResponseEntity<?> GetProduct(@PathVariable String category, String group) throws Exception {
         return ResponseEntity.ok(new CMRespDto<>(1, "Load Successfully", shopService.getCollections(category, group)));
     }
