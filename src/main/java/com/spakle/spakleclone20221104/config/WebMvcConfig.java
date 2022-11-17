@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-    @Value("C:/min/web/springboot/spakleCloneProject/upload/")
+    @Value("C:/spakle/spakleCloneProject/upload/")
     private String filePath;
 
     @Override//정적 리소스 관리 - 정적 파일들의 경로 잡아줌 - 어느 경로가 들어왔을때 어떻게 매핑해줄건지
