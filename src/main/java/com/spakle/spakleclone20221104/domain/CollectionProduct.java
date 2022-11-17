@@ -4,7 +4,7 @@ import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 
 public class CollectionProduct {
 
-    private int product_id; //스파클 product_id
+    private int id; //스파클 product_id
     private String category;
     private String group;
     private String name;
@@ -17,7 +17,7 @@ public class CollectionProduct {
 
     public ShopListRespDto toListRespDto() {
         return ShopListRespDto.builder()
-                .productId(product_id)
+                .productId(id)
                 .category(category)
                 .group(group)
                 .name(name)

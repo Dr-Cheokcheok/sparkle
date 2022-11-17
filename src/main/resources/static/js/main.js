@@ -155,4 +155,41 @@ function toggleBtn(s) {
     document.getElementById('category_button2').style.display = "none";
     document.getElementById('category_button3').style.display = "block";
   }
+  changeGroup();
 }
+
+
+function changeGroup(){
+  const products = document.querySelector(".products");
+  const categoryBtns = document.querySelectorAll(".category-btn");
+  let responseData = null;
+  console.log("changGroup 실행");
+
+  categoryBtns.forEach(categoryBtn => (function (categoryBtn){
+    if(categoryBtn.checked){
+      console.log("if문 실행");
+      $.ajax({
+        async: false,
+        type: "get",
+        url: "/api/product/category/" + categoryBtn.value,
+        contentType: "application/json",
+        data: categoryBtn.value,
+        dataType: "json",
+        success: (response) => {
+          //선택 category 제품 list
+          responseData = response.data;
+          console.log(responseData);
+        },
+        error : (error) => {
+          console.log(error)
+        }
+      });
+
+    }
+
+
+  }));
+
+
+}
+

@@ -173,8 +173,6 @@ function toggleBtn(s) {
 /*  폼 내보내기   */
 
 const submit = document.querySelector('.purchase');
-
-
 function createImgList() {
 
     const formData = new FormData(document.querySelector("form"));

@@ -25,11 +25,11 @@
   }
   
   #section-in{
+      width: 1260px;
     display: flex;
     margin: 0px auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 40px;
   }
   
