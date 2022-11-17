@@ -97,40 +97,38 @@
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
         </div>
-        <section id="content">
-            <section id="content" class="member">
-                <div class="new-box w1260" id="logIn">
-                    <div class="sub-title login-title">
-                        <p>로그인</p>
-                    </div>
-                    
-                    <div class="loginF-wrap">
-                        <div class="logForm on">
-                            <form method="POST" action="/static/html/login.html">
-                                <input type="hidden" name="_token" value="QYHjNiuiKOAmLopSgrD64aWPyyCYr288EIFHTjlW">
-                                <input class="id" type="text" name="username" placeholder="아이디를 입력해주세요." value="">
-                                <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
-                                <div class="login-mid">
-                                    
-                                    <label>
-                                        <input class="chk" id="" type="checkbox" name="remember">
-                                        로그인 유지
-                                    </label>
-                                    <p>
-                                        <a href="/forgot">아이디/비밀번호 찾기</a>
-                                    </p>
-                                </div>
-                                <div class="add-btnbx login-btn">
-                                    <input type="submit" class="confirm-btn" value="로그인">
-    
-                                    <a href="/register" class="cancel-btn mb0">회원가입</a>
-                                </div>
-                            </form>
-                        </div>
-    
-                    </div>
+        <section id="content" class="member">
+            <div class="new-box w1260" id="logIn">
+                <div class="sub-title login-title">
+                    <p>로그인</p>
                 </div>
-            </section>
+
+                <div class="loginF-wrap">
+                    <div class="logForm on">
+                        <form method="POST" action="/register">
+                            <input type="hidden" name="_token" value="QYHjNiuiKOAmLopSgrD64aWPyyCYr288EIFHTjlW">
+                            <input class="id" type="text" name="username" placeholder="아이디를 입력해주세요." value="" required>
+                            <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요." required>
+                            <div class="login-mid">
+
+                                <label>
+                                    <input class="chk" id="" type="checkbox" name="remember">
+                                    로그인 유지
+                                </label>
+                                <p>
+                                    <a href="/forgot">아이디/비밀번호 찾기</a>
+                                </p>
+                            </div>
+                            <div class="add-btnbx login-btn">
+                                <input type="submit" class="confirm-btn" value="로그인">
+
+                                <a href="/register" class="cancel-btn mb0">회원가입</a>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
         </section>
         
     
