@@ -163,6 +163,9 @@ class ProductDetailService {
         const productTitle = document.querySelector(".name");
         const productPrice = document.querySelector(".info-list-box");
         const calPrice = document.querySelector("#calPrice");
+        const labelIco = document.querySelector(".label-ico.mint");
+        const reviewImg = document.querySelector(".q-right .img")
+
         calPrice.value = responseData.retailPrice;
         up();
         down();
@@ -185,6 +188,12 @@ class ProductDetailService {
             <dt>배송</dt>
             <dd>무료배송</dd>
         </dl>
+        `;
+        labelIco.innerHTML += `
+        <span>${responseData.name.substring(responseData.name.lastIndexOf("병") - 2, responseData.name.lastIndexOf("병") + 1)}</span>
+        `;
+        reviewImg.innerHTML += `
+        <img src="/image/product/${responseData.img}">
         `;
     }
 }
