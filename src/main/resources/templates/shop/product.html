@@ -30,7 +30,7 @@
                     <div class="goods-info right">
                         <form onsubmit="return false;">
                             <div class="info">
-                                <p class="name">스파클 2L 24병</p>
+                                <p class="name"></p>
 
                                 <div class="prdt-label">
                                     <!---   클맨 배송 무조건 들어감  제품명에 (택배배송)이면 택배배송으로 들어감 --->
@@ -48,12 +48,11 @@
 
                                 <!---  가격 정보 (할인 없으면 판매가랑 배송만 표시)  --->
                                 <div class="info-list-box">
-                                    <dl class="info-list clear">
     
                                 </div>
                                 <div class="quanbx clear">
                                     <input type="hidden" id="productId" value="1" name="productId">
-                                    <input type="hidden" id="calPrice" value="14900" name="retailPrice">
+                                    <input type="hidden" id="calPrice" value="${responseData.retailPrice}" name="retailPrice">
                                     
                                     <div class="quantity clear">
                                         <button type="button" id="calMinus" class="bt-decrease"></button>
@@ -61,13 +60,13 @@
                                         <button type="button" id="calPlus" class="bt-increase"></button>
                                     </div>
                                     <!-- 변경되어야하는 금액  calTotalPrice-->
-                                    <p class="price spoqa"><span>14900</span>원</p>
+                                    <p class="price spoqa"><span></span>원</p>
                                 </div>
 
                                 <div class="total-price">
                                     <span>총 상품금액</span>
                                     <span class="spoqa total">
-                                        <p class="total"><span class="calTotalPrice">14900</span>원</p>
+                                        <p class="total"><span class="calTotalPrice"></span>원</p>
                                     </span>
                                 </div>
                                 <div class="btn-box clear">
@@ -103,16 +102,6 @@
                     <!--- 상품 상세 컨텐츠 ---->
                     <div class="tab-detail">
                         <div id="goodsInfo">
-                            <div class="edit-box">
-
-                                <!---  이미지 하나마다 p 생성  --->
-                                <p style="text-align: center;">
-                                    <img src="http://sparklewater.kr/sparkle/img/page/01/sparkling/sparkling_500ml_01.jpg">
-                                </p>
-                                <p style="text-align: center;">
-                                    <img src="/static/images/product/productInfo/water_resell.jpg">
-                                </p>
-                            </div>
                         </div> 
 
                     <!--- 상품 리뷰  ---->
@@ -126,14 +115,14 @@
                                             <img src="/img/pc/layer-close01.png" alt="">
                                         </a>
                                     </div> 
-                                    <form action="https://www.sparklemall.co.kr/account/board" method="post" enctype="multipart/form-data">
+                                    <form action="" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT"> 
                                         <input type="hidden" name="category" value="review"> 
                                         <input type="hidden" name="product_id" value="1301"> 
                                         <input type="hidden" name="score_radio" value="5"> 
                                         <div class="review-prodbx">
                                             <div class="img">
-                                                <img src="/storage/image/product/1301/1/0.jpg" alt="상품이미지">
+                                                <img src="/upload/product/${img}" alt="상품이미지">
                                             </div> 
                                             <div class="prod-txt">
                                                 <p>스파클링 500ml 40병</p>
@@ -225,7 +214,7 @@
                                             <img src="/img/pc/layer-close01.png" alt="">
                                         </a>
                                     </div>
-                                    <form action="https://www.sparklemall.co.kr/account/board" method="post" enctype="multipart/form-data">
+                                    <form action="" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT"> 
                                         <input type="hidden" name="category" value="question"> 
                                         <input type="hidden" name="product_id" value="1301"> 

@@ -1,3 +1,30 @@
+/*  판매가 계산  */
+const retailPrice = document.querySelector("#retail-price");
+const price = document.querySelector("#price");
+const rate = document.querySelector("#rate");
+
+let flag = false;
+let flag2 = false;
+
+price.onchange = () => {
+    flag = true;
+    calcRetailPrice();
+}
+rate.onchange = () => {
+    flag2 = true;
+    calcRetailPrice();
+}
+function calcRetailPrice() {
+    if(flag && flag2){
+        let savedPrice = parseInt(price.value) * (parseInt(rate.value) / 100);
+        let resultPrice = parseInt(price.value) - savedPrice;
+        retailPrice.value = Math.round(resultPrice / 100) * 100;
+    }
+}
+
+
+
+
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
   imageView = function imageView(att_zone, btn){
 
@@ -148,8 +175,6 @@ function toggleBtn(s) {
 const submit = document.querySelector('.purchase');
 
 
-
-
 function createImgList() {
 
     const formData = new FormData(document.querySelector("form"));
@@ -172,6 +197,7 @@ submit.onclick = () => {
     const productName = document.querySelector('#product_name');
     const price = document.querySelector('#price');
     const rate = document.querySelector('#rate');
+    const retailPrice = document.querySelector("#retail-price");
     const mainImg = document.querySelector('#main-img-add');
 
     let formData = new FormData();
@@ -189,6 +215,7 @@ submit.onclick = () => {
     formData.append("name", productName.value);
     formData.append("price", price.value);
     formData.append("rate", rate.value);
+    formData.append("retailPrice", retailPrice.value);
     let imgFile = mainImg.files[0];
     if (imgFile.size !== 0){
         formData.append("mainFile", imgFile);
@@ -216,6 +243,7 @@ function request(formData) {
         dataType: "json",
         success: (response) => {
             alert("상품 등록 완료");
+
         },
         error: (error) => {
             alert("상품 등록 실패");
@@ -223,5 +251,8 @@ function request(formData) {
         }
     });
 }
+
+
+
 
 

@@ -49,7 +49,7 @@ let interval = getInterval(); // interval 등록
 
 
 
-
+/*   작은 배너   */
 /*
   div사이즈 동적으로 구하기
 */
@@ -76,6 +76,8 @@ const getInterval2 = () => {
 }
 
 let interval2 = getInterval2(); // interval 등록
+
+
 
 
 
@@ -132,3 +134,25 @@ const getInterval3 = () => {
 }
 
 let interval3 = getInterval3(); // interval 등록
+
+
+
+
+function toggleBtn(s) {
+  if(s == 'button1'){
+    document.getElementById('category1').checked = true;
+    document.getElementById('category_button1').style.display = "block";
+    document.getElementById('category_button2').style.display = "none";
+    document.getElementById('category_button3').style.display = "none";
+  }else if(s == 'button2'){
+    document.getElementById('category5').checked = true;
+    document.getElementById('category_button1').style.display = "none";
+    document.getElementById('category_button2').style.display = "block";
+    document.getElementById('category_button3').style.display = "none";
+  }else if(s == 'button3'){
+    document.getElementById('category6').checked = true;
+    document.getElementById('category_button1').style.display = "none";
+    document.getElementById('category_button2').style.display = "none";
+    document.getElementById('category_button3').style.display = "block";
+  }
+}

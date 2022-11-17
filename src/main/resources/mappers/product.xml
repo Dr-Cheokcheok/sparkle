@@ -19,6 +19,7 @@
                 #{name},
                 #{price},
                 #{rate},
+                #{retail_price},
                 #{img},
                 now(),
                 now()

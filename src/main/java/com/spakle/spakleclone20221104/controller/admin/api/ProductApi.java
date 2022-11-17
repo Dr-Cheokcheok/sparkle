@@ -1,4 +1,4 @@
-package com.spakle.spakleclone20221104.controller.api;
+package com.spakle.spakleclone20221104.controller.admin.api;
 
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;

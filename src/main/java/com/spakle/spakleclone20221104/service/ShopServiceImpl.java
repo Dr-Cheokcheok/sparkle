@@ -4,6 +4,7 @@ import com.spakle.spakleclone20221104.domain.ProductDetail;
 import com.spakle.spakleclone20221104.dto.shop.ProductDetailRespDto;
 import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 import com.spakle.spakleclone20221104.repository.ShopRepository;
+import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,26 +15,29 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class ShopServiceImpl implements ShopService {
+@Slf4j
+public class ShopServiceImpl implements ShopService{
 
     private final ShopRepository shopRepository;
-    @Override
+
+    @Override   //반환은 카테고리-그룹 별로 묶인                                    //생수-2L/생수-500ml/
     public List<ShopListRespDto> getCollections(String category, String group) throws Exception {
-        List<ShopListRespDto> responses = new ArrayList<ShopListRespDto>();
+        List<ShopListRespDto> response = new ArrayList<ShopListRespDto>();
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("category", category);
         map.put("group", group);
 
         shopRepository.getCollectionList(map).forEach(collection -> {
-            responses.add(collection.toListRespDto());
+            response.add(collection.toListRespDto());
         });
 
-        return responses;
+        return response;
     }
 
     @Override
     public ProductDetailRespDto getProductDetails(int id) throws Exception {
+
         ProductDetail productDetails = shopRepository.getProduct(id);
         List<String> imgNames = new ArrayList<>();
 
@@ -48,6 +52,7 @@ public class ShopServiceImpl implements ShopService {
                 .name(productDetails.getName())
                 .price(productDetails.getPrice())
                 .rate(productDetails.getRate())
+                .retailPrice(productDetails.getRetailPrice())
                 .img(productDetails.getImg())
                 .productImgFiles(imgNames)
                 .build();
