@@ -12,7 +12,8 @@
     <title>스파클몰-로그인</title>
 </head>
 <body>
-    <section th:replace="~{header :: headerFragment}"></section>
+    <section id="wrap">
+        <header th:replace="~{header :: headerFragment}"></header>
         <section id="content">
             <section id="content" class="member">
                 <div class="new-box w1260" id="logIn">
@@ -48,9 +49,7 @@
                 </div>
             </section>
         </section>
-    
         <footer th:replace="~{footer :: footerFragment}"></footer>
-    <script src="/static/js/function.js"></script>
-
+    </section>
 </body>
 </html>

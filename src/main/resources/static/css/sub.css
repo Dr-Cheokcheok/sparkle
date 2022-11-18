@@ -295,6 +295,23 @@ html {
 .new-tbl .address_inp input.mb0 {
     margin-bottom: 0;
 }
+/* 장바구니 전체선택 */
+     var allChk = ('#chkAll');
+     var chk = ('.chk_style');
+
+     (allChk).click(function(){
+         if((allChk).prop("checked")){
+             (chk).prop("checked",true);
+         }else{
+             (chk).prop("checked",false);
+         }
+     });
+
+     (chk).click(function(){
+         if(!((chk).prop("checked"))){
+             (allChk).prop("checked",false);
+         }
+     });
 
 /* 주문결제 */
 .com-tit {
@@ -740,4 +757,10 @@ html {
     margin: 0 auto 85px;
     border-radius: 5px;
     box-sizing: border-box;
+}
+input{
+    box-sizing:border-box;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
 }
