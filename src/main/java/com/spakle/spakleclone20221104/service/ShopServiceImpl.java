@@ -21,12 +21,12 @@ public class ShopServiceImpl implements ShopService{
     private final ShopRepository shopRepository;
 
     @Override   //반환은 카테고리-그룹 별로 묶인                                    //생수-2L/생수-500ml/
-    public List<ShopListRespDto> getCollections(String category, String group) throws Exception {
+    public List<ShopListRespDto> getCollections(String category) throws Exception {
         List<ShopListRespDto> response = new ArrayList<ShopListRespDto>();
 
+        //map으로 안해도되지 않나
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("category", category);
-        map.put("group", group);
 
         shopRepository.getCollectionList(map).forEach(collection -> {
             response.add(collection.toListRespDto());

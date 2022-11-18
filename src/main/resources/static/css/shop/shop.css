@@ -9,75 +9,85 @@
   }
   
   /*md추천 카테고리 타원 버튼*/
-  
-  .category-tab-btn{
-    width: 250px;
-    height: 80px;
-    color: black;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 50px;
-    background-color: #fff;
-    border: none;
-    box-shadow: 0 0 20px 3px rgb(0 0 0 /7%);
-    cursor: pointer;
-  }
-  
-  .category-tab-btn span{
-    font-size: 21px;
-    font-weight: 500;
-  }
-  .category-tab-btn span > img{
-    display:inline-block; 
-    vertical-align:middle; 
-    margin-right: 13px;
-  }
-  
-  .category-tab-btn.on{
-    border: 2px solid #009eff;
-  }
+
+.category-btn{
+  display: none;
+
+}
+
+.button-label{
+  width: 250px;
+  height: 80px;
+  color: black;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 50px;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 0 20px 3px rgb(0 0 0 /7%);
+  cursor: pointer;
+  margin-left: 13px;
+  display: flex;
+  align-items: center;
+}
+.button-label:nth-child(1){
+  margin-left: 0;
+}
+
+.button-label span{
+  margin: 5px 0 0 50px;
+  font-size: 21px;
+  font-weight: 500;
+
+}
+.button-label span > img{
+  display:inline-block;
+  vertical-align:middle;
+  margin-right: 30px;
+}
+
+
+.category-btn:checked + .button-label{
+  border: 2px solid #009eff;
+}
 
   
   
   /* 그룹버튼 */
   .tab-sub-btn{
-    position: relative;
     width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-  }
-  .sub-btn-ul{
-    display: flex;
-    margin: 0;
-    margin-bottom: 16px;
   }
   .sub-btn{
+    display: none;
     margin-right: 70px;
   }
-  .sub-btn.on a{
-    color: #009eff;
-  }
-  .sub-btn a{
-    font-size: 22px;
-    color: #333;
-    font-size: 22px;
-    font-weight: 500;
-  }
-  .tab-sub-btn::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 70px;
-    height: 1px;
-    width: 100%;
-    background-color: #d5d5d5;
-    bottom: 0;
-  }
 
-.sub-btn.on a::before {
-    opacity: 1;
+.sub-button-label{
+  font-size: 22px;
+  color: #333;
+  font-weight: 500;
+
+  margin-right: 70px;
 }
+
+.sub-btn[type=radio]:checked + .sub-button-label {
+  color: #009eff;
+}
+
+.tab-sub-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: #d5d5d5;
+  bottom: -24px;
+}
+
+
 .sub-btn a::before {
     content: '';
     display: block;
@@ -93,7 +103,6 @@
   /*   sort    */
 
   .sort-top {
-    margin-top: 70px;
     width: 100%;
     height: 65px;
 
@@ -155,36 +164,29 @@
   .md-contents{
     width: 100%;
     margin-top: 73px;
-  }
-  .con-box{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
-    
+    position: relative;
   }
 
-  .product4{
-    padding-left: 0;
-    width: 100%;
-    display: flex;
+.products{
 
- 
-  }
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 
-  .product img{
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-  
-  }
+}
+.product img{
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+
+}
 
   .product{
-    width: 25%;
-    padding: 0 10px;
+    width: 24%;
 
+    margin: 0 15px 60px 0;
+    float: left;
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -192,9 +194,10 @@
     
   }
   .product figure{
+    width: 300px;
     position: relative;
-    display: flex;
-    justify-content: center;
+    display: inline-block;
+    vertical-align: top;
   }
   
   .product figure:hover .time-icon{
@@ -202,7 +205,7 @@
   }
   
   .product figure a img{
-    width: 298px;
+    width: 100%;
     
     border: 1px solid #ddd;
     border-radius: 20px;

@@ -28,11 +28,28 @@
         id="getCollectionList"
         resultType="com.spakle.spakleclone20221104.domain.CollectionProduct">
     select
-        *
+        pm.id,
+        pm.category,
+        pm.`group`,
+        pm.name,
+        pm.price,
+        pm.rate,
+        pm.retail_price,
+        pm.img,
+        pm.update_date,
+        pc.total_count
     from
-        product
+        product pm
+        LEFT OUTER JOIN (SELECT
+                            COUNT(*) AS total_count
+                        from
+                            product
+                        where
+                            category = #{category}
+                        )pc ON(1 = 1)
+
     where
-        category = #{category} and product.`group` = #{group}
+        category = #{category}
 
 
 </select>
