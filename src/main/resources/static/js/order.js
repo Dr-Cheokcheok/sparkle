@@ -1,4 +1,4 @@
-// 수정페이지 우편번호 찾기
+// 주소 입력
 
 const findPost = document.querySelector(".find_post");
 
