@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/fragment/layout.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/sub.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
     <title>스파클몰-회원가입</title>
 </head>
 <body>
     <section id="wrap">
-        <section th:replace="~{header :: headerFragment}"></section>
+        <section th:replace="~{fragment/header :: headerFragment}"></section>
         <section id="content">
             <section id="content-in" class="member">
                 <div class="new-box w1260">
@@ -150,9 +150,9 @@
                 </div>
             </section>
         </section>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
-    <script src="/static/js/register.js"></script>
-    <script type="text/javascript" src="/static/js/edit.js"></script>
+    <script src="/static/js/account/register.js"></script>
+    <script type="text/javascript" src="/static/js/mypage/edit.js"></script>
 </body>
 </html>

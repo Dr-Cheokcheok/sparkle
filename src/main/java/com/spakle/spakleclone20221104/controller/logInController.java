@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class logInController {
 
     @GetMapping("/login")
-    public String loadlogin() {return "login";}
+    public String loadlogin() {return "account/login";}
 
     @GetMapping("/register")
-    public String loadregister() {return "register";}
+    public String loadregister() {return "account/register";}
 
     @GetMapping("/forgot")
-    public String loadforgot() {return "forgot";}
+    public String loadforgot() {return "account/forgot";}
 
     @GetMapping("/order")
-    public String loadorder() {return "order";}
+    public String loadorder() {return "order/order";}
 
 }
 

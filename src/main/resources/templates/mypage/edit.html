@@ -7,14 +7,14 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/fragment/layout.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
     <link rel="stylesheet" href="/static/css/mypage/mypage.css">
     <link rel="stylesheet" href="/static/css/mypage/edit.css">
     <title>스파클몰</title>
 </head>
 <body>
-    <section th:replace="~{header :: headerFragment}"></section>
+    <section th:replace="~{fragment/header :: headerFragment}"></section>
     <div class="myInfo-top">
         <ul>
             <li><img src="/static/images/img/my_face.png"></li>
@@ -109,8 +109,8 @@
                         </diSv>
                     </div>
             </section>
-            <script type="text/javascript" src="/static/js/edit.js"></script>
+            <script type="text/javascript" src="/static/js/mypage/edit.js"></script>
         </div>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 </body>
 </html>

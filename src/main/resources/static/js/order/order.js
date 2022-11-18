@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // 주소 입력
 
 const findPost = document.querySelector(".find_post");
@@ -34,7 +33,9 @@ function daumPostcode() {
     }).open();
 }
 
-=======
+// 페이 결제
+
+
 function paymentchk(s){
     if(s == "toss"){
         document.getElementById('toss-info').style.display = "";
@@ -48,4 +49,3 @@ function paymentchk(s){
     }
 
 }
->>>>>>> origin/jeongmin

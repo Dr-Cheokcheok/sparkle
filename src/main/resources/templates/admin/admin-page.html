@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/admin-page.css">
+    <link rel="stylesheet" href="/static/css/admin/admin-page.css">
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
@@ -18,7 +18,7 @@
         <header id = "hearder">
             <div class = "h-top w1260 clear">
                 <h1 class = "logo">
-                    <a href = "/">
+                    <a href = "/index">
                         <img id ="imgbox" src = "/static/images/img/logo.png" alt = "스파클몰 로고">
                     </a>
                 </h1>
@@ -35,16 +35,22 @@
                        
                             <div class = "gnb_sub w1260">
                                 <ul>
-                                    <li><a href = "">생수</a></li>
-                                    <li><a href = "">탄산</a></li>
-                                    <li><a href = "">생수부자재</a></li>
+                                    <li><a href = "/admin/inquiry/water">생수</a></li>
+                                    <li><a href = "/admin/inquiry/spakle">탄산</a></li>
+                                    <li><a href = "/admin/inquiry/waterSub">생수부자재</a></li>
                                 </ul>
                             </div>
                         </li>
                         
                         <li class = "menu2">
-                            <a href = "">
+                            <a href = "/admin/addition">
                                 <span class = "txt">상품추가</span>
+                            </a>
+                        </li>
+
+                        <li class = "menu2">
+                            <a href = "/admin/inquiry">
+                                <span class = "txt">상품조회</span>
                             </a>
                         </li>
                         <!-- <li class = "menu3">
@@ -174,10 +180,10 @@
         </div>
     </section>
 </section>   
-     <footer th:replace="~{footer :: footerFragment}"></footer>
+     <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
 
-    <script type="text/javascript" src="/static/js/admin-page.js"></script> 
+    <script type="text/javascript" src="/static/js/admin/admin-page.js"></script> 
 </body>
 
 </html>

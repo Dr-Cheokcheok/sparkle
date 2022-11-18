@@ -296,7 +296,7 @@ html {
     margin-bottom: 0;
 }
 /* 장바구니 전체선택 */
-     var allChk = ('#chkAll');
+     /* var allChk = ('#chkAll');
      var chk = ('.chk_style');
 
      (allChk).click(function(){
@@ -311,7 +311,7 @@ html {
          if(!((chk).prop("checked"))){
              (allChk).prop("checked",false);
          }
-     });
+     }); */
 
 /* 주문결제 */
 .com-tit {

@@ -7,13 +7,13 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/mypage/mypage.css">
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/fragment/layout.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
     <link rel="stylesheet" href="/static/css/mypage/likes.css">
     <title>스파클몰</title>
 </head>
 <body>
-    <section th:replace="~{header :: headerFragment}"></section>
+    <section th:replace="~{fragment/header :: headerFragment}"></section>
         <div class="mypage-all">
             <div class="myInfo-top">
                 <ul>
@@ -42,7 +42,7 @@
                 <section class="mypage-likes">
                     <h1>관심상품</h1>
                     <div class="likes-box">
-                        <img class="product-img" src="/static/images/product/500ml40-80.jpg">
+                        <img class="product-img" src="/static/images/product/500ml40.jpg">
                         <div class="product-explan">
                             <p>스파클 500mL 60병</p>
                             <p>13,800원</p>
@@ -56,6 +56,6 @@
                 </section>
             </div>
         </div>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 </body>
 </html>

@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/fragment/layout.css">
     <link rel="stylesheet" href="/static/css/section.css">
-    <link rel="stylesheet" href="/static/css/bag.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/order/bag.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
 
     <title>스파클몰</title>
 </head>
 <body>
 
-<header th:replace="~{header :: headerFragment}"></header>
+<header th:replace="~{fragment/header :: headerFragment}"></header>
     <section id="content-section">
         <div class="sub-title">
             <p>장바구니</p>
@@ -202,6 +201,6 @@
             </div>
         </div>
     </section>
-<footer th:replace="~{footer :: footerFragment}"></footer>
+<footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 </body>
 </html>

@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
+    <link rel="stylesheet" href="/static/css/fragment/layout.css">
     <link rel="stylesheet" href="/static/css/sub.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>스파클몰-로그인</title>
 </head>
 <body>
     <section id="wrap">
-        <header th:replace="~{header :: headerFragment}"></header>
+        <header th:replace="~{fragment/header :: headerFragment}"></header>
         <section id="content">
             <section id="content" class="member">
                 <div class="new-box w1260" id="logIn">
@@ -49,7 +49,7 @@
                 </div>
             </section>
         </section>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
 </body>
 </html>

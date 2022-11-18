@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스파클몰</title>
   <link rel="stylesheet" href="/static/css/style-main.css">
-  <link rel="stylesheet" href="/static/css/layout.css">
-  <link rel="stylesheet" href="/static/css/index.css">
-  <link rel="stylesheet" href="/static/css/footer.css">
+  <link rel="stylesheet" href="/static/css/fragment/layout.css">
+  <link rel="stylesheet" href="/static/css/index/index.css">
+  <link rel="stylesheet" href="/static/css/fragment/footer.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<section th:replace="~{header :: headerFragment}"></section>
+<section th:replace="~{fragment/header :: headerFragment}"></section>
     <main>
         <div class="outer">
             <div class="inner-list">
@@ -468,11 +468,11 @@
                 </div>
               </div>
             </section>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </main>
     
     
     <!-- <script src="/static/js/productList.js"></script> -->
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/index/main.js"></script>
 </body>
 </html>

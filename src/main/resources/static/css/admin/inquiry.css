@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-box {
+    width: 1260px;
+    margin: 50px auto 100px auto;
+    display: flex;
+}
+
+.main-box h4 {
+    font-size: 30px;
+    font-weight: 700;
+
+    padding: 20px 0;
+    margin: 25px 0;
+}
+
+.product-category {
+    justify-content: center;
+    width: 218px;
+    height: 779px;
+
+    padding: 0;
+    margin-right: 40px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    float: left;
+}
+
+.product-category h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #009eff;
+    padding: 48px 0px 48px 0px;
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-category ul li {
+    list-style: none;
+    margin: 0px;
+    padding: 0px 20px 0px;
+    vertical-align: middle;
+
+    font-size: 16px;
+
+    width: 217px;
+    height: 50px;
+}
+
+.product-category ul li a {
+    line-height: 50px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    display: block;
+}
+
+.product-category ul li:hover a {
+    color: white;
+}
+
+.product-category ul li:hover {
+    cursor: pointer;
+    background-color: #009eff;
+}
+
+.product-list {
+    display: inline-block;
+    justify-content: space-between;
+    width: 990px;
+    height: 100%;
+}
+
+.inquiry-box h1 {
+    padding: 20px 0px 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.inquiry-box {
+    position: relative;
+    display: flex;
+    width: 990px;
+    height: 162px;
+    margin-top: 20px;
+
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.product-img {
+    width: 81px;
+    height: 81px;
+
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-explan p {
+    margin: 12px 0;
+    line-height: 12px;
+    font-size: 16px;
+}
+
+.product-explan p:nth-child(2) {
+    font-weight: 700;
+}
+
+.product-explan p:nth-child(3) {
+    color: #888;
+}
+
+.buttons {
+    position: absolute;
+    right: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 118px;
+    height: 100px;
+}
+
+.inquiry-box button {
+    width: 118px;
+    height: 45px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.inquiry-box button:hover { 
+    cursor: pointer;
+}
+
+.buttons .correction-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    border: 1px solid #009eff;
+    color: #009eff;
+}
