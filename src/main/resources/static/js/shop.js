@@ -1,4 +1,20 @@
 
+function checkCategory() {
+
+  const categoryBtns = document.querySelectorAll(".category-btn");
+  const uri = location.href; //버튼 누를때 마다 카테고리 가져옴
+  const category = decodeURI(uri.substring(uri.lastIndexOf("/") + 1));
+
+  categoryBtns.forEach(categoryBtn => {
+    if(category == categoryBtn.value){
+
+    categoryBtn.checked = true;
+    toggleBtn(categoryBtn.id);
+    }
+  });
+}
+
+
 
 function toggleBtn(s) {
   if(s == 'button1'){
@@ -17,21 +33,19 @@ function toggleBtn(s) {
     document.getElementById('category_button2').style.display = "none";
     document.getElementById('category_button3').style.display = "block";
   }
-  changeGroup();
+  changeCategory();
 }
 
 
-function changeGroup(){
-  const products = document.querySelector(".products");
+let responseData = null;
+function changeCategory() {
+
   const categoryBtns = document.querySelectorAll(".category-btn");
-  let responseData = null;
-  console.log("changGroup 실행");
 
-  for (let i = 0; i < categoryBtns.length; i++){
+  for(let i = 0 ; i < categoryBtns.length; i++){
+    if (categoryBtns[i].checked) {
 
-    if(categoryBtns[i].checked){
-      products.innerHTML = "";
-      console.log("if문 실행");
+      // products.innerHTML = "";
       $.ajax({
         async: false,
         type: "get",
@@ -41,20 +55,45 @@ function changeGroup(){
         dataType: "json",
         success: (response) => {
           //선택 category 제품 list
-          responseData = response.data;
-          console.log(responseData);
+          this.responseData = response.data;
+
         },
-        error : (error) => {
+        error: (error) => {
           console.log(error)
         }
       });
 
-      responseData.forEach(product => {
+    }
+
+  }
+
+  changeGroup();
+}
+
+function changeGroup(){
+  const groupInputs = document.querySelectorAll(".sub-btn");
+
+  groupInputs.forEach(input => {
+
+    reload(input);
+    input.onclick = () => {
+      reload(input);
+    }
+  });
+}
+
+function reload(input){
+  const products = document.querySelector(".products");
+
+  if(input.checked){
+    products.innerHTML = "";
+    this.responseData.forEach(product => {
+      if (product.group == input.value) {
+
         products.innerHTML += `
     
     <li class="product">
       <figure>
-          <!-- 각자 상품 뿌릴때 /product/{productId} -->
         <a href= "/product/${product.productId}">
             <img src="/image/product/${product.img}" alt="인기상품 이미지 01">
             <!----  best 아이템에만 figcaption  --->
@@ -75,17 +114,12 @@ function changeGroup(){
       </div>
     </li>
     `;
-      })
-    }
-
-
+      }
+    });
   }
-
-
-
-
 }
 
+
 window.onload = () => {
-  changeGroup();
+  checkCategory();
 }
