@@ -37,9 +37,9 @@
                     
                             <div class = "gnb_sub w1260">
                                 <ul>
-                                    <li><a href = "/admin/inquiry/water">생수</a></li>
-                                    <li><a href = "/admin/inquiry/spakle">탄산</a></li>
-                                    <li><a href = "/admin/inquiry/waterSub">생수부자재</a></li>
+                                    <li><a href = "/admin/inquiry/생수">생수</a></li>
+                                    <li><a href = "/admin/inquiry/탄산">탄산</a></li>
+                                    <li><a href = "/admin/inquiry/생수부자재">생수부자재</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -51,7 +51,7 @@
                         </li>
 
                         <li class = "menu2">
-                            <a href = "/admin/inquiry">
+                            <a href = "/admin/inquiry/생수">
                                 <span class = "txt">상품조회</span>
                             </a>
                         </li>
@@ -64,32 +64,25 @@
             <section class="product-category">
                 <h1>상품 조회</h1>
                 <ul>
-                    <li><a href="/admin/inquiry/water">생수</a></li>
-                    <li><a href="/admin/inquiry/spakle">탄산</a></li>
-                    <li><a href="/admin/inquiry/waterSub">생수부자재</a></li>
+                    <li><a href="/admin/inquiry/생수">생수</a></li>
+                    <li><a href="/admin/inquiry/탄산">탄산</a></li>
+                    <li><a href="/admin/inquiry/생수부자재">생수부자재</a></li>
                 </ul>
             </section>
             <section class="product-list">
-                <h4>생수</h4>
+                <div class="category">
+                </div>
+                
                 <p></p>
-                    <div class="inquiry-box">
-                        <img class="product-img" src="/static/images/product/500ml40.jpg">
-                        <div class="product-explan">
-                            <p>스파클 500mL 60병</p>
-                            <p>13,800원</p>
-                            <p>무료배송</p>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" class="delete-button">삭제</button>
-                            <button type="button" class="correction-button">수정</button>
-                        </div>
-                    </div>
+                <div class="boxs">
+
+                </div>
+                   
             </section>
         
         </div>
-
         <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
-
+        <script src="/static/js/admin/inquiry.js"></script>
     </section>
 
 </body>
