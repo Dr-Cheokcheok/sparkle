@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public class AdminRepository {
-    
+
 }
