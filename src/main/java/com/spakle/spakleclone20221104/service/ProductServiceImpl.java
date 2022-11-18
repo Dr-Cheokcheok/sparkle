@@ -4,11 +4,11 @@ package com.spakle.spakleclone20221104.service;
 import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
+import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,9 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -112,4 +110,19 @@ public class ProductServiceImpl implements ProductService{
     }
 
 
+    @Override
+    public List<ProductListRespDto> getProducts(String category) throws Exception {
+        log.info("{}", category);
+
+        List<ProductListRespDto> productList = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("category", category);
+
+        productRepository.getProductInquiry(map).forEach(product -> {
+            productList.add(product.toRespDto());
+        });
+
+        return productList;
+    }
 }
+

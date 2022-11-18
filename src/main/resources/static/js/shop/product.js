@@ -128,7 +128,6 @@ class ProductDetailService {
     }
 
     getProductImg(img) {
-        console.log
         const productImg = document.querySelector(".photo-box")
         productImg.innerHTML += `
            <img src="/image/product/${img}">

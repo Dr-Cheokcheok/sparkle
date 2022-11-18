@@ -16,7 +16,7 @@ class InquiryApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "/admin/inquiry/" + category,
+            url: "/api/admin/inquiry/" + category,
             dataType: "json",
             success: (response) => {
                 responseData = response.data;
@@ -38,6 +38,16 @@ class AdminInquiryService {
         }
         
         return this.#instance;
+    }
+
+    loadInquiryList() {
+        const responseData = InquiryApi.getInstance().getProduct();
+        console.log(responseData);
+
+    }
+
+    getInquiryList(responseData) {
+
     }
 
 }

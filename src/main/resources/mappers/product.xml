@@ -3,6 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spakle.spakleclone20221104.repository.ProductRepository">
+    <resultMap id="Product" type="com.spakle.spakleclone20221104.domain.product.Product">
+        <result property="id" column="id"></result>
+        <result property="category" column="category"></result>
+        <result property="group" column="group"></result>
+        <result property="name" column="name"></result>
+        <result property="retailPrice" column="retail_price"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
     <insert
             id="saveProduct"
             parameterType="com.spakle.spakleclone20221104.domain.product.Product"
@@ -43,5 +52,25 @@
         </foreach>
 
     </insert>
+    <select id="getProductInquiry"
+            parameterType="String"
+            resultMap="Product">
+
+        SELECT
+            pt.id,
+            pt.category,
+            pt.`group`,
+            pt.name,
+            pt.retail_price,
+            pt.img
+
+        FROM
+            product pt
+
+        WHERE
+            category = #{category}
+
+    </select>
+
 
 </mapper>
