@@ -1,11 +1,15 @@
 package com.spakle.spakleclone20221104.service;
 
 
+import com.spakle.spakleclone20221104.domain.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
+import com.spakle.spakleclone20221104.dto.product.ProductDetailRespDto;
+import com.spakle.spakleclone20221104.dto.shop.ProductDetailRespDto;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.repository.ProductRepository;
+import com.spakle.spakleclone20221104.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -111,5 +115,15 @@ public class ProductServiceImpl implements ProductService{
         return productImgFiles;
     }
 
+    @Override
+    public boolean updateProduct(int ProductId) throws Exception {
 
+        return false;
+    }
+
+    private ProductDetailRespDto getProductInfo(int productId)throws Exception{
+        ProductDetail productDetail = shopRepository.getProduct(productId);
+
+        return ProductDetailRespDto.builder().build();
+    }
 }

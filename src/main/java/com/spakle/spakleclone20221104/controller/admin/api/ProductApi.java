@@ -5,9 +5,7 @@ import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 //rest랑 그냥 controller 랑 뭐가 다른거
 @RestController
@@ -22,5 +20,13 @@ public class ProductApi {
         return ResponseEntity
                 .created(null)
                 .body(new CMRespDto<>(1, "Successfully", productService.addProduct(productAdditionReqDto)));
+    }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<?> getProduct(@PathVariable String ProdcutId) throws Exception{
+
+        return ResponseEntity
+                .created(null)
+                .body(new CMRespDto<>(1, "Successfully", productService))
     }
 }
