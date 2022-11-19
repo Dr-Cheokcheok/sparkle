@@ -5,14 +5,12 @@ import com.spakle.spakleclone20221104.domain.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
-import com.spakle.spakleclone20221104.dto.product.ProductDetailRespDto;
+import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
 import com.spakle.spakleclone20221104.dto.shop.ProductDetailRespDto;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.repository.ProductRepository;
-import com.spakle.spakleclone20221104.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,9 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -117,13 +113,29 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public boolean updateProduct(int ProductId) throws Exception {
-
         return false;
     }
 
-    private ProductDetailRespDto getProductInfo(int productId)throws Exception{
-        ProductDetail productDetail = shopRepository.getProduct(productId);
+    private ProductDetailRespDto getProductInfo(int productId)throws Exception {
+        ProductDetail productDetail = productRepository.getProduct(productId);
 
         return ProductDetailRespDto.builder().build();
     }
+
+    @Override
+    public List<ProductListRespDto> getProducts(String category) throws Exception {
+        log.info("{}", category);
+
+        List<ProductListRespDto> productList = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("category", category);
+
+        productRepository.getProductInquiry(map).forEach(product -> {
+            productList.add(product.toRespDto());
+        });
+
+        return productList;
+
+    }
 }
+

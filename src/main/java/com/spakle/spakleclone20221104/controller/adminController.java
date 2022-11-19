@@ -11,13 +11,8 @@ public class adminController {
     @GetMapping("/addition")
     public String loadAdmin() {return "admin/admin-page";}
 
-    @GetMapping("/inquiry/water")
-    public String loadInquiryWater() {return "admin/inquiry-water";}
+    @GetMapping("/inquiry/{category}")
+    public String loadInquiryWater() {return "admin/inquiry";}
 
-    @GetMapping("/inquiry/spakle")
-    public String loadInquirySpakle() {return "admin/inquiry-spakle";}
-
-    @GetMapping("/inquiry/waterSub")
-    public String loadInquiryWaterSub() {return "admin/inquiry-water-sub";}
 
 }

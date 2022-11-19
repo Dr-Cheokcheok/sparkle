@@ -1,12 +1,9 @@
 package com.spakle.spakleclone20221104.dto.product;
 
-import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import lombok.Builder;
 import lombok.Data;
 
-
 import java.time.LocalDateTime;
-import java.util.List;
 
 /* product 여기저기 뿌려줄때 */
 @Builder
