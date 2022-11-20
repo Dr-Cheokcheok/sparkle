@@ -62,57 +62,109 @@ class AdminInquiryService {
            
             // 카테고리가 생수일 시 그룹별 버튼 생성
            if(inquiryBox.category == "생수") {
-                const liters = document.querySelectorAll(".liter");
+               let responseData = null;
+               const categoryBtns = document.querySelectorAll(".category-btn");
 
                  name.innerHTML += `
-                 <div class="group-buttons">
-                    <h4 class="category-name">${inquiryBox.category}</h4> 
-                    <button type="button" class="liter btn1">2L</button>
-                    <button type="button" class="liter btn2">500mL</button>
-                    <button type="button" class="liter btn3">330mL</button>
-                    <button type="button" class="liter btn4">18.9L</button>
-                </div>
-                `;
+                    <div class="name-box">
+                        <h4 class="category-name">${inquiryBox.category}</h4>
+                        <div class="category-button">
+                                <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L">
+                                <label class="sub-button-label" for = "category1">2L</label>
+                                <input id="category2" name = "sub_car" class = "sub-btn" type = "radio" value = "500mL" >
+                                <label class="sub-button-label" for = "category2">500mL</label>
+                                <input id="category3" name = "sub_car" class = "sub-btn" type = "radio" value = "330mL" >
+                                <label class="sub-button-label" for = "category3">330mL</label>
+                                <input id="category4" name = "sub_car" class = "sub-btn" type = "radio" value = "18.9L" >
+                                <label class="sub-button-label" for = "category4">18.9L</label>
+                            </div>
+                        </div>
+                        `;
+
+
+            for(let i = 0; i < categoryBtns.length; i++) {
+                if(categoryBtns[i].checked) {
+                    $.ajax({
+                        async: false,
+                        type: "get",
+                        url: "/api/admin/inquiry/" + categoryBtns[i].value,
+                        contentType: "application/json",
+                        data: categoryBtns[i].value,
+                        dataType: "json",
+                        success: (response) => {
+                          //선택 category 제품 list
+                          responseData = response.data;
                 
-                inquiryBoxs.innerHTML += `
-                    <div class="inquiry-box">
-                        <img class="product-img" src="${inquiryBox.img}">
-                        <div class="product-explan">
-                            <p>${inquiryBox.name}</p>
-                            <p>${inquiryBox.retailPrice}원</p>
-                            <p>${inquiryBox.group}</p>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" class="delete-button">삭제</button>
-                            <button type="button" class="correction-button">수정</button>
-                        </div>
-                    </div>
-                    `;
-        
+                        },
+                        error: (error) => {
+                          console.log(error)
+                        }
+                      });
+                }
+            }
+
+            const groupInputs = document.querySelectorAll(".sub-btn");
+
+            groupInputs.forEach(input => {
+          
+              reload(input);
+              input.onclick = () => {
+                reload(input);
+              }
+            });
+
+                
+            
            }else { // 카테고리가 생수가 아닌 경우는 버튼이 사라짐
                 name.innerHTML += `
                     <h4 class="category-name">${inquiryBox.category}</h4> 
             `;
-            
+
                 inquiryBoxs.innerHTML += `
-                    <div class="inquiry-box">
-                        <img class="product-img" src="${inquiryBox.img}">
-                        <div class="product-explan">
-                            <p>${inquiryBox.name}</p>
-                            <p>${inquiryBox.retailPrice}원</p>
-                            <p>${inquiryBox.group}</p>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" class="delete-button">삭제</button>
-                            <button type="button" class="correction-button">수정</button>
-                        </div>
+                <div class="inquiry-box">
+                    <img class="product-img" src="${inquiryBox.img}">
+                    <div class="product-explan">
+                        <p>${inquiryBox.name}</p>
+                        <p>${inquiryBox.retailPrice}원</p>
+                        <p>${inquiryBox.group}</p>
                     </div>
-                    `;
+                    <div class="buttons">
+                        <button type="button" class="delete-button">삭제</button>
+                        <button type="button" class="correction-button">수정</button>
+                    </div>
+                </div>
+                `;
             }    
-        
         });
-       
+
     }
+
+    reload(input){
+        const inquiryBoxs = document.querySelector(".boxs");
+      
+        if(input.checked){
+          inquiryBoxs.innerHTML = "";
+          responseData.forEach(inquiryBox => {
+            if (inquiryBox.group == input.value) {
+      
+                inquiryBoxs.innerHTML += `
+                <div class="inquiry-box">
+                    <img class="product-img" src="${inquiryBox.img}">
+                    <div class="product-explan">
+                        <p>${inquiryBox.name}</p>
+                        <p>${inquiryBox.retailPrice}원</p>
+                        <p>${inquiryBox.group}</p>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="delete-button">삭제</button>
+                        <button type="button" class="correction-button">수정</button>
+                    </div>
+                </div>
+                `;
+            }
+          });
+        }
+      }
 
     
 }
