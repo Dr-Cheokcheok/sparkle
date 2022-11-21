@@ -60,7 +60,7 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
                     .provider(provider)
                     .build();
 
-            accountRepository.saveUser(user);
+            accountRepository.save(user);
         } else if (user.getProvider() == null) {
             //연동
         }

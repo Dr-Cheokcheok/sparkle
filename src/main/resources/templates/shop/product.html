@@ -14,320 +14,320 @@
     <title>스파클몰</title>
 </head>
 <body>
-<section th:replace="~{header :: headerFragment}"></section>
-    <section id="content-section">
-       
-        <div id="section">
-            <div class="goods-contents view">
+    <header id="header" th:fragment="headerFragment"></header>
+        <section id="content-section">
 
-                <!---- 상품 간략 --->
-                <div class="left-right">
-                    <div class="goods-info left">
-                        <div class="photo-box">
-                            <!---  상품 대표 이미지   -->
-                            <img src="/static/images/product/2L24-36.jpg" alt="상품이미지">
+            <div id="section">
+                <div class="goods-contents view">
+
+                    <!---- 상품 간략 --->
+                    <div class="left-right">
+                        <div class="goods-info left">
+                            <div class="photo-box">
+                                <!---  상품 대표 이미지   -->
+                                <img src="/static/images/product/2L24-36.jpg" alt="상품이미지">
+                            </div>
+                        </div>
+                        <div class="goods-info right">
+                            <form onsubmit="return false;">
+                                <div class="info">
+                                    <p class="name">스파클 2L 24병</p>
+
+                                    <div class="prdt-label">
+                                        <!---   클맨 배송 무조건 들어감  제품명에 (택배배송)이면 택배배송으로 들어감 --->
+                                        <div class="label-ico orange">
+                                            <span>클맨배송</span>
+                                        </div>
+                                        <!----  제품명 마지막    ---->
+                                        <div class="label-ico mint">
+                                            <span>24병</span>
+                                        </div>
+                                        <div class="label-ico blue">
+                                            <span>4팩</span>
+                                        </div>
+                                    </div>
+
+                                    <!---  가격 정보 (할인 없으면 판매가랑 배송만 표시)  --->
+                                    <div class="info-list-box">
+                                        <dl class="info-list clear">
+                                            <dt class="gray">정가</dt>
+                                            <dd class="gray under">20,000원</dd>
+                                        </dl>
+                                        <dl class="info-list clear">
+                                            <dt>판매가</dt>
+                                            <dd class="bold spoqa">14,900원</dd>
+                                        </dl>
+                                        <dl class="info-list clear">
+                                            <dt>할인받은 금액</dt>
+                                            <dd class="blue spoqa">5,100 (25%)</dd>
+                                        </dl>
+                                        <dl class="info-list clear">
+                                            <dt>배송</dt>
+                                            <dd>무료배송</dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="quanbx clear">
+                                        <input type="hidden" id="productId" value="1" name="productId">
+                                        <input type="hidden" id="calPrice" value="14900" name="retailPrice">
+
+                                        <div class="quantity clear">
+                                            <button type="button" id="calMinus" class="bt-decrease" onclick="down();"></button>
+                                            <input type="text" id="quantity" class="num" value="1" name="quantity" onchange="quantityCalc()">
+                                            <button type="button" id="calPlus" class="bt-increase" onclick="up();"></button>
+                                        </div>
+                                        <!-- 변경되어야하는 금액  calTotalPrice-->
+                                        <p class="price spoqa"><span class="cal-total-price">14,900</span>원</p>
+                                    </div>
+
+                                    <div class="total-price">
+                                        <span>총 상품금액</span>
+                                        <span class="spoqa total">
+                                            <span class="total calTotalPrice">14,900</span>원
+                                        </span>
+                                    </div>
+                                    <div class="btn-box clear">
+                                        <!--- 버튼 누르면 관심상품, 장바구니, 구매 ---->
+                                        <a href="javascript:;" class="heart" id="interestBtn"></a>
+                                        <a href="javascript:;" id="cartBtn">장바구니 담기</a>
+                                        <a href="javascript:;" class="purchase" id="buyBtn">바로 구매</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="goods-info right">
-                        <form onsubmit="return false;">
-                            <div class="info">
-                                <p class="name">스파클 2L 24병</p>
 
-                                <div class="prdt-label">
-                                    <!---   클맨 배송 무조건 들어감  제품명에 (택배배송)이면 택배배송으로 들어감 --->
-                                    <div class="label-ico orange">
-                                        <span>클맨배송</span>
-                                    </div>
-                                    <!----  제품명 마지막    ---->
-                                    <div class="label-ico mint">
-                                        <span>24병</span>
-                                    </div>
-                                    <div class="label-ico blue">
-                                        <span>4팩</span>
-                                    </div>
-                                </div>
+                    <!---  tab  --->
+                    <div id="app" class="goods-cont" style="padding-top: 0px;">
+                        <ul class="tab-btn clear">
 
-                                <!---  가격 정보 (할인 없으면 판매가랑 배송만 표시)  --->
-                                <div class="info-list-box">
-                                    <dl class="info-list clear">
-                                        <dt class="gray">정가</dt>
-                                        <dd class="gray under">20,000원</dd>
-                                    </dl>
-                                    <dl class="info-list clear">
-                                        <dt>판매가</dt>
-                                        <dd class="bold spoqa">14,900원</dd>
-                                    </dl>
-                                    <dl class="info-list clear">
-                                        <dt>할인받은 금액</dt>
-                                        <dd class="blue spoqa">5,100 (25%)</dd>
-                                    </dl>
-                                    <dl class="info-list clear">
-                                        <dt>배송</dt>
-                                        <dd>무료배송</dd>
-                                    </dl>
-                                </div>
+                            <!----  클릭하면 on 클래스 추가--->
+                            <li class="on">
+                                <a href="#goodsInfo">상품상세</a>
+                            </li>
+                            <li class="">
+                                <a href="#goodsReview">상품후기<span>1</span></a>
+                            </li>
+                            <li class="">
+                                <a href="#goodsQna">상품문의<span></span></a>
+                            </li>
+                            <li class="">
+                                <a href="#goodsDelivery">교환/반품/배송</a>
+                            </li>
+                        </ul>
 
-                                <div class="quanbx clear">
-                                    <input type="hidden" id="productId" value="1" name="productId">
-                                    <input type="hidden" id="calPrice" value="14900" name="retailPrice">
-                                    
-                                    <div class="quantity clear">
-                                        <button type="button" id="calMinus" class="bt-decrease" onclick="down();"></button>
-                                        <input type="text" id="quantity" class="num" value="1" name="quantity" onchange="quantityCalc()">
-                                        <button type="button" id="calPlus" class="bt-increase" onclick="up();"></button>
-                                    </div>
-                                    <!-- 변경되어야하는 금액  calTotalPrice-->
-                                    <p class="price spoqa"><span class="cal-total-price">14,900</span>원</p>
-                                </div>
+                        <!--- 상품 상세 컨텐츠 ---->
+                        <div class="tab-detail">
+                            <div id="goodsInfo">
+                                <div class="edit-box">
 
-                                <div class="total-price">
-                                    <span>총 상품금액</span>
-                                    <span class="spoqa total">
-                                        <span class="total calTotalPrice">14,900</span>원
-                                    </span>
-                                </div>
-                                <div class="btn-box clear">
-                                    <!--- 버튼 누르면 관심상품, 장바구니, 구매 ---->
-                                    <a href="javascript:;" class="heart" id="interestBtn"></a>
-                                    <a href="javascript:;" id="cartBtn">장바구니 담기</a>
-                                    <a href="javascript:;" class="purchase" id="buyBtn">바로 구매</a>
+                                    <!---  이미지 하나마다 p 생성  --->
+                                    <p style="text-align: center;">
+                                        <img src="http://sparklewater.kr/sparkle/img/page/01/sparkling/sparkling_500ml_01.jpg">
+                                    </p>
+                                    <p style="text-align: center;">
+                                        <img src="/static/images/product/productInfo/water_resell.jpg">
+                                    </p>
                                 </div>
                             </div>
-                        </form>
-                    </div> 
-                </div>
 
-                <!---  tab  --->
-                <div id="app" class="goods-cont" style="padding-top: 0px;">
-                    <ul class="tab-btn clear">
-
-                        <!----  클릭하면 on 클래스 추가--->
-                        <li class="on">
-                            <a href="#goodsInfo">상품상세</a>
-                        </li>
-                        <li class="">
-                            <a href="#goodsReview">상품후기<span>1</span></a>
-                        </li>
-                        <li class="">
-                            <a href="#goodsQna">상품문의<span></span></a>
-                        </li> 
-                        <li class="">
-                            <a href="#goodsDelivery">교환/반품/배송</a>
-                        </li>
-                    </ul> 
-
-                    <!--- 상품 상세 컨텐츠 ---->
-                    <div class="tab-detail">
-                        <div id="goodsInfo">
-                            <div class="edit-box">
-
-                                <!---  이미지 하나마다 p 생성  --->
-                                <p style="text-align: center;">
-                                    <img src="http://sparklewater.kr/sparkle/img/page/01/sparkling/sparkling_500ml_01.jpg">
-                                </p>
-                                <p style="text-align: center;">
-                                    <img src="/static/images/product/productInfo/water_resell.jpg">
-                                </p>
-                            </div>
-                        </div> 
-
-                    <!--- 상품 리뷰  ---->
-                        <div id="goodsReview">
-                            <div class="layerPop7" style="display: none;">
-                                <div class="ship-bg"></div> 
-                                <div class="Dpop-box fs-auto">
-                                    <div class="Dpop-top">
-                                        <div class="Dpop-title">상품후기쓰기</div> 
-                                        <a href="javascript:;" class="ship-close7">
-                                            <img src="/img/pc/layer-close01.png" alt="">
-                                        </a>
-                                    </div> 
-                                    <form action="https://www.sparklemall.co.kr/account/board" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT"> 
-                                        <input type="hidden" name="category" value="review"> 
-                                        <input type="hidden" name="product_id" value="1301"> 
-                                        <input type="hidden" name="score_radio" value="5"> 
-                                        <div class="review-prodbx">
-                                            <div class="img">
-                                                <img src="/storage/image/product/1301/1/0.jpg" alt="상품이미지">
-                                            </div> 
-                                            <div class="prod-txt">
-                                                <p>스파클링 500ml 40병</p>
-                                            </div>
-                                        </div> 
-                                        <h4 class="isGood">상품은 만족하셨나요?</h4> 
-                                        <div class="rev-write pd-none">
-                                            <textarea name="contents" id="" placeholder="최소 10자 이상 입력해 주세요." required="required"></textarea>
-                                        </div> 
-                                        <div class="file-box">
-                                            <label for="tbl-file"></label> 
-                                            <input type="file" id="tbl-file" name="upload" onchange="updateFiles(this)" accept="image/jpeg,image/png,image/gif" capture="camera"> 
-                                            <ul>
-
-                                            </ul>
-                                        </div> 
-                                        <div class="add-btnbx">
-                                            <input type="submit" value="등록" class="confirm-btn"> 
-                                            <input type="reset" value="취소" class="cancel-btn ship-close7">
+                        <!--- 상품 리뷰  ---->
+                            <div id="goodsReview">
+                                <div class="layerPop7" style="display: none;">
+                                    <div class="ship-bg"></div>
+                                    <div class="Dpop-box fs-auto">
+                                        <div class="Dpop-top">
+                                            <div class="Dpop-title">상품후기쓰기</div>
+                                            <a href="javascript:;" class="ship-close7">
+                                                <img src="/img/pc/layer-close01.png" alt="">
+                                            </a>
                                         </div>
-                                    </form>
-                                </div>
-                            </div> 
-
-                            <!---   리뷰 리스트  --->
-
-                            <div class="product-review">
-                                <ul>
-                                    <!---   리뷰 한 건--->
-                                    <li>
-                                        <div class="question clear">
-                                            <div class="q-left">
-                                                <!---  사용자id, 작성 날짜   --->
-                                                <span>lov***</span> 
-                                                <span>2022.10.26</span>
-                                            </div> 
-                                            <div class="q-right clear">
-                                                <!---    리뷰 내용  ---->
-                                                <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div> 
-                                                <div class="img"><img src="/static/images/product/spakling350ml40.jpg"></div>
-                                            </div>
-                                        </div> 
-                                        <!-- 리뷰 클릭하면 크게 똭 나옴  -->
-<!--                                        <div class="answer clear">-->
-<!--                                            <div class="a-left">-->
-<!--                                                <span>lov***</span>-->
-<!--                                                <span>2022.10.26</span>-->
-<!--                                            </div>-->
-<!--                                            <div class="a-right">-->
-<!--                                                <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div>-->
-<!--                                                <div class="img">-->
-<!--                                                    <img src="/static/static/images/product/spakling350ml40.jpg" alt="" style="width: 100%;">-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-
-                                    </li>
-                                </ul> 
-                                <!--- 리뷰 페이징  -->
-                                <div class="review-bot">
-                                    <div data-v-a23fbec4="" class="pager">
-                                        <a data-v-a23fbec4="" href="javascript:;">
-                                            <img data-v-a23fbec4="" src="/static/images/sub/pager-prev.png" alt="">
-                                        </a> 
-                                        <div data-v-a23fbec4="" class="number">
-                                            <a data-v-a23fbec4="" href="javascript:;" class="on">1</a>
-                                        </div> 
-                                        <a data-v-a23fbec4="" href="javascript:;">
-                                            <img data-v-a23fbec4="" src="/static/images/sub/pager-next.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--- 리뷰 끝  --->
-
-
-                        </div> 
-                        <!---  상품 문의  --->
-                        <div id="goodsQna">
-                            <!----    popup 작성--->
-                            <div class="layerPop8" style="display: none;">
-                                <div class="ship-bg"></div> 
-                                <div class="Dpop-box fs-auto">
-
-                                    <div class="Dpop-top">
-                                        <div class="Dpop-title">상품문의쓰기</div> 
-                                        <a href="javascript:;" class="ship-close8">
-                                            <img src="/img/pc/layer-close01.png" alt="">
-                                        </a>
-                                    </div>
-                                    <form action="https://www.sparklemall.co.kr/account/board" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT"> 
-                                        <input type="hidden" name="category" value="question"> 
-                                        <input type="hidden" name="product_id" value="1301"> 
-                                        <input type="hidden" name="score_radio" value="5"> 
-                                        <div class="review-prodbx">
-                                            <div class="img">
-                                                <img src="/storage/image/product/1301/1/0.jpg" alt="상품이미지">
-                                            </div> 
-                                            <div class="prod-txt">
-                                                <p>스파클링 500ml 40병</p>
-                                            </div>
-                                        </div> 
-                                        <div class="telBox">
-                                            <label for="">휴대폰</label> 
-                                            <div class="ib">
-                                                <span>010-0000-0000</span> 
-                                                <div class="inputBox">
-                                                    <input type="checkbox" name="sms_agree" id="sms_agree" class="check_input"> 
-                                                    <label for="sms_agree" class="checkbox_icon02"></label> 
-                                                    <label for="sms_agree" class="label_txt">문자로 알림받기</label>
+                                        <form action="https://www.sparklemall.co.kr/account/board" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
+                                            <input type="hidden" name="category" value="review">
+                                            <input type="hidden" name="product_id" value="1301">
+                                            <input type="hidden" name="score_radio" value="5">
+                                            <div class="review-prodbx">
+                                                <div class="img">
+                                                    <img src="/storage/image/product/1301/1/0.jpg" alt="상품이미지">
+                                                </div>
+                                                <div class="prod-txt">
+                                                    <p>스파클링 500ml 40병</p>
                                                 </div>
                                             </div>
-                                        </div> 
-                                        <div class="rev-write">
-                                            <label for="">내용</label> 
-                                            <div class="ib">
-                                                <textarea name="contents" id="" placeholder="최소 10자 이상 입력해 주세요." required="required">
-                                                </textarea>
+                                            <h4 class="isGood">상품은 만족하셨나요?</h4>
+                                            <div class="rev-write pd-none">
+                                                <textarea name="contents" id="" placeholder="최소 10자 이상 입력해 주세요." required="required"></textarea>
                                             </div>
-                                        </div> 
-                                        <div class="secret_box">
-                                            <input type="checkbox" name="secret_chk" id="secret_chk" class="check_input"> 
-                                            <label for="secret_chk" class="checkbox_icon02"></label> 
-                                            <label for="secret_chk" class="label_txt">비밀글</label>
-                                        </div> 
-                                        <div class="add-btnbx">
-                                            <input type="submit" value="등록" class="confirm-btn"> 
-                                            <input type="reset" value="취소" class="cancel-btn ship-close8">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div> 
+                                            <div class="file-box">
+                                                <label for="tbl-file"></label>
+                                                <input type="file" id="tbl-file" name="upload" onchange="updateFiles(this)" accept="image/jpeg,image/png,image/gif" capture="camera">
+                                                <ul>
 
-                            <!--- 상품 문의 리스트 --->
-                            <div class="product-qna"> 
-                                <div>상품문의가 없습니다.</div> 
-                                <div class="review-bot"><!----> 
-                                    <div class="prod-qna-btn">
-                                        <a href="#">상품문의쓰기</a>
+                                                </ul>
+                                            </div>
+                                            <div class="add-btnbx">
+                                                <input type="submit" value="등록" class="confirm-btn">
+                                                <input type="reset" value="취소" class="cancel-btn ship-close7">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
+
+                                <!---   리뷰 리스트  --->
+
+                                <div class="product-review">
+                                    <ul>
+                                        <!---   리뷰 한 건--->
+                                        <li>
+                                            <div class="question clear">
+                                                <div class="q-left">
+                                                    <!---  사용자id, 작성 날짜   --->
+                                                    <span>lov***</span>
+                                                    <span>2022.10.26</span>
+                                                </div>
+                                                <div class="q-right clear">
+                                                    <!---    리뷰 내용  ---->
+                                                    <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div>
+                                                    <div class="img"><img src="/static/images/product/spakling350ml40.jpg"></div>
+                                                </div>
+                                            </div>
+                                            <!-- 리뷰 클릭하면 크게 똭 나옴  -->
+    <!--                                        <div class="answer clear">-->
+    <!--                                            <div class="a-left">-->
+    <!--                                                <span>lov***</span>-->
+    <!--                                                <span>2022.10.26</span>-->
+    <!--                                            </div>-->
+    <!--                                            <div class="a-right">-->
+    <!--                                                <div class="text">배송도 빠르고 매우 만족합니다. 다음ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div>-->
+    <!--                                                <div class="img">-->
+    <!--                                                    <img src="/static/static/images/product/spakling350ml40.jpg" alt="" style="width: 100%;">-->
+    <!--                                                </div>-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+
+
+                                        </li>
+                                    </ul>
+                                    <!--- 리뷰 페이징  -->
+                                    <div class="review-bot">
+                                        <div data-v-a23fbec4="" class="pager">
+                                            <a data-v-a23fbec4="" href="javascript:;">
+                                                <img data-v-a23fbec4="" src="/static/images/sub/pager-prev.png" alt="">
+                                            </a>
+                                            <div data-v-a23fbec4="" class="number">
+                                                <a data-v-a23fbec4="" href="javascript:;" class="on">1</a>
+                                            </div>
+                                            <a data-v-a23fbec4="" href="javascript:;">
+                                                <img data-v-a23fbec4="" src="/static/images/sub/pager-next.png" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--- 리뷰 끝  --->
+
+
+                            </div>
+                            <!---  상품 문의  --->
+                            <div id="goodsQna">
+                                <!----    popup 작성--->
+                                <div class="layerPop8" style="display: none;">
+                                    <div class="ship-bg"></div>
+                                    <div class="Dpop-box fs-auto">
+
+                                        <div class="Dpop-top">
+                                            <div class="Dpop-title">상품문의쓰기</div>
+                                            <a href="javascript:;" class="ship-close8">
+                                                <img src="/img/pc/layer-close01.png" alt="">
+                                            </a>
+                                        </div>
+                                        <form action="https://www.sparklemall.co.kr/account/board" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
+                                            <input type="hidden" name="category" value="question">
+                                            <input type="hidden" name="product_id" value="1301">
+                                            <input type="hidden" name="score_radio" value="5">
+                                            <div class="review-prodbx">
+                                                <div class="img">
+                                                    <img src="/storage/image/product/1301/1/0.jpg" alt="상품이미지">
+                                                </div>
+                                                <div class="prod-txt">
+                                                    <p>스파클링 500ml 40병</p>
+                                                </div>
+                                            </div>
+                                            <div class="telBox">
+                                                <label for="">휴대폰</label>
+                                                <div class="ib">
+                                                    <span>010-0000-0000</span>
+                                                    <div class="inputBox">
+                                                        <input type="checkbox" name="sms_agree" id="sms_agree" class="check_input">
+                                                        <label for="sms_agree" class="checkbox_icon02"></label>
+                                                        <label for="sms_agree" class="label_txt">문자로 알림받기</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="rev-write">
+                                                <label for="">내용</label>
+                                                <div class="ib">
+                                                    <textarea name="contents" id="" placeholder="최소 10자 이상 입력해 주세요." required="required">
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="secret_box">
+                                                <input type="checkbox" name="secret_chk" id="secret_chk" class="check_input">
+                                                <label for="secret_chk" class="checkbox_icon02"></label>
+                                                <label for="secret_chk" class="label_txt">비밀글</label>
+                                            </div>
+                                            <div class="add-btnbx">
+                                                <input type="submit" value="등록" class="confirm-btn">
+                                                <input type="reset" value="취소" class="cancel-btn ship-close8">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!--- 상품 문의 리스트 --->
+                                <div class="product-qna">
+                                    <div>상품문의가 없습니다.</div>
+                                    <div class="review-bot"><!---->
+                                        <div class="prod-qna-btn">
+                                            <a href="#">상품문의쓰기</a>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
-                        </div> 
-                        
-                        <div id="goodsDelivery" style="text-align: center;">
-                            <img src="/static/images/ship/info_common.jpg">
+                            <div id="goodsDelivery" style="text-align: center;">
+                                <img src="/static/images/ship/info_common.jpg">
+                            </div>
                         </div>
+                        <!---- 상세 끝 -->
                     </div>
-                    <!---- 상세 끝 -->
+
+
                 </div>
-
-
             </div>
+        </section>
+        <div id="quick" style="opacity: 1;">
+            <a href="#" class="btn_gotop">
+              <span class="glyphicon glyphicon-chevron-up">
+              </span>
+            </a>
         </div>
-    </section>
-    <div id="quick" style="opacity: 1;">
-        <a href="#" class="btn_gotop">
-          <span class="glyphicon glyphicon-chevron-up">
-          </span>
-        </a>
-    </div>
-<script>
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 300){
-            $('.btn_gotop').show();
-        } else{
-            $('.btn_gotop').hide();
-        }
-    });
-    $('.btn_gotop').click(function(){
-        $('html, body').animate({scrollTop:0},400);
-        return false;
-    });
-</script>
-<footer th:replace="~{footer :: footerFragment}"></footer>
+    <script>
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 300){
+                $('.btn_gotop').show();
+            } else{
+                $('.btn_gotop').hide();
+            }
+        });
+        $('.btn_gotop').click(function(){
+            $('html, body').animate({scrollTop:0},400);
+            return false;
+        });
+    </script>
+<footer th:fragment="footerFragment"></footer>
 <script src="/static/js/product.js"></script>
 </body>
 </html>

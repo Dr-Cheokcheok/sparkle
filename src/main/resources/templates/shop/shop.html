@@ -12,160 +12,161 @@
     <title>스파클몰</title>
 </head>
 <body>
-<section th:replace="~{header :: headerFragment}"></section>
-    <section id="content-section">
-        <div class="sub-title">
-            <p>쇼핑하기</p>
-        </div>
-        <div id="section">
-            <div id="section-in">
-                <div class="md-tab">
-                    <!--- 클릭시 on 추가 버튼 인덱스 = categoryList 인덱스 -->
-                    <!--- 쇼핑하기 load시 생수에 on  ---->
-                    <button class="category-tab-btn on"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></button>
-                    <button class="category-tab-btn"><span><img src="/static/images/img/md-icon02.png" alt=""> 탄산음료</span></button>
-                    <button class="category-tab-btn"><span><img src="/static/images/img/md-icon04.png" alt=""> 생수 부자재</span></button>
-                  </div>
-
-
-                    <!--- group 버튼.  js에서 group 별로 뿌리기 -->
-                  <div class="tab-sub-btn">
-                    <ul class="sub-btn-ul ">
-                        <!-- 처음에는 2L(첫그룹) 에 on --->
-                      <li class="sub-btn on"><a href="javascript:;">2L</a></li>
-                      <li class="sub-btn"><a href="javascript:;">500mL</a></li>
-                      <li class="sub-btn"><a href="javascript:;">330mL</a></li>
-                      <li class="sub-btn"><a href="javascript:;">18.9L</a></li>
-
-                      <li class="sub-btn"><a href="javascript:;">세트상품</a></li>
-                      <li class="sub-btn"><a href="javascript:;">대량상품</a></li>
-                    </ul>
-                  </div>
-
-
-                  <!---  정렬  --->
-                  <div class="sort-top" style="">
-                    <p class="product-num">
-                      <!--- 그룹별 상품 개수 count --->
-                     총 <span id="category_count">4</span>개
-                    </p>
-                    <div class="sort-box">
-                        <ul class="">
-                            <!--- 처음에는 추천순(recommend)에 on --->
-                            <li class=" on">
-                                <a href="javascript:href_product_sort('recommend')">추천순</a>
-                            </li>
-                            <li class="">
-                                <a href="javascript:href_product_sort('recent')">신상품순</a>
-                            </li>
-                            <li class="">
-                                <a href="javascript:href_product_sort('popular')">인기상품순</a>
-                            </li>
-                            <li class="">
-                                <a href="javascript:href_product_sort('cheap')">낮은가격순</a>
-                            </li>
-                            <li class="">
-                                <a href="javascript:href_product_sort('expensive')">높은가격순</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                  <!-- product 가져와서 뿌리기  -->
-                  <div class="md-contents m-product2">
-                    <div class="con-box">
-                      <ul class="product4">
-
-                        <!--- 상세 페이지로 가기위해 group별로 가져온 product 뿌리기 js에서 onclick= location.href -->
-                        <li class="product">
-                            <figure>
-                                <!-- 각자 상품 뿌릴때 /product/{productId} -->
-                              <a href="/product/1">
-                                  <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                  <!----  best 아이템에만 figcaption  --->
-                                    <figcaption>BEST</figcaption>
-                              </a>
-                                  <div class="time-icon">
-                                    <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                    <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                  </div>
-                            </figure>
-                            <div class="product-text">
-                              <a href="#">스파클 2L 24병</a>
-                              <p class="price spoqa">
-                                                  <span class="blue">25%</span>
-                                      14,900원
-                                      <span class="gray spoqa">20,000원</span>
-                              </p>
-                            </div>
-                        </li>
-
-                          <li class="product">
-                            <figure>
-                              <a href="/product/1">
-                                  <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-
-                              </a>
-                                  <div class="time-icon">
-                                    <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                    <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                  </div>
-                            </figure>
-                            <div class="product-text">
-                              <a href="#">스파클 2L 24병</a>
-                              <p class="price spoqa">
-                                                  <span class="blue">25%</span>
-                                      14,900원
-                                      <span class="gray spoqa">20,000원</span>
-                              </p>
-                            </div>
-                          </li>
-                          <li class="product">
-                            <figure>
-                              <a href="/product/1">
-                                  <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                    <figcaption>BEST</figcaption>
-                              </a>
-                                  <div class="time-icon">
-                                    <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                    <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                  </div>
-                            </figure>
-                            <div class="product-text">
-                              <a href="#">스파클 2L 24병</a>
-                              <p class="price spoqa">
-                                                  <span class="blue">25%</span>
-                                      14,900원
-                                      <span class="gray spoqa">20,000원</span>
-                              </p>
-                            </div>
-                          </li>
-                          <li class="product">
-                            <figure>
-                              <a href="/product/1">
-                                  <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-
-                              </a>
-                                  <div class="time-icon">
-                                    <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                    <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                  </div>
-                            </figure>
-                            <div class="product-text">
-                              <a href="#">스파클 2L 24병</a>
-                              <p class="price spoqa">
-                                                  <span class="blue">25%</span>
-                                      14,900원
-                                      <span class="gray spoqa">20,000원</span>
-                              </p>
-                            </div>
-                          </li>
-
-                      </ul>
-                    </div>
+    <header id="header" th:fragment="headerFragment"></header>
+        <section id="content-section">
+            <div class="sub-title">
+                <p>쇼핑하기</p>
             </div>
-        </div>
-    </section>
-<footer th:replace="~{footer :: footerFragment}"></footer>
+            <div id="section">
+                <div id="section-in">
+                    <div class="md-tab">
+                        <!--- 클릭시 on 추가 버튼 인덱스 = categoryList 인덱스 -->
+                        <!--- 쇼핑하기 load시 생수에 on  ---->
+                        <button class="category-tab-btn on"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></button>
+                        <button class="category-tab-btn"><span><img src="/static/images/img/md-icon02.png" alt=""> 탄산음료</span></button>
+                        <button class="category-tab-btn"><span><img src="/static/images/img/md-icon04.png" alt=""> 생수 부자재</span></button>
+                      </div>
+
+
+                        <!--- group 버튼.  js에서 group 별로 뿌리기 -->
+                      <div class="tab-sub-btn">
+                        <ul class="sub-btn-ul ">
+                            <!-- 처음에는 2L(첫그룹) 에 on --->
+                          <li class="sub-btn on"><a href="javascript:;">2L</a></li>
+                          <li class="sub-btn"><a href="javascript:;">500mL</a></li>
+                          <li class="sub-btn"><a href="javascript:;">330mL</a></li>
+                          <li class="sub-btn"><a href="javascript:;">18.9L</a></li>
+
+                          <li class="sub-btn"><a href="javascript:;">세트상품</a></li>
+                          <li class="sub-btn"><a href="javascript:;">대량상품</a></li>
+                        </ul>
+                      </div>
+
+
+                      <!---  정렬  --->
+                      <div class="sort-top" style="">
+                        <p class="product-num">
+                          <!--- 그룹별 상품 개수 count --->
+                         총 <span id="category_count">4</span>개
+                        </p>
+                        <div class="sort-box">
+                            <ul class="">
+                                <!--- 처음에는 추천순(recommend)에 on --->
+                                <li class=" on">
+                                    <a href="javascript:href_product_sort('recommend')">추천순</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:href_product_sort('recent')">신상품순</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:href_product_sort('popular')">인기상품순</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:href_product_sort('cheap')">낮은가격순</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:href_product_sort('expensive')">높은가격순</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                      <!-- product 가져와서 뿌리기  -->
+                      <div class="md-contents m-product2">
+                        <div class="con-box">
+                          <ul class="product4">
+
+                            <!--- 상세 페이지로 가기위해 group별로 가져온 product 뿌리기 js에서 onclick= location.href -->
+                            <li class="product">
+                                <figure>
+                                    <!-- 각자 상품 뿌릴때 /product/{productId} -->
+                                  <a href="/product/1">
+                                      <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                                      <!----  best 아이템에만 figcaption  --->
+                                        <figcaption>BEST</figcaption>
+                                  </a>
+                                      <div class="time-icon">
+                                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                      </div>
+                                </figure>
+                                <div class="product-text">
+                                  <a href="#">스파클 2L 24병</a>
+                                  <p class="price spoqa">
+                                                      <span class="blue">25%</span>
+                                          14,900원
+                                          <span class="gray spoqa">20,000원</span>
+                                  </p>
+                                </div>
+                            </li>
+
+                              <li class="product">
+                                <figure>
+                                  <a href="/product/1">
+                                      <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+
+                                  </a>
+                                      <div class="time-icon">
+                                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                      </div>
+                                </figure>
+                                <div class="product-text">
+                                  <a href="#">스파클 2L 24병</a>
+                                  <p class="price spoqa">
+                                                      <span class="blue">25%</span>
+                                          14,900원
+                                          <span class="gray spoqa">20,000원</span>
+                                  </p>
+                                </div>
+                              </li>
+                              <li class="product">
+                                <figure>
+                                  <a href="/product/1">
+                                      <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+                                        <figcaption>BEST</figcaption>
+                                  </a>
+                                      <div class="time-icon">
+                                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                      </div>
+                                </figure>
+                                <div class="product-text">
+                                  <a href="#">스파클 2L 24병</a>
+                                  <p class="price spoqa">
+                                                      <span class="blue">25%</span>
+                                          14,900원
+                                          <span class="gray spoqa">20,000원</span>
+                                  </p>
+                                </div>
+                              </li>
+                              <li class="product">
+                                <figure>
+                                  <a href="/product/1">
+                                      <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
+
+                                  </a>
+                                      <div class="time-icon">
+                                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                                      </div>
+                                </figure>
+                                <div class="product-text">
+                                  <a href="#">스파클 2L 24병</a>
+                                  <p class="price spoqa">
+                                                      <span class="blue">25%</span>
+                                          14,900원
+                                          <span class="gray spoqa">20,000원</span>
+                                  </p>
+                                </div>
+                              </li>
+
+                          </ul>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </section>
+    <footer th:fragment="footerFragment"></footer>
 </body>
 </html>

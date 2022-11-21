@@ -13,7 +13,7 @@
     <title>스파클몰</title>
 </head>
 <body>
-    <section th:replace="~{header :: headerFragment}"></section>
+<header id="header" th:fragment="headerFragment"></header>
     <div class="myInfo-top">
         <ul>
             <li><img src="/static/images/img/my_face.png"></li>
@@ -91,12 +91,12 @@
                 <input type="checkbox" class="agree-ck">
                 <label for="agree">정보삭제에 동의합니다.</label>
             </div>
-            <div class="add-btnbx">
+            <div class="add-btn-bx">
                 <button class="confirm-btn">확인</button>
                 <button class="cancel-btn">취소</button>
             </div>
         </section>
     </div>
-    <footer th:replace="~{footer :: footerFragment}"></footer>
+<footer th:fragment="footerFragment"></footer>
 </body>
 </html>

@@ -184,6 +184,10 @@ html {
 .join-tbl td input.w165 {
     width: 165px;
 }
+.join-tbl td input.registerPostcodeInput{
+    width: 165px;
+}
+
 .joinForm {
     margin-bottom: 90px;
 }
@@ -292,7 +296,7 @@ html {
 .new-tbl .address_inp input {
     margin-bottom: 12px;
 }
-.new-tbl .address_inp input.mb0 {
+.new-tbl .address_inp input.address_detail {
     margin-bottom: 0;
 }
 /* 장바구니 전체선택 */

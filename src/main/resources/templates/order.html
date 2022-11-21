@@ -16,7 +16,7 @@
 </head>
 <body>
     <section id="wrap">
-        <header th:replace="~{header :: headerFragment}"></header>
+        <header id="header" th:fragment="headerFragment"></header>
         <section id="content" class="member">
             <div class="new-box w1260">
                 <div class="sub-title">
@@ -419,7 +419,7 @@
                                                 <input type="text" class="mt25 w317 input_1 mb10" name="tax[addr]" value="">
                                                 <input type="button" class="input-post find_post" value="주소 검색" onclick="openPostcode(null, 'tax[addr]', 'tax[addr]')">
                                             </td>
-                                    </tr>
+                                        </tr>
                                     <tr>
                                         <td>담당자명</td>
                                         <td>
@@ -456,7 +456,7 @@
                             <dd>
                                 <span id="calc-amount-text"></span>원
                             </dd>
-                        </dl>D
+                        </dl>
                     </div>
                     <div class="order-btn-box">
                         <a href="/bag" class="btn_style1">장바구니</a>
@@ -466,7 +466,7 @@
                 </form>
             </div>
         </section>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:fragment="footerFragment"></footer>
     </section>
     <script src="/static/js/order.js"></script>
 </body>

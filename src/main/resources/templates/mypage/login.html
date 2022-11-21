@@ -13,7 +13,7 @@
 </head>
 <body>
     <section id="wrap">
-        <header th:replace="~{header :: headerFragment}"></header>
+        <header id="header" th:fragment="headerFragment"></header>
         <section id="content">
             <section id="content1" class="member">
                 <div class="new-box w1260" id="logIn">
@@ -37,29 +37,21 @@
                                         <a href="/forgot">아이디/비밀번호 찾기</a>
                                     </p>
                                 </div>
-                                <div class="add-btnbx login-btn">
+                                <div class="add-btn-bx login-btn">
                                     <input type="submit" class="confirm-btn" value="로그인">
     
                                     <a href="/register" class="cancel-btn mb0">회원가입</a>
                                 </div>
                             </form>
                         </div>
-    
                     </div>
                 </div>
             </section>
         </section>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:fragment="footerFragment"></footer>
+
     </section>
-<!--    <script>-->
-<!--        $(function () {-->
-<!--        alertify.alert("아이디을(를) 입력해주세요.");-->
-<!--        $('form *[name="username"]').focus();-->
-<!--    });-->
-<!--    </script>-->
-<!--    <script>-->
-<!--        alert("아이디을(를) 입력해주세요.");-->
-<!--        $("#login-form-box input[name=username]").focus();-->
+    <script src="/static/js/header.js"></script>
 
 <!--    </script>-->
 <!--    <script>-->

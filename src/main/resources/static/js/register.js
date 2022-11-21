@@ -19,7 +19,7 @@ $(function () {
         setMessage($el, msg, "#09f")
     };
 
-    $usernameInput.on('keyup', function () {
+    $usernameInput.on('key up', function () {
         var username = $usernameInput.val().trim();
 
         if (username === "") {
@@ -39,7 +39,7 @@ $(function () {
     var $pwConfirmInput = $("#registerPwConfirmInput");
     var $pwConfirmMessage = $("#registerPwConfirmMessage");
 
-    $passwordInput.keyup(function () {
+    $passwordInput.key up(function () {
         var password = $(this).val().toString().trim();
 
         if (password === "") {
@@ -52,10 +52,10 @@ $(function () {
             okMessage($passwordMessage, "사용 가능한 비밀번호입니다.")
         }
 
-        $pwConfirmInput.keyup()
+        $pwConfirmInput.key up()
     });
 
-    $pwConfirmInput.keyup(function () {
+    $pwConfirmInput.key up(function () {
         var password = $passwordInput.val().toString().trim();
         var pwConfirm = $(this).val().toString().trim();
 
@@ -72,7 +72,7 @@ $(function () {
     var $postcodeInput = $("#postCode");
     var $postcodeMessage = $("#registerPostcodeMessage");
 
-    $postcodeInput.keyup(function () {
+    $postcodeInput.key up(function () {
         var postcode = $postcodeInput.val().trim();
 
         if (postcode === "") {
@@ -106,3 +106,47 @@ $(function () {
 
 
 });
+const registerButton = document.querySelector(".confirm-brn");
+
+registerButton.onclick = () => {
+    const registerId = document.querySelector(".registerUsernameInput");
+    const registerPassword = document.querySelector(".registerPasswordInput");
+    const registerName = document.querySelector(".name");
+    const registerPhone = document.querySelector(".registerCellphoneInput");
+    const registerPostcode = document.querySelector(".registerPostcodeInput");
+    const registerAddress = document.querySelector(".address");
+    const registerDetail_Address = document.querySelector(".address_detail");
+    const registerSosick = document.querySelectorAll(".check");
+
+    let registerInfo = {
+        id: registerId.value,
+        password: registerPassword.value,
+        role: "USER",
+        name: registerName.value,
+        phone: registerPhone.value,
+        post_code: registerPostcode.value,
+        address: registerAddress.value,
+        detail_address: registerDetail_Address.value,
+        event_sosick: registerSosick[2].value,
+    }
+
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/api/account/register",
+        contentType: "application/json",
+        data: JSON.stringify(registerInfo),
+        dataType: "json",
+        success: (Response) => {
+            location.replace("/login")
+        },
+        error: (error) => {
+            console.log("error:" + error);
+        }
+    });
+}
+
+// function validationError(error){
+//     const accountErrors = document.querySelector(".account-error");
+//     accountErrors.classList.remove("error-invisible");
+// }

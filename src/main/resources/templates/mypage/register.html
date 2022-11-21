@@ -10,11 +10,16 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/sub.css">
     <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <title>스파클몰-회원가입</title>
 </head>
 <body>
     <section id="wrap">
-        <section th:replace="~{header :: headerFragment}"></section>
+        <header id="header" th:fragment="headerFragment"></header>
+
+        <div id="load" style="display: none;">
+            <img src="/static/images/img/loading.gif" alt="로딩">
+        </div>
         <section id="content">
             <section id="content-in" class="member">
                 <div class="new-box w1260">
@@ -24,6 +29,7 @@
                 </div>
                 <div class="joinForm w1260">
                     <form method="post" onsubmit="return join01FormSubmitCheck(this)">
+
                         <table class="new-tbl join-tbl">
                             <colgroup>
                                 <col width="200px">
@@ -35,7 +41,7 @@
                                         이름<span class="ico">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="name" value="" required="" label="이름" placeholder="이름을 입력해주세요">
+                                        <input type="text" class = "name" value="" label="이름" placeholder="이름을 입력해주세요">
                                     </td>
                                 </tr>
                                 <tr>
@@ -43,7 +49,7 @@
                                         아이디<span class="ico">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" id="registerUsernameInput" name="username" value="" required="" maxlength="16" placeholder="아이디를 입력해주세요">
+                                        <input type="text" class="registerUsernameInput" name="username" value="" maxlength="16" placeholder="아이디를 입력해주세요">
                                         
                                         <span class="explain-text" style="margin-left: 1em;" id="registerUsernameMessage">
                                             
@@ -55,7 +61,7 @@
                                         비밀번호<span class="ico">*</span>
                                     </td>
                                     <td>
-                                        <input type="password" name="password" id="registerPasswordInput" required="" label="비밀번호" placeholder="비밀번호를 입력해주세요" minlength="10" maxlength="20">
+                                        <input type="password" id="registerPasswordInput" label="비밀번호" placeholder="비밀번호를 입력해주세요" minlength="10" maxlength="20">
                                         <span class="explain-text" style="margin-left: 1em;" id="registerPasswordMessage">
                                         </span>
                                     </td>
@@ -65,7 +71,7 @@
                                         비밀번호확인<span class="ico">*</span>
                                     </td>
                                     <td>
-                                        <input type="password" name="password_confirmation" id="registerPwConfirmInput" required="" label="비밀번호" placeholder="비밀번호를 한 번 더 입력해주세요" minlength="10" maxlength="20">
+                                        <input type="password" name="password_confirmation" id="registerPwConfirmInput" label="비밀번호" placeholder="비밀번호를 한 번 더 입력해주세요" minlength="10" maxlength="20">
                                         <span class="explain-text" style="margin-left: 1em;" id="registerPwConfirmMessage">
                                             
                                         </span>
@@ -76,10 +82,10 @@
                                         휴대폰번호<span class="ico">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="cellphone" id="registerCellphoneInput" value="" placeholder="숫자만 입력해주세요" required="">
-                                        <input type="button" value="인증요청" class="find_post btn_style3" id="btn_cert">
+                                        <input type="text" class="registerCellphoneInput" value="" placeholder="숫자만 입력해주세요">
+                                        <!-- <input type="button" value="인증요청" class="find_post btn_style3" id="btn_cert">
                                         <input type="text" id="registerCellphoneAuthInput" name="cellphone_auth" value="" class="w165" placeholder="인증번호" style="display:none;">
-                                        <input type="button" value="인증확인" class="find_post btn_style3" id="btn_cert_confirm" style="display:none;">
+                                        <input type="button" value="인증확인" class="find_post btn_style3" id="btn_cert_confirm" style="display:none;"> -->
                                     </td>
                                 </tr>
                                 <tr>
@@ -90,8 +96,10 @@
                                         <input type="text" id="postCode" name="openPostcode" value="" readonly="readonly" class="w165" placeholder="우편번호">
                                         <input type="button" value="우편번호찾기" onclick="daumPostcode()" class="find_post"> <br>
                                         <input type="text" id="roadAddress" readonly="readonly" placeholder="서울 특별시 강동구 강일동 123">
-                                        <input type="text" id="detailAddress" class="mb0" placeholder="가나빌딩 1층">
+                                        <input type="text" id="address_detail" class="mb0" placeholder="가나빌딩 1층">
+
                                         <input type="hidden" name="address_data" value="">
+
                                         <div class="explain-text" style="margin-top: 0.7em;" id="registerPostcodeMessage">
 
                                         </div>
@@ -108,7 +116,7 @@
                                 </tr>
                                 <tr class="join-agree">
                                     <td colspan="2">
-                                        <input type="checkbox" id="terms_agree" class="check" name="accept_terms" value="yes" required="">
+                                        <input type="checkbox" id="terms_agree" class="check" name="accept_terms" value="yes">
                                         <label for="terms_agree">
                                             <span>이용약관 동의 <small>(필수)</small></span>
                                         </label>
@@ -117,7 +125,7 @@
                                 </tr>
                                 <tr class="join-agree">
                                     <td colspan="2">
-                                        <input type="checkbox" id="privacy_agree" class="check" name="accept_privacy" value="yes" required="">
+                                        <input type="checkbox" id="privacy_agree" class="check" name="accept_privacy" value="yes">
                                         <label for="privacy_agree">
                                             <span>개인정보 수집 · 이용 동의 <small>(필수)</small></span>
                                         </label>
@@ -134,7 +142,7 @@
                                 </tr>
                                 <tr class="join-agree">
                                     <td colspan="2">
-                                        <input type="checkbox" id="age_agree" class="check" name="older_than_14" value="yes" required="">
+                                        <input type="checkbox" id="age_agree" class="check" name="older_than_14" value="yes">
                                         <label for="age_agree">
                                             <span>본인은 만 14세 이상입니다 <small>(필수)</small></span>
                                         </label>
@@ -142,17 +150,17 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="add-btnbx join-btn">
+                        <div class="add-btn-bx join-btn">
                             <input type="submit" class="confirm-btn" value="가입하기">
                         </div>
-
                     </form>
                 </div>
             </section>
         </section>
-        <footer th:replace="~{footer :: footerFragment}"></footer>
+        <footer th:fragment="footerFragment"></footer>
     </section>
     <script src="/static/js/register.js"></script>
     <script type="text/javascript" src="/static/js/edit.js"></script>
+
 </body>
 </html>

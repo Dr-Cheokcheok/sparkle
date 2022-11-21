@@ -1,6 +1,9 @@
-//package com.spakle.spakleclone20221104.service;
-//
-//public class AccountService {
-//    public void duplicateEmail(RegisterReqDto registerReqDto) throws  Exception;
-//    public void register(RegisterReqDto registerReqDto) throws  Exception;
-//}
+package com.spakle.spakleclone20221104.service;
+
+import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
+
+public interface AccountService {
+    public boolean checkDuplicateEmail(String email);
+    public boolean register(RegisterReqDto registerReqDto) throws Exception;
+}
+

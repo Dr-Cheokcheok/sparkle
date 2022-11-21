@@ -12,20 +12,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class User {
+    private int id;
     private String username;
+    private String oauth_username;
     private String password;
+    private int role_id;
     private Role role;
+    private String provider;
     private String name;
+    private String email;
     private int phone;
-    private int post_code;
+    private String post_code;
     private String address;
     private String detail_address;
+    private int event_sosick;
     private LocalDateTime create_date;
     private LocalDateTime update_date;
-    private String provider;
-
-    private String email;
-    private int role_id;
 
 
 }

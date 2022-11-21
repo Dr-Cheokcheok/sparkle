@@ -6,9 +6,8 @@
 <mapper namespace="com.spakle.spakleclone20221104.repository.AccountRepository">
     <resultMap id="role" type="com.spakle.spakleclone20221104.domain.Role">
         <result property="username" column="username"/>
-        <result property="name" column="name"/>
-        <result property="create_date" column="create_date"/>
-        <result property="update_date" column="update_date"/>
+        <result property="role" column="role"/>
+        <result property="role_name" column="role_name"/>
     </resultMap>
 
     <resultMap id="user" type="com.spakle.spakleclone20221104.domain.User">
@@ -20,22 +19,52 @@
         <result property="post_code" column="post_code"/>
         <result property="address" column="address"/>
         <result property="detail_address" column="detail_address"/>
+        <result property="event_sosick" column="event_sosick"/>
         <result property="create_date" column="create_date"/>
         <result property="update_date" column="update_date"/>
     </resultMap>
+
+    <insert id="save"
+            parameterType="com.spakle.spakleclone20221104.domain.User"
+            useGeneratedKeys="true"
+            keyProperty="username">
+        insert info
+            user_mst
+        values(
+            0,
+            #{username},
+            #{password},
+            #{role_username},
+            #{name},
+            #{phone},
+            #{post_code},
+            #{address},
+            #{detail_address},
+            #{event_sosick},
+            now(),
+            now()
+        )
+    </insert>
 
     <select id="findUserByEmail" parameterType="String" resultMap="user">
         select
             um.username,
             um.password,
-            um.role,
+            um.role_id,
+
+            rm.role,
+            rm.role_name,
+
             um.name,
             um.phone,
             um.post_code,
             um.address,
             um.detail_address,
+            um.event_sosick,
+
             um.create_date,
-            um.update_date
+            um.update_date,
+            um.provider
         from
             user_mst um
             left outer join role_mst rm on(rm.username = um.role_username)
@@ -43,23 +72,4 @@
             um.email = #{email}
     </select>
 
-    <insert id="saveUser"
-            parameterType="com.spakle.spakleclone20221104.domain.User"
-            useGeneratedKeys="true"
-            keyProperty="id">
-        insert info
-            user_mst
-        values(
-            0,
-            #{password}
-            #{role_username}
-            #{name}
-            #{phone}
-            #{post_code}
-            #{address}
-            #{detail_address}
-            now(),
-            now()
-        )
-    </insert>
 </mapper>
