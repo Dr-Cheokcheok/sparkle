@@ -1,4 +1,4 @@
-package com.spakle.spakleclone20221104.service;
+package com.spakle.spakleclone20221104.service.auth;
 
 import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.repository.AccountRepository;
@@ -23,11 +23,11 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException{
+        String provider = userRequest.getClientRegistration().getClientName();
         OAuth2User oAuth2User = super.loadUser(userRequest);
 
         log.info("oAuth2User: {}", oAuth2User.getAttributes());
         log.info("userRequest: {}", userRequest.getClientRegistration());
-        String provider = userRequest.getClientRegistration().getClientName();
         PrincipalDetails principalDetails = null;
 
         try {
@@ -48,14 +48,13 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
         }else if (provider.equalsIgnoreCase("naver")){
             oauth2Attributes = (Map<String, Object>) attributes.get("response");
         }
-        email = (String) oauth2Attributes.get("email");
+        email = (String) oauth2Attributes.get("id");
 
         if (user == null) {
             //회원가입
             user = User.builder()
                     .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
                     .role_id(1)
-                    .email(email)
                     .name((String) attributes.get("name"))
                     .provider(provider)
                     .build();

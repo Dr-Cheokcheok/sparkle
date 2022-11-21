@@ -17,13 +17,13 @@ public class AccountServicelmpl implements AccountService {
     private final AccountRepository accountRepository;
 
     @Override
-    public boolean checkDuplicateEmail(String email) {
+    public boolean checkDuplicateId(String id) {
 
-        User user = accountRepository.findUserByEmail(email);
+        User user = accountRepository.findUserById(id);
         if(user != null) {
             Map<String, String> errorMap = new HashMap<String, String>();
-            errorMap.put("duplicateFlag", "이미 가입된 이메일입니다.");
-            throw new CustomValidationException("DuplicateEmail Error", errorMap);
+            errorMap.put("duplicateFlag", "이미 가입된 아이디입니다.");
+            throw new CustomValidationException("DuplicateId Error", errorMap);
         }
         return true;
     }

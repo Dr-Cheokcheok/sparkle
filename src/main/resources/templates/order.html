@@ -16,7 +16,7 @@
 </head>
 <body>
     <section id="wrap">
-        <header id="header" th:fragment="headerFragment"></header>
+        <section th:replace="~{header :: headerFragment}"></section>
         <section id="content" class="member">
             <div class="new-box w1260">
                 <div class="sub-title">
@@ -466,7 +466,7 @@
                 </form>
             </div>
         </section>
-        <footer th:fragment="footerFragment"></footer>
+        <footer th:replace="~{footer :: footerFragment}"></footer>
     </section>
     <script src="/static/js/order.js"></script>
 </body>

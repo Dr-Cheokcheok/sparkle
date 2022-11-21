@@ -29,7 +29,6 @@ public class RegisterReqDto {
     private int event_sosick;
     private LocalDateTime create_date;
     private LocalDateTime update_date;
-    private String Email;
 
     public User toUserEntity() {
         return User.builder()

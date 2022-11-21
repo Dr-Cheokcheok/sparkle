@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<header id="header" th:fragment="headerFragment"></header>
+<header th:replace="~{header :: headerFragment}"></header>
     <main>
         <div class="outer">
             <div class="inner-list">
@@ -464,10 +464,9 @@
                 </div>
               </div>
             </section>
-        <footer th:fragment="footerFragment"></footer>
+        <footer th:replace="~{footer :: footerFragment}"></footer>
     </main>
-    
-    
+
     <!-- <script src="/static/js/productList.js"></script> -->
     <script src="/static/js/slideShow.js"></script>
     <script type="text/javascript" src="/static/js/admin-page.js"></script>

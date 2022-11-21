@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class User {
-    private int id;
+    private String id;
     private String username;
     private String oauth_username;
     private String password;
@@ -20,7 +20,6 @@ public class User {
     private Role role;
     private String provider;
     private String name;
-    private String email;
     private int phone;
     private String post_code;
     private String address;

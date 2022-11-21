@@ -15,7 +15,7 @@
 </head>
 <body>
     <section id="wrap">
-        <header id="header" th:fragment="headerFragment"></header>
+        <section th:replace="~{header :: headerFragment}"></section>
 
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
@@ -150,14 +150,14 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="add-btn-bx join-btn">
+                        <div class="add-btnbx join-btn">
                             <input type="submit" class="confirm-btn" value="가입하기">
                         </div>
                     </form>
                 </div>
             </section>
         </section>
-        <footer th:fragment="footerFragment"></footer>
+        <footer th:replace="~{footer :: footerFragment}"></footer>
     </section>
     <script src="/static/js/register.js"></script>
     <script type="text/javascript" src="/static/js/edit.js"></script>

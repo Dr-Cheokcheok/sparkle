@@ -13,7 +13,7 @@
     <title>스파클몰</title>
 </head>
 <body>
-<header id="header" th:fragment="headerFragment"></header>
+    <section th:replace="~{header :: headerFragment}"></section>
     <div class="mypage-all">
         <div class="myInfo-top">
             <ul>
@@ -138,6 +138,6 @@
             </section>
         </div>
     </div>
-<footer th:fragment="footerFragment"></footer>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
 </body>
 </html>

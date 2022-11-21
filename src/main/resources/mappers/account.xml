@@ -5,23 +5,25 @@
 
 <mapper namespace="com.spakle.spakleclone20221104.repository.AccountRepository">
     <resultMap id="role" type="com.spakle.spakleclone20221104.domain.Role">
-        <result property="username" column="username"/>
-        <result property="role" column="role"/>
-        <result property="role_name" column="role_name"/>
+        <result property="username" column="username"></result>
+        <result property="role" column="role"></result>
+        <result property="role_name" column="role_name"></result>
     </resultMap>
 
     <resultMap id="user" type="com.spakle.spakleclone20221104.domain.User">
-        <result property="username" column="username"/>
-        <result property="password" column="password"/>
-        <result property="role" column="role"/>
-        <result property="name" column="name"/>
-        <result property="phone" column="phone"/>
-        <result property="post_code" column="post_code"/>
-        <result property="address" column="address"/>
-        <result property="detail_address" column="detail_address"/>
-        <result property="event_sosick" column="event_sosick"/>
-        <result property="create_date" column="create_date"/>
-        <result property="update_date" column="update_date"/>
+        <result property="id" column="id"></result>
+        <result property="password" column="password"></result>
+        <result property="username" column="username"></result>
+        <result property="oauth_name" column="oauth_name"></result>
+        <result property="name" column="name"></result>
+        <result property="phone" column="phone"></result>
+        <result property="post_code" column="post_code"></result>
+        <result property="address" column="address"></result>
+        <result property="detail_address" column="detail_address"></result>
+        <result property="event_sosick" column="event_sosick"></result>
+        <result property="create_date" column="create_date"></result>
+        <result property="update_date" column="update_date"></result>
+        <collection property="role" column="role"></collection>
     </resultMap>
 
     <insert id="save"
@@ -46,9 +48,9 @@
         )
     </insert>
 
-    <select id="findUserByEmail" parameterType="String" resultMap="user">
+    <select id="findUserById" parameterType="String" resultMap="user">
         select
-            um.username,
+            um.id,
             um.password,
             um.role_id,
 

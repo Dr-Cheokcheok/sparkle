@@ -8,6 +8,6 @@ public interface AccountRepository {
 
     public int save(User user) throws Exception;
     public int updateUserOauth2(User user);
-    public User findUserByEmail(String email);
+    public User findUserById(String id);
 
 }

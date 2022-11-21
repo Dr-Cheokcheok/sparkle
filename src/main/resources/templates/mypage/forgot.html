@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/sub.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>아이디/비밀번호찾기</title>
 </head>
 <body>
     <section id="wrap">
-        <header id="header" th:fragment="headerFragment"></header>
+        <section th:replace="~{header :: headerFragment}"></section>
             <section id="content">
                 <section id="content-in" class="member">
                     <div class="new-box w1260" id="logIn">
@@ -24,7 +26,7 @@
                             </ul>
                         </div>
                         <div class="loginF-wrap">
-                            <div class="logForm logForm-invisible">
+                            <div class="logForm">
                                 <form name="findIdForm" method="post" action="">
                                     <input type="hidden" name="_token" value="">
                                     <label class="log_label">이름</label>
@@ -36,7 +38,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="logForm2">
+                            <div class="logForm2 logForm-invisible">
                                 <form name="findPwForm" method="post" action="">
                                     <input type="hidden" name="_token" value="">
                                     <label class="log_label">이름</label>
@@ -55,8 +57,7 @@
                 </section>
             </section>
         </section>
-    <footer th:fragment="footerFragment"></footer>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
     <script src="/static/js/forgot.js"></script>
-    <script src="/static/js/header.js"></script>
 </body>
 </html>

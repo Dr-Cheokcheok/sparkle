@@ -12,7 +12,7 @@
     <title>스파클몰</title>
 </head>
 <body>
-    <header id="header" th:fragment="headerFragment"></header>
+    <section th:replace="~{header :: headerFragment}"></section>
         <section id="content-section">
             <div class="sub-title">
                 <p>쇼핑하기</p>
@@ -167,6 +167,6 @@
                 </div>
             </div>
         </section>
-    <footer th:fragment="footerFragment"></footer>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
 </body>
 </html>

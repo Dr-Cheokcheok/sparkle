@@ -12,46 +12,42 @@
     <title>스파클몰-로그인</title>
 </head>
 <body>
-    <section id="wrap">
-        <header id="header" th:fragment="headerFragment"></header>
-        <section id="content">
-            <section id="content1" class="member">
-                <div class="new-box w1260" id="logIn">
-                    <div class="sub-title login-title">
-                        <p>로그인</p>
-                    </div>
+    <section th:replace="~{header :: headerFragment}"></section>
+    <section id="content">
+        <section id="content1" class="member">
+            <div class="new-box w1260" id="logIn">
+                <div class="sub-title login-title">
+                    <p>로그인</p>
+                </div>
 
-                    <div class="loginF-wrap">
-                        <div class="logForm on">
-                            <form method="post" action="login">
-                                <input type="hidden" name="_token" value="">
-                                <input class="id" type="text" name="username" placeholder="아이디를 입력해주세요." value="">
-                                <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
-                                <div class="login-mid">
-                                    
-                                    <label>
-                                        <input class="chk" id="" type="checkbox" name="remember">
-                                        로그인 유지
-                                    </label>
-                                    <p>
-                                        <a href="/forgot">아이디/비밀번호 찾기</a>
-                                    </p>
-                                </div>
-                                <div class="add-btn-bx login-btn">
-                                    <input type="submit" class="confirm-btn" value="로그인">
-    
-                                    <a href="/register" class="cancel-btn mb0">회원가입</a>
-                                </div>
-                            </form>
-                        </div>
+                <div class="loginF-wrap">
+                    <div class="logForm on">
+                        <form method="post" action="login">
+                            <input type="hidden" name="_token" value="">
+                            <input class="id" type="text" name="username" placeholder="아이디를 입력해주세요." value="">
+                            <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
+                            <div class="login-mid">
+
+                                <label>
+                                    <input class="chk" id="" type="checkbox" name="remember">
+                                    로그인 유지
+                                </label>
+                                <p>
+                                    <a href="/forgot">아이디/비밀번호 찾기</a>
+                                </p>
+                            </div>
+                            <div class="add-btnbx login-btn">
+                                <input type="submit" class="confirm-btn" value="로그인">
+
+                                <a href="/register" class="cancel-btn mb0">회원가입</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
         </section>
-        <footer th:fragment="footerFragment"></footer>
-
     </section>
-    <script src="/static/js/header.js"></script>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
 
 <!--    </script>-->
 <!--    <script>-->

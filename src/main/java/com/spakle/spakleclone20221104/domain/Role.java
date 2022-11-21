@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class Role {
-    private int username;
+    private int id;
     private String name;
     private LocalDateTime create_date;
     private LocalDateTime update_date;

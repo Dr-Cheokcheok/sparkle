@@ -13,7 +13,7 @@
     <title>스파클몰</title>
 </head>
 <body>
-<header id="header" th:fragment="headerFragment"></header>
+<section th:replace="~{header :: headerFragment}"></section>
     <div class="myInfo-top">
         <ul>
             <li><img src="/static/images/img/my_face.png"></li>
@@ -97,6 +97,6 @@
             </div>
         </section>
     </div>
-<footer th:fragment="footerFragment"></footer>
+<footer th:replace="~{footer :: footerFragment}"></footer>
 </body>
 </html>

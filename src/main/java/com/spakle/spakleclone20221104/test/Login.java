@@ -49,7 +49,7 @@
 //            // 일치하는 계정이 있으면 User에 계정 정보 담음
 //            if(rs.next()) {
 //                User user = new User()
-//                        .setUserName(rs.getString("USERNAME"))
+//                        .username(rs.getString("USERNAME"))
 //                        .setName(rs.getString("NAME"));
 //                // HttpSession에 저장
 //                HttpSession session = req.getSession();
