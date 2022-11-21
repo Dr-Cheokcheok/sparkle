@@ -43,4 +43,6 @@ public class RegisterReqDto {
                 .event_sosick(event_sosick)
                 .build();
     }
+
+
 }

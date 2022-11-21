@@ -16,10 +16,10 @@ public class User {
     private String username;
     private String oauth_username;
     private String password;
-    private int role_id;
-    private Role role;
-    private String provider;
     private String name;
+    private Role role;
+    private int role_id;
+    private String provider;
     private int phone;
     private String post_code;
     private String address;

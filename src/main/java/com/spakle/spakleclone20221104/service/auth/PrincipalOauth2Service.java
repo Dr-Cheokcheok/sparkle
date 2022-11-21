@@ -22,49 +22,59 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
     private final AccountRepository accountRepository;
 
     @Override
-    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException{
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         String provider = userRequest.getClientRegistration().getClientName();
         OAuth2User oAuth2User = super.loadUser(userRequest);
 
-        log.info("oAuth2User: {}", oAuth2User.getAttributes());
-        log.info("userRequest: {}", userRequest.getClientRegistration());
+        log.info("userRequest >>>> {}", userRequest);
+        log.info("getClientRegistration >>>> {}", userRequest.getClientRegistration());
+        log.info("getAttributes >>>> {}", oAuth2User.getAttributes());
+
+        User user = getOauth2User(provider, oAuth2User.getAttributes());
+
+        return new PrincipalDetails(user, oAuth2User.getAttributes());
+    }
+    private User getOauth2User(String provider, Map<String, Object> attributes) {
+        String oauth2_id = null;
+        String id = null;
+        String username = null;
+
+        User user = null;
+
+        Map<String, Object> response = null;
+
         PrincipalDetails principalDetails = null;
 
-        try {
-            principalDetails = getPrincipalDetails(provider, oAuth2User.getAttributes());
-        }catch (Exception e) {
-            e.printStackTrace();
-            throw new OAuth2AuthenticationException("login failed");
-        }
-        return principalDetails;
-    }
-    private PrincipalDetails getPrincipalDetails(String provider, Map<String, Object> attributes) throws Exception {
-        User user = null;
-        Map<String, Object> oauth2Attributes = null;
-        String email = null;
-
         if (provider.equalsIgnoreCase("google")) {
-            oauth2Attributes = attributes;
+            response = attributes;
+            id = (String) response.get("sub");
         }else if (provider.equalsIgnoreCase("naver")){
-            oauth2Attributes = (Map<String, Object>) attributes.get("response");
+            response = (Map<String, Object>) attributes.get("response");
+            id = (String) response.get("id");
         }
-        email = (String) oauth2Attributes.get("id");
 
+        oauth2_id = provider + "_" + id;
+        username = (String) response.get("username");
+
+        user = accountRepository.findUserByUsername(username);
         if (user == null) {
-            //회원가입
             user = User.builder()
-                    .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
+                    .username(id)
+                    .oauth_username(oauth2_id)
+                    .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString().replaceAll("-", "")))
+                    .name((String) response.get("name"))
+                    .id(id)
                     .role_id(1)
-                    .name((String) attributes.get("name"))
                     .provider(provider)
                     .build();
 
             accountRepository.save(user);
-        } else if (user.getProvider() == null) {
-            //연동
-        }
-        System.out.println(user);
 
-        return new PrincipalDetails(user, attributes);
+        } else if (user.getOauth_username() == null) {
+            user.setOauth_username(oauth2_id);
+            user.setProvider(provider);
+            accountRepository.updateUserOauth2(user);
+        }
+        return user;
     }
 }

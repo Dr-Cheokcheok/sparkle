@@ -1,19 +1,31 @@
 package com.spakle.spakleclone20221104.config;
 
+import com.spakle.spakleclone20221104.service.auth.PrincipalOauth2Service;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final PrincipalOauth2Service principalOauth2Service;
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.httpBasic().disable();
         http.authorizeRequests() //모든 요청시에 실행해라
+
                 .antMatchers("/account/**","/users/**") //해당 요청 주소들은
                 .authenticated() //인증이 필요하다
                 .anyRequest() //antMatchers 외에 다른 모든 요청들은

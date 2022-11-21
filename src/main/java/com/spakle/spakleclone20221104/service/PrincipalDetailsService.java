@@ -1,4 +1,4 @@
-package com.spakle.spakleclone20221104.service.auth;
+package com.spakle.spakleclone20221104.service;
 
 import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
@@ -22,7 +22,7 @@ public class PrincipalDetailsService implements UserDetailsService {
         User user = null;
 
         try {
-            user = accountRepository.findUserById(id);
+            user = accountRepository.findUserByUsername(id);
         } catch (Exception e) {
             throw new CustomInternalServerErrorException("회원 정보 조회 오류");
         }

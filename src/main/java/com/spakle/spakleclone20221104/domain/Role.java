@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Role {
     private int id;
-    private String name;
-    private LocalDateTime create_date;
-    private LocalDateTime update_date;
+    private String role;
+    private String role_name;
 }
