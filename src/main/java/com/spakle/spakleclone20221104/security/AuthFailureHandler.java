@@ -1,6 +1,5 @@
 package com.spakle.spakleclone20221104.security;
 
-import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 public class AuthFailureHandler implements AuthenticationFailureHandler {
 
     @Override
