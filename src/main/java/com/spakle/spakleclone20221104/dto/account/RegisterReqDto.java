@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 public class RegisterReqDto {
 
     @NotBlank
-    @Pattern(regexp = "^{6}$", message = "6자 이상 입력해 주세요.",
-            groups = ValidationGroups.PatternCheckGroup.class
-    )
+//    @Pattern(regexp = "^{6}$", message = "6자 이상 입력해 주세요.",
+//            groups = ValidationGroups.PatternCheckGroup.class
+//    )
     private String id;
 
     @NotBlank
@@ -33,7 +33,8 @@ public class RegisterReqDto {
     public User toUserEntity() {
         return User.builder()
                 .id(id)
-                .password(new BCryptPasswordEncoder().encode(password))
+//                .password(new BCryptPasswordEncoder().encode(password))
+                .password(password)
                 .role("USER")
                 .name(name)
                 .phone(phone)

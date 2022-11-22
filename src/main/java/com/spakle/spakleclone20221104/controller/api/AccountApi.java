@@ -3,6 +3,7 @@ package com.spakle.spakleclone20221104.controller.api;
 import com.spakle.spakleclone20221104.aop.annotation.LogAspect;
 import com.spakle.spakleclone20221104.aop.annotation.ValidAspect;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
 import com.spakle.spakleclone20221104.dto.validation.ValidationSequence;
 import com.spakle.spakleclone20221104.service.AccountService;
@@ -32,12 +33,18 @@ public class AccountApi {
     @LogAspect
     @ValidAspect
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult){
+    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) throws Exception{
 
-        accountService.checkDuplicateId((registerReqDto.getId()));
+//        accountService.checkDuplicateId((registerReqDto.getId()));
+        accountService.register(registerReqDto);
 
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",registerReqDto));
     }
 
+    @GetMapping("/checkid")
+    public int overlappedID(@RequestBody ChkIdDto chkIdDto) throws Exception{
+        int result = accountService.overlappedID(chkIdDto); // 중복확인한 값을 int로 받음
+        return result;
+    }
 
 }

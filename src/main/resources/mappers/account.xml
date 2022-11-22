@@ -23,7 +23,7 @@
         values (
             #{id},
             #{password},
-            "USER",
+            'USER',
             #{name},
             #{phone},
             #{post_code},
@@ -35,22 +35,26 @@
         )
     </insert>
 
-    <select id = "findUserById" parameterType="String" resultMap="user">
-        select
-            id,
-            password,
-            role,
-            name,
-            phone,
-            post_code,
-            address,
-            detail_address,
-            event_sosick,
-            create_date,
-            update_date
-        from
-            user_mst
-        where
-            id = #{id}
+    <select id="overlappedID" parameterType="com.spakle.spakleclone20221104.domain.ChkId" resultType="int">
+        select count(id) From user_mst where id=#{id}
     </select>
+
+<!--    <select id = "findUserById" parameterType="String" resultMap="user">-->
+<!--        select-->
+<!--            id,-->
+<!--            password,-->
+<!--            role,-->
+<!--            name,-->
+<!--            phone,-->
+<!--            post_code,-->
+<!--            address,-->
+<!--            detail_address,-->
+<!--            event_sosick,-->
+<!--            create_date,-->
+<!--            update_date-->
+<!--        from-->
+<!--            user_mst-->
+<!--        where-->
+<!--            id = #{id}-->
+<!--    </select>-->
 </mapper>
