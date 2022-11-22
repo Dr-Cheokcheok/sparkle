@@ -48,30 +48,16 @@
         )
     </insert>
 
-    <update id="updateUserOauth2" parameterType="com.spakle.spakleclone20221104.domain.User">
-        update
-            user_mst
-        set
-            oauth_username = #{oauth_username},
-            provider = #{provider},
-            update_date = now()
-        where
-            id = #{id}
-    </update>
     <select id="findUserById" parameterType="String" resultMap="user">
         select
             um.id,
-            um.username,
-            um.oauth_username,
             um.password,
-            um.name,
-            um.username,
-            um.provider,
             um.role_id,
 
             rm.role,
             rm.role_name,
 
+            um.name,
             um.phone,
             um.post_code,
             um.address,
@@ -79,12 +65,13 @@
             um.event_sosick,
 
             um.create_date,
-            um.update_date
+            um.update_date,
+            um.provider
         from
             user_mst um
-            left outer join role_mst rm on(rm.username = um.role_id)
+            left outer join role_mst rm on(rm.username = um.role_username)
         where
-            um.username = #{username}
+            um.email = #{email}
     </select>
 
 </mapper>
