@@ -1,6 +1,7 @@
 package com.spakle.spakleclone20221104.handler;
 
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.exception.CustomValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,6 +17,12 @@ public class RestControllerExceptionHandler {
         return ResponseEntity
                 .badRequest()
                 .body(new CMRespDto<>(-1,e.getMessage(), e.getErrorMap()));
+    }
+    @ExceptionHandler(CustomInternalServerErrorException.class)
+    public ResponseEntity<?> internalServerErrorException(CustomInternalServerErrorException e){
+        return ResponseEntity
+                .internalServerError()
+                .body(new CMRespDto<>(-1, e.getMessage(), null));
     }
 
 }
