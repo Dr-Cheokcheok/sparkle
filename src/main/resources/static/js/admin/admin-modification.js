@@ -1,5 +1,4 @@
 
-
 function toggleBtn(s) {
     if(s == 'button1'){
         document.getElementById('category1').checked = true;
@@ -185,11 +184,9 @@ function showInfo(responseData) {
 function createProductMainImg(newMainImg){
     console.log("mainImg 프리뷰")
     const previewMain = document.querySelector("#image_container");
-
     previewMain.innerHTML = `
     <img id ="foo-main" src="${newMainImg}">
     `;
-    console.log(newMainImg);
 
 }
 
@@ -298,8 +295,12 @@ class ProductRepository {
         this.updateFormData.append("price", price.value);
         this.updateFormData.append("rate", rate.value);
         this.updateFormData.append("retailPrice", retailPrice.value);
-        this.updateFormData.append("img", mainImgInput.files[0]);
 
+        if(mainImgInput.files.length !== 0 ){
+            this.updateFormData.append("img", mainImgInput.files[0]);
+        }else {
+            this.updateFormData.append("mainPath", this.oldMainImg);
+        }
 
         this.oldImgDeleteList.forEach(deleteImgFile => {
             this.updateFormData.append("deleteImgFiles", deleteImgFile.temp_name);
@@ -309,25 +310,22 @@ class ProductRepository {
             this.updateFormData.append("files", newImgFile);
         });
     }
-
 }
-
 
 //업데이트 버튼 이벤트
 function addUpdateButtonEvent(productRepository) {
     const updateButton = document.querySelector("#submit");
 
     updateButton.onclick = () => {
-        productRepository.toUpdateFormData(); //폼데이터를 업데이트해주고
-        productDataUpdateRequest(productRepository.updateFormData)
-       // updateProduct(productRepository);
+        if(productRepository.oldImgList.length == 0 && productRepository.newImgList.length == 0 ){
+            alert("상세이미지는 비어있을 수 없습니다.");
+        }else{
+            productRepository.toUpdateFormData(); //폼데이터를 수정된 내용으로 업데이트
+            productDataUpdateRequest(productRepository.updateFormData) //수정한 폼데이터를 넣어서 request!
+        }
     }
 }
 
-//productListService ==== > todo: 폼데이터 받아서 ajax request 주기
-// function updateProduct(productRepository) {                 //폼데이터
-//     productDataUpdateRequest(productRepository.updateFormData);
-// }
 
 function productDataUpdateRequest(formData){
     $.ajax({
@@ -375,19 +373,13 @@ class ProductImgFileService {
             }
             if(changeFlag1){
                 const reader = new FileReader();
-
                 reader.onload = (e) => {
-                    console.log("이미지 파일 하나를 리스트에 추가합니다.")
 
                     this.productRepository.newMainImg = e.target.result;
-
                     createProductMainImg(this.productRepository.newMainImg);
-
-
                 }
                 //물어보기!!!!!!!!!!!!!
                 setTimeout(() => {reader.readAsDataURL(this.productRepository.newMainImg);}, 100);
-
             }
         }
 
@@ -440,8 +432,6 @@ class ProductImgFileService {
 
     }
 }
-
-
 window.onload = () => {
     let requestUrl = location.href;
     getInfo(parseInt(requestUrl.substring(requestUrl.lastIndexOf("/") + 1)));

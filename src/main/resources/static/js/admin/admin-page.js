@@ -177,8 +177,6 @@ function toggleBtn(s) {
 
 
 /*  폼 내보내기   */
-
-
 const submit = document.querySelector('.purchase');
 
 function createImgList() {
@@ -270,34 +268,7 @@ function request(formData) {
 }
 
 
-function updateRequest (formData){
-
-}
-
-
-
-
-
 //기존 이미지 리스트, 업데이트 된 이미지리스트, 삭제된 이미지리스트
-
-
-
-class ProductRepository {
-    oldImgList;
-    oldImgDeleteList;
-    newImgList;
-    newImgSrcList;
-    updateFormData;
-
-    //setter
-    constructor(responseData) {
-        this.oldImgList = responseData.productImgFiles;
-        this.oldImgDeleteList = new Array();
-        this.newImgList = new Array();
-        this.newImgSrcList = new Array();
-        this.updateFormData = new FormData();
-    }
-}
 
 
 let requestUrl = location.href;

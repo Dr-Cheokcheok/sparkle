@@ -140,8 +140,11 @@ public class ProductServiceImpl implements ProductService{
         //dto to Entity 해서 Product 객체 update 쿼리로
 
         //db업데이트하기 전에 modificationdto에 mainPath 넣어주기
-        MultipartFile mainFile= productModificationReqDto.getImg();
-        productModificationReqDto.setMainPath(getMainImgPath(mainFile));
+
+        if(productModificationReqDto.getImg() != null){
+            MultipartFile mainFile= productModificationReqDto.getImg();
+            productModificationReqDto.setMainPath(getMainImgPath(mainFile));
+        }
         int result = productRepository.setProduct(productModificationReqDto.toProductEntity());
 
 
