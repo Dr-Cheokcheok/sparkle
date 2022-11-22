@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmls="http:liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http:///www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="otrodevym" id="changelog-2.0">
+        <createTable tableName="member">
+            <columu name="username" type="varchar(30)"></columu>
+            <columu name="name" type="varchar(30)"></columu>
+            <columu name="role" type="varchar(30)"></columu>
+            <columu name="upwd" type="varchar(30)"></columu>
+            <columu name="modified_date" type="timestamp" defaultValueDate="now()">
+                <constranints nullable="false"/>
+            </columu>
+            <columu name="created_date" type="timestapm" defaultValueDate="now()">
+                <constranints nullable="false"/>
+            </columu>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

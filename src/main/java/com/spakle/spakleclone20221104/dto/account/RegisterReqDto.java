@@ -16,9 +16,9 @@ public class RegisterReqDto {
     @Pattern(regexp = "^{6}$", message = "6자 이상 입력해 주세요.",
             groups = ValidationGroups.PatternCheckGroup.class
     )
-    private String id;
 
     @NotBlank
+    private String id;
     private String password;
     private String role;
     private String name;

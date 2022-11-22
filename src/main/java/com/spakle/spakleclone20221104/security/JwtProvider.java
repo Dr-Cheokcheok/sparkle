@@ -21,7 +21,7 @@ public class JwtProvider {
 
         return "Bearer " + Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setIssuer("junil")
+                .setIssuer("조창석")
                 .setIssuedAt(now)
                 .setExpiration(expriation)
                 .setSubject(subject)
