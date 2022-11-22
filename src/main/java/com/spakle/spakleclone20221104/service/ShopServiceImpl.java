@@ -1,6 +1,6 @@
 package com.spakle.spakleclone20221104.service;
 
-import com.spakle.spakleclone20221104.domain.ProductDetail;
+import com.spakle.spakleclone20221104.domain.product.ProductDetail;
 import com.spakle.spakleclone20221104.dto.shop.ProductDetailRespDto;
 import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 import com.spakle.spakleclone20221104.repository.ShopRepository;

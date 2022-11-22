@@ -30,8 +30,9 @@ function calcRetailPrice() {
 
     var attZone = document.getElementById(att_zone);
     var imgadd = document.getElementById(btn)
-    var sel_files = [];
-    
+    var sel_files = []; // 첨부된 이미지들 저장할 배열
+
+
     // 이미지와 체크 박스를 감싸고 있는 div 속성
     var div_style = 'display:inline-block;position:relative;'
                   + 'width:150px;height:120px;margin:5px;border:1px solid #00f;z-index:1';
@@ -40,15 +41,15 @@ function calcRetailPrice() {
     // 이미지안에 표시되는 체크박스의 속성
     var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
                   + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:#f00';
-  
+
                   imgadd.onchange = function(e){
       var files = e.target.files;
       var fileArr = Array.prototype.slice.call(files)
       for(f of fileArr){
         imageLoader(f);
       }
-    }  
-    
+    }
+
   
     // 탐색기에서 드래그앤 드롭 사용
     attZone.addEventListener('dragenter', function(e){
@@ -103,6 +104,7 @@ function calcRetailPrice() {
       btn.onclick = function(ev){
         var ele = ev.srcElement;
         var delFile = ele.getAttribute('delFile');
+
         for(var i=0 ;i<sel_files.length; i++){
           if(delFile== sel_files[i].name){
             sel_files.splice(i, 1);      
@@ -124,6 +126,9 @@ function calcRetailPrice() {
     }
   }
 )('att_zone', 'img-add')
+
+
+
 // --------------------------------
 function readURL(input) {
   if (input.files && input.files[0]) {
@@ -170,25 +175,30 @@ function toggleBtn(s) {
 
 
 
+
 /*  폼 내보내기   */
 
-const submit = document.querySelector('.purchase');
-function createImgList() {
 
+const submit = document.querySelector('.purchase');
+
+function createImgList() {
+    //multiple file input이 들어있는 폼
     const formData = new FormData(document.querySelector("form"));
     let productImageFiles = new Array();
+    let productImgNames = new Array();
 
     formData.forEach(value => {
         if (value.size !== 0) {
             productImageFiles.push(value); //리스트에 담아주고
+            productImgNames.push(value.name)//파일명 담아줌
         }
-
     });
-
     return productImageFiles;
 }
 
 
+
+//등록하기 ->
 submit.onclick = () => {
     const categorySelects = document.querySelectorAll('.category-select');
     const subSelects = document.querySelectorAll('.sub-select');
@@ -199,6 +209,7 @@ submit.onclick = () => {
     const mainImg = document.querySelector('#main-img-add');
 
     let formData = new FormData();
+
 
     categorySelects.forEach(categorySelect => {
         if (categorySelect.checked) {
@@ -216,15 +227,23 @@ submit.onclick = () => {
     formData.append("retailPrice", retailPrice.value);
     let imgFile = mainImg.files[0];
     if (imgFile.size !== 0){
-        formData.append("mainFile", imgFile);
+        formData.append("mainFile", imgFile, imgFile.name);
     }
+
     let productImgFiles = createImgList();
 
     productImgFiles.forEach(file => {
-       formData.append("files", file);
+       formData.append("files", file, file.name);
     });
 
-request(formData)
+
+
+//update 요청이었다면 update 보내
+if(location.href.includes("modification")){
+    updateRequest(formData)
+}else{
+    request(formData)
+}
 
 
 }
@@ -249,6 +268,45 @@ function request(formData) {
         }
     });
 }
+
+
+function updateRequest (formData){
+
+}
+
+
+
+
+
+//기존 이미지 리스트, 업데이트 된 이미지리스트, 삭제된 이미지리스트
+
+
+
+class ProductRepository {
+    oldImgList;
+    oldImgDeleteList;
+    newImgList;
+    newImgSrcList;
+    updateFormData;
+
+    //setter
+    constructor(responseData) {
+        this.oldImgList = responseData.productImgFiles;
+        this.oldImgDeleteList = new Array();
+        this.newImgList = new Array();
+        this.newImgSrcList = new Array();
+        this.updateFormData = new FormData();
+    }
+}
+
+
+let requestUrl = location.href;
+if(!requestUrl.includes("addition")){
+    window.onload = () => {
+        getInfo(parseInt(requestUrl.substring(requestUrl.lastIndexOf("/") + 1)))
+    }
+}
+
 
 
 

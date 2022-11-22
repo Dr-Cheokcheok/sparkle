@@ -11,7 +11,7 @@
         <result property="temp_name" column="temp_name"></result>
     </resultMap>
 
-    <resultMap id="product_detail" type="com.spakle.spakleclone20221104.domain.ProductDetail">
+    <resultMap id="product_detail" type="com.spakle.spakleclone20221104.domain.product.ProductDetail">
         <result property="id" column="id"></result>
         <result property="category" column="category"></result>
         <result property="group" column="group"></result>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/admin/admin-page.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
@@ -69,118 +70,118 @@
         </div> -->
 
 <!--제목/판매가/배송료/메인사진/상품상세-->
-<section id="content">
-    <section id="content" class="goods_contents view w1260">
-        <div class="clear">
-            <div class="goods-info left">
-                <div class="photo-box" id = "image_container">
-                    <img id = "foo" src="/static/images/img/imgadd.png" alt="상품이미지">
+    <!--<section id="content">-->
+        <section id="content" class="goods_contents view w1260">
+            <div class="clear">
+                <div class="goods-info left">
+                    <div class="photo-box" id = "image_container">
+                        <img id = "foo" src="/static/images/img/imgadd.png" alt="상품이미지">
+                    </div>
                 </div>
-            </div>
-            <div class="goods-info right">
+                <div class="goods-info right">
 
-                            <div class = "prdt-category clear">
+                                <div class = "prdt-category clear">
 
-                                <input id="button1" name ="car" class = "category-select " type ="radio" value = "생수" onclick = "toggleBtn(id)" checked>
-                                <label class="button-label" for="button1">생수</label>
+                                    <input id="button1" name ="car" class = "category-select " type ="radio" value = "생수" onclick = "toggleBtn(id)" checked>
+                                    <label class="button-label" for="button1">생수</label>
 
-                                <input id="button2" name ="car" class = "category-select" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
-                                <label class="button-label" for="button2">탄산</label>
+                                    <input id="button2" name ="car" class = "category-select" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
+                                    <label class="button-label" for="button2">탄산</label>
 
-                                <input id="button3" name = "car" class = "category-select" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
-                                <label class="button-label" for="button3">생수부자재</label>
+                                    <input id="button3" name = "car" class = "category-select" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
+                                    <label class="button-label" for="button3">생수부자재</label>
 
-                                <!-- <a href="javascript:;" class="heart" id="interestBtn"><p>생수</p></a> -->
-                                <!-- <a href="javascript:;" class="heart" id="interestBtn"><p>탄산</p></a>
-                                <a href="javascript:;" class="heart" id="interestBtn"><p>생수부자재</p></a> -->
-                            </div><p></p>
-                            <div class = "prdt-category clear">
-                                <div id = "category_button1">
-                                    <input id="category1" name = "sub_car" class = "-button sub-select" type = "radio" value = "2L">
-                                    <label class="button-label" for = "category1">2L</label>
-                                    <input id="category2" name = "sub_car" class = " sub-select" type = "radio" value = "500mL" >
-                                    <label class="button-label" for = "category2">500mL</label>
-                                    <input id="category3" name = "sub_car" class = " sub-select" type = "radio" value = "330mL" >
-                                    <label class="button-label" for = "category3">330mL</label>
-                                    <input id="category4" name = "sub_car" class = " sub-select" type = "radio" value = "18.9L" >
-                                    <label class="button-label" for = "category4">18.9L</label>
+                                    <!-- <a href="javascript:;" class="heart" id="interestBtn"><p>생수</p></a> -->
+                                    <!-- <a href="javascript:;" class="heart" id="interestBtn"><p>탄산</p></a>
+                                    <a href="javascript:;" class="heart" id="interestBtn"><p>생수부자재</p></a> -->
+                                </div><p></p>
+                                <div class = "prdt-category clear">
+                                    <div id = "category_button1">
+                                        <input id="category1" name = "sub_car" class = "-button sub-select" type = "radio" value = "2L" checked>
+                                        <label class="button-label" for = "category1">2L</label>
+                                        <input id="category2" name = "sub_car" class = " sub-select" type = "radio" value = "500mL" >
+                                        <label class="button-label" for = "category2">500mL</label>
+                                        <input id="category3" name = "sub_car" class = " sub-select" type = "radio" value = "330mL" >
+                                        <label class="button-label" for = "category3">330mL</label>
+                                        <input id="category4" name = "sub_car" class = " sub-select" type = "radio" value = "18.9L" >
+                                        <label class="button-label" for = "category4">18.9L</label>
+                                    </div>
+
+                                    <div id = "category_button2" style = "display: none;">
+                                        <input id="category5" name = "sub_car" class = "select-button sub-select" type = "radio" value = "스파클링">
+                                        <label class="button-label" for = "category5">스파클링</label>
+                                    </div>
+
+                                    <div id = "category_button3" style="display: none;">
+                                        <input id="category6" name = "sub_car" class = "select-button sub-select" type = "radio" value = "냉온수기">
+                                        <label class="button-label" for = "category6">냉온수기</label>
+                                        <input id="category7" name = "sub_car" class = "select-button sub-select" type = "radio" value = "거치대" >
+                                        <label class="button-label" for = "category7">거치대</label>
+                                        <input id="category8" name = "sub_car" class = "select-button sub-select" type = "radio" value = "펌프" >
+                                        <label class="button-label" for = "category8">펌프</label>
+                                    </div>
                                 </div>
 
-                                <div id = "category_button2" style = "display: none;">
-                                    <input id="category5" name = "sub_car" class = "select-button sub-select" type = "radio" value = "스파클링">
-                                    <label class="button-label" for = "category5">스파클링</label>
+                                <p class="name">상품명 :
+                                    <input id = "product_name" type="text" placeholder="상품명을 입력해주세요!!" value = "">
+                                </p>
+
+                                <div class="info-list-box">
+                                    <dl class="info-list clear">
+                                        <dt>원가 :
+                                            <input id = "price" type = "text" placeholder="원가를 입력해주세요!!" value = "">원
+                                        </dt>
+                                        <dt>할인율 :
+                                            <input id = "rate" type = "text" placeholder="할인율을 입력해주세요!!" value = "">%
+                                        </dt>
+                                        <dt>판매가 :
+                                            <input id = "retail-price" type = "text" placeholder="판매가를 입력해주세요!!" value = "">원
+                                        </dt>
+                                    </dl>
+                                    <dl class="info-list clear">
+                                        <dt>배송 :</dt>
+                                        <dd>무료배송</dd>
+                                    </dl>
                                 </div>
 
-                                <div id = "category_button3" style="display: none;">
-                                    <input id="category6" name = "sub_car" class = "select-button sub-select" type = "radio" value = "냉온수기">
-                                    <label class="button-label" for = "category6">냉온수기</label>
-                                    <input id="category7" name = "sub_car" class = "select-button sub-select" type = "radio" value = "거치대" >
-                                    <label class="button-label" for = "category7">거치대</label>
-                                    <input id="category8" name = "sub_car" class = "select-button sub-select" type = "radio" value = "펌프" >
-                                    <label class="button-label" for = "category8">펌프</label>
-                                </div>
-                            </div>
 
-                            <p class="name">상품명 : 
-                                <input id = "product_name" type="text" placeholder="상품명을 입력해주세요!!" value = "">
-                            </p>
-
-                            <div class="info-list-box">
-                                <dl class="info-list clear">
-                                    <dt>원가 :
-                                        <input id = "price" type = "text" placeholder="원가를 입력해주세요!!" value = "">원
-                                    </dt>
-                                    <dt>할인율 :
-                                        <input id = "rate" type = "text" placeholder="할인율을 입력해주세요!!" value = "">%
-                                    </dt>
-                                    <dt>판매가 :
-                                        <input id = "retail-price" type = "text" placeholder="판매가를 입력해주세요!!" value = "">원
-                                    </dt>
-                                </dl>
-                                <dl class="info-list clear">
-                                    <dt>배송 :</dt>
-                                    <dd>무료배송</dd>
-                                </dl>
-                            </div>
-
-
-                        <div class="btn-box clear">
-                            <label class ="input-file-button" for="main-img-add">
-                                메인이미지 등록
-                            </label>
-                            <input id = "main-img-add" type = "file" name="mainFile" style="display: none;"
-                            onchange="loadFile(this)"/>
-
-                            <form>
-                                <label class ="input-file-button" for="img-add">
-                                    상세이미지 등록
+                            <div class="btn-box clear">
+                                <label class ="input-file-button" for="main-img-add">
+                                    메인이미지 등록
                                 </label>
-                                <input id = "img-add" type = "file" name="file" multiple ="multiple" style="display: none;"/>
-                            </form>
-                            
-                            <a href="javascript:;" class="purchase" id="buyBtn">상품 등록</a>
+                                <input id = "main-img-add" type = "file" name="mainFile" style="display: none;"
+                                onchange="loadFile(this)"/>
+
+                                <form>
+                                    <label class ="input-file-button" for="img-add">
+                                        상세이미지 등록
+                                    </label>
+                                    <input id = "img-add" type = "file" name="file" multiple ="multiple" style="display: none;"/>
+                                </form>
+
+                                <a href="javascript:;" class="purchase" id="buyBtn">상품 등록</a>
+                            </div>
+
+
                         </div>
 
+                </div>
+            </div>
+            <div class="goods-cont" id="app">
+                <!-- <ul class="tab-btn clear">
+                    <li><a>상품상세 이미지</a></li>
+                </ul> -->
+                <div class="tab-btn clear">
+                    <a>상품상세 이미지</a>
+                </div>
 
-                    </div>
-
+                <div class="tab-detail">
+                    <div id="att-zone" data-placeholder="파일을 첨부 하려면 파일 선택 버튼을 클릭"></div>
+                </div>
             </div>
-        </div>
-        <div class="goods-cont" id="app">
-            <!-- <ul class="tab-btn clear">
-                <li><a>상품상세 이미지</a></li>
-            </ul> -->
-            <div class="tab-btn clear">
-                <a>상품상세 이미지</a>
-            </div>
-            
-            <div class="tab-detail">
-                <div id="att_zone" data-placeholder="파일을 첨부 하려면 파일 선택 버튼을 클릭"></div>
-            </div>
-        </div>
-    </section>
-</section>   
-     <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+        </section>
+    <!--</section>   -->
+         <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
 
     <script type="text/javascript" src="/static/js/admin/admin-page.js"></script> 

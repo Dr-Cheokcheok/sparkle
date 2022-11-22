@@ -5,14 +5,14 @@
 <mapper namespace="com.spakle.spakleclone20221104.repository.ProductRepository">
 
 
-    <resultMap id="product_img_file" type="com.spakle.spakleclone20221104.domain.product.ProductImgFile">
+    <resultMap id="product_img_files" type="com.spakle.spakleclone20221104.domain.product.ProductImgFile">
         <result property="id" column="id"></result>
         <result property="product_id" column="product_id"></result>
         <result property="origin_name" column="origin_name"></result>
         <result property="temp_name" column="temp_name"></result>
     </resultMap>
 
-    <resultMap id="product_detail" type="com.spakle.spakleclone20221104.domain.ProductDetail">
+    <resultMap id="product_detail" type="com.spakle.spakleclone20221104.domain.product.ProductDetail">
         <result property="id" column="id"></result>
         <result property="category" column="category"></result>
         <result property="group" column="group"></result>
@@ -22,7 +22,7 @@
         <result property="retailPrice" column="retail_price"></result>
         <result property="img" column="img"></result>
 
-        <collection property="productImgFiles" javaType="list" resultMap="product_img_file"></collection>
+        <collection property="productImgFiles" javaType="list" resultMap="product_img_files"></collection>
     </resultMap>
 
 
@@ -34,6 +34,8 @@
         <result property="retail_price" column="retail_price"></result>
         <result property="img" column="img"></result>
     </resultMap>
+
+
 
     <insert
             id="saveProduct"
@@ -58,6 +60,7 @@
             )
 
     </insert>
+
     <insert id="saveImgFiles"
             parameterType="java.util.List">
         insert into
@@ -75,6 +78,69 @@
         </foreach>
 
     </insert>
+
+    <select id="getProductDtl" parameterType="int" resultMap="product_detail">
+        SELECT
+            pm.id,
+            pm.category,
+            pm.`group`,
+            pm.name,
+            pm.price,
+            pm.rate,
+            pm.retail_price,
+            pm.img,
+            pim.id,
+            pim.origin_name,
+            pim.temp_name
+        FROM
+            product pm
+            LEFT OUTER JOIN product_img pim ON(pim.product_id = pm.id)
+        WHERE
+            pm.id = #{id}
+    </select>
+
+    <update id="setProduct" parameterType="com.spakle.spakleclone20221104.domain.product.Product">
+        update
+            product
+        set
+            category = #{category},
+            `group` = #{group},
+            name = #{name},
+            price = #{price},
+            rate = #{rate},
+            retail_price = #{retail_price},
+            img = #{img},
+            update_date = now()
+        where
+            id = #{id}
+
+    </update>
+
+    <delete id="deleteImgFiles" parameterType="java.util.HashMap">
+        delete
+        from
+            product_img
+        where
+            product_id = #{productId}
+        and temp_name in
+        <foreach collection="deleteImgFiles" item="temp_name" open="(" separator="," close=")">
+            #{temp_name}
+        </foreach>
+    </delete>
+
+    <select id="getProductImgList" parameterType="Integer" resultMap="product_img_files">
+        select
+            id,
+            product_id,
+            origin_name,
+            temp_name
+        from
+            product_img
+        where
+            product_id = #{productId}
+    </select>
+
+
     <select id="getProductInquiry"
             resultMap="Product">
 
@@ -94,33 +160,4 @@
 
     </select>
 
-
-    <update id="updateProduct"
-            parameterType="int"
-            >
-
-    </update>
-
-    <select id="getProduct"
-            parameterType="int"
-            resultMap="product_detail">
-        SELECT
-            pm.id,
-            pm.category,
-            pm.`group`,
-            pm.name,
-            pm.price,
-            pm.rate,
-            pm.retail_price,
-            pm.img,
-            pim.id,
-            pim.origin_name,
-            pim.temp_name
-        FROM
-            product pm
-            LEFT OUTER JOIN product_img pim ON(pim.product_id = pm.id)
-        WHERE
-            pm.id = #{id}
-
-    </select>
 </mapper>

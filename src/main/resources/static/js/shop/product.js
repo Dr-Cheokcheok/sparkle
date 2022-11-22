@@ -56,23 +56,6 @@ products.forEach(product => {
 });
 
 
-/* 모르겠음 상품 개수에 따른 금액 변동  */
-
-
-function quantityCalc() {
-    let quantityInput = document.querySelector('#quantity');
-    const calPrice = parseInt(document.querySelector('#calPrice').value);
-    let calTotalPrice = document.querySelector('.cal-total-price')
-
-    calTotalPrice.innerText = calPrice;
-    quantityInput.onchange = () =>{
-        let quantityNum = parseInt(quantityInput.value);
-
-        calTotalPrice.innerText = quantityNum * calPrice;
-        quantityCalc();
-    }
-}
-
 
 /* DB에서 데이터 받아오기 */
 
@@ -89,12 +72,12 @@ class ProductApi {
     getProduct() {
         let responseData = null;
         const uri = location.href;
-        const groupId = uri.substring(uri.lastIndexOf("/") + 1);
+        const productId = uri.substring(uri.lastIndexOf("/") + 1);
 
         $.ajax({
             async: false,
             type: "get",
-            url: "/api/product/" + groupId,
+            url: "/api/product/" + productId,
             dataType: "json",
             success: (response) => {
                 responseData = response.data;
@@ -181,7 +164,7 @@ class ProductDetailService {
         </dl>
         <dl class="info-list clear">
             <dt>할인받은 금액</dt>
-            <dd class="blue spoqa"> ${responseData.price - responseData.retailPrice} (${responseData.rate}%)</dd>
+            <dd class="blue spoqa"> ${responseData.price - responseData.retailPrice}원 (${responseData.rate}%)</dd>
         </dl>
         <dl class="info-list clear">
             <dt>배송</dt>

@@ -2,6 +2,7 @@ package com.spakle.spakleclone20221104.controller.admin.api;
 
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
+import com.spakle.spakleclone20221104.dto.product.ProductModificationReqDto;
 import com.spakle.spakleclone20221104.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,14 +26,22 @@ public class ProductApi {
     }
 
 
-    @GetMapping("/{productId}")
-    public ResponseEntity<?> getProduct(@PathVariable String ProdcutId) throws Exception{
+    @PostMapping("/product/modification")
+    public ResponseEntity<?> getModification(ProductModificationReqDto productModificationReqDto) throws Exception{
 
         return ResponseEntity
                 .created(null)
-                .body(new CMRespDto<>(1, "Successfully", productService));
+                .body(new CMRespDto<>(1, "Successfully", productService.updateProduct(productModificationReqDto)));
     }
 
+    @GetMapping("/{productId}")
+    public ResponseEntity<?> getDtl(@PathVariable int productId)throws Exception{
+        return ResponseEntity
+                .created(null)
+                .body(new CMRespDto<>(1, "Successfully", productService.getProductDtl(productId)));
+    }
+
+    //관리자 페이지 상품리스트 조회
     @GetMapping("/inquiry/{category}")
     public ResponseEntity<?> getInquiry(@PathVariable String category) throws Exception {
         log.info("{}", productService.getProducts(category));

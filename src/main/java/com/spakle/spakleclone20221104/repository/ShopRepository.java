@@ -1,7 +1,7 @@
 package com.spakle.spakleclone20221104.repository;
 
 import com.spakle.spakleclone20221104.domain.CollectionProduct;
-import com.spakle.spakleclone20221104.domain.ProductDetail;
+import com.spakle.spakleclone20221104.domain.product.ProductDetail;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

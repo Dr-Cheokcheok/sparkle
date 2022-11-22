@@ -4,12 +4,12 @@ import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
 @Data
-public class ProductModificationRespDto {
-
+public class ProductDtlRespDto {
     private int id;
     private String category;
     private String group;
@@ -18,6 +18,9 @@ public class ProductModificationRespDto {
     private int rate;
     private int retailPrice;
     private String img;
-    private List<ProductImgFile> imgFiles;
+
+    private List<ProductImgFile> productImgFiles;
+
+    private LocalDateTime updateDate;
 
 }

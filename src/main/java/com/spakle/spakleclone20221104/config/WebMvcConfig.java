@@ -17,14 +17,14 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-    @Value("C:/spakle/spakleCloneProject/upload/")
+    @Value("${file.path}")
     private String filePath;
 
     @Override//정적 리소스 관리 - 정적 파일들의 경로 잡아줌 - 어느 경로가 들어왔을때 어떻게 매핑해줄건지
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
         registry.addResourceHandler("image/**") //이주소
-                .addResourceLocations("file:///" + filePath)//- 파일프로토콜 (최상위경로부터)  + filepath
+                .addResourceLocations("file:///" + filePath )//- 파일프로토콜 (최상위경로부터)  + filepath
                 .setCachePeriod(60*60)//유지 (초)
                 .resourceChain(true)//뭐지
 

@@ -1,9 +1,11 @@
 package com.spakle.spakleclone20221104.dto.shop;
 
+import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -19,4 +21,7 @@ public class ProductDetailRespDto {
     private String img;
 
     private List<String> productImgFiles;
+
+    private LocalDateTime updateDate;
+
 }

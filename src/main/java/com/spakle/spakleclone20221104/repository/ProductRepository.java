@@ -1,8 +1,9 @@
 package com.spakle.spakleclone20221104.repository;
 
-import com.spakle.spakleclone20221104.domain.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.Product;
+import com.spakle.spakleclone20221104.domain.product.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
+import groovyjarjarantlr4.v4.codegen.model.ExceptionClause;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -15,9 +16,11 @@ public interface ProductRepository {
     public int saveProduct(Product product) throws Exception;
     public int saveImgFiles(List<ProductImgFile> productImgFiles) throws Exception;
 
-    public boolean updateProduct(int productId) throws Exception;
-    public ProductDetail getProduct(int id) throws Exception;
+    public ProductDetail getProductDtl(int productId) throws Exception;
+    public int setProduct(Product product) throws Exception;
+    public int deleteImgFiles(Map<String, Object> map) throws Exception;
 
+    public List<ProductImgFile> getProductImgList(int productId) throws Exception;
     public List<Product> getProductInquiry(Map<String, Object> map) throws Exception;
 
 }
