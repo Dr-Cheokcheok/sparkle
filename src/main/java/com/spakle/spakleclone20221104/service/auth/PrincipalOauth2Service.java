@@ -56,7 +56,7 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
         oauth2_id = provider + "_" + id;
         username = (String) response.get("username");
 
-        user = accountRepository.findUserByUsername(username);
+        user = accountRepository.findUserByUsername(id);
         if (user == null) {
             user = User.builder()
                     .username(id)
