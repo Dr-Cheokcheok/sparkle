@@ -22,6 +22,7 @@ public class ProductModificationReqDto {
 
     private String mainPath; //메인이미지 temp_name으로 만들어서 set
 
+    private String deleteMainImg;           //지운 메인이미지
     private List<String> deleteImgFiles; //지운 파일<이름>
     private List<MultipartFile> files;  //추가한 파일리스트<파일>
 

@@ -245,9 +245,6 @@ function addProductImgDeleteEvent(productRepository) {
     })
 }
 
-
-
-
 class ProductRepository {
     oldMainImg;
     newMainImg;
@@ -256,7 +253,6 @@ class ProductRepository {
     newImgList;
     newImgSrcList;
     updateFormData;
-
 
     constructor(responseData) {
         this.oldMainImg = responseData.img; //temp_name
@@ -296,10 +292,12 @@ class ProductRepository {
         this.updateFormData.append("rate", rate.value);
         this.updateFormData.append("retailPrice", retailPrice.value);
 
+        //mainImgInput에 새로운 값이 있으면
         if(mainImgInput.files.length !== 0 ){
-            this.updateFormData.append("img", mainImgInput.files[0]);
+            this.updateFormData.append("img", mainImgInput.files[0]); //변화있으면 img가 들어옴
+            this.updateFormData.append("deleteMainImg", this.oldMainImg);
         }else {
-            this.updateFormData.append("mainPath", this.oldMainImg);
+            this.updateFormData.append("mainPath", this.oldMainImg);//변화 없으면 mainPath가 들어옴
         }
 
         this.oldImgDeleteList.forEach(deleteImgFile => {

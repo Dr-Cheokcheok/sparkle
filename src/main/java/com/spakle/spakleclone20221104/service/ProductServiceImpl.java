@@ -131,43 +131,44 @@ public class ProductServiceImpl implements ProductService{
         });
 
         return productList;
-
     }
 
     @Override
     public boolean updateProduct(ProductModificationReqDto productModificationReqDto) throws Exception {
         boolean status = false;
-        //dto to Entity 해서 Product 객체 update 쿼리로
+        int id = productModificationReqDto.getId();
 
-        //db업데이트하기 전에 modificationdto에 mainPath 넣어주기
-
+        //새로운 메인이미지가 있으면 db업데이트하기 전에 modificationdto에 mainPath 넣어주기, 기존 이미지 삭제하기
         if(productModificationReqDto.getImg() != null){
             MultipartFile mainFile= productModificationReqDto.getImg();
             productModificationReqDto.setMainPath(getMainImgPath(mainFile));
         }
         int result = productRepository.setProduct(productModificationReqDto.toProductEntity());
 
-
         //업데이트 건수가 0이 아니면
         if(result != 0){
             status = true;
             boolean insertStatus = true;
             boolean deleteStatus = true;
-            //만약 업데이트한 파일이 있으면?
+            boolean deleteStatus2 = true;
+
+                //만약 업데이트한 파일이 있으면?
             if(productModificationReqDto.getFiles() != null){
-                //dto의 files와 product_id 가져와
-                insertStatus = insertProductImg(productModificationReqDto.getFiles(), productModificationReqDto.getId());
-                //db에 insert 잘 됐으면 true
-            }
+                insertStatus = insertProductImg(productModificationReqDto.getFiles(),id);
+            }   //deleteImg 있으면?
             if(productModificationReqDto.getDeleteImgFiles() != null){
-                //dto의 deleteFiles와 product_id 가져와
-                deleteStatus = deleteProductImg(productModificationReqDto.getDeleteImgFiles(), productModificationReqDto.getId());
+                deleteStatus = deleteProductImg(productModificationReqDto.getDeleteImgFiles(), id, 0);
+            }   //deleteMainImg 있으면?
+            if(productModificationReqDto.getDeleteMainImg() != null){
+                deleteStatus2 = deleteMainImg(productModificationReqDto.getDeleteMainImg(), id, 1);
             }
-            status = status && insertStatus && deleteStatus;
+
+            status = status && insertStatus && deleteStatus &&deleteStatus2;
 
             if(status == false){
                 log.info("insert status: " + insertStatus);
                 log.info("delete status: " + deleteStatus);
+                log.info("delete status2: " + deleteStatus2);
 
                 throw new CustomInternalServerErrorException("상품 수정 오류");
             }
@@ -196,22 +197,27 @@ public class ProductServiceImpl implements ProductService{
 
 
     private boolean insertProductImg(List<MultipartFile> files, int productId) throws Exception {
-        boolean status = false;
-
         List<ProductImgFile> productImgFiles = getProductImgFiles(files,productId);
-
 
         return productRepository.saveImgFiles(productImgFiles) > 0; //insert된 개수가 0 보다 크면 true
     }
 
-    private boolean deleteProductImg(List<String> deleteImgFiles, int productId) throws Exception{
+    private boolean deleteMainImg(String deleteMainImg, int productId, int trigger)throws Exception{
+        List<String> deleteImgFile = new ArrayList<>();
+        deleteImgFile.add(deleteMainImg);
+        return deleteProductImg(deleteImgFile, productId, trigger);
+    }
+    private boolean deleteProductImg(List<String> deleteImgFiles, int productId, int trigger) throws Exception{
         boolean status = false;
-
+        int result = 1;
         Map<String , Object> map = new HashMap<>();
         map.put("productId", productId);
         map.put("deleteImgFiles", deleteImgFiles);
 
-        int result = productRepository.deleteImgFiles(map);
+        if(trigger == 0) {
+            result = productRepository.deleteImgFiles(map);
+        }
+
 
         //delete 건수가 0이 아니면!
         if(result != 0){
