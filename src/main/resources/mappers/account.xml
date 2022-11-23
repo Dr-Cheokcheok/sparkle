@@ -5,6 +5,7 @@
 <mapper namespace="com.spakle.spakleclone20221104.repository.AccountRepository">
     <resultMap id="user" type="com.spakle.spakleclone20221104.domain.User">
         <result property="id" column="id"></result>
+        <result property="username" column="username"></result>
         <result property="password" column="password"></result>
         <result property="role" column="role"></result>
         <result property="name" column="name"></result>
@@ -17,13 +18,18 @@
         <result property="update_date" column="update_date"></result>
     </resultMap>
 
+<!--    <resultMap id="ChkId" type="com.spakle.spakleclone20221104.domain.ChkId">-->
+<!--        <result property="id" column="id"></result>-->
+<!--    </resultMap>-->
+
     <insert id="save" parameterType="com.spakle.spakleclone20221104.domain.User">
         insert into
             user_mst
         values (
             #{id},
+            #{username},
             #{password},
-            'USER',
+            'ROLE_USER',
             #{name},
             #{phone},
             #{post_code},

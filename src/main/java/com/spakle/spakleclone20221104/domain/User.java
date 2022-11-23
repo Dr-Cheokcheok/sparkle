@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 public class User {
-    private String id;
+    private int id;
+    private String username;
     private String password;
     private String role;
     private String name;

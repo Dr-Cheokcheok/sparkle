@@ -41,7 +41,7 @@ public class AccountApi {
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",registerReqDto));
     }
 
-    @GetMapping("/checkid")
+    @PostMapping("/checkid")
     public int overlappedID(@RequestBody ChkIdDto chkIdDto) throws Exception{
         int result = accountService.overlappedID(chkIdDto); // 중복확인한 값을 int로 받음
         return result;

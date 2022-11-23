@@ -15,7 +15,6 @@ public class ChkIdDto {
     public ChkId toUserEntity() {
         return ChkId.builder()
                 .id(id)
-
                 .build();
     }
 }

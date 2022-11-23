@@ -1,5 +1,6 @@
 package com.spakle.spakleclone20221104.service;
 
+import com.spakle.spakleclone20221104.domain.ChkId;
 import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
@@ -29,9 +30,11 @@ public class AccountServicelmpl implements AccountService {
 //
 //        return true;
 //    }
-
+    @Override
     public int overlappedID(ChkIdDto chkIdDto) throws Exception{
-        int result = accountRepository.overlappedID(chkIdDto.toUserEntity());
+        ChkId userEntity = chkIdDto.toUserEntity();
+        int result = accountRepository.overlappedID(userEntity);
+//        int result = accountRepository.overlappedID(chkIdDto.toUserEntity());
         return result;
     }
 
