@@ -62,7 +62,7 @@ products.forEach(product => {
 function quantityCalc() {
     let quantityInput = document.querySelector('#quantity');
     const calPrice = parseInt(document.querySelector('#calPrice').value);
-    let calTotalPrice = document.querySelector('.cal-total-price')
+    let calTotalPrice = document.querySelector('.cal-total-price');
 
     calTotalPrice.innerText = calPrice;
     quantityInput.onchange = () =>{
@@ -175,7 +175,7 @@ class ProductDetailService {
             productPrice.innerHTML += `
             <dl class="info-list clear">
                 <dt>판매가</dt>
-                <dd class="bold spoqa">${responseData.retailPrice}원</dd>
+                <dd class="bold spoqa">${priceToString(responseData.retailPrice)}원</dd>
             </dl>
             <dl class="info-list clear">
                 <dt>배송</dt>
@@ -187,15 +187,15 @@ class ProductDetailService {
             productPrice.innerHTML += `
             <dl class="info-list clear">
                 <dt class="gray">정가</dt>
-                <dd class="gray under">${responseData.price}원</dd>
+                <dd class="gray under">${priceToString(responseData.price)}원</dd>
             </dl>
             <dl class="info-list clear">
                 <dt>판매가</dt>
-                <dd class="bold spoqa">${responseData.retailPrice}원</dd>
+                <dd class="bold spoqa">${priceToString(responseData.retailPrice)}원</dd>
             </dl>
             <dl class="info-list clear">
                 <dt>할인받은 금액</dt>
-                <dd class="blue spoqa"> ${responseData.price - responseData.retailPrice} (${responseData.rate}%)</dd>
+                <dd class="blue spoqa"> ${priceToString(responseData.price - responseData.retailPrice)} (${responseData.rate}%)</dd>
             </dl>
             <dl class="info-list clear">
                 <dt>배송</dt>
@@ -217,6 +217,11 @@ class ProductDetailService {
         `;
     }
 }
+
+function priceToString(price) {
+  
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
 
 window.onload = () => {
     ProductDetailService.getInstance().loadProductDetail();
