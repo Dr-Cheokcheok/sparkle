@@ -34,7 +34,6 @@ public class RegisterReqDto {
         return User.builder()
                 .username(id)
                 .password(new BCryptPasswordEncoder().encode(password))
-                .role_id(1)
                 .name(name)
                 .phone(phone)
                 .post_code(post_code)

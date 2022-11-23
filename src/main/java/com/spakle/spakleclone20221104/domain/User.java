@@ -17,8 +17,7 @@ public class User {
     private String oauth_username;
     private String password;
     private String name;
-    private Role role;
-    private int role_id;
+    private String role;
     private String provider;
     private int phone;
     private String post_code;
@@ -27,6 +26,4 @@ public class User {
     private int event_sosick;
     private LocalDateTime create_date;
     private LocalDateTime update_date;
-
-
 }

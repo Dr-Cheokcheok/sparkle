@@ -19,7 +19,7 @@ $(function () {
         setMessage($el, msg, "#09f")
     };
 
-    $usernameInput.on('key up', function () {
+    $usernameInput.on('keyup', function () {
         var username = $usernameInput.val().trim();
 
         if (username === "") {
@@ -39,7 +39,7 @@ $(function () {
     var $pwConfirmInput = $("#registerPwConfirmInput");
     var $pwConfirmMessage = $("#registerPwConfirmMessage");
 
-    $passwordInput.key up(function () {
+    $passwordInput.keyup(function () {
         var password = $(this).val().toString().trim();
 
         if (password === "") {
@@ -52,10 +52,10 @@ $(function () {
             okMessage($passwordMessage, "사용 가능한 비밀번호입니다.")
         }
 
-        $pwConfirmInput.key up()
+        $pwConfirmInput.keyup()
     });
 
-    $pwConfirmInput.key up(function () {
+    $pwConfirmInput.keyup(function () {
         var password = $passwordInput.val().toString().trim();
         var pwConfirm = $(this).val().toString().trim();
 
@@ -72,7 +72,7 @@ $(function () {
     var $postcodeInput = $("#postCode");
     var $postcodeMessage = $("#registerPostcodeMessage");
 
-    $postcodeInput.key up(function () {
+    $postcodeInput.keyup(function () {
         var postcode = $postcodeInput.val().trim();
 
         if (postcode === "") {

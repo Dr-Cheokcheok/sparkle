@@ -63,7 +63,6 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
                     .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString().replaceAll("-", "")))
                     .name((String) response.get("name"))
                     .id(id)
-                    .role_id(1)
                     .provider(provider)
                     .build();
 

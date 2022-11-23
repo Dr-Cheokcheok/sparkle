@@ -4,28 +4,6 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spakle.spakleclone20221104.repository.AccountRepository">
-    <resultMap id="role" type="com.spakle.spakleclone20221104.domain.Role">
-        <result property="username" column="username"></result>
-        <result property="role" column="role"></result>
-        <result property="role_name" column="role_name"></result>
-    </resultMap>
-
-    <resultMap id="user" type="com.spakle.spakleclone20221104.domain.User">
-        <result property="id" column="id"></result>
-        <result property="password" column="password"></result>
-        <result property="username" column="username"></result>
-        <result property="oauth_name" column="oauth_name"></result>
-        <result property="name" column="name"></result>
-        <result property="phone" column="phone"></result>
-        <result property="post_code" column="post_code"></result>
-        <result property="address" column="address"></result>
-        <result property="detail_address" column="detail_address"></result>
-        <result property="event_sosick" column="event_sosick"></result>
-        <result property="create_date" column="create_date"></result>
-        <result property="update_date" column="update_date"></result>
-        <collection property="role" column="role"></collection>
-    </resultMap>
-
     <insert id="save"
             parameterType="com.spakle.spakleclone20221104.domain.User"
             useGeneratedKeys="true"
@@ -48,30 +26,26 @@
         )
     </insert>
 
-    <select id="findUserById" parameterType="String" resultMap="user">
+    <select id="findUserByUsername" parameterType="String" resultType="com.spakle.spakleclone20221104.domain.User">
         select
-            um.id,
-            um.password,
-            um.role_id,
+            id,
+            username,
+            password,
+            role,
 
-            rm.role,
-            rm.role_name,
+            name,
+            phone,
+            post_code,
+            address,
+            detail_address,
+            event_sosick,
 
-            um.name,
-            um.phone,
-            um.post_code,
-            um.address,
-            um.detail_address,
-            um.event_sosick,
-
-            um.create_date,
-            um.update_date,
-            um.provider
+            create_date,
+            update_date
         from
-            user_mst um
-            left outer join role_mst rm on(rm.username = um.role_username)
+            user_mst
         where
-            um.email = #{email}
+            username = #{username}
     </select>
 
 </mapper>
