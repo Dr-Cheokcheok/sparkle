@@ -156,7 +156,6 @@ function priceToString(price) {
 }
 
 
-
 window.onload = () => {
   checkCategory();
 }

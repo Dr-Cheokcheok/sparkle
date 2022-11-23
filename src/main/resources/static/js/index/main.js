@@ -281,37 +281,45 @@ function reload(input){
       }
     });
 
-    const outer4 = document.querySelector(".con-box");
-    const innerList4 = document.querySelector(".products");
-    const inners4 = document.querySelectorAll(".product");
-    const buttonLeft3 = document.querySelector(".slick-prev.prd");
-    const buttonRight3 = document.querySelector(".slick-next.prd");
-    let currentIndex4 = 0;
-  
-    if(inners4.length < 4) {
-        buttonLeft3.style.display = "none";
-        buttonRight3.style.display = "none";
-
-      }else {
-        innerList4.style.width = `${outer4.clientWidth * inners4.length / 4}px`
-  
-        buttonLeft3.addEventListener('click', () => {
-          currentIndex4--;
-          currentIndex4 = currentIndex4 < 0 ? 0 : currentIndex4;
-  
-          innerList4.style.marginLeft = `-${outer4.clientWidth * currentIndex4}px`;
+    $(function() {
+        $('.products').slick({
+          dots: false,
+          infinite: false,
+          speed: 300,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: false
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+          ]
         });
-  
-        buttonRight3.addEventListener('click', () => {
-          currentIndex4++;
-          currentIndex4 = currentIndex4 >= inners4.length ? inners4.length - 1 : currentIndex;
-  
-          innerList4.style.marginLeft = `-${outer4.clientWidth * currentIndex4}px`;
-        });
-        }
+    });
 
   }
-
 
 
 }
