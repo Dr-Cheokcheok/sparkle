@@ -112,6 +112,15 @@ class AdminInquiryService {
         });
 
         const deleteButtons = document.querySelectorAll(".delete-button");
+        const correctionBtns = document.querySelectorAll(".correction-button");
+
+        correctionBtns.forEach((correction, index) => {
+            correction.onclick = () => {
+                if(confirm("상품을 수정하시겠습니까?")){
+                location.href = "/admin/product/" + responseData[index].id
+                }
+            }
+        });
 
         deleteButtons.forEach((deleteButton, index) => {
 

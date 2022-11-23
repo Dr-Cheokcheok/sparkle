@@ -195,7 +195,6 @@ public class ProductServiceImpl implements ProductService{
     }
 
 
-
     private boolean insertProductImg(List<MultipartFile> files, int productId) throws Exception {
         List<ProductImgFile> productImgFiles = getProductImgFiles(files,productId);
 
@@ -249,6 +248,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public boolean deleteProduct(int productId) throws Exception {
         List<ProductImgFile> productImgFiles = productRepository.getProductImgList(productId);
+        deleteMainImg(productRepository.getProductDtl(productId).getImg(),productId, 1);
 
         if(productRepository.deleteProduct(productId) > 0) {
             productImgFiles.forEach(productImgFile -> {
@@ -259,6 +259,8 @@ public class ProductServiceImpl implements ProductService{
                     file.delete();
                 }
             });
+
+
             return true;
         }
         return false;
