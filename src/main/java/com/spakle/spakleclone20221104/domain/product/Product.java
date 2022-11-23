@@ -26,6 +26,8 @@ public class Product {
     private LocalDateTime create_date;
     private LocalDateTime update_date;
 
+    List<ProductImgFile> productImgFiles;
+
     public ProductListRespDto toRespDto(){
         return ProductListRespDto.builder()
                 .id(id)
@@ -36,6 +38,8 @@ public class Product {
                 .rate(rate) //할인 안하는 상품이면 0이 들어옴
                 .retailPrice(retail_price)
                 .img(img)
+                .createDate(create_date)
+                .updateDate(update_date)
                 .build();
     }
 

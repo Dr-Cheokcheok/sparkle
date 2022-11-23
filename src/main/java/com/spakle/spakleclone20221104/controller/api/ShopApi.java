@@ -1,7 +1,6 @@
 package com.spakle.spakleclone20221104.controller.api;
 
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
-import com.spakle.spakleclone20221104.service.ProductService;
 import com.spakle.spakleclone20221104.service.ShopService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

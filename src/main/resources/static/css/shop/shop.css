@@ -185,7 +185,7 @@
   .product{
     width: 24%;
 
-    margin: 0 15px 60px 0;
+    margin: 0 10px 60px 0;
     float: left;
     display: flex;
     flex-direction: column;
@@ -248,6 +248,7 @@
   
   /* list의 text 설정 여기서*/
   .product-text{
+    width: 100%;
     margin-top: 21px;
   }
   .product-text a{

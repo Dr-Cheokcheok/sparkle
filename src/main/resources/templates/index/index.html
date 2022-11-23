@@ -187,7 +187,7 @@
                   <div class="md-tab">
                     <!--- 클릭시 on 추가 버튼 인덱스 = categoryList 인덱스 -->
 
-                      <input id="button1" name ="car" class = "category-btn" type ="radio" value = "생수" onclick = "toggleBtn(id)" checked>
+                      <input id="button1" name ="car" class = "category-btn" type ="radio" value = "생수" onclick = "toggleBtn(id)"checked>
                       <label class="button-label" for="button1"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></label>
 
                       <input id="button2" name ="car" class = "category-btn" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
@@ -200,9 +200,9 @@
                   
                     <!--- group 버튼. li 지우고 js에서 group 별로 뿌리기 -->
                   <div class="tab-sub-btn">
-                    <form>
+
                       <div id = "category_button1">
-                          <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L" checked>
+                          <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L">
                           <label class="sub-button-label" for = "category1">2L</label>
                           <input id="category2" name = "sub_car" class = "sub-btn" type = "radio" value = "500mL" >
                           <label class="sub-button-label" for = "category2">500mL</label>
@@ -211,14 +211,13 @@
                           <input id="category4" name = "sub_car" class = "sub-btn" type = "radio" value = "18.9L" >
                           <label class="sub-button-label" for = "category4">18.9L</label>
                       </div>
-                    </form>
-                    <form>
+
+
                       <div id = "category_button2" style = "display: none;">
                           <input id="category5" name = "sub_car" class = "sub-btn" type = "radio" value = "스파클링">
                           <label class="sub-button-label" for = "category5">스파클링</label>
                       </div>
-                    </form>
-                    <form>
+
                       <div id = "category_button3" style="display: none;">
                           <input id="category6" name = "sub_car" class = "sub-btn" type = "radio" value = "냉온수기">
                           <label class="sub-button-label" for = "category6">냉온수기</label>
@@ -227,7 +226,7 @@
                           <input id="category8" name = "sub_car" class = "sub-btn" type = "radio" value = "펌프" >
                           <label class="sub-button-label" for = "category8">펌프</label>
                       </div>
-                    </form>
+
 
                   </div>
 
@@ -235,133 +234,12 @@
                   <!-- product 가져와서 뿌리기  -->
                   <div class="md-contents m-product2">
                     <div class="con-box">
-                    <!-- product 가져와서 뿌리기  생수 = product1 -->
-                        <div class="product1">
-                            <ul class="products">
-                                <!--- 첫 카테고리의 첫 그룹의 item들  -->
-                                <li class="product">
-                                    <figure>
-                                        <a href="/product/1">
-                                            <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                        </a>
-                                        <div class="time-icon">
-                                            <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                            <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-text">
-                                        <a href="/product/1">스파클 2L 24병</a>
-                                        <p class="price spoqa">
-                                            <span class="blue">25%</span>
-                                            14,900원
-                                            <span class="gray spoqa">20,000원</span>
-                                        </p>
-                                    </div>
-                                    </li>
-                                <li class="product">
-                                    <figure>
-                                        <a href="/product/1">
-                                            <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                        </a>
-                                        <div class="time-icon">
-                                            <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                            <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-text">
-                                        <a href="/product/1">스파클 2L 24병</a>
-                                        <p class="price spoqa">
-                                            <span class="blue">25%</span>
-                                            14,900원
-                                            <span class="gray spoqa">20,000원</span>
-                                        </p>
-                                    </div>
-                                    </li>
-                                <li class="product">
-                                    <figure>
-                                        <a href="/product/1">
-                                            <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                        </a>
-                                        <div class="time-icon">
-                                            <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                            <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-text">
-                                        <a href="/product/1">스파클 2L 24병</a>
-                                        <p class="price spoqa">
-                                            <span class="blue">25%</span>
-                                            14,900원
-                                            <span class="gray spoqa">20,000원</span>
-                                        </p>
-                                    </div>
-                                    </li>
-                                <li class="product">
-                                    <figure>
-                                        <a href="/product/1">
-                                            <img src="/static/images/product/2L24-36.jpg" alt="인기상품 이미지 01">
-                                        </a>
-                                        <div class="time-icon">
-                                            <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                            <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-text">
-                                        <a href="/product/1">스파클 2L 24병</a>
-                                        <p class="price spoqa">
-                                            <span class="blue">25%</span>
-                                            14,900원
-                                            <span class="gray spoqa">20,000원</span>
-                                        </p>
-                                    </div>
-                                    </li>
-                            </ul>
-                        </div>
-
-                        <div class="product2" style="display: none">
-                            <ul class="products">
-                                <li class="product">
-                                    <figure>
-                                        <a href="/product/1">
-                                            <img src="/static/images/product/spakling350ml40.jpg" alt="인기상품 이미지 01">
-                                        </a>
-                                        <div class="time-icon">
-                                            <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                            <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-text">
-                                        <a href="/product/1">스파클링 24병</a>
-                                        <p class="price spoqa">
-                                            <span class="blue">25%</span>
-                                            14,900원
-                                            <span class="gray spoqa">20,000원</span>
-                                        </p>
-                                    </div>
-                                    </li>
-                                <li class="product">
-                                    <figure>
-                                        <a href="/product/1">
-                                            <img src="/static/images/product/spakling350ml40.jpg" alt="인기상품 이미지 01">
-                                        </a>
-                                        <div class="time-icon">
-                                            <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                                            <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-text">
-                                        <a href="/product/1">스파클링 24병</a>
-                                        <p class="price spoqa">
-                                            <span class="blue">25%</span>
-                                            14,900원
-                                            <span class="gray spoqa">20,000원</span>
-                                        </p>
-                                    </div>
-                                    </li>
-                            </ul>
-                        </div>
-
-
+                      <button class="slick-prev prd" aria-label="Previous" type="button"><img src="/static/images/img/m-sec-prev.png" alt="">Previous</button>
+                      <!-- product 가져와서 뿌리기  생수 = product1 -->
+                      <ul class="products">
+                                
+                      </ul>
+                      <button class="slick-next prd" aria-label="Next" type="button"><img src="/static/images/img/m-sec-next.png" alt="">Next</button>
                     </div>
                   </div>
               

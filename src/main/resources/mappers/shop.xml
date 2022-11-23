@@ -36,18 +36,9 @@
         pm.rate,
         pm.retail_price,
         pm.img,
-        pm.update_date,
-        pc.total_count
+        pm.update_date
     from
         product pm
-        LEFT OUTER JOIN (SELECT
-                            COUNT(*) AS total_count
-                        from
-                            product
-                        where
-                            category = #{category}
-                        )pc ON(1 = 1)
-
     where
         category = #{category}
 

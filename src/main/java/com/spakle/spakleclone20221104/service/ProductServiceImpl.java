@@ -124,5 +124,47 @@ public class ProductServiceImpl implements ProductService{
 
         return productList;
     }
+
+    private boolean deleteProductImg(List<String> deleteImgFiles, int productId) throws Exception {
+        boolean status = false;
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("productId", productId);
+        map.put("deleteImgFiles", deleteImgFiles);
+
+        int result = productRepository.deleteImgFiles(map);
+        if(result != 0) {
+            deleteImgFiles.forEach(tempName -> {
+                Path uploadPath = Paths.get(filePath + "/product/" + tempName);
+
+                File file = new File(uploadPath.toUri());
+                if(file.exists()) {
+                    file.delete();
+                }
+            });
+            status = true;
+        }
+
+        return status;
+
+    }
+
+    @Override
+    public boolean deleteProduct(int productId) throws Exception {
+        List<ProductImgFile> productImgFiles = productRepository.getProductImgList(productId);
+
+        if(productRepository.deleteProduct(productId) > 0) {
+            productImgFiles.forEach(productImgFile -> {
+                Path uploadPath = Paths.get(filePath + "/product/" + productImgFile.getTemp_name());
+                
+                File file = new File(uploadPath.toUri());
+                if(file.exists()) {
+                    file.delete();
+                }
+            });
+            return true;
+        }
+        return false;
+    }
 }
 

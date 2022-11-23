@@ -9,4 +9,6 @@ public interface ProductService {
     public boolean addProduct(ProductAdditionReqDto productAdditionReqDto) throws Exception;
 
     public List<ProductListRespDto> getProducts(String category) throws Exception;
+
+    public boolean deleteProduct(int productId) throws Exception;
 }

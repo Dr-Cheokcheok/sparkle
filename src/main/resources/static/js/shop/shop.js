@@ -83,38 +83,70 @@ function changeGroup(){
 
 function reload(input){
   const products = document.querySelector(".products");
+  const categoryCount = document.querySelector("#category_count");
 
   if(input.checked){
-    products.innerHTML = "";
-    this.responseData.forEach(product => {
-      if (product.group == input.value) {
 
-        products.innerHTML += `
+    products.innerHTML = "";
+    categoryCount.innerHTML = "";
     
-    <li class="product">
-      <figure>
-        <a href= "/product/${product.productId}">
-            <img src="/image/product/${product.img}" alt="인기상품 이미지 01">
-            <!----  best 아이템에만 figcaption  --->
-              <figcaption>BEST</figcaption>
-        </a>
-            <div class="time-icon">
-              <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-              <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-            </div>
-      </figure>
-      <div class="product-text">
-        <a href="/product/${product.productId}">${product.name}</a>
-        <p class="price spoqa">
-            <span class="blue">${product.rate}%</span>
-            ${product.retailPrice}원
-            <span class="gray spoqa">${product.price}원</span>
-        </p>
-      </div>
-    </li>
-    `;
+    this.responseData.forEach(product => {
+      
+      if (product.group == input.value) {
+        if(product.rate == 0) {
+          products.innerHTML += `
+              <li class="product">
+                <figure>
+                  <a href= "/product/${product.productId}">
+                      <img src="/image/product/${product.img}" alt="인기상품 이미지 01">
+                      <!----  best 아이템에만 figcaption  --->
+                        <figcaption>BEST</figcaption>
+                  </a>
+                      <div class="time-icon">
+                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                      </div>
+                </figure>
+                <div class="product-text">
+                  <a href="/product/${product.productId}">${product.name}</a>
+                  <p class="price spoqa">
+                      ${product.retailPrice}원
+                  </p>
+                </div>
+              </li>
+          `;
+
+        }else {
+           products.innerHTML += `
+                <li class="product">
+                  <figure>
+                    <a href= "/product/${product.productId}">
+                        <img src="/image/product/${product.img}" alt="인기상품 이미지 01">
+                        <!----  best 아이템에만 figcaption  --->
+                          <figcaption>BEST</figcaption>
+                    </a>
+                        <div class="time-icon">
+                          <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                          <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                        </div>
+                  </figure>
+                  <div class="product-text">
+                    <a href="/product/${product.productId}">${product.name}</a>
+                    <p class="price spoqa">
+                        <span class="blue">${product.rate}%</span>
+                        ${product.retailPrice}원
+                        <span class="gray spoqa">${product.price}원</span>
+                    </p>
+                  </div>
+                </li>
+                `;
+        }
+        
+       
       }
     });
+
+     categoryCount.innerHTML += `${$(".products").find("li").length}`;
   }
 }
 

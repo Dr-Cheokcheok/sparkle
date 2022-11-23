@@ -18,8 +18,9 @@ public class ProductListRespDto {
     private int rate;
     private int retailPrice;
 
-    private String img;
-
+    private LocalDateTime createDate;
     private LocalDateTime updateDate;
+
+    private String img;
 
 }

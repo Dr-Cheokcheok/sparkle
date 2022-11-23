@@ -8,8 +8,19 @@
         <result property="category" column="category"></result>
         <result property="group" column="group"></result>
         <result property="name" column="name"></result>
+        <result property="price" column="price"></result>
+        <result property="rate" column="rate"></result>
         <result property="retail_price" column="retail_price"></result>
         <result property="img" column="img"></result>
+
+        <collection property="productImgFiles" javaType="list" resultMap="product_img_files"></collection>
+    </resultMap>
+
+    <resultMap id="product_img_files" type="com.spakle.spakleclone20221104.domain.product.ProductImgFile">
+        <result property="id" column="id"></result>
+        <result property="product_id" column="product_id"></result>
+        <result property="origin_name" column="origin_name"></result>
+        <result property="temp_name" column="temp_name"></result>
     </resultMap>
 
     <insert
@@ -52,6 +63,27 @@
         </foreach>
 
     </insert>
+
+    <delete id="deleteImgFiles" parameterType="hashmap">
+        delete
+        from
+            product_img
+        where
+            product_id = #{productId}
+        and temp_name in
+            <foreach collection="list" item="temp_name" open="(" separator="," close=")">
+                #{deleteImgFiles.temp_name}
+            </foreach>
+    </delete>
+
+    <delete id="deleteProduct" parameterType="Integer">
+        delete
+        from
+            product
+        where
+            id = #{productId}
+    </delete>
+
     <select id="getProductInquiry"
             resultMap="Product">
 
@@ -69,6 +101,17 @@
         WHERE
             category = #{category}
 
+    </select>
+    <select id="getProductImgList" resultMap="product_img_files">
+        select
+            id,
+            product_id,
+            origin_name,
+            temp_name
+        from
+            product_img
+        where
+            product_id = #{productId}
     </select>
 
 

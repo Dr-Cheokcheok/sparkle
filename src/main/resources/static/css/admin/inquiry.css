@@ -164,20 +164,16 @@
     align-items: center;
 }
 
-.sub-btn{
-    display: none;
-    margin-right: 90px;
+.group-buttons button {
+    font-size: 16px;
+    font-weight: 500;
 
-   
-  }
+    width: 80px;
+    height: 30px;
 
-.sub-button-label {
-    margin: 0 20px;
-    color: #009eff;
-    width: 70px;
-    height: 50px;
-  }
+    margin-left: 30px;
 
-.sub-button-label:hover {
-    cursor: pointer;    
+    border: 1px solid #888;
+    border-radius: 5px;
+    color: #888;
 }

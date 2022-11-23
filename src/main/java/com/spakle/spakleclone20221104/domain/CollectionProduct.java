@@ -14,6 +14,7 @@ public class CollectionProduct {
     private int retail_price;
 
     private String img; // 스파클 img
+    private int total_count;
 
     public ShopListRespDto toListRespDto() {
         return ShopListRespDto.builder()
@@ -25,6 +26,7 @@ public class CollectionProduct {
                 .retailPrice(retail_price)
                 .rate(rate)
                 .img(img)
+                .totalCount(total_count)
                 .build();
     }
 }

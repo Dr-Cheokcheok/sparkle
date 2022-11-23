@@ -30,4 +30,9 @@ public class ProductApi {
         return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", productService.getProducts(category)));
     }
 
+    @DeleteMapping("/inquiry/{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable int productId) throws Exception {
+        return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", productService.deleteProduct(productId)));
+    }
+
 }
