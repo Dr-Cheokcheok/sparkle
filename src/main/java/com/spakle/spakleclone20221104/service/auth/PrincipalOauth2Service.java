@@ -2,7 +2,6 @@ package com.spakle.spakleclone20221104.service.auth;
 
 import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.repository.AccountRepository;
-import com.spakle.spakleclone20221104.security.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

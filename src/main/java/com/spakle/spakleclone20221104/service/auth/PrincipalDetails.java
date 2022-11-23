@@ -1,4 +1,4 @@
-package com.spakle.spakleclone20221104.security;
+package com.spakle.spakleclone20221104.service.auth;
 
 import com.spakle.spakleclone20221104.domain.User;
 import lombok.Getter;

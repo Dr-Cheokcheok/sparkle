@@ -18,13 +18,13 @@ public class AccountServicelmpl implements AccountService {
     private final AccountRepository accountRepository;
 
     @Override
-    public boolean checkDuplicateId(String id) {
+    public boolean checkDuplicateUsername(String id) {
 
         User user = accountRepository.findUserByUsername(id);
         if(user != null) {
             Map<String, String> errorMap = new HashMap<String, String>();
             errorMap.put("duplicateFlag", "이미 가입된 아이디입니다.");
-            throw new CustomValidationException("DuplicateId Error", errorMap);
+            throw new CustomValidationException("DuplicateUsername Error", errorMap);
         }
         return true;
     }
