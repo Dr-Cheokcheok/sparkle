@@ -247,7 +247,7 @@ function reload(input){
                 <div class="product-text">
                   <a href="/product/${product.productId}">${product.name}</a>
                   <p class="price spoqa">
-                      ${product.retailPrice}원
+                      ${priceToString(product.retailPrice)}원
                   </p>
                 </div>
               </li>
@@ -271,8 +271,8 @@ function reload(input){
                     <a href="/product/${product.productId}">${product.name}</a>
                     <p class="price spoqa">
                         <span class="blue">${product.rate}%</span>
-                        ${product.retailPrice}원
-                        <span class="gray spoqa">${product.price}원</span>
+                        ${priceToString(product.retailPrice)}원
+                        <span class="gray spoqa">${priceToString(product.price)}원</span>
                     </p>
                   </div>
                 </li>
@@ -314,6 +314,11 @@ function reload(input){
 
 
 
+}
+
+function priceToString(price) {
+  
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 

@@ -110,7 +110,7 @@ function reload(input){
                 <div class="product-text">
                   <a href="/product/${product.productId}">${product.name}</a>
                   <p class="price spoqa">
-                      ${product.retailPrice}원
+                      ${priceToString(product.retailPrice)}원
                   </p>
                 </div>
               </li>
@@ -134,8 +134,8 @@ function reload(input){
                     <a href="/product/${product.productId}">${product.name}</a>
                     <p class="price spoqa">
                         <span class="blue">${product.rate}%</span>
-                        ${product.retailPrice}원
-                        <span class="gray spoqa">${product.price}원</span>
+                        ${product.retailPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+                        <span class="gray spoqa">${product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</span>
                     </p>
                   </div>
                 </li>
@@ -149,6 +149,12 @@ function reload(input){
      categoryCount.innerHTML += `${$(".products").find("li").length}`;
   }
 }
+
+function priceToString(price) {
+  
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 
 
 window.onload = () => {
