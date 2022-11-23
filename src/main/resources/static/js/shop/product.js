@@ -146,34 +146,54 @@ class ProductDetailService {
         const productPrice = document.querySelector(".info-list-box");
         const calPrice = document.querySelector("#calPrice");
         const labelIco = document.querySelector(".label-ico.mint");
-        const reviewImg = document.querySelector(".q-right .img")
+        const reviewImg = document.querySelector(".q-right .img");
 
         calPrice.value = responseData.retailPrice;
         up();
         down();
         
         productTitle.innerHTML += `${responseData.name}`;
-        productPrice.innerHTML += `
-        <dl class="info-list clear">
-            <dt class="gray">정가</dt>
-            <dd class="gray under">${responseData.price}원</dd>
-        </dl>
-        <dl class="info-list clear">
-            <dt>판매가</dt>
-            <dd class="bold spoqa">${responseData.retailPrice}원</dd>
-        </dl>
-        <dl class="info-list clear">
-            <dt>할인받은 금액</dt>
-            <dd class="blue spoqa"> ${responseData.price - responseData.retailPrice}원 (${responseData.rate}%)</dd>
-        </dl>
-        <dl class="info-list clear">
-            <dt>배송</dt>
-            <dd>무료배송</dd>
-        </dl>
-        `;
-        labelIco.innerHTML += `
-        <span>${responseData.name.substring(responseData.name.lastIndexOf("병") - 2, responseData.name.lastIndexOf("병") + 1)}</span>
-        `;
+
+        if(responseData.rate == 0) {
+            productPrice.innerHTML += `
+            <dl class="info-list clear">
+                <dt>판매가</dt>
+                <dd class="bold spoqa">${responseData.retailPrice}원</dd>
+            </dl>
+            <dl class="info-list clear">
+                <dt>배송</dt>
+                <dd>무료배송</dd>
+            </dl>
+            `;
+
+        }else {
+            productPrice.innerHTML += `
+            <dl class="info-list clear">
+                <dt class="gray">정가</dt>
+                <dd class="gray under">${responseData.price}원</dd>
+            </dl>
+            <dl class="info-list clear">
+                <dt>판매가</dt>
+                <dd class="bold spoqa">${responseData.retailPrice}원</dd>
+            </dl>
+            <dl class="info-list clear">
+                <dt>할인받은 금액</dt>
+                <dd class="blue spoqa"> ${responseData.price - responseData.retailPrice} (${responseData.rate}%)</dd>
+            </dl>
+            <dl class="info-list clear">
+                <dt>배송</dt>
+                <dd>무료배송</dd>
+            </dl>
+            `;
+        }
+        if(responseData.name[responseData.name.length - 1] == "병") {
+            labelIco.innerHTML += `
+            <span>${responseData.name.substring(responseData.name.lastIndexOf("병") - 2, responseData.name.lastIndexOf("병") + 1)}</span>
+            `;
+
+        }else {
+            document.getElementById("mint").style.display = "none";
+        }
         reviewImg.innerHTML += `
         <img src="/image/product/${responseData.img}">
         `;

@@ -27,6 +27,8 @@ public class Product {
     private LocalDateTime update_date;
     private List<ProductImgFile> product_img_files;
 
+    List<ProductImgFile> productImgFiles;
+
     public ProductListRespDto toRespDto(){
         return ProductListRespDto.builder()
                 .id(id)
@@ -38,6 +40,7 @@ public class Product {
                 .retailPrice(retail_price)
                 .img(img)
                 .productImgFiles(product_img_files)
+                .updateDate(update_date)
                 .build();
     }
 

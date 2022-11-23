@@ -243,6 +243,25 @@ public class ProductServiceImpl implements ProductService{
             status = true;
         }
         return status;
+
+    }
+
+    @Override
+    public boolean deleteProduct(int productId) throws Exception {
+        List<ProductImgFile> productImgFiles = productRepository.getProductImgList(productId);
+
+        if(productRepository.deleteProduct(productId) > 0) {
+            productImgFiles.forEach(productImgFile -> {
+                Path uploadPath = Paths.get(filePath + "/product/" + productImgFile.getTemp_name());
+                
+                File file = new File(uploadPath.toUri());
+                if(file.exists()) {
+                    file.delete();
+                }
+            });
+            return true;
+        }
+        return false;
     }
 }
 

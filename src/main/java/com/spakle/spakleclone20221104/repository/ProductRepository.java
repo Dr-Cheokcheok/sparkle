@@ -23,4 +23,6 @@ public interface ProductRepository {
     public List<ProductImgFile> getProductImgList(int productId) throws Exception;
     public List<Product> getProductInquiry(Map<String, Object> map) throws Exception;
 
+    public int deleteProduct(int productId) throws Exception;
+
 }

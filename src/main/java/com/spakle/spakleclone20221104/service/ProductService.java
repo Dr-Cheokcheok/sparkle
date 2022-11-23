@@ -17,5 +17,6 @@ public interface ProductService {
     public ProductDtlRespDto getProductDtl (int productId)throws  Exception;
 
     public List<ProductListRespDto> getProducts(String category) throws Exception;
+    public boolean deleteProduct(int productId) throws Exception;
 
 }

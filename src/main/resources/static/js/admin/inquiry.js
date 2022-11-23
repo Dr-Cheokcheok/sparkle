@@ -29,6 +29,23 @@ class InquiryApi {
         return responseData;
         
     }
+
+    productDataDeleteRequest(id) {
+        $.ajax({
+            async: false,
+            type: "delete",
+            url: "/api/admin/inquiry/" + id,
+            dataType: "json",
+            success: (response) => {
+                alert("상품 삭제 완료!");
+                location.reload();
+            },
+            error: (error) => {
+                alert("상품 삭제 실패!");
+                console.log(error);
+            }
+        })
+    }
 }
 
 
@@ -42,102 +59,97 @@ class AdminInquiryService {
         return this.#instance;
     }
 
+    #responseData = null;
+
     loadInquiryList() {
-        const responseData = InquiryApi.getInstance().getProduct();
-        console.log(responseData);
-        this.getInquiryList(responseData);
+        this.responseData = InquiryApi.getInstance().getProduct();
+        console.log(this.responseData);
+        this.getInquiryList(this.responseData);
 
     }
 
+
     getInquiryList(responseData) {
+        console.log(responseData)
         const name = document.querySelector(".category");
         const inquiryBoxs = document.querySelector(".boxs");
-   
+        const categoryName = responseData[0].category;
       
-        inquiryBoxs.innerHTML = "";
+        inquiryBoxs.innerHTML = `
+            <div class="group-buttons">
+                <h4 class="category-name">${categoryName}</h4> 
+            </div>
+        `;
+
+        if(categoryName == "생수") {
+            const groupButtons = document.querySelector(".group-buttons");
+            groupButtons.innerHTML += `
+                <button type="button" class="liter sub-category-btn" value="2L">2L</button>
+                <button type="button" class="liter sub-category-btn" value="500mL">500mL</button>
+                <button type="button" class="liter sub-category-btn" value="330mL">330mL</button>
+                <button type="button" class="liter sub-category-btn" value="18.9L">18.9L</button>
+            `;
+        }
 
         responseData.forEach(inquiryBox => { 
             
             name.innerHTML = "";
-           
-            // 카테고리가 생수일 시 그룹별 버튼 생성
-           if(inquiryBox.category == "생수") {
-                const liters = document.querySelectorAll(".liter");
 
-                 name.innerHTML += `
-                 <div class="group-buttons">
-                    <h4 class="category-name">${inquiryBox.category}</h4> 
-                    <button type="button" class="liter btn1">2L</button>
-                    <button type="button" class="liter btn2">500mL</button>
-                    <button type="button" class="liter btn3">330mL</button>
-                    <button type="button" class="liter btn4">18.9L</button>
+            inquiryBoxs.innerHTML += `
+            <div class="inquiry-box">
+                <img class="product-img" src="/image/product/${inquiryBox.img}">
+                <div class="product-explan">
+                    <p>${inquiryBox.name}</p>
+                    <p>${inquiryBox.retailPrice}원</p>
+                    <p>${inquiryBox.group}</p>
                 </div>
-                `;
-                
-                inquiryBoxs.innerHTML += `
-                    <div class="inquiry-box">
-                        <img class="product-img" src="${inquiryBox.img}">
-                        <div class="product-explan">
-                            <p>${inquiryBox.name}</p>
-                            <p>${inquiryBox.retailPrice}원</p>
-                            <p>${inquiryBox.group}</p>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" class="delete-button">삭제</button>
-                            <button type="button" class="correction-button">수정</button>
-                        </div>
-                    </div>
-                    `;
-        
-           }else { // 카테고리가 생수가 아닌 경우는 버튼이 사라짐
-                name.innerHTML += `
-                    <h4 class="category-name">${inquiryBox.category}</h4> 
+                <div class="buttons">
+                    <button type="button" class="delete-button">삭제</button>
+                    <button type="button" class="correction-button">수정</button>
+                </div>
+            </div>
             `;
-            
-                inquiryBoxs.innerHTML += `
-                    <div class="inquiry-box">
-                        <img class="product-img" src="${inquiryBox.img}">
-                        <div class="product-explan">
-                            <p>${inquiryBox.name}</p>
-                            <p>${inquiryBox.retailPrice}원</p>
-                            <p>${inquiryBox.group}</p>
-                        </div>
-                        <div class="buttons">
-                            <button type="button" class="delete-button">삭제</button>
-                            <button type="button" class="correction-button">수정</button>
-                        </div>
-                    </div>
-                    `;
-            }    
-        
         });
-       
-    }
 
-    
-}
+        const deleteButtons = document.querySelectorAll(".delete-button");
 
-class DeleteAdminProduct {
-    static #instance = null;
-    static getInstance() {
-        if(this.#instance == null) {
-            this.#instance = new DeleteAdminProduct();
-        }
-        
-        return this.#instance;
-    }
+        deleteButtons.forEach((deleteButton, index) => {
 
-    deleteProduct() {
-        const deleteButton = document.querySelector(".delete-button");
+            deleteButton.onclick = () => {
+                if(confirm("상품을 삭제하시겠습니까?")) {
+                    const inquiryApi = new InquiryApi();
+                    inquiryApi.productDataDeleteRequest(responseData[index].id);
+                }
+            }
 
-        deleteButton.onclick = () => {
-            $.ajax({
-                
+        });
+
+        if(categoryName == "생수") {
+            const subCategoryButton = document.querySelectorAll(".sub-category-btn");
+
+            subCategoryButton.forEach(button => {
+                button.onclick = () => {
+                    let inquiryArray = new Array();
+                    let subCategoryName = button.textContent;
+                    this.responseData.forEach(data => {
+                        if(data.group == subCategoryName) {
+                            inquiryArray.push(data);
+                        }
+                    });
+                    if(inquiryArray.length > 0) {
+                        this.getInquiryList(inquiryArray);
+                    }else {
+                        alert("해당 카테고리의 상품은 존재하지 않습니다.");
+                    }
+                }
             });
         }
+
     }
-     
+  
+ 
 }
+
 
 window.onload = () => {
     AdminInquiryService.getInstance().loadInquiryList();

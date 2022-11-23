@@ -500,10 +500,12 @@ p{
 .btn_gotop {
     display:none;
     position:fixed;
+    width: 60px;
+    height: 60px;
     bottom:150px;
     right:150px;
     z-index:999;
-    border:1px solid #ccc;
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
     outline:none;
     background: url("/static/images/sub/quick-icon.png");
     color:#333;

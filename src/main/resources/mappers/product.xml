@@ -31,10 +31,13 @@
         <result property="category" column="category"></result>
         <result property="group" column="group"></result>
         <result property="name" column="name"></result>
+        <result property="price" column="price"></result>
+        <result property="rate" column="rate"></result>
         <result property="retail_price" column="retail_price"></result>
         <result property="img" column="img"></result>
-    </resultMap>
 
+        <collection property="productImgFiles" javaType="list" resultMap="product_img_files"></collection>
+    </resultMap>
 
 
     <insert
@@ -78,6 +81,7 @@
         </foreach>
 
     </insert>
+
 
     <select id="getProductDtl" parameterType="int" resultMap="product_detail">
         SELECT
@@ -140,6 +144,14 @@
             product_id = #{productId}
     </select>
 
+    <delete id="deleteProduct" parameterType="Integer">
+        delete
+        from
+            product
+        where
+            id = #{productId}
+    </delete>
+
 
     <select id="getProductInquiry"
             resultMap="Product">
@@ -159,5 +171,6 @@
             category = #{category}
 
     </select>
+
 
 </mapper>

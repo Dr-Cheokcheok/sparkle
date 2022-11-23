@@ -154,6 +154,11 @@
     color: #009eff;
 }
 
+.name-box {
+    display: flex;
+    align-items: center;
+}
+
 .group-buttons {
     display: flex;
     align-items: center;

@@ -24,5 +24,4 @@ public class ProductListRespDto {
     private List<ProductImgFile> productImgFiles; //
 
     private LocalDateTime updateDate;
-
 }
