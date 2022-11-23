@@ -32,7 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .failureHandler(new AuthFailureHandler())
-                .defaultSuccessUrl("/index");
+                .defaultSuccessUrl("/index")
+                .and()
+                .logout() // 로그아웃 설정
+                .logoutSuccessUrl("/login") // 로그아웃 성공시 돌아갈 url
+                .invalidateHttpSession(true);  // 저장된 세션 삭제
 
 
     }
