@@ -4,7 +4,6 @@ import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
 
 public interface AccountService {
-//    public boolean checkDuplicateId(String id);
 
     public int overlappedID(ChkIdDto chkIdDto) throws Exception;
 

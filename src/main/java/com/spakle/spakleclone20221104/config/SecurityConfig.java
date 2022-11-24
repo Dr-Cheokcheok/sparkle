@@ -21,7 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin() //폼로그인 방식으로 인증을 해라
                 .loginPage("/login") //우리가 만든 로그인 페이지를 사용해라
-                .defaultSuccessUrl("/index");
+                .defaultSuccessUrl("/")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/index");
+
 
     }
 }

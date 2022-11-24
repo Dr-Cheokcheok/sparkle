@@ -9,6 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AccountRepository {
 
     public int save(User user);
-//    public User findUserById(String Id);
     public int overlappedID(ChkId chkId);
 }

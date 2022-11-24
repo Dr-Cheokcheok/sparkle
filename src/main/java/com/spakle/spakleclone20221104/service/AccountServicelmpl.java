@@ -18,18 +18,6 @@ public class AccountServicelmpl implements AccountService {
 
     private final AccountRepository accountRepository;
 
-//    @Override
-//    public boolean checkDuplicateId(String id) {
-//
-//        User user = accountRepository.findUserById(id);
-//        if(user != null) {
-//            Map<String, String> errorMap = new HashMap<String, String>();
-//            errorMap.put("duplicateFlag", "이미 가입된 아이디입니다.");
-//            throw new CustomValidationException("DuplicateId Error", errorMap);
-//        }
-//
-//        return true;
-//    }
     @Override
     public int overlappedID(ChkIdDto chkIdDto) throws Exception{
         ChkId userEntity = chkIdDto.toUserEntity();

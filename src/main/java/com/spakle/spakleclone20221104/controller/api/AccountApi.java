@@ -35,7 +35,6 @@ public class AccountApi {
     @PostMapping("/register")
     public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) throws Exception{
 
-//        accountService.checkDuplicateId((registerReqDto.getId()));
         accountService.register(registerReqDto);
 
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",registerReqDto));

@@ -45,22 +45,4 @@
         select count(id) From user_mst where id=#{id}
     </select>
 
-<!--    <select id = "findUserById" parameterType="String" resultMap="user">-->
-<!--        select-->
-<!--            id,-->
-<!--            password,-->
-<!--            role,-->
-<!--            name,-->
-<!--            phone,-->
-<!--            post_code,-->
-<!--            address,-->
-<!--            detail_address,-->
-<!--            event_sosick,-->
-<!--            create_date,-->
-<!--            update_date-->
-<!--        from-->
-<!--            user_mst-->
-<!--        where-->
-<!--            id = #{id}-->
-<!--    </select>-->
 </mapper>

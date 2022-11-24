@@ -51,7 +51,10 @@ function getChk(obj){
         } else if(obj.value.length < 10){
             registerPasswordMessage.innerHTML = "10자 이상 입력해 주세요.";
             registerPasswordMessage.style.color = "red";
-        } else if(checkPasswordNum(obj.value) == false) {
+        } else if(
+            (checkEng(obj.value) == false && checkNum(obj.value) == false) ||
+            (checkEng(obj.value) == false && checkMoon(obj.value) == false) ||
+            (checkNum(obj.value) == false && checkMoon(obj.value) == false)) {
             registerPasswordMessage.innerHTML = "영문/숫자/특수문자 2가지 이상 조합으로 입력해 주세요."
             registerPasswordMessage.style.color = "red";
         } else {
@@ -100,6 +103,33 @@ function chkId(str){
             console.log("error:" + error);
         }
     });
+}
+
+function checkEng(str){
+    const regExp = /^(?=.*[a-zA-Z])/g;
+    if(regExp.test(str)){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkNum(str){
+    const regExp = /^(?=.*[0-9])/g;
+    if(regExp.test(str)){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkMoon(str){
+    const regExp = /^(?=.*[!@#$%^*+=-])/g;
+    if(regExp.test(str)){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //비밀번호 입력 체크(영문, 숫자, 특수문자)
