@@ -5,12 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스파클몰</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="/static/css/style-main.css">
   <link rel="stylesheet" href="/static/css/fragment/layout.css">
   <link rel="stylesheet" href="/static/css/index/index.css">
   <link rel="stylesheet" href="/static/css/fragment/footer.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
 </head>
 <body>
 <header th:replace="~{fragment/header :: headerFragment}"></header>
@@ -235,12 +239,10 @@
                   <!-- product 가져와서 뿌리기  -->
                   <div class="md-contents m-product2">
                     <div class="con-box">
-                      <button class="slick-prev prd" aria-label="Previous" type="button"><img src="/static/images/img/m-sec-prev.png" alt="">Previous</button>
                       <!-- product 가져와서 뿌리기  생수 = product1 -->
                       <ul class="products">
                                 
                       </ul>
-                      <button class="slick-next prd" aria-label="Next" type="button"><img src="/static/images/img/m-sec-next.png" alt="">Next</button>
                     </div>
                   </div>
               
@@ -348,10 +350,17 @@
                 </div>
               </div>
             </section>
+            <div id="quick" style="opacity: 1;">
+              <a href="#" class="btn_gotop">
+                <span class="glyphicon glyphicon-chevron-up">
+                </span>
+              </a>
+          </div>
         <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </main>
 
     <!-- <script src="/static/js/productList.js"></script> -->
     <script src="/static/js/index/main.js"></script>
+
 </body>
 </html>
