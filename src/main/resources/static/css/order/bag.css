@@ -120,10 +120,10 @@
     background: #fff;
     border-radius: 5px;
 }
-.quantity .bt_decrease {
+.quantity .bt-decrease {
     background: url(/static/images/sub/minus.png) no-repeat center;
 }
-.quantity .bt_increase {
+.quantity .bt-increase {
     background: url(/static/images/sub/plus.png) no-repeat center;
 }
 .quantity input {

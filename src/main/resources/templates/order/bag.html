@@ -79,7 +79,7 @@
                                         <div class="proImg">
                                             <!---- 상품 이미지, 상세 get  --->
                                             <a href="/product/1301">
-                                                <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
+                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">
                                             </a>
                                         </div>
                                         <div class="proTxt">
@@ -92,14 +92,15 @@
                                     </td>
                                     <td>
                                         <div class="quantity clear">
-                                            <button type="button" class="bt_decrease"></button>
-                                            <input type="text" class="num" value="1"><!---동일상품 개수--->
-                                            <button type="button" class="bt_increase"></button>
+                                            <button type="button" class="bt-decrease"></button>
+                                            <input type="text" class="quantity" value="1"><!---동일상품 개수--->
+                                            <button type="button" class="bt-increase"></button>
                                         </div>
                                     </td>
                                     <td class="spoqa">
                                         <!---  상품 금액 * num ---->
-                                        <div>19,900원</div>
+                                        <div class="pro-price">19,900원</div>
+                                        <input class="hidden-price" type="hidden" value="">
                                     </td>
                                     <td class="spoqa">0원</td>
                                     <td class="spoqa">0원</td>
@@ -121,7 +122,7 @@
                                         <div class="proImg">
                                             <!---- 상품 이미지, 상세 get 요청  --->
                                             <a href="/product/1301">
-                                                <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
+                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">
                                             </a>
                                         </div>
                                         <div class="proTxt">
@@ -134,14 +135,15 @@
                                     </td>
                                     <td>
                                         <div class="quantity clear">
-                                            <button type="button" class="bt_decrease"></button>
-                                            <input type="text" class="num" value="1"><!---동일상품 개수--->
-                                            <button type="button" class="bt_increase"></button>
+                                            <button type="button" class="bt-decrease"></button>
+                                            <input type="text" class="quantity" value="1"><!---동일상품 개수--->
+                                            <button type="button" class="bt-increase"></button>
                                         </div>
                                     </td>
                                     <td class="spoqa">
                                         <!---  상품 금액 * num ---->
-                                        <div>19,900원</div>
+                                        <div class="pro-price">19,900원</div>
+                                        <input class="hidden-price" type="hidden" value="">
                                     </td>
                                     <td class="spoqa">0원</td>
                                     <td class="spoqa">0원</td>
@@ -183,7 +185,7 @@
                                 </div>
                                 <div class="calc-item">
                                     <p class="title">예상적립금</p>
-                                    <p class="deliPrice">84원</p>
+                                    <p class="deliPrice">0원</p>
                                 </div>
                             </div>
                         </div>
@@ -202,5 +204,6 @@
         </div>
     </section>
 <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+<script src="/static/js/order/bag.js"></script>
 </body>
 </html>
