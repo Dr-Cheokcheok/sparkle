@@ -3,12 +3,6 @@ package com.spakle.spakleclone20221104.dto.validation;
 import javax.validation.GroupSequence;
 import javax.validation.groups.Default;
 
-@GroupSequence({
-        ValidationGroups.NotBlankGroup.class,
-        ValidationGroups.SizeCheckGroup.class,
-        ValidationGroups.PatternCheckGroup.class,
-        Default.class
-})
-
+@GroupSequence({Default.class, ValidationGroups.NotBlankGroup.class, ValidationGroups.PatternCheckGroup.class})
 public interface ValidationSequence {
 }

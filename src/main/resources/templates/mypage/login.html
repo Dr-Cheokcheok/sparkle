@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/sub.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>스파클몰-로그인</title>
+</head>
+<body>
+    <section th:replace="~{fragment/header :: headerFragment}"></section>
+    <section id="content">
+        <section id="content1" class="member">
+            <div class="new-box w1260" id="logIn">
+                <div class="sub-title login-title">
+                    <p>로그인</p>
+                </div>
+
+                <div class="loginF-wrap">
+                    <div class="logForm on">
+                        <form method="post" action="/login">
+                            <input class="id" type="username" name="username" placeholder="아이디를 입력해주세요." value="">
+                            <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
+                            <div class="login-mid">
+
+                                <label>
+                                    <input class="chk" id="" type="checkbox" name="remember">
+                                    로그인 유지
+                                </label>
+                                <p>
+                                    <a href="/forgot">아이디/비밀번호 찾기</a>
+                                </p>
+                            </div>
+                            <div class="add-btnbx login-btn">
+                                <input type="submit" class="confirm-btn" value="로그인">
+
+                                <a href="/register" class="cancel-btn mb0">회원가입</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer th:replace="~{footer :: footerFragment}"></footer>
+    <script src="/static/js/login.js"></script>
+
+<!--    </script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--        alertify.alert("비밀번호을(를) 입력해주세요.");-->
+<!--        $('form *[name="password"]').focus();-->
+<!--    });-->
+<!--    </script>-->
+<!--    <script>-->
+<!--        alert("비밀번호을(를) 입력해주세요.");-->
+<!--        $("#login-form-box input[name=password]").focus();-->
+
+<!--    </script>-->
+<!--    <div class="alertify  ajs-out ajs-hidden">-->
+<!--        <div class="ajs-dimmer"> </div>-->
+<!--        <div class="ajs-modal" tabindex="0" style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">-->
+<!--            <div class="ajs-dialog" tabindex="0">-->
+<!--                <button class="ajs-reset"></button>-->
+<!--                <div class="ajs-commands">-->
+<!--                    <button class="ajs-pin"></button>-->
+<!--                    <button class="ajs-maximize"></button>-->
+<!--                    <button class="ajs-close"></button>-->
+<!--                </div>-->
+<!--                <div class="ajs-header"></div>-->
+<!--                <div class="ajs-body">-->
+<!--                    <div class="ajs-content">아이디을(를) 입력해주세요.-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="ajs-footer"><div class="ajs-auxiliary ajs-buttons">-->
+<!--                </div>-->
+<!--                <div class="ajs-primary ajs-buttons">-->
+<!--                    <button class="ajs-button ajs-ok">확인</button>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--                <div class="ajs-handle"></div>-->
+<!--                <button class="ajs-reset"></button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</body>
+</html>

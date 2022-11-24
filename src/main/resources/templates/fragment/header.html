@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="kor" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>header</title>
+</head>
 <body>
-    <header id="header" th:fragment="headerFragment">
+    <section th:fragment="headerFragment">
+    <section id="wrap">
         <div class="h-top w1260 clear">
             <h1 class="logo">
                 <a href="/index">
-                    <img src="/static/images/img/logo.png" art="스파클몰 로고">
+                    <img src="/static/images/img/logo.png" alt="스파클몰 로고">
                 </a>
             </h1>
             <div class="h-top-icon">
@@ -31,9 +41,9 @@
                     </a>
                 </div>
             </div>
-            
+
         </div>
-                    
+
         <div id="gnb">
             <div class="gnb-in w1260 clear">
                 <ul class="gnb clear">
@@ -61,27 +71,27 @@
                             </ul>
                         </div>
                     </li>
-                        <li class="menu3">
-                            <a href="/shop/생수">
-                                <span class="txt">
-                                    쇼핑하기
-                                </span>
-                            </a>
-                        </li>
-                        <li class="menu4">
-                            <a href="">
-                                <span class="txt">
-                                    정기배송
-                                </span>
-                            </a>
-                        </li>
-                        <li class="menu7">
-                            <a href="">
-                                <span class="txt">
-                                    자주묻는질문
-                                </span>
-                            </a>
-                        </li>
+                    <li class="menu3">
+                        <a href="/shop/생수">
+                            <span class="txt">
+                                쇼핑하기
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu4">
+                        <a href="">
+                            <span class="txt">
+                                정기배송
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu7">
+                        <a href="">
+                            <span class="txt">
+                                자주묻는질문
+                            </span>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="util-menu clear">
                     <li>
@@ -93,9 +103,9 @@
                     <li>
                         <a href="">고객센터</a>
                     </li>
-                    
+
                 </ul>
-                
+
             </div>
         </div>
         <div id="load" style="display: none;">
@@ -103,6 +113,7 @@
         </div>
         
         <script src="/static/js/fragment/header.js"></script>
-    </header>
+    </section>
+    </section>
 </body>
 </html>

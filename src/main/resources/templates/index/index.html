@@ -13,7 +13,8 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-<section th:replace="~{fragment/header :: headerFragment}"></section>
+<header th:replace="~{header :: headerFragment}"></header>
+
     <main>
         <div class="outer">
             <div class="inner-list">
@@ -349,8 +350,7 @@
             </section>
         <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </main>
-    
-    
+
     <!-- <script src="/static/js/productList.js"></script> -->
     <script src="/static/js/index/main.js"></script>
 </body>

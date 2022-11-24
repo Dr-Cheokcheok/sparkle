@@ -27,15 +27,6 @@
                         <input type="hidden" name="cart_id" value="3033722">
                         <div class="cart-top">
 
-                            <div class="chkAll-box">
-                                <input type="checkbox" id="chkAll">
-                                <label for="chkAll">
-                                    전체선택
-                                    <!--- (0/1) 체크된 박스 개수 / 전체 상품 개수 --->
-                                    <span>(0/1)</span>
-                                </label>
-                            </div>
-
                             <div class="del-box">
                                 <a href="javascript:void(0);">
                                     <span>선택삭제</span>
@@ -186,17 +177,18 @@
                                 <div class="calc-item">
                                     <p class="title">예상적립금</p>
                                     <p class="deliPrice">0원</p>
+
                                 </div>
                             </div>
-                        </div>
-                        <div class="cart-total-price">
-                            <p>총 결제금액
-                                <span class="calc-tot-amount">28,300원</span>
-                            </p>
-                        </div>
-                        <div class="order-btn-box"><!---  javascript 선택상품 검사  --->
-                            <a href="javascript:void(0);" class="btn_style1">선택상품 주문하기</a>
-                            <a href="javascript:void(0);" class="btn_style2">전체상품 주문하기</a>
+                            <div class="cart-total-price">
+                                <p>총 결제금액
+                                    <span class="calc-tot-amount">28,300원</span>
+                                </p>
+                            </div>
+                            <div class="order-btn-box"><!---  javascript 선택상품 검사  --->
+                                <a href="javascript:void(0);" class="btn_style1">선택상품 주문하기</a>
+                                <a href="javascript:void(0);" class="btn_style2">전체상품 주문하기</a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -205,5 +197,6 @@
     </section>
 <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 <script src="/static/js/order/bag.js"></script>
+
 </body>
 </html>

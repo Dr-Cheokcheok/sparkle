@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,31 +14,32 @@
     <title>스파클몰</title>
 </head>
 <body>
-    <section th:replace="~{fragment/header :: headerFragment}"></section>
-    <div class="myInfo-top">
-        <ul>
-            <li><img src="/static/images/img/my_face.png"></li>
-            <li><p class="username">temp</p><p class="user-id">username</p></li>
-            <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
-            <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
-            <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
-            <li><a href="/account"><p>관심상품</p><p class="blue-t">0</p></a></li>
-            <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
-            <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
-        </ul>
-    </div>
-    <div class="main-box">
-        <section class="mypage-box">
-            <h1>MYPAGE</h1>
+<section th:replace="~{fragment/header :: headerFragment}"></section>
+        <div class="myInfo-top">
+
             <ul>
-                <li><a href="/account">관심상품</a></li>
-                <li><a href="/account/order">주문&#183;배송</a></li>
-                <li><a>상품후기</a></li>
-                <li><a>고객센터</a></li>
-                <li><a href="/users/edit">개인정보관리</a></li>
-                <li><a href="/users/delete">회원탈퇴</a></li>
+                <li><img src="/static/images/img/my_face.png"></li>
+                <li><p class="username">temp</p><p class="user-id">username</p></li>
+                <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
+                <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
+                <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
+                <li><a href="/account"><p>관심상품</p><p class="blue-t">0</p></a></li>
+                <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
+                <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
             </ul>
-        </section>
+        </div>
+        <div class="main-box">
+            <section class="mypage-box">
+                <h1>MYPAGE</h1>
+                <ul>
+                    <li><a href="/account">관심상품</a></li>
+                    <li><a href="/account/order">주문&#183;배송</a></li>
+                    <li><a>상품후기</a></li>
+                    <li><a>고객센터</a></li>
+                    <li><a href="/users/edit">개인정보관리</a></li>
+                    <li><a href="/users/delete">회원탈퇴</a></li>
+                </ul>
+            </section>
             <section class="right-sec">
                 <div class="edit-page">
                     <h1>개인정보관리</h1>
@@ -106,11 +107,12 @@
                         <div class="add-btnbx">
                             <button class="confirm-btn">수정</button>
                             <button class="cancel-btn">취소</button>
-                        </diSv>
-                    </div>
+                        </div>
+                </div>
             </section>
             <script type="text/javascript" src="/static/js/mypage/edit.js"></script>
         </div>
-        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+
+<footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 </body>
 </html>

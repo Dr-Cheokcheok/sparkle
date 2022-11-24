@@ -38,7 +38,8 @@ h1.logo {
 #gnb {
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
-    box-sizing: border-box;
+    box-sizing: border-box;    
+    display: flex;
 }
 .gnb {
     float: left;
@@ -48,7 +49,7 @@ h1.logo {
 
 .gnb > li {
     float: left;
-    width: 105px;
+    width: 155px;
     text-align: center;
 }
 .gnb .menu1 {
