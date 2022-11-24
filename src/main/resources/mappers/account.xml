@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spakle.spakleclone20221104.repository.AccountRepository">
-    <insert id="save"
+    <!-- <insert id="save"
             parameterType="com.spakle.spakleclone20221104.domain.User"
             useGeneratedKeys="true"
             keyProperty="username">
@@ -14,7 +14,16 @@
             0,
             #{username},
             #{password},
-            #{role_username},
+            #{role_username}, -->
+
+    <insert id="save" parameterType="com.spakle.spakleclone20221104.domain.User">
+        insert into
+            user_mst
+        values (
+            #{id},
+            #{username},
+            #{password},
+            'ROLE_USER',
             #{name},
             #{phone},
             #{post_code},
@@ -47,8 +56,10 @@
         where
             username = #{username}
     </select>
-<!--    <select id="login" resultType="com.spakle.spakleclone20221104.domain.User">-->
-<!--        SELECT * FROM user WHERE username=#{username} AND password=#{password}-->
-<!--    </select>-->
+
+    <select id="overlappedID" parameterType="com.spakle.spakleclone20221104.domain.ChkId" resultType="int">
+        select count(id) From user_mst where id=#{id}
+    </select>
+
 
 </mapper>

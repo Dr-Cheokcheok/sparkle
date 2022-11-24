@@ -26,8 +26,8 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public void logout(HttpSession session, HttpServletResponse response)throws Exception{
-        session.invalidate();
-    }
+//    @RequestMapping(value = "", method = RequestMethod.GET)
+//    public void logout(HttpSession session, HttpServletResponse response)throws Exception{
+//        session.invalidate();
+//    }
 }

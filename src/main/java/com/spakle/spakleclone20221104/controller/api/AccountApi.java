@@ -3,6 +3,7 @@ package com.spakle.spakleclone20221104.controller.api;
 import com.spakle.spakleclone20221104.aop.annotation.LogAspect;
 import com.spakle.spakleclone20221104.aop.annotation.ValidAspect;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
 import com.spakle.spakleclone20221104.dto.validation.ValidationSequence;
 import com.spakle.spakleclone20221104.service.AccountService;
@@ -31,20 +32,33 @@ public class AccountApi {
 
     private  final AccountService accountService;
 
+   
+
+    // public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) throws Exception {
+
+    //     accountService.checkDuplicateUsername((registerReqDto.getId()));
+    // accountService.register(registerReqDto)
     @LogAspect
     @ValidAspect
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) throws Exception {
+    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) throws Exception{
 
-        accountService.checkDuplicateUsername((registerReqDto.getId()));
         accountService.register(registerReqDto);
 
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",registerReqDto));
     }
 
+
     @GetMapping("/principal")
     public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         return ResponseEntity.ok(new CMRespDto<>(1, "Successfully get principal", principalDetails == null ? "" : principalDetails));
+    }
+
+    @PostMapping("/checkid")
+    public int overlappedID(@RequestBody ChkIdDto chkIdDto) throws Exception{
+        int result = accountService.overlappedID(chkIdDto); // 중복확인한 값을 int로 받음
+        return result;
+
     }
 
 }

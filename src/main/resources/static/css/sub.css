@@ -17,6 +17,7 @@ html {
     text-align: center;
     margin-top: 38px;
 }
+
 .add-btnbx input,
 .add-btnbx a {
     font-size: 15px;
@@ -41,6 +42,23 @@ html {
 .confirm-btn {
     background-color: #009eff;
     color: #fff;
+    
+    text-align: center;
+
+    width: 250px;
+    line-height: 55px;
+    font-size: 16px;
+
+    margin-top: 38px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    border: 1px solid #009eff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-right: 9px;
+    display: inline-block;
+    cursor: pointer;
 }
 
 /* 로그인 */

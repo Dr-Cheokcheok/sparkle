@@ -22,16 +22,16 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String loadlogin() {return "account/login";}
+    public String loadLogin() {return "account/login";}
 
     @GetMapping("/register")
-    public String loadregister() {return "account/register";}
+    public String loadRegister() {return "account/register";}
 
     @GetMapping("/forgot")
-    public String loadforgot() {return "account/forgot";}
+    public String loadForgot() {return "account/forgot";}
 
     @GetMapping("/order")
-    public String loadorder() {return "order/order";}
+    public String loadOrder() {return "order/order";}
 
 }
 

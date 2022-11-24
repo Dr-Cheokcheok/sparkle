@@ -12,9 +12,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class User {
-    private String id;
+
+    // private String id;
+    private int id;
     private String username;
-    private String oauth_username;
     private String password;
     private String name;
     private String role;
