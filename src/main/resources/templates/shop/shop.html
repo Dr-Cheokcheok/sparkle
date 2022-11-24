@@ -13,7 +13,7 @@
     <title>스파클몰</title>
 </head>
 <body>
-<section th:replace="~{fragment/header :: headerFragment}"></section>
+<header th:replace="~{fragment/header :: headerFragment}"></header>
 <section id="content-section">
     <div class="sub-title">
         <p>쇼핑하기</p>
@@ -66,7 +66,7 @@
             <div class="sort-top" style="">
                 <p class="product-num">
                     <!--- 그룹별 상품 개수 count --->
-                    총 <span id="category_count">4</span>개
+                    총 <span id="category_count"></span>개
                 </p>
                 <div class="sort-box">
                     <ul class="">
@@ -101,7 +101,7 @@
                 </div>
             </div>
         </div>
-        
+    </div>
 </section>
 <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 <script src="/static/js/shop/shop.js"></script>

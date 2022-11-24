@@ -1,17 +1,7 @@
 <!DOCTYPE html>
-<html lang="kor" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/css/layout.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>header</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <body>
-    <section th:fragment="headerFragment">
-    <section id="wrap">
+    <header id="header" th:fragment="headerFragment">
         <div class="h-top w1260 clear">
             <h1 class="logo">
                 <a href="/index">
@@ -111,9 +101,7 @@
         <div id="load" style="display: none;">
             <img src="/static/images/img/loading.gif" alt="로딩">
         </div>
-        
         <script src="/static/js/fragment/header.js"></script>
-    </section>
-    </section>
+    </header>
 </body>
 </html>

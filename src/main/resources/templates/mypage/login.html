@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kor" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
     <title>스파클몰-로그인</title>
 </head>
 <body>
-    <section th:replace="~{fragment/header :: headerFragment}"></section>
+    <header th:replace="~{fragment/header :: headerFragment}"></header>
     <section id="content">
         <section id="content1" class="member">
             <div class="new-box w1260" id="logIn">
@@ -46,7 +46,7 @@
             </div>
         </section>
     </section>
-    <footer th:replace="~{footer :: footerFragment}"></footer>
+    <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     <script src="/static/js/login.js"></script>
 
 <!--    </script>-->
