@@ -21,5 +21,5 @@ public class PageController {
     public String loadBag() {return "order/bag";}
 
     @GetMapping("/admin/index")
-    public String loadAdmin() {return "admin-page";}
+    public String loadAdmin() {return "admin/admin-page";}
 }
