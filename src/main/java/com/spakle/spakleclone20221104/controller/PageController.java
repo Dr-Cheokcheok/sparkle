@@ -19,4 +19,7 @@ public class PageController {
 
     @GetMapping("/bag")
     public String loadBag() {return "order/bag";}
+
+    @GetMapping("/admin/index")
+    public String loadAdmin() {return "admin-page";}
 }

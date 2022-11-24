@@ -6,10 +6,12 @@ import com.spakle.spakleclone20221104.dto.account.CMRespDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
 import com.spakle.spakleclone20221104.dto.validation.ValidationSequence;
 import com.spakle.spakleclone20221104.service.AccountService;
+import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -40,5 +42,9 @@ public class AccountApi {
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",registerReqDto));
     }
 
+    @GetMapping("/principal")
+    public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        return ResponseEntity.ok(new CMRespDto<>(1, "Successfully get principal", principalDetails == null ? "" : principalDetails));
+    }
 
 }

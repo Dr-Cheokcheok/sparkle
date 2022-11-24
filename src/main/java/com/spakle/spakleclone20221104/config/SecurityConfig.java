@@ -1,6 +1,7 @@
 package com.spakle.spakleclone20221104.config;
 
 import com.spakle.spakleclone20221104.security.AuthFailureHandler;
+import com.spakle.spakleclone20221104.security.AuthSuccessHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,14 +24,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
                 .anyRequest()
                 .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+                .successHandler(new AuthSuccessHandler())
                 .failureHandler(new AuthFailureHandler())
-                .defaultSuccessUrl("/index");
+                .and()
+                .logout() // 로그아웃 설정
+                .logoutSuccessUrl("/login") // 로그아웃 성공시 돌아갈 url
+                .invalidateHttpSession(true);  // 저장된 세션 삭제
 
 
     }

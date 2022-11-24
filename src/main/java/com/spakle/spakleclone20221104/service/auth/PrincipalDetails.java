@@ -7,27 +7,26 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
 @Getter
-public class PrincipalDetails implements UserDetails, OAuth2User {
+public class PrincipalDetails implements UserDetails {
 
     private User user;
-    private Map<String, Object> attributes;
 
     public PrincipalDetails(User user) {
         this.user = user;
-    }
-    public PrincipalDetails(User user, Map<String, Object> attributes) {
-        this.user = user;
-        this.attributes = attributes;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        Arrays.asList(user.getRole().split(",")).forEach(role -> {
+            authorities.add(() -> role);
+        });
 
         return authorities;
     }
@@ -61,14 +60,4 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
     public boolean isEnabled() {
         return true;
     }   // 계정의 활성화 여부(휴먼 계정, 이메일 또는 전화번호 인증 필요)
-
-    @Override
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
-
-    @Override
-    public String getName() {
-        return (String) attributes.get("name");
-    }
 }
