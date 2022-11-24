@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/css/fragment/footer.css">
     <link rel="stylesheet" href="/static/css/fragment/layout.css">
-    <link rel="stylesheet" href="/static/css/sub.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/sub.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <title>스파클몰-로그인</title>
 </head>
 <body>
     <section id="wrap">
-        <header th:replace="~{fragment/header :: headerFragment}"></header>
+    <header th:replace="~{fragment/header :: headerFragment}"></header>
             <section id="content" class="member">
                 <div class="new-box w1260" id="logIn">
                     <div class="sub-title login-title">
@@ -22,7 +22,7 @@
                     
                     <div class="loginF-wrap">
                         <div class="logForm on">
-                            <form method="POST" action="/static/html/login.html">
+                            <form method="POST" action="/login">
                                 <input type="hidden" name="_token" value="QYHjNiuiKOAmLopSgrD64aWPyyCYr288EIFHTjlW">
                                 <input class="id" type="text" name="username" placeholder="아이디를 입력해주세요." value="">
                                 <input class="pass" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
@@ -47,7 +47,45 @@
                     </div>
                 </div>
             </section>
+        <!--    </script>-->
+        <!--    <script>-->
+        <!--        $(function () {-->
+        <!--        alertify.alert("비밀번호을(를) 입력해주세요.");-->
+        <!--        $('form *[name="password"]').focus();-->
+        <!--    });-->
+        <!--    </script>-->
+        <!--    <script>-->
+        <!--        alert("비밀번호을(를) 입력해주세요.");-->
+        <!--        $("#login-form-box input[name=password]").focus();-->
+
+        <!--    </script>-->
+        <!--    <div class="alertify  ajs-out ajs-hidden">-->
+        <!--        <div class="ajs-dimmer"> </div>-->
+        <!--        <div class="ajs-modal" tabindex="0" style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">-->
+        <!--            <div class="ajs-dialog" tabindex="0">-->
+        <!--                <button class="ajs-reset"></button>-->
+        <!--                <div class="ajs-commands">-->
+        <!--                    <button class="ajs-pin"></button>-->
+        <!--                    <button class="ajs-maximize"></button>-->
+        <!--                    <button class="ajs-close"></button>-->
+        <!--                </div>-->
+        <!--                <div class="ajs-header"></div>-->
+        <!--                <div class="ajs-body">-->
+        <!--                    <div class="ajs-content">아이디을(를) 입력해주세요.-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                <div class="ajs-footer"><div class="ajs-auxiliary ajs-buttons">-->
+        <!--                </div>-->
+        <!--                <div class="ajs-primary ajs-buttons">-->
+        <!--                    <button class="ajs-button ajs-ok">확인</button>-->
+        <!--                </div>-->
+        <!--                </div>-->
+        <!--                <div class="ajs-handle"></div>-->
+        <!--                <button class="ajs-reset"></button>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+    <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
-        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 </body>
 </html>

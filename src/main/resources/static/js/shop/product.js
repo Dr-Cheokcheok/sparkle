@@ -4,11 +4,9 @@ const downButton = document.querySelector("#calMinus");
 upButton.onclick = () => {
     up();
 }
-
 downButton.onclick = () => {
     down();
 }
-
 /*  수량 버튼 기능   */
 
 function up() {
