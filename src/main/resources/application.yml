@@ -15,15 +15,6 @@ mybatis:
   mapper-locations:
     - /mappers/*.xml
 
-thymeleaf:
-  check-template-location: true
-  suffix: .html
-  mode: HTML5
-  characterEncoding: utf-8
-  cache: false
-  order: 0
-  prefix: classpath:/templates/
-
 #파일 패스 각자 경로 설정해야 프로젝트폴더 -> upload폴더
 file:
   path: C:/mungi/web/springboot/spakleCloneProject/upload/

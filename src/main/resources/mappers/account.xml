@@ -47,5 +47,8 @@
         where
             username = #{username}
     </select>
+<!--    <select id="login" resultType="com.spakle.spakleclone20221104.domain.User">-->
+<!--        SELECT * FROM user WHERE username=#{username} AND password=#{password}-->
+<!--    </select>-->
 
 </mapper>

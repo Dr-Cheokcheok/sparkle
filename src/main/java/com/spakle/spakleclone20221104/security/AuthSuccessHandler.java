@@ -1,8 +1,10 @@
 package com.spakle.spakleclone20221104.security;
 
+import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;
@@ -15,7 +17,17 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-        logger.info("Entering AuthSuccessHandler");
+
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        for(GrantedAuthority authority : principalDetails.getAuthorities()) {
+            if(authority.getAuthority().equals("ROLE_ADMIN")) {
+                response.sendRedirect("/admin/index");
+                return;
+            }
+        }
+
+        response.sendRedirect("/index");
     }
 
 }

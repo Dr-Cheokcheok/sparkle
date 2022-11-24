@@ -9,5 +9,4 @@ function paymentchk(s){
         document.getElementById('toss-info').style.display = "none";
         document.getElementById('payco-info').style.display = "none";
     }
-
 }
