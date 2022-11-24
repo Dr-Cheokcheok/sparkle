@@ -1,3 +1,4 @@
+let loadStatus = false;
 /*
   div사이즈 동적으로 구하기
 */
@@ -148,8 +149,12 @@ function checkCategory() {
 
     categoryBtn.checked = true;
     toggleBtn(categoryBtn.id);
+   
     }
   });
+
+
+
 }
 
 
@@ -211,10 +216,22 @@ function changeCategory() {
 function changeGroup(){
   const groupInputs = document.querySelectorAll(".sub-btn");
 
+  if(loadStatus) {
+    $(document).ready(function(){             //slick 초기화
+      $('.products').slick('unslick');
+    });
+  }
+
   groupInputs.forEach(input => {
 
     reload(input);
+
     input.onclick = () => {
+
+      $(document).ready(function(){             //slick 초기화
+        $('.products').slick('unslick');
+      });
+
       reload(input);
     }
   });
@@ -230,7 +247,7 @@ function reload(input){
     this.responseData.forEach(product => {
       
       if (product.group == input.value) {
-        if(product.rate == 0) {
+        if(product.rate == 0) {    // 할인율이 0인 경우 판매가만 남음
           products.innerHTML += `
               <li class="product">
                 <figure>
@@ -277,54 +294,43 @@ function reload(input){
                   </div>
                 </li>
                 `;
-        }       
+        }  
       }
     });
 
-    $(function() {
-        $('.products').slick({
-          dots: false,
-          infinite: false,
-          speed: 300,
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: false
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-          ]
-        });
-    });
-
+    
+    slick();    // 화면넘어가는 함수
   }
-
 
 }
 
-function priceToString(price) {
+function slick() {
+
+  $('.products').slick({
+    dots: false,
+    infinite: true,  //무한반복 옵션
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    prevArrow : "<button class='slick-prev prd' type='button'><img src='/static/images/img/m-sec-prev.png'>Previous</button>",
+    nextArrow : "<button class='slick-next prd' type='button'><img src='/static/images/img/m-sec-next.png'>Next</button>",
+  });
+
+}
+
+$(window).scroll(function(){
+  if ($(this).scrollTop() > 300){
+      $('.btn_gotop').show();
+  } else{
+      $('.btn_gotop').hide();
+  }
+});
+$('.btn_gotop').click(function(){
+  $('html, body').animate({scrollTop:0},400);
+  return false;
+});
+
+function priceToString(price) {    // 금액에 , 찍어주는 함수
   
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
@@ -332,4 +338,5 @@ function priceToString(price) {
 
 window.onload = () => {
   checkCategory();
+  loadStatus = true;
 }
