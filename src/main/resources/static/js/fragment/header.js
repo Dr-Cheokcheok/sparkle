@@ -7,6 +7,7 @@ menu.onmouseout = () => {
     menu.classList.remove("on")
 }
 
+
 class Principal {
     static #instance = null;
     static getInstance() {
@@ -39,7 +40,7 @@ class Principal {
 }
 
 function loadHeader() {
-    let principal = Principal.getInstance().getPrincipal();
+    let principal = Principal.getInstance().getPrincipal(); //Object -
 
     const utilMenu = document.querySelector(".util-menu");
 

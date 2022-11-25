@@ -51,7 +51,10 @@ function getChk(obj){
         } else if(obj.value.length < 10){
             registerPasswordMessage.innerHTML = "10자 이상 입력해 주세요.";
             registerPasswordMessage.style.color = "red";
-        } else if(checkPasswordNum(obj.value) == false) {
+        } else if(
+            (checkEng(obj.value) == false && checkNum(obj.value) == false) ||
+            (checkEng(obj.value) == false && checkMoon(obj.value) == false) ||
+            (checkNum(obj.value) == false && checkMoon(obj.value) == false)) {
             registerPasswordMessage.innerHTML = "영문/숫자/특수문자 2가지 이상 조합으로 입력해 주세요."
             registerPasswordMessage.style.color = "red";
         } else {
@@ -88,18 +91,45 @@ function chkId(str){
         data: JSON.stringify({id: str.value}),
         dataType: "json",
         success: function (result) {
-           if(result == 1) {
-               registerUsernameMessage.innerHTML = "이미 사용중인 아이디입니다.";
-               registerUsernameMessage.style.color = "red";
-           } else {
-               registerUsernameMessage.innerHTML = "사용 가능한 아이디입니다.";
-               registerUsernameMessage.style.color = "blue";
-           }
+            if(result == 1) {
+                registerUsernameMessage.innerHTML = "이미 사용중인 아이디입니다.";
+                registerUsernameMessage.style.color = "red";
+            } else {
+                registerUsernameMessage.innerHTML = "사용 가능한 아이디입니다.";
+                registerUsernameMessage.style.color = "blue";
+            }
         },
         error: (error) => {
             console.log("error:" + error);
         }
     });
+}
+
+function checkEng(str){
+    const regExp = /^(?=.*[a-zA-Z])/g;
+    if(regExp.test(str)){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkNum(str){
+    const regExp = /^(?=.*[0-9])/g;
+    if(regExp.test(str)){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkMoon(str){
+    const regExp = /^(?=.*[!@#$%^*+=-])/g;
+    if(regExp.test(str)){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //비밀번호 입력 체크(영문, 숫자, 특수문자)
@@ -123,12 +153,12 @@ function checkEngNum(str) {
 }
 
 // 공백(스페이스 바) 체크
-function checkSpace(str) { 
+function checkSpace(str) {
     if(str.search(/\s/) !== -1) {
         return true; // 스페이스가 있는 경우
     }else{
         return false; // 스페이스 없는 경우
-    } 
+    }
 }
 
 registerButton.onclick = () => {
@@ -241,7 +271,7 @@ registerButton.onclick = () => {
 //전체 체크 박스 클릭 시 활성화/비활성화
 $('#chkAll').click(function(){
     var checked = $('#chkAll').is(':checked');
-    
+
     if(checked)
         $('input:checkbox').prop('checked',true);
     else {
@@ -269,7 +299,7 @@ function daumPostcode() {
             }
             // 건물명이 있고, 공동주택일 경우 추가한다.
             if(data.buildingName !== '' && data.apartment === 'Y'){
-               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
