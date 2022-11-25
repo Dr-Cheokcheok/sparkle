@@ -603,19 +603,7 @@ html {
 .order-detail dl .dd1 li .toss {
     position: relative;
 }
-.order-detail dl .dd1 li .toss::after {
-    position: absolute;
-    content: '혜택';
-    left: 107%;
-    bottom: 55%;
-    font-size: 13px;
-    color: #fff;
-    background: #0063fe;
-    border-radius: 15px;
-    padding: 0 12px;
-    text-indent: 0;
-    line-height: 2;
-}
+
 .order-detail dl .dd1 li label {
     background-repeat: no-repeat;
     background-position: center;
