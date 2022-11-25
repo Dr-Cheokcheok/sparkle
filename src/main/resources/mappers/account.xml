@@ -42,7 +42,7 @@
     </insert>
 
     <select id="overlappedID" parameterType="com.spakle.spakleclone20221104.domain.ChkId" resultType="int">
-        select count(id) From user_mst where id=#{id}
+        select count(username) From user_mst where username=#{id}
     </select>
 
 </mapper>
