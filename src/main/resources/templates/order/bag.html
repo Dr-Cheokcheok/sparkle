@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="/static/css/section.css">
     <link rel="stylesheet" href="/static/css/order/bag.css">
     <link rel="stylesheet" href="/static/css/fragment/footer.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <title>스파클몰</title>
 </head>
 <body>
 
-<header th:replace="~{fragment/header :: headerFragment}"></header>
+    <header th:replace="~{fragment/header :: headerFragment}"></header>
     <section id="content-section">
         <div class="sub-title">
             <p>장바구니</p>
@@ -197,6 +198,5 @@
     </section>
 <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 <script src="/static/js/order/bag.js"></script>
-
 </body>
 </html>

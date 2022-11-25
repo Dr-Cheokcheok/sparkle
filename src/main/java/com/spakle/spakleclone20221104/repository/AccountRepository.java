@@ -10,7 +10,6 @@ public interface AccountRepository {
 
     public int save(User user);
     public User findUserByUsername(String username);
-
     public int overlappedID(ChkId chkId);
 
 }

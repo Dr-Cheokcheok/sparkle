@@ -31,4 +31,31 @@ mybatis:
 
 #파일 패스 각자 경로 설정해야 프로젝트폴더 -> upload폴더
 file:
-  path: C:/spakle/spakleCloneProject/upload/
+  path: C:/sparkle/upload/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
