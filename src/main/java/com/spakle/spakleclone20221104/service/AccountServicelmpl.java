@@ -36,7 +36,6 @@ public class AccountServicelmpl implements AccountService {
 
         ChkId userEntity = chkIdDto.toUserEntity();
         int result = accountRepository.overlappedID(userEntity);
-//        int result = accountRepository.overlappedID(chkIdDto.toUserEntity());
         return result;
 
     }

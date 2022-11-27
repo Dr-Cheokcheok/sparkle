@@ -1,5 +1,10 @@
 const upButton = document.querySelector("#calPlus");
 const downButton = document.querySelector("#calMinus");
+const bagButton = document.querySelector("#cartBtn");
+
+bagButton.onclick = () => {
+
+}
 
 upButton.onclick = () => {
     up();
