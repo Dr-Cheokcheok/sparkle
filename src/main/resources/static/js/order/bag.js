@@ -73,5 +73,20 @@ function sumTotal(){
     document.querySelector(".calc-tot-amount").textContent = sum.toLocaleString() + "원";
 }
 
+/*장바구니 전체 선택*/
+var allChk = $('#chkAll');
+var chk = $('.chk_style');
 
+$(allChk).click(function(){
+    if($(allChk).prop("checked")){
+        $(chk).prop("checked",true);
+    }else{
+        $(chk).prop("checked",false);
+    }
+});
 
+$(chk).click(function(){
+    if(!($(chk).prop("checked"))){
+    $(allChk).prop("checked",false);
+    }
+});

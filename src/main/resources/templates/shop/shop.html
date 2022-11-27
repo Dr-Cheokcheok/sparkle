@@ -13,97 +13,98 @@
     <title>스파클몰</title>
 </head>
 <body>
-<header th:replace="~{fragment/header :: headerFragment}"></header>
-<section id="content-section">
-    <div class="sub-title">
-        <p>쇼핑하기</p>
-    </div>
-    <div id="section">
-        <div id="section-in">
-            <div class="md-tab">
+    <header th:replace="~{fragment/header :: headerFragment}"></header>
+    <section id="content-section">
+        <div class="sub-title">
+            <p>쇼핑하기</p>
+        </div>
+        <div id="section">
+            <div id="section-in">
+                <div class="md-tab">
 
-                <input id="button1" name ="car" class = "category-btn" type ="radio" value = "생수" onclick = "toggleBtn(id)"checked>
-                <label class="button-label" for="button1"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></label>
+                    <input id="button1" name ="car" class = "category-btn" type ="radio" value = "생수" onclick = "toggleBtn(id)"checked>
+                    <label class="button-label" for="button1"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></label>
 
-                <input id="button2" name ="car" class = "category-btn" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
-                <label class="button-label" for="button2"><span><img src="/static/images/img/md-icon02.png" alt=""> 탄산음료</span></label>
+                    <input id="button2" name ="car" class = "category-btn" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
+                    <label class="button-label" for="button2"><span><img src="/static/images/img/md-icon02.png" alt=""> 탄산음료</span></label>
 
-                <input id="button3" name = "car" class = "category-btn" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
-                <label class="button-label" for="button3"><span><img src="/static/images/img/md-icon04.png" alt=""> 생수 부자재</span></label>
+                    <input id="button3" name = "car" class = "category-btn" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
+                    <label class="button-label" for="button3"><span><img src="/static/images/img/md-icon04.png" alt=""> 생수 부자재</span></label>
 
-            </div>
-
-
-            <!--- group 버튼.  js에서 group 별로 뿌리기 -->
-            <div class="tab-sub-btn">
-                <div id = "category_button1">
-                    <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L">
-                    <label class="sub-button-label" for = "category1">2L</label>
-                    <input id="category2" name = "sub_car" class = "sub-btn" type = "radio" value = "500mL" >
-                    <label class="sub-button-label" for = "category2">500mL</label>
-                    <input id="category3" name = "sub_car" class = "sub-btn" type = "radio" value = "330mL" >
-                    <label class="sub-button-label" for = "category3">330mL</label>
-                    <input id="category4" name = "sub_car" class = "sub-btn" type = "radio" value = "18.9L" >
-                    <label class="sub-button-label" for = "category4">18.9L</label>
-                </div>
-                <div id = "category_button2" style = "display: none;">
-                    <input id="category5" name = "sub_car" class = "sub-btn" type = "radio" value = "스파클링">
-                    <label class="sub-button-label" for = "category5">스파클링</label>
                 </div>
 
-                <div id = "category_button3" style="display: none;">
-                    <input id="category6" name = "sub_car" class = "sub-btn" type = "radio" value = "냉온수기">
-                    <label class="sub-button-label" for = "category6">냉온수기</label>
-                    <input id="category7" name = "sub_car" class = "sub-btn" type = "radio" value = "거치대" >
-                    <label class="sub-button-label" for = "category7">거치대</label>
-                    <input id="category8" name = "sub_car" class = "sub-btn" type = "radio" value = "펌프" >
-                    <label class="sub-button-label" for = "category8">펌프</label>
+
+                <!--- group 버튼.  js에서 group 별로 뿌리기 -->
+                <div class="tab-sub-btn">
+                    <div id = "category_button1">
+                        <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L">
+                        <label class="sub-button-label" for = "category1">2L</label>
+                        <input id="category2" name = "sub_car" class = "sub-btn" type = "radio" value = "500mL" >
+                        <label class="sub-button-label" for = "category2">500mL</label>
+                        <input id="category3" name = "sub_car" class = "sub-btn" type = "radio" value = "330mL" >
+                        <label class="sub-button-label" for = "category3">330mL</label>
+                        <input id="category4" name = "sub_car" class = "sub-btn" type = "radio" value = "18.9L" >
+                        <label class="sub-button-label" for = "category4">18.9L</label>
+                    </div>
+                    <div id = "category_button2" style = "display: none;">
+                        <input id="category5" name = "sub_car" class = "sub-btn" type = "radio" value = "스파클링">
+                        <label class="sub-button-label" for = "category5">스파클링</label>
+                    </div>
+
+                    <div id = "category_button3" style="display: none;">
+                        <input id="category6" name = "sub_car" class = "sub-btn" type = "radio" value = "냉온수기">
+                        <label class="sub-button-label" for = "category6">냉온수기</label>
+                        <input id="category7" name = "sub_car" class = "sub-btn" type = "radio" value = "거치대" >
+                        <label class="sub-button-label" for = "category7">거치대</label>
+                        <input id="category8" name = "sub_car" class = "sub-btn" type = "radio" value = "펌프" >
+                        <label class="sub-button-label" for = "category8">펌프</label>
+                    </div>
                 </div>
-            </div>
 
 
-            <!---  정렬  --->
-            <div class="sort-top" style="">
-                <p class="product-num">
-                    <!--- 그룹별 상품 개수 count --->
-                    총 <span id="category_count"></span>개
-                </p>
-                <div class="sort-box">
-                    <ul class="">
-                        <!--- 처음에는 추천순(recommend)에 on --->
-                        <li class=" on">
-                            <a href="javascript:href_product_sort('recommend')">추천순</a>
-                        </li>
-                        <li class="">
-                            <a href="javascript:href_product_sort('recent')">신상품순</a>
-                        </li>
-                        <li class="">
-                            <a href="javascript:href_product_sort('popular')">인기상품순</a>
-                        </li>
-                        <li class="">
-                            <a href="javascript:href_product_sort('cheap')">낮은가격순</a>
-                        </li>
-                        <li class="">
-                            <a href="javascript:href_product_sort('expensive')">높은가격순</a>
-                        </li>
-                    </ul>
+                <!---  정렬  --->
+                <div class="sort-top" style="">
+                    <p class="product-num">
+                        <!--- 그룹별 상품 개수 count --->
+                        총 <span id="category_count"></span>개
+                    </p>
+                    <div class="sort-box">
+                        <ul class="clear">
+                            <!--- 처음에는 추천순(recommend)에 on --->
+                            <li class=" on">
+                                <a href="javascript:href_product_sort('recommend')">추천순</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:href_product_sort('recent')">신상품순</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:href_product_sort('popular')">인기상품순</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:href_product_sort('cheap')">낮은가격순</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:href_product_sort('expensive')">높은가격순</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <!-- product 가져와서 뿌리기  -->
-            <div class="md-contents m-product2">
-                <div class="con-box">
-                    <ul class="products">
+                <!-- product 가져와서 뿌리기  -->
+                <div class="md-contents m-product2">
+                    <div class="con-box">
+                        <ul class="products">
 
-                        <!--- 상세 페이지로 가기위해 group별로 가져온 product 뿌리기 js에서 onclick= location.href -->
+                            <!--- 상세 페이지로 가기위해 group별로 가져온 product 뿌리기 js에서 onclick= location.href -->
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<footer th:replace="~{fragment/footer :: footerFragment}"></footer>
-<script src="/static/js/shop/shop.js"></script>
+    </section>
+    <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+    <script src="/static/js/shop/shop.js"></script>
+    <script src="/static/js/order/cart.js"></script>
 </body>
 </html>
