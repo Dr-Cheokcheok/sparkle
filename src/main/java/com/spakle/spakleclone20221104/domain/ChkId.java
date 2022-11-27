@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ChkId {
-    private String id;
+    private String username;
 }

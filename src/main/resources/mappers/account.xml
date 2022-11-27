@@ -41,14 +41,12 @@
             username,
             password,
             role,
-
             name,
             phone,
             post_code,
             address,
             detail_address,
             event_sosick,
-
             create_date,
             update_date
         from
@@ -58,7 +56,7 @@
     </select>
 
     <select id="overlappedID" parameterType="com.spakle.spakleclone20221104.domain.ChkId" resultType="int">
-        select count(id) From user_mst where id=#{id}
+        select count(username) From user_mst where username=#{username}
     </select>
 
 
