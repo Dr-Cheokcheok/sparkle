@@ -15,6 +15,9 @@ spring:
     url: jdbc:mariadb://web-study.ca7yqvnelwuw.ap-northeast-2.rds.amazonaws.com:3306/sparkle-20221102?allowMultiQueries=true
     username: admin
     password: 1q2w3e4r
+    tomcat:
+      max-active: 5
+      max-wait: 10000
 
 mybatis:
   mapper-locations:
