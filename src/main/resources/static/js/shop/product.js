@@ -205,3 +205,6 @@ function priceToString(price) {
 window.onload = () => {
     ProductDetailService.getInstance().loadProductDetail();
 }
+
+
+

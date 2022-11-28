@@ -14,7 +14,6 @@ function checkCategory() {
 }
 
 
-
 function toggleBtn(s) {
   if(s == 'button1'){
     document.getElementById('category1').checked = true;
@@ -125,10 +124,10 @@ function reload(input){
                         <!----  best 아이템에만 figcaption  --->
                           <figcaption>BEST</figcaption>
                     </a>
-                        <div class="time-icon">
-                          <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                          <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                        </div>
+                    <div class="time-icon">
+                      <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                      <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                    </div>
                   </figure>
                   <div class="product-text">
                     <a href="/product/${product.productId}">${product.name}</a>
@@ -141,7 +140,16 @@ function reload(input){
                 </li>
                 `;
         }
-        
+        $(".bag").click(function() {
+            var check = confirm("상품이 장바구니에 담겼습니다.\n확인하시겠습니까?");
+            if (check) {
+                location.assign("/bag");
+            }
+        });
+
+        $(".like").click(function() {
+            alert("상품을 위시리스트에 추가하였습니다.");
+        });
        
       }
     });
@@ -159,3 +167,4 @@ function priceToString(price) {
 window.onload = () => {
   checkCategory();
 }
+

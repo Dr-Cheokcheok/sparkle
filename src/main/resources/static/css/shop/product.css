@@ -211,7 +211,7 @@ p{
     box-sizing: border-box;
     margin-right: 10px;
 }
-.goods-contents .btn-box a.heart {
+.goods-contents .btn-box a.like {
     width: 60px;
     background: url(/static/images/sub/blue-heart.png) no-repeat center;
     height: 60px;
