@@ -1,9 +1,11 @@
 package com.spakle.spakleclone20221104.service;
 
 
+import com.spakle.spakleclone20221104.domain.order.OrderItem;
 import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
+import com.spakle.spakleclone20221104.dto.order.OrderItemDto;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.dto.product.ProductDtlRespDto;
 import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
@@ -88,7 +90,6 @@ public class ProductServiceImpl implements ProductService{
         return tempName;
     }
 
-
     private List<ProductImgFile> getProductImgFiles(List<MultipartFile> files, int productId) throws Exception{
         List<ProductImgFile> productImgFiles = new ArrayList<ProductImgFile>();
 
@@ -131,6 +132,26 @@ public class ProductServiceImpl implements ProductService{
         });
 
         return productList;
+    }
+
+    @Override                   //productId를 list로 ?
+    public List<OrderItemDto> getProduct(int productId, int quantity) throws Exception {
+        List<OrderItemDto> list = new ArrayList<OrderItemDto>();
+        productRepository.getOrderItem(productId).forEach(orderItem -> {
+            list.add(OrderItemDto.builder()
+                    .productId(orderItem.getId())
+                    .name(orderItem.getName())
+                    .originPrice(orderItem.getPrice())
+                    .rate(orderItem.getRate())
+                    .retailPrice(orderItem.getRetail_price())
+                    .img(orderItem.getImg())
+                    .quantity(quantity)
+                    .discountAmount((orderItem.getPrice() - orderItem.getRetail_price()) * quantity)
+                    .totalPrice(orderItem.getPrice() * quantity)
+                    .build());
+        });
+
+        return list;
     }
 
     @Override

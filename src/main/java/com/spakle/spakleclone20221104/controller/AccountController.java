@@ -1,9 +1,7 @@
 package com.spakle.spakleclone20221104.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,8 +28,10 @@ public class AccountController {
     @GetMapping("/forgot")
     public String loadForgot() {return "account/forgot";}
 
-    @GetMapping("/order")
-    public String loadOrder() {return "order/order";}
+//    @GetMapping("/order")
+//    public String loadOrder() {return "order/order";}
 
+    @GetMapping("/order/{productId}/{quantity}")
+    public String loadOrder(@PathVariable int productId, @PathVariable int quantity) {return "order/order";}
 }
 

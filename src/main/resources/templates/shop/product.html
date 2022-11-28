@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="goods-info right">
-                        <form onsubmit="return false;">
+                        <form>
                             <div class="info">
                                 <p class="name"></p>
 
@@ -48,9 +48,9 @@
     
                                 </div>
                                 <div class="quanbx clear">
-                                    <input type="hidden" id="productId" value="1" name="productId">
+                                    <input type="hidden" id="productId" value="${responseData.id}" name="productId">
                                     <input type="hidden" id="calPrice" value="${responseData.retailPrice}" name="retailPrice">
-                                    
+
                                     <div class="quantity clear">
                                         <button type="button" id="calMinus" class="bt-decrease"></button>
                                         <input type="text" id="quantity" class="num" value="1" name="quantity">
@@ -68,9 +68,9 @@
                                 </div>
                                 <div class="btn-box clear">
                                     <!--- 버튼 누르면 관심상품, 장바구니, 구매 ---->
-                                    <a href="javascript:;" class="heart" id="interestBtn"></a>
-                                    <a href="/bag" id="cartBtn">장바구니 담기</a>
-                                    <a href="/order" class="purchase" id="buyBtn">바로 구매</a>
+                                    <button class="heart" id="interestBtn"></button>
+                                    <button id="cartBtn">장바구니 담기</button>
+                                    <button type="button" class="purchase" id="buyBtn">바로 구매</button>
                                 </div>
                             </div>
                         </form>

@@ -1,5 +1,6 @@
 package com.spakle.spakleclone20221104.service;
 
+import com.spakle.spakleclone20221104.dto.order.OrderItemDto;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.dto.product.ProductDtlRespDto;
 import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
@@ -14,7 +15,9 @@ public interface ProductService {
 
     public boolean updateProduct(ProductModificationReqDto productModificationReqDto) throws Exception;
 
-    public ProductDtlRespDto getProductDtl (int productId)throws  Exception;
+    //productId 리스트가 들어오면 하나씩 orderitemdto로 해서 넣ㅇ주기
+    public List<OrderItemDto> getProduct(int productId, int quantity)throws Exception;
+    public ProductDtlRespDto getProductDtl (int productId)throws Exception;
 
     public List<ProductListRespDto> getProducts(String category) throws Exception;
     public boolean deleteProduct(int productId) throws Exception;

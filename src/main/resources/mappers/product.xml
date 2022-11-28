@@ -163,7 +163,6 @@
             pt.name,
             pt.retail_price,
             pt.img
-
         FROM
             product pt
 
@@ -173,4 +172,32 @@
     </select>
 
 
+    <select id="getIngiProduct"
+            resultMap="Product">
+
+        select
+            product_id,
+            sum(quantity)
+        from
+            order_detail
+        group by
+            product_id
+        order by
+            sum(quantity) desc
+
+    </select>
+    <select id="getOrderItem"
+            resultType="com.spakle.spakleclone20221104.domain.order.OrderItem">
+        select
+            id,
+            name,
+            price,
+            rate,
+            retail_price,
+            img
+        from
+            product
+        where
+            id = #{productId}
+    </select>
 </mapper>

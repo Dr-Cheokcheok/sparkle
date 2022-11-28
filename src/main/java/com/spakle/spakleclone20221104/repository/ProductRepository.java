@@ -1,9 +1,12 @@
 package com.spakle.spakleclone20221104.repository;
 
+import com.spakle.spakleclone20221104.domain.order.OrderItem;
 import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
+import com.spakle.spakleclone20221104.dto.order.OrderItemDto;
 import groovyjarjarantlr4.v4.codegen.model.ExceptionClause;
+import jdk.jshell.spi.ExecutionControlProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -24,5 +27,9 @@ public interface ProductRepository {
     public List<Product> getProductInquiry(Map<String, Object> map) throws Exception;
 
     public int deleteProduct(int productId) throws Exception;
+
+    public List<Product> getIngiProduct()throws Exception;
+
+    public List<OrderItem> getOrderItem(int productId)throws Exception;
 
 }

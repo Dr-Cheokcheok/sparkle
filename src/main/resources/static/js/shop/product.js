@@ -19,8 +19,8 @@ function up() {
 
     quantity.value = parseInt(quantityValue) + 1;
 
-    totalPrice.textContent = calPrice * quantity.value;
-    calTotalPrice.textContent = calPrice * quantity.value;
+    totalPrice.textContent = (calPrice * quantity.value).toLocaleString();
+    calTotalPrice.textContent = (calPrice * quantity.value).toLocaleString();
     
      
 }
@@ -35,23 +35,14 @@ function down() {
 
     if (quantityValue != 1) {
         quantity.value = parseInt(quantityValue) - 1;
-        totalPrice.textContent = calPrice * quantity.value;
-        calTotalPrice.textContent = calPrice * quantity.value;
+        totalPrice.textContent = (calPrice * quantity.value).toLocaleString();
+        calTotalPrice.textContent = (calPrice * quantity.value).toLocaleString();
     }
 }
 
 /* 상품 정보 찜으로 보내기  */
 
 
-/*  product 기능 */
-
-const products = document.querySelectorAll('.product');
-
-products.forEach(product => {
-    product.onclick = () => {
-        location.href="/product/1"
-    }
-});
 
 
 /* DB에서 데이터 받아오기 */
@@ -110,7 +101,7 @@ class ProductDetailService {
     getProductImg(img) {
         const productImg = document.querySelector(".photo-box")
         productImg.innerHTML += `
-           <img src="/image/product/${img}">
+           <img class="main-img" src="/image/product/${img}">
         `;
     }
 
@@ -149,10 +140,16 @@ class ProductDetailService {
         up();
         down();
         
-        productTitle.innerHTML += `${responseData.name}`;
+        productTitle.innerHTML = `${responseData.name}`;
 
         if(responseData.rate == 0) {
             productPrice.innerHTML += `
+            <input type="hidden" id="productId" value="${responseData.id}" name="productId">
+            <input type="hidden" id="name" value="${responseData.name}" name="name">
+            <input type="hidden" id="origin-price" value="${responseData.price}" name="originPrice">
+            <input type="hidden" id="calPrice" value="${responseData.retailPrice}" name="retailPrice">
+            <input type="hidden" id="rate" value="${responseData.rate} name="rate">
+            
             <dl class="info-list clear">
                 <dt>판매가</dt>
                 <dd class="bold spoqa">${priceToString(responseData.retailPrice)}원</dd>
@@ -165,6 +162,12 @@ class ProductDetailService {
 
         }else {
             productPrice.innerHTML += `
+            <input type="hidden" id="productId" value="${responseData.id}" name="productId">
+            <input type="hidden" id="name" value="${responseData.name}" name="name">
+            <input type="hidden" id="origin-price" value="${responseData.price}" name="originPrice">
+            <input type="hidden" id="calPrice" value="${responseData.retailPrice}" name="retailPrice">
+            <input type="hidden" id="rate" value="${responseData.rate} name="rate">
+            
             <dl class="info-list clear">
                 <dt class="gray">정가</dt>
                 <dd class="gray under">${priceToString(responseData.price)}원</dd>
@@ -201,6 +204,23 @@ function priceToString(price) {
   
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
+
+
+// 구매버튼 클릭 -> 상품 구매 -> 뷰에서 가져올 값
+const buyBtn = document.querySelector("#buyBtn");
+buyBtn.onclick = () => {
+    alert("url넘김")
+    let id = $('#productId').val();
+    let ea = $('#quantity').val();
+    alert("id: " + id);
+    alert("ea: " + ea);
+    let url = "/order/" + id;
+    if (parseInt(ea) > 1) url += "/" + ea;
+    else url += "/1";
+    location.href = url;
+}
+
+
 
 window.onload = () => {
     ProductDetailService.getInstance().loadProductDetail();

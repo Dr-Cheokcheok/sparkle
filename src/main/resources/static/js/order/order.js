@@ -49,3 +49,136 @@ function paymentchk(s){
     }
 
 }
+
+
+//결제
+
+// 카드 결제
+function paymentCard(data) {
+    // 모바일로 결제시 이동페이지
+    const pathName = location.pathname;
+    const href = location.href;
+    const m_redirect = href.replaceAll(pathName, "");
+
+    IMP.init("imp04560234");
+
+    IMP.request_pay({ // param
+            pg: "html5_inicis",
+            pay_method: data.payMethod,
+            merchant_uid: data.orderNum,
+            name: data.name,
+            amount: data.amount,
+            buyer_email: "",
+            buyer_name: "",
+            buyer_tel: data.phone,
+            buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
+            buyer_postcode: data.deleveryAddress1,
+            m_redirect_url: m_redirect,
+        },
+        function (rsp) { // callback
+            if (rsp.success) {
+                // 결제 성공 시 로직,
+                data.impUid = rsp.imp_uid;
+                data.merchant_uid = rsp.merchant_uid;
+                paymentComplete(data);
+
+            } else {
+                // 결제 실패 시 로직,
+            }
+        });
+}
+
+
+// 주문번호 만들기
+function createOrderNum(){
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    let orderNum = year + month + day;
+    for(let i=0;i<10;i++) {
+        orderNum += Math.floor(Math.random() * 8);
+    }
+    return orderNum;
+}
+
+
+// 바로구매 시 id 가져오기
+
+
+let responseData;
+function getProduct(){
+    const map = new Map();
+    let idAndQuantity = location.href.substring(location.href.indexOf("order/") + 6);   // 25/3
+    let id = idAndQuantity.substring(0,idAndQuantity.indexOf("/"));
+    let quantity = idAndQuantity.substring(idAndQuantity.indexOf("/") + 1);
+
+    //파라미터 숨겨줌
+    history.replaceState({},null,"/order");
+
+    productRequest(id, quantity);
+    viewResponse();
+}
+
+function productRequest(id, quantity){
+
+    $.ajax({
+       async: false,
+        url: "api/order",
+        data:
+            {
+            id: id,
+            quantity: quantity
+        },
+        type:"get",
+        success: (response) => {
+            console.log(response.data);
+            responseData = response.data;
+        },
+        error: (error) => {
+           console.log(error)
+        }
+
+    });
+
+}
+
+function viewResponse(){
+    const productTable = document.querySelector("tbody");
+    productTable.innerHTML = "";
+    responseData.forEach(orderItem => {
+        productTable.innerHTML += `
+        <tr class="border-b">
+            <td class="taL pro-option">
+                <div class="proImg">
+                    <!---- 상품 이미지, 상세 get 요청  --->
+                    <img src="/image/product/${orderItem.img}" alt="상품이미지">
+                </div>
+                <div class="proTxt">
+                    <!--- go-product-text test ---->
+                    <span class="proState">스파클몰</span>
+                    <p>${orderItem.name}
+                    <span>${orderItem.rate}% 할인상품</span></p>
+                    
+                </div>
+            </td>
+            <td><!---   동일 상품 주문 개수 --->
+                <div class="spoqa">${orderItem.quantity}</div>
+            </td>
+            <td class="spoqa">
+                <!---  상품 금액 * num ---->
+                <div>${(orderItem.totalPrice).toLocaleString()}원</div>
+            </td>
+            <td class="spoqa">${(orderItem.discountAmount).toLocaleString()}원</td>
+            <td class="spoqa">0원</td>
+            <td>무료배송</td>
+            
+        </tr>
+        `;
+    });
+}
+
+window.onload = () => {
+    getProduct();
+}

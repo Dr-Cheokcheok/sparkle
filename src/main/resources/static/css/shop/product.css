@@ -47,6 +47,7 @@ p{
     font-size: 30px;
     color: #222;
     font-weight: 700;
+    border: none;
 }
 .goods-contents .prdt-label {
     padding: 14px 0 0;
@@ -198,7 +199,7 @@ p{
     width: 610px;
     display: flex;
 }
-.goods-contents .btn-box a {
+.goods-contents .btn-box button {
     float: left;
     font-size: 20px;
     color: #009eff;
@@ -211,12 +212,12 @@ p{
     box-sizing: border-box;
     margin-right: 10px;
 }
-.goods-contents .btn-box a.heart {
+.goods-contents .btn-box button.heart {
     width: 60px;
     background: url(/static/images/sub/blue-heart.png) no-repeat center;
     height: 60px;
 }
-.goods-contents .btn-box a.purchase {
+.goods-contents .btn-box button.purchase {
     background-color: #009eff;
     color: #fff;
     margin-right: 0;

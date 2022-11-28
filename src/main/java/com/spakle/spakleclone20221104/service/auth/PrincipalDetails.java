@@ -27,7 +27,7 @@ public class PrincipalDetails implements UserDetails {
         Arrays.asList(user.getRole().split(",")).forEach(role -> {
             authorities.add(() -> role);
         });
-
+            //role 리스트
         return authorities;
     }
 
