@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/static/css/order/order.css">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
     <title>주문결제</title>
 </head>
@@ -56,14 +57,14 @@
                                 <td class="taL pro-option">
                                     <div class="proImg">
                                         <!---- 상품 이미지, 상세 get 요청  --->
-                                        <a href="/product/1301">
+                                        <a href="/product/2">
                                             <img src="/static/images/product/500ml40-80.jpg" alt="상품이미지">
                                         </a>
                                     </div>
                                     <div class="proTxt">
                                         <!--- go-product-text test ---->
                                         <span class="proState">스파클몰</span>
-                                        <p><a href="/product/1301">스파클링 500ml 40병</a>
+                                        <p><a href="/product/2">스파클링 500ml 40병</a>
                                             <span>33% 할인상품</span>
                                         </p>
                                     </div>
@@ -90,7 +91,7 @@
                                     <div class="proTxt">
                                         <!--- go-product-text test ---->
                                         <span class="proState">스파클몰</span>
-                                        <p><a href="/product/1301">스파클링 500ml 40병</a>
+                                        <p class="food_name"><a href="/product/1301">스파클링 500ml 40병</a>
                                             <span>33% 할인상품</span>
                                         </p>
                                     </div>
@@ -134,7 +135,7 @@
                             </div>
                             <div class="calc-item">
                                 <p class="title">총결제금액</p>
-                                <p class="totalCost">28,300원</p>
+                                <p class="totalCost"><span id="totalCost">28300</span>원</p>
                             </div>
                         </div>
                     </div>
@@ -168,8 +169,6 @@
     
                         <div class="flex">
                             <h4 class="com-tit wid225">배송지정보</h4>
-                            <a href="javascript:;" class="btn_style btn2">주문자 정보와 동일</a>
-                            <a href="javascript:;" class="btn_style shipping">배송지변경</a>
                         </div>
                         <div class="order-detail od2">
                             <dl class="clear mb10">
@@ -241,20 +240,20 @@
                             <dd>
                                 <ul class="clear dd1">
                                     <li>
-                                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="" onclick="paymentchk(id)">
+                                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
                                         <label for="toss" class="vam ti-9999 toss">토스</label>
                                     </li>
                                     <li>
-                                        <input type="radio" name="payment" value="card" id="credit" onclick="paymentchk(id)">
+                                        <input type="radio" name="payment" value="card" id="credit">
                                         <label for="credit">신용카드</label>
                                     </li>
                                     
                                     <li>
-                                        <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam" onclick="paymentchk(id)">
+                                        <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam">
                                         <label for="naverpay-direct" class="vam ti-9999 n_pay">네이버페이</label>
                                     </li>
                                     <li>
-                                        <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam" onclick="paymentchk(id)">
+                                        <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam">
                                         <label for="kakaopay-direct" class="vam ti-9999 k_pay">카카오페이</label>
                                     </li>
                                 </ul>
@@ -280,7 +279,7 @@
                     </div>
                     <div class="order-btn-box">
                         <a href="/bag" class="btn_style1">장바구니</a>
-                        <a href="/orderComplete" id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
+                        <a id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
                         </div>
                     </div>
                 </form>
