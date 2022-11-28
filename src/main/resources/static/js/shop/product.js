@@ -209,11 +209,8 @@ function priceToString(price) {
 // 구매버튼 클릭 -> 상품 구매 -> 뷰에서 가져올 값
 const buyBtn = document.querySelector("#buyBtn");
 buyBtn.onclick = () => {
-    alert("url넘김")
     let id = $('#productId').val();
     let ea = $('#quantity').val();
-    alert("id: " + id);
-    alert("ea: " + ea);
     let url = "/order/" + id;
     if (parseInt(ea) > 1) url += "/" + ea;
     else url += "/1";
