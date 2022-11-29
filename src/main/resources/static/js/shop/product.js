@@ -12,7 +12,7 @@ bagButton.onclick = () => {
     let baginfo = {
         user_id: "",
         count: "",
-        product_id: productId.value,
+        product_id: productId,
         quantity: quantity.value,
     }
 
