@@ -148,7 +148,8 @@ class ProductDetailService {
             <input type="hidden" id="name" value="${responseData.name}" name="name">
             <input type="hidden" id="origin-price" value="${responseData.price}" name="originPrice">
             <input type="hidden" id="calPrice" value="${responseData.retailPrice}" name="retailPrice">
-            <input type="hidden" id="rate" value="${responseData.rate} name="rate">
+            <input type="hidden" id="rate" value="0" name="rate">
+            <input type="hidden" id="productImg" value="${responseData.img}" name="img">
             
             <dl class="info-list clear">
                 <dt>판매가</dt>
@@ -166,8 +167,9 @@ class ProductDetailService {
             <input type="hidden" id="name" value="${responseData.name}" name="name">
             <input type="hidden" id="origin-price" value="${responseData.price}" name="originPrice">
             <input type="hidden" id="calPrice" value="${responseData.retailPrice}" name="retailPrice">
-            <input type="hidden" id="rate" value="${responseData.rate} name="rate">
-            
+            <input type="hidden" id="rate" value="${responseData.rate}" name="rate">
+            <input type="hidden" id="productImg" value="${responseData.img}" name="img">
+
             <dl class="info-list clear">
                 <dt class="gray">정가</dt>
                 <dd class="gray under">${priceToString(responseData.price)}원</dd>
@@ -206,16 +208,16 @@ function priceToString(price) {
   }
 
 
-// 구매버튼 클릭 -> 상품 구매 -> 뷰에서 가져올 값
-const buyBtn = document.querySelector("#buyBtn");
-buyBtn.onclick = () => {
-    let id = $('#productId').val();
-    let ea = $('#quantity').val();
-    let url = "/order/" + id;
-    if (parseInt(ea) > 1) url += "/" + ea;
-    else url += "/1";
-    location.href = url;
-}
+// // 구매버튼 클릭 -> 상품 구매 -> 뷰에서 가져올 값
+// const buyBtn = document.querySelector("#buyBtn");
+// buyBtn.onclick = () => {
+//     let id = $('#productId').val();
+//     let ea = $('#quantity').val();
+//     let url = "/order/" + id;
+//     if (parseInt(ea) > 1) url += "/" + ea;
+//     else url += "/1";
+//     location.href = url;
+// }
 
 
 

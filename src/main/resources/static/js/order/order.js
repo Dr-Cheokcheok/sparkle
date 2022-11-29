@@ -175,136 +175,59 @@ function createOrderNum(){
 }
 
 
-// 바로구매 시 id 가져오기
 
+const calcBox = document.querySelector(".calc-box");
+const totalPrices = document.querySelectorAll(".total-price");
+const discounts = document.querySelectorAll(".discount");
+let totalPrice = 0;
+let totalDiscount = 0;
+totalPrices.forEach(price => {
+    totalPrice += parseInt(price.value);
+});
+discounts.forEach(discount => {
+    totalDiscount += parseInt(discount.value);
+})
+calcBox.innerHTML = "";
+calcBox.innerHTML = `
 
-let responseData;
-function getProduct(){
-    const map = new Map();
-    let idAndQuantity = location.href.substring(location.href.indexOf("order/") + 6);   // 25/3
-    let id = idAndQuantity.substring(0,idAndQuantity.indexOf("/"));
-    let quantity = idAndQuantity.substring(idAndQuantity.indexOf("/") + 1);
-
-    //파라미터 숨겨줌
-    history.replaceState({},null,"/order");
-
-    productRequest(id, quantity);
-    viewResponse();
-}
-
-function productRequest(id, quantity){
-
-    $.ajax({
-       async: false,
-        url: "api/order",
-        data:
-            {
-            id: id,
-            quantity: quantity
-        },
-        type:"get",
-        success: (response) => {
-            console.log(response.data);
-            responseData = response.data;
-        },
-        error: (error) => {
-           console.log(error)
-        }
-
-    });
-
-}
-
-function viewResponse(){
-    const productTbody = document.querySelector("tbody");
-    productTbody.innerHTML = "";
-    responseData.forEach(orderItem => {
-        productTbody.innerHTML += `
-        <tr class="border-b">
-            <td class="taL pro-option">
-                <div class="proImg">
-                    <!---- 상품 이미지, 상세 get 요청  --->
-                    <img src="/image/product/${orderItem.img}" alt="상품이미지">
-                </div>
-                <div class="proTxt">
-                    <!--- go-product-text test ---->
-                    <span class="proState">스파클몰</span>
-                    <p class="water_name">${orderItem.name}
-                    <span>${orderItem.rate}% 할인상품</span></p>
-                </div>
-            </td>
-            <td><!---   동일 상품 주문 개수 --->
-                <div class="spoqa">${orderItem.quantity}</div>
-            </td>
-            <td class="spoqa">
-                <!---  상품 금액 * num ---->
-                <div>${(orderItem.totalPrice).toLocaleString()}원</div>
-                <input type="hidden" class="total-price" value="${orderItem.totalPrice}">
-            </td>
-            <td class="spoqa">${(orderItem.discountAmount).toLocaleString()}원</td>
-            <input class="discount" type="hidden" value="${orderItem.discountAmount}">
-            <td>무료배송</td>
-            
-        </tr>
-        `;
-    });
-    const calcBox = document.querySelector(".calc-box");
-    const totalPrices = document.querySelectorAll(".total-price");
-    const discounts = document.querySelectorAll(".discount");
-    let totalPrice = 0;
-    let totalDiscount = 0;
-    totalPrices.forEach(price => {
-        totalPrice += parseInt(price.value);
-    });
-    discounts.forEach(discount => {
-        totalDiscount += parseInt(discount.value);
-    })
-    calcBox.innerHTML = "";
-    calcBox.innerHTML = `
-
-    <div class="calc-box-in">
-        <div class="calc-item">
-            <p class="title">총 판매가</p>
-            <p class="selPrice">${totalPrice.toLocaleString()}원</p>
-        </div>
-        <div class="symb plus-symbol">
-            <img src="/static/images/sub/plus-symbol.png" alt="">
-        </div>
-        <div class="calc-item">
-            <p class="title">배송비</p>
-            <p class="deliPrice">0원</p>
-        </div>
-        <div class="symb minus-symbol">
-            <img src="/static/images/sub/minus-symbol.png" alt="">
-        </div>
-        <div class="calc-item">
-            <p class="title">할인금액</p>
-            <p class="dcPrice">${totalDiscount.toLocaleString()}원</p>
-        </div>
-        <div class="symb equal-symbol">
-            <img src="/static/images/sub/equal-symbol.png" alt="">
-        </div>
-        <div class="calc-item">
-            <p class="title">총결제금액</p>
-            <p class="totalCost"><span id="totalCost">${(totalPrice - totalDiscount)}</span>원</p>
-        </div>
+<div class="calc-box-in">
+    <div class="calc-item">
+        <p class="title">총 판매가</p>
+        <p class="selPrice">${totalPrice.toLocaleString()}원</p>
     </div>
-    
+    <div class="symb plus-symbol">
+        <img src="/static/images/sub/plus-symbol.png" alt="">
+    </div>
+    <div class="calc-item">
+        <p class="title">배송비</p>
+        <p class="deliPrice">0원</p>
+    </div>
+    <div class="symb minus-symbol">
+        <img src="/static/images/sub/minus-symbol.png" alt="">
+    </div>
+    <div class="calc-item">
+        <p class="title">할인금액</p>
+        <p class="dcPrice">${totalDiscount.toLocaleString()}원</p>
+    </div>
+    <div class="symb equal-symbol">
+        <img src="/static/images/sub/equal-symbol.png" alt="">
+    </div>
+    <div class="calc-item">
+        <p class="title">총결제금액</p>
+        <p class="totalCost"><span id="totalCost">${(totalPrice - totalDiscount)}</span>원</p>
+    </div>
+</div>
+
 `;
-    const cartTotalPrice = document.querySelector(".cart-total-price");
-    cartTotalPrice.innerHTML = "";
-    cartTotalPrice.innerHTML = `
-    <p>총 결제금액
-        <span class="calc-tot-amount">${(totalPrice - totalDiscount).toLocaleString()}원</span>
-    </p>
-    `
-}
-
-
-
-
+const cartTotalPrice = document.querySelector(".cart-total-price");
+cartTotalPrice.innerHTML = "";
+cartTotalPrice.innerHTML = `
+<p>총 결제금액
+    <span class="calc-tot-amount">${(totalPrice - totalDiscount).toLocaleString()}원</span>
+</p>
+`;
 
 
 window.onload = () => {
-    getProduct();
+    history.replaceState({}, null, location.pathname);
 }

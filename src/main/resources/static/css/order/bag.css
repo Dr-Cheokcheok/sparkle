@@ -193,7 +193,7 @@
     margin-bottom: 11px;
     display: block;
 }
-.cart_table .proTxt p span {
+.cart_table .proTxt .water-rate {
     font-size: 15px;
     color: #888;
     display: block;
