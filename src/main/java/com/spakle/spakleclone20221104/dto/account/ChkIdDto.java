@@ -10,11 +10,11 @@ import javax.validation.constraints.NotBlank;
 public class ChkIdDto {
 
     @NotBlank
-    private String id;
+    private String username;
 
     public ChkId toUserEntity() {
         return ChkId.builder()
-                .id(id)
+                .username(username)
                 .build();
     }
 }

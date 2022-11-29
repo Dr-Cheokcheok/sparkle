@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @NoArgsConstructor
-public class ChkId {
-    private String username;
+
+public class BagVO {
+    private int user_id;
+    private int count;
+    private int product_id;
+    private int quantity;
 }

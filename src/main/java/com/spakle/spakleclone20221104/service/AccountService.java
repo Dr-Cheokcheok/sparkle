@@ -10,5 +10,6 @@ public interface AccountService {
     public int overlappedID(ChkIdDto chkIdDto) throws Exception;
 
     public boolean register(RegisterReqDto registerReqDto) throws Exception;
+
 }
 
