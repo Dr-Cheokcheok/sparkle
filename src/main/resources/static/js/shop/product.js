@@ -1,8 +1,8 @@
 const upButton = document.querySelector("#calPlus");
 const downButton = document.querySelector("#calMinus");
-const bagButton = document.querySelector("#cartBtn");
 
-const quantity = document.getElementById("quantity");
+const bagButton = document.querySelector("#cartBtn");
+const quantity = document.querySelector("#quantity");
 
 bagButton.onclick = () => {
 
@@ -36,8 +36,11 @@ function bagChk(result){
     if(result == 0) {
         alert("로그인이 필요합니다.");
         location.replace("/login");
-    } else {
+    } else if (result == 1) {
         alert("상품이 장바구니에 담겼습니다.\n지금 장바구니로 이동하시겠습니까?");
+        location.replace("/bag");
+    } else {
+        alert("장바구니에 이미 상품이 등록되어있습니다.\n지금 장바구니로 이동하시겠습니까?");
         location.replace("/bag");
     }
 }

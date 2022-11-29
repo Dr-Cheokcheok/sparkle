@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -25,14 +23,20 @@ public class BagApi {
     private final BagService bagService;
 
     @PostMapping("/add")
-    public ResponseEntity<?> bagAdd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+    public int bagaddd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+        int result = 0;
+        if(principalDetails.getUser() == null){
+            return result;
+        }
         User user = principalDetails.getUser();
+
         bagDto.setUser_id(user.getId());
+//        bagDto.setCount(bagService.bagCountChk(user.getId()));
+//            bagDto.setCount(bagService.bagCountChk(bagDto));
         bagService.bagadd(bagDto);
-        return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",bagDto));
-
+        result = 1;
+        return result;
     }
-
 
 
 }

@@ -4,6 +4,8 @@ import com.spakle.spakleclone20221104.dto.shop.BagDto;
 
 public interface BagService {
 
-    public boolean bagadd(BagDto bagDto) throws Exception;
+    //장바구니 추가
+    public void bagadd(BagDto bagDto) throws Exception;
 
+    public int bagCountChk(int user_id) throws Exception;
 }

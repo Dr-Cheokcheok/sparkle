@@ -24,8 +24,8 @@ mybatis:
     - /mappers/*.xml
 
 #파일 패스 각자 경로 설정해야 프로젝트폴더 -> upload폴더
-file:
-   path: /Users/yulini/Desktop/spakle/upload/
+# file:
+#    path: /Users/yulini/Desktop/spakle/upload/
 
-#file:
-#  path: C:/junil/changseok/web-basic/git/project/spakle/upload/
+file:
+ path: C:/junil/changseok/web-basic/git/project/spakle/upload/
