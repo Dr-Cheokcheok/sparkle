@@ -17,7 +17,6 @@ public class OrderDtlReqDto {
                 .order_id(orderId)
                 .product_id(productId)
                 .quantity(quantity)
-                .total_price(totalPrice)
                 .build();
     }
 }

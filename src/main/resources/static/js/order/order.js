@@ -73,9 +73,32 @@ const payBtn = document.querySelector("#payBtn");
 payBtn.onclick = (e) => {
     e.preventDefault();
     payment();
+
+    let formData = new FormData();
+
+    formData.append("orderId", data.orderNum);
+    formData.append("ordererName", data.ordererName);
+    formData.append("recipientName", data.recipientName);
+    formData.append("phone", data.phone);
+    formData.append("postCode", data.deleveryAddress1);
+    formData.append("address", deleveryAddress2);
+    formData.append("detailAddress", deleveryAddress3);
+    formData.append("shipMsg", data.request),
+    formData.append("entrance", data.door);
+    formData.append("pet", data.pet);
+    formData.append("totalPrice", data.totalPrice);
+    
 }
 
 function payment() {
+    const pet = document.querySelector("#eventChk");
+    
+    if(pet.checked()) {
+        pet = 1;
+    }else {
+        pet = 0;
+    }
+
     const data = {
         payMethod : $("input[type='radio']:checked").val(),
         orderNum : createOrderNum(),
@@ -88,6 +111,7 @@ function payment() {
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
+        pet : pet,
         totalPrice : Number($("#totalCost").text())
     }
 
@@ -158,7 +182,7 @@ function paymentCard(data) {
 		if (rsp.success) {
          // 결제 성공 시 로직,
          console.log('빌링키 발급 성공', rsp);
-         InfoData();
+         InfoData(formData);
          alert("결제가 완료되었습니다!");
 			
 		} else {
@@ -171,18 +195,19 @@ function paymentCard(data) {
 	});
 }
 
-
-// 장바구니 A 보따리
-// const totalCost = 
-
-function InfoData(){
+function InfoData(formData){
     $.ajax({
         async: false,
-        type: "get",
-        url: "/api/product/" + productId,
+        type: "post",
+        url: "/order/prepare",
+        enctype: "multipart/form-data",
+        contentType: false,
+        processType: false,
+        data: formData,
         dataType: "json",
         success: (response) => {
-            responseData = response.data;
+            alert("상품 결제 완료!");
+            location.replace("/account/order/detail");
         },
         error: (error) => {
             console.log(error);

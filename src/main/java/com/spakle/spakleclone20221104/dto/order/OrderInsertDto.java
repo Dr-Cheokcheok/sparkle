@@ -22,6 +22,7 @@ import java.util.List;
         private String shipMsg;
         private String entrance;
         private int pet;
+        private int totalPrice;
 
         private List<Integer> orderDetails;
 
@@ -39,6 +40,7 @@ import java.util.List;
                     .ship_msg(shipMsg)
                     .entrance(entrance)
                     .pet(pet)
+                    .total_price(totalPrice)
                     .build();
         }
 }
