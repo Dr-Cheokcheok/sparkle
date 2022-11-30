@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BagRepository {
 
-    public int bagAdd(BagVO bagVO) throws Exception;
+    public void bagAdd(BagVO bagVO) throws Exception;
+
+    public int bagCountChk(int user_id) throws Exception;
 
     public int deleteBag(int bagId);
 

@@ -16,11 +16,20 @@ public class BagServicelmpl implements BagService {
     private final BagRepository bagRepository;
 
     @Override
-    public boolean bagadd(BagDto bagDto) throws Exception{
+    public void bagadd(BagDto bagDto) throws Exception{
 
         BagVO bagEntity = bagDto.toBagEntity();
-        int result = bagRepository.bagAdd(bagEntity);
-        return  result != 0;
+        bagRepository.bagAdd(bagEntity);
+//        int result = bagRepository.bagAdd(bagEntity);
+//        return result != 0;
+
+    }
+
+    @Override
+    public int bagCountChk(int user_id) throws  Exception{
+
+        int count = bagRepository.bagCountChk(user_id);
+        return count;
 
     }
 

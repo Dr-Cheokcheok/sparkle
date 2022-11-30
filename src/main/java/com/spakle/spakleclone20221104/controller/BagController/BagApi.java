@@ -30,4 +30,22 @@ public class BagApi {
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",bagDto));
     }
 
+    public int bagaddd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+
+        int result = 0;
+
+        if(principalDetails == null){
+            return result;
+        }
+        User user = principalDetails.getUser();
+
+        bagDto.setUser_id(user.getId());
+        bagDto.setCount(bagService.bagCountChk(user.getId()));
+
+        bagService.bagadd(bagDto);
+        result = 1;
+        return result;
+    }
+
+
 }

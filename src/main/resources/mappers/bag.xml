@@ -19,6 +19,12 @@
         delete from cart
         where product_id = #{product_id}
     </delete>
+
+
+    <select id="bagCountChk" parameterType="int" resultType="int">
+        select ifnull(MAX(COUNT),1) from
+            cart
+        where
+            user_id=#{user_id}
+    </select>
 </mapper>
-
-
