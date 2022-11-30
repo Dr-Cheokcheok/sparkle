@@ -94,7 +94,7 @@
                         </div>
                         <div class="order-detail od2">
                             <dl class="clear mb10">
-                                <dt>이름</dt>
+                                  <dt>이름</dt>
                                 <dd>
                                     <input type="text" class="input_1" name="r_name" value="">
                                 </dd>
@@ -162,16 +162,12 @@
                             <dd>
                                 <ul class="clear dd1">
                                     <li>
-                                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
-                                        <label for="toss" class="vam ti-9999 toss">토스</label>
-                                    </li>
-                                    <li>
                                         <input type="radio" name="payment" value="card" id="credit">
                                         <label for="credit">신용카드</label>
                                     </li>
                                     
                                     <li>
-                                        <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam">
+                                        <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam" checked="">
                                         <label for="naverpay-direct" class="vam ti-9999 n_pay">네이버페이</label>
                                     </li>
                                     <li>
@@ -209,11 +205,8 @@
         </section>
         <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
-<<<<<<< HEAD
 
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-=======
->>>>>>> origin/min2
     <script src="/static/js/order/order.js"></script>
 </body>
 </html>
