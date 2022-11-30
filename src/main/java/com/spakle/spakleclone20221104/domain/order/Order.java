@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @Data
@@ -25,4 +26,6 @@ public class Order {
     private String ship_msg;
     private String entrance;
     private int pet;
+
+    private List<OrderDetail> orderDetails;
 }

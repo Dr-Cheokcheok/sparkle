@@ -30,6 +30,4 @@ public interface ProductRepository {
 
     public List<Product> getIngiProduct()throws Exception;
 
-    public List<OrderItem> getOrderItem(int productId)throws Exception;
-
 }

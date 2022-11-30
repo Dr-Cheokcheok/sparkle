@@ -2,11 +2,12 @@ package com.spakle.spakleclone20221104.service.order;
 
 import com.spakle.spakleclone20221104.domain.order.Order;
 import com.spakle.spakleclone20221104.domain.order.OrderDetail;
-import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
-import com.spakle.spakleclone20221104.dto.order.OrderReqDto;
+import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
 import com.spakle.spakleclone20221104.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,18 +17,29 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public boolean addOrder(OrderReqDto orderReqDto) throws Exception {
+    public boolean addOrder(OrderInsertDto orderInsertDto) throws Exception {
 
-        Order order = orderReqDto.toOrderEntity();
+        List<Integer> orderDetails = orderInsertDto.getOrderDetails();
 
-        return true;
-    }
+        List<OrderDetail> orderDtls = null;
 
-    @Override
-    public boolean addOrderDetails(OrderDtlReqDto orderDtlReqDto) throws Exception {
+        Order order = orderInsertDto.toOrderEntity();
 
-        OrderDetail orderDetail = orderDtlReqDto.toOrderDtlEntity();
 
         return true;
     }
+
+    private List<OrderDetail> getProductIds(List<Integer> orderDetails, int orderId) throws Exception {
+
+//
+//       OrderDetail orderDetail = OrderDetail.builder()
+//               .order_id(orderId)
+//               .product_id(productId)
+//               .quantity(quantity)
+//               .total_price(totalPrice)
+//               .build();
+
+        return null;
+    }
+
 }

@@ -186,18 +186,5 @@
             sum(quantity) desc
 
     </select>
-    <select id="getOrderItem"
-            resultType="com.spakle.spakleclone20221104.domain.order.OrderItem">
-        select
-            id,
-            name,
-            price,
-            rate,
-            retail_price,
-            img
-        from
-            product
-        where
-            id = #{productId}
-    </select>
+
 </mapper>

@@ -35,7 +35,6 @@
                     <div class="cart-top txt">
                         상품정보
                     </div>
-                    
                     <table class="cart_table">
                         <colgroup>
                             <col width="30%">
@@ -55,16 +54,38 @@
                         </thead>
                         <tbody>
                             <!---- product --->
+                            <tr class="border-b">
+                                <td class="taL pro-option">
+                                <input id="productId" type="hidden" th:value="${order.productId}">
+                                    <div class="proImg">
+                                        <!---- 상품 이미지, 상세 get 요청  --->
+                                        <img th:src="|/image/product/${order.img}|">
+                                    </div>
+                                    <div class="proTxt">
+                                        <!--- go-product-text test ---->
+                                        <span class="proState">스파클몰</span>
+                                        <p class="water_name" th:text="${order.name}"></p>
+                                        <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
+                                    </div>
+                                </td>
+                                <td><!---   동일 상품 주문 개수 --->
+                                    <div class="spoqa" th:text="${order.quantity}"></div>
+                                </td>
+                                <td class="spoqa">
+                                    <!---  상품 금액 * num ---->
+                                    <div th:text="${order.getTotalPrice()}">원</div>
+                                    <input type="hidden" class="total-price" th:value="${order.getTotalPrice()}">
+                                </td>
+                                <td class="spoqa" th:text="|${order.getDiscountAmount()}원|"></td>
+                                <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
+                                <td>무료배송</td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="calc-box">
-
                     </div>
                     <div class="cart-total-price">
-
                     </div>
-
-
                     <!---      주문자 정보 및 결제 정보      -->
                     <div class="order-in">
                         <h4 class="com-tit">주문자정보</h4>
@@ -72,19 +93,19 @@
                             <dl class="clear">
                                 <dt>이름</dt>
                                 <dd>
-                                    <input type="text" class="input_1" name="name" value="">
+                                    <input type="text" class="input_1" name="name" th:value="${principalUser.name}">
                                 </dd>
                             </dl>
                             <dl class="clear">
                                 <dt>휴대폰</dt>
                                 <dd>
-                                    <input type="hidden" name="phone" value="">
+                                    <input type="text" name="phone" th:value="${principalUser.phone}">
                         
                                 </dd>
                             </dl>
                         </div>
                         <div style="display: none;">
-                            <input type="hidden" name="user_postcode" value="49305" disabled="">
+                            <input type="hidden" name="user_postcode" value="" disabled="">
                             <input type="hidden" name="user_address" value="" disabled="">
                             <input type="hidden" name="user_address_detail" value="" disabled="">
                         </div>
@@ -96,23 +117,23 @@
                             <dl class="clear mb10">
                                   <dt>이름</dt>
                                 <dd>
-                                    <input type="text" class="input_1" name="r_name" value="">
+                                    <input type="text" class="input_1" name="r_name" th:value="${principalUser.name}">
                                 </dd>
                             </dl>
                             <dl class="clear mb10">
                                 <dt>휴대폰</dt>
                                 <dd>
-                                    <input type="text" class="input_1" name="r_phone" value="">
+                                    <input type="text" class="input_1" name="r_phone" th:value="${principalUser.phone}">
                                 </dd>
                             </dl>
                             <dl class="clear mb10">
                                 <dt>주소</dt>
                                 <dd>
                                     <div class="address_inp">
-                                        <input type="text" id="postcode" readonly="readonly" class="input_1 mb12 wid350" placeholder="우편번호" value="" style="background: rgba(0,0,0,.1); cursor: default; width: 6em;">
+                                        <input type="text" id="postcode" readonly="readonly" class="input_1 mb12 wid350" placeholder="우편번호" th:value="${principalUser.post_code}" style="background: rgba(0,0,0,.1); cursor: default; width: 6em;">
                                         <input type="button" value="우편번호찾기" class="find_post"> <br>
-                                        <input type="text" id="address" readonly="readonly" placeholder="주소" class="adr" value="" style="background: rgba(0,0,0,.1); cursor: default;">
-                                        <input type="text" id="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" value="">
+                                        <input type="text" id="address" readonly="readonly" placeholder="주소" class="adr" th:value="${principalUser.address}" style="background: rgba(0,0,0,.1); cursor: default;">
+                                        <input type="text" id="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" th:value="${principalUser.detail_address}">
                                         <input type="hidden" id="address_data" value="">
                                         <input type="hidden" id="is_deliverable" value="">
                                         <p class="deliverable-show" style="display: none; color: #00f;">
@@ -205,8 +226,6 @@
         </section>
         <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
-
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
     <script src="/static/js/order/order.js"></script>
 </body>
 </html>

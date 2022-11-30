@@ -28,10 +28,5 @@ public class AccountController {
     @GetMapping("/forgot")
     public String loadForgot() {return "account/forgot";}
 
-//    @GetMapping("/order")
-//    public String loadOrder() {return "order/order";}
-
-    @GetMapping("/order/{productId}/{quantity}")
-    public String loadOrder(@PathVariable int productId, @PathVariable int quantity) {return "order/order";}
 }
 
