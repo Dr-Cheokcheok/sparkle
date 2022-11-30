@@ -101,7 +101,8 @@ function payment() {
         payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
         name : $(".water_name").text(),
-        buyerName : $("input[name='name']").val(),
+        ordererName : $("input[name='name']").val(),
+        recipientName : $("input[name='r_name']").val(),
         phone : $("input[name='r_phone']").val(),
         request : $("li[name='deli-select']").val(),
         door : $("input[name='door_password']").val(),
@@ -113,17 +114,47 @@ function payment() {
         // totalPrice : Number($("input[id='totalCost']").val())
     }
 
+    const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+    const regex2 = /^[0-9]+$/;
+
+    if(!data.ordererName) {
+        alert('이름 란은 비워둘 수 없습니다.')
+        return;
+
+    }else if(!regex.test(data.ordererName)) {
+        alert('이름 란에는 한글만 입력할 수 있습니다.')
+        return;
+    }
+
+    if(!data.recipientName) {
+        alert('이름 란은 비워둘 수 없습니다.')
+        return;
+
+    }else if(!regex.test(data.recipientName)) {
+        alert('이름 란에는 한글만 입력할 수 있습니다.')
+        return;
+    }
+
     if(!data.deleveryAddress1 || !data.deleveryAddress2 ) {
-        alert('배달 받으실 주소를 입력해 주세요')
+        alert('배달 받으실 주소는 비워둘 수 없습니다.')
         return;
     }
 
     if(!data.phone) {
-        alert('전화번호를 입력해주세요');
+        alert('전화번호란은 비워둘 수 없습니다.');
+        return;
+
+    } else if(!regex2.test(data.phone)) {
+        alert('전화번호는 숫자만 입력할 수 있습니다.')
+        return;
+
+    }else if(data.phone.length != 11) {
+        alert('전화번호는 11자리의 숫자만 가능합니다.')
         return;
     }
 
     paymentCard(data);
+    console.log(data.createOrderNum);
 
 }
 
@@ -140,7 +171,7 @@ function paymentCard(data) {
 	  	name: data.name,
 	  	amount: data.totalPrice,
 	   	buyer_email: "",
-	   	buyer_name: data.buyerName,
+	   	buyer_name: data.recipientName,
 	  	buyer_tel: data.phone,
 	  	buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
 	  	buyer_postcode: data.deleveryAddress1,
