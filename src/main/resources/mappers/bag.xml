@@ -15,7 +15,7 @@
         )
     </insert>
 
-    <select id="bagCountChk" parameterType="int">
+    <select id="bagCountChk" parameterType="int" resultType="int">
         select ifnull(MAX(COUNT),1) from
             cart
         where

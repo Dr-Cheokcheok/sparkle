@@ -24,15 +24,17 @@ public class BagApi {
 
     @PostMapping("/add")
     public int bagaddd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+
         int result = 0;
-        if(principalDetails.getUser() == null){
+
+        if(principalDetails == null){
             return result;
         }
         User user = principalDetails.getUser();
 
         bagDto.setUser_id(user.getId());
-//        bagDto.setCount(bagService.bagCountChk(user.getId()));
-//            bagDto.setCount(bagService.bagCountChk(bagDto));
+        bagDto.setCount(bagService.bagCountChk(user.getId()));
+
         bagService.bagadd(bagDto);
         result = 1;
         return result;
