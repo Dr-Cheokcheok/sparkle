@@ -24,9 +24,9 @@ public class BagServicelmpl implements BagService {
     }
 
     @Override
-    public int bagCountChk(int user_id) throws Exception{
+    public int bagNumberChk(int user_id) throws Exception{
 
-        int count = bagRepository.bagCountChk(user_id);
+        int count = bagRepository.bagNumberChk(user_id);
         return count;
 
     }
@@ -36,4 +36,10 @@ public class BagServicelmpl implements BagService {
         boolean chk = bagRepository.bagOverlapChk(user_id, product_id);
         return chk;
     }
+
+//    @Override
+//    public String bagCountChk(int user_id) throws Exception{
+//        String count = bagRepository.bagCountChk(user_id);
+//        return count;
+//    }
 }

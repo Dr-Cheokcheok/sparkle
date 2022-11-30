@@ -5,9 +5,9 @@
 
 <mapper namespace ="com.spakle.spakleclone20221104.repository.BagRepository">
     <insert id="bagAdd" parameterType="com.spakle.spakleclone20221104.domain.BagVO">
-        insert into
+        INSERT INTO
             cart
-        values (
+        VALUES (
             #{user_id},
             #{count},
             #{product_id},
@@ -16,9 +16,9 @@
     </insert>
 
     <select id="bagCountChk" parameterType="int" resultType="int">
-        select ifnull(MAX(COUNT),1) from
+        SELECT ifnull(MAX(COUNT),1) FROM
             cart
-        where
+        WHERE
             user_id=#{user_id}
     </select>
 
@@ -27,4 +27,13 @@
             EXISTS
             (SELECT 1 FROM cart WHERE user_id = #{user_id} AND product_id = #{product_id} LIMIT 1)
     </select>
+
+<!--    <select id="bagCountChk" parameterType="int" resultType="String">-->
+<!--        SELECT-->
+<!--            COUNT(*)-->
+<!--        FROM-->
+<!--            cart-->
+<!--        WHERE-->
+<!--            user_id = #{user_id}-->
+<!--    </select>-->
 </mapper>

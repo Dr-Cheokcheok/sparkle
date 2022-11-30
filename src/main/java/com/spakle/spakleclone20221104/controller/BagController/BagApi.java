@@ -23,7 +23,7 @@ public class BagApi {
     private final BagService bagService;
 
     @PostMapping("/add")
-    public int bagaddd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+    public int bagadd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
 
         int result = 0;
 
@@ -38,12 +38,25 @@ public class BagApi {
             return result = 2;
         }
         //제품 순번 체크
-        bagDto.setCount(bagService.bagCountChk(user.getId()));
+        bagDto.setCount(bagService.bagNumberChk(user.getId()));
 
         bagService.bagadd(bagDto);
         result = 1;
         return result;
     }
 
+//    @PostMapping("/bagchk")
+//    public String bagCountChk(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+//        if(principalDetails == null){
+//            return "";
+//        }
+//
+//        User user = principalDetails.getUser();
+//        if(bagService.bagCountChk(user.getId()) == "0"){
+//            return "";
+//        } else {
+//            return bagService.bagCountChk(user.getId());
+//        }
+//    }
 
 }
