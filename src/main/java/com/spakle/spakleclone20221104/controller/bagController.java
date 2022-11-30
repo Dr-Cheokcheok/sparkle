@@ -29,4 +29,12 @@ public class bagController {
         return null;
     }
 
+    @PostMapping("/bag/delete")
+    public String deleteBagPOST(BagDto bag) {
+
+        bagService.deleteBag(bag.getProduct_id());
+
+        return "redirect:/bag/" + bag.getUser_id();
+    }
+
 }

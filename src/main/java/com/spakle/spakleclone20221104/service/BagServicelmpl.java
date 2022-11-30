@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BagServicelmpl implements BagService {
@@ -33,7 +35,11 @@ public class BagServicelmpl implements BagService {
 
     }
 
+    @Override
+    public List<BagDto> getBag(String user_id){
 
+        return null;
+    }
 
     @Override
     public int deleteBag(int bagId) {

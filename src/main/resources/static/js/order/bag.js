@@ -90,3 +90,12 @@ $(chk).click(function(){
     $(allChk).prop("checked",false);
     }
 });
+
+
+/* 장바구니 삭제 버튼 */
+$(".delete_btn").on("click", function(e){
+	e.preventDefault();
+	const product_id = $(this).data("product_id");
+	$(".delete_product_id").val(product_id);
+	$(".quantity_delete_form").submit();
+});
