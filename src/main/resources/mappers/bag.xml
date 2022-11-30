@@ -21,4 +21,10 @@
         where
             user_id=#{user_id}
     </select>
+
+    <select id="bagOverlapChk" parameterType="int" resultType="boolean">
+        SELECT
+            EXISTS
+            (SELECT 1 FROM cart WHERE user_id = #{user_id} AND product_id = #{product_id} LIMIT 1)
+    </select>
 </mapper>

@@ -24,10 +24,16 @@ public class BagServicelmpl implements BagService {
     }
 
     @Override
-    public int bagCountChk(int user_id) throws  Exception{
+    public int bagCountChk(int user_id) throws Exception{
 
         int count = bagRepository.bagCountChk(user_id);
         return count;
 
+    }
+
+    @Override
+    public boolean bagOverlapChk(int user_id, int product_id) throws Exception{
+        boolean chk = bagRepository.bagOverlapChk(user_id, product_id);
+        return chk;
     }
 }

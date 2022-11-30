@@ -33,6 +33,11 @@ public class BagApi {
         User user = principalDetails.getUser();
 
         bagDto.setUser_id(user.getId());
+        //해당 제품이 이미 장바구니에 존재하는지 체크
+        if(bagService.bagOverlapChk(bagDto.getUser_id(),bagDto.getProduct_id())){
+            return result = 2;
+        }
+        //제품 순번 체크
         bagDto.setCount(bagService.bagCountChk(user.getId()));
 
         bagService.bagadd(bagDto);
