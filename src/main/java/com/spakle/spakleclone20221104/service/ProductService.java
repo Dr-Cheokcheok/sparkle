@@ -16,7 +16,6 @@ public interface ProductService {
     public boolean updateProduct(ProductModificationReqDto productModificationReqDto) throws Exception;
 
     //productId 리스트가 들어오면 하나씩 orderitemdto로 해서 넣ㅇ주기
-    public List<OrderItemDto> getProduct(int productId, int quantity)throws Exception;
     public ProductDtlRespDto getProductDtl (int productId)throws Exception;
 
     public List<ProductListRespDto> getProducts(String category) throws Exception;

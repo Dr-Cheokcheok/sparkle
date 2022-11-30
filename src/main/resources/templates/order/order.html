@@ -57,6 +57,7 @@
                             <tr class="border-b">
                                 <td class="taL pro-option">
                                 <input id="productId" type="hidden" th:value="${order.productId}">
+                                <input id="quantity" type="hidden" th:value="${order.quantity}">
                                     <div class="proImg">
                                         <!---- 상품 이미지, 상세 get 요청  --->
                                         <img th:src="|/image/product/${order.img}|">
@@ -73,10 +74,10 @@
                                 </td>
                                 <td class="spoqa">
                                     <!---  상품 금액 * num ---->
-                                    <div th:text="${order.getTotalPrice()}">원</div>
-                                    <input type="hidden" class="total-price" th:value="${order.getTotalPrice()}">
+                                    <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
+                                    <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
                                 </td>
-                                <td class="spoqa" th:text="|${order.getDiscountAmount()}원|"></td>
+                                <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
                                 <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
                                 <td>무료배송</td>
                             </tr>
@@ -99,7 +100,7 @@
                             <dl class="clear">
                                 <dt>휴대폰</dt>
                                 <dd>
-                                    <input type="text" name="phone" th:value="${principalUser.phone}">
+                                    <input type="text" class="input_1" name="phone" th:value="${principalUser.phone}">
                         
                                 </dd>
                             </dl>
@@ -183,7 +184,7 @@
                             <dd>
                                 <ul class="clear dd1">
                                     <li>
-                                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked="">
+                                        <input type="radio" name="payment" value="toss" id="toss" class="vam" checked>
                                         <label for="toss" class="vam ti-9999 toss">토스</label>
                                     </li>
                                     <li>
