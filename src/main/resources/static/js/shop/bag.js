@@ -14,5 +14,5 @@ $(".delete_btn").on("click", function(e){
 	e.preventDefault();
 	const product_id = $(this).data("product_id");
 	$(".delete_product_id").val(cartId);
-	$(".cartform").submit();
+	$(".quantity_delete_form").submit();
 });

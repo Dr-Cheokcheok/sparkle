@@ -10,6 +10,4 @@ public interface BagRepository {
 
     public int deleteBag(int bagId);
 
-    public int findByproduct(int product);
-
 }

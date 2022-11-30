@@ -15,7 +15,7 @@
         )
     </insert>
     <!--카트삭제-->
-    <delete id="delete_btn">
+    <delete id="deleteBag">
         delete from cart
         where product_id = #{product_id}
     </delete>
