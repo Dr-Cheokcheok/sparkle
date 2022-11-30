@@ -6,3 +6,5 @@ public interface OrderService {
 
     public boolean addOrder(OrderInsertDto orderInsertDto) throws Exception;
 
+}
+

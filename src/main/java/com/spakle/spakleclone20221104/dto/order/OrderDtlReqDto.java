@@ -10,14 +10,13 @@ public class OrderDtlReqDto {
     private int orderId;
     private int productId;
     private int quantity;
-    private int totalPrice;
+
 
     public OrderDetail toOrderDtlEntity() {
         return OrderDetail.builder()
                 .order_id(orderId)
                 .product_id(productId)
                 .quantity(quantity)
-                .total_price(totalPrice)
                 .build();
     }
 }

@@ -78,25 +78,13 @@ payBtn.onclick = (e) => {
 function payment() {
 
     //제품 정보들 같이 보내기
-    productDataList = [];
-    const productIdInput = document.querySelectorAll("#productId");
-    const productQuantity = document.querySelectorAll("#quantity");
-    const productTotalPrice = document.querySelectorAll("#total-price");
-    const productDiscountAmount = document.querySelectorAll(".discount");
 
-    for (let i = 0; i < productIdInput.length; i++) {
-        const productData = {
-            id : productIdInput[i].value,
-            quantity: productQuantity[i].value,
-            price : productTotalPrice[i].value - productDiscountAmount[i].value
-        }
-        productDataList.push(productData);
-    }
+
     //확인하기
     // productDataList.forEach(productData =>{
     //     console.log(productData);
     // });
-
+    productDataList = [];
     const data = {
         payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
@@ -112,6 +100,18 @@ function payment() {
         totalPrice : 100,
         productData : productDataList
         // totalPrice : Number($("input[id='totalCost']").val())
+    }
+
+    const productIdInput = document.querySelectorAll("#productId");
+    const productQuantity = document.querySelectorAll("#quantity");
+
+    for (let i = 0; i < productIdInput.length; i++) {
+        const productObject = {
+            order_id : data.orderNum,
+            product_id : productIdInput[i].value,
+            quantity: productQuantity[i].value,
+        }
+        productDataList.push(productObject);
     }
 
     const regex = /^[ㄱ-ㅎ|가-힣]+$/;
@@ -174,15 +174,15 @@ function paymentCard(data) {
 	   	buyer_name: data.recipientName,
 	  	buyer_tel: data.phone,
 	  	buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
-	  	buyer_postcode: data.deleveryAddress1,
+	  	buyer_postcode: data.deleveryAddress1
   	}, 
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         InfoData(rsp, data.productData); //db 저장 rsp랑 productDataList
-         alert("결제가 완료되었습니다!" + rsp.merchant_uid);
+         InfoData(data, rsp); //db 저장 rsp랑 productDataList
+         alert("결제가 완료되었습니다!");
          // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
-         location.replace("/account/order/detail");
+         // location.replace("/account/order/detail");
 			
 		} else {
           // 결제 실패 시 로직,
@@ -198,17 +198,26 @@ function paymentCard(data) {
 // 장바구니 A 보따리
 // const totalCost = 
 
-function InfoData(rsp, productDataList){
+function InfoData(data, rsp){
+    console.log(data);
+    console.log(rsp);
+    // const orderData = {
+    //     amount: data.totalPrice, //string
+    //     name: data.ordererName, //string
+    //     tel: data.phone, //string
+    //     postcode: data.deleveryAddress1, //string
+    //     productDataList: data.productData //list<data 객체>
+    // }
+
     $.ajax({
+        async: false,
         url: "/api/order",
         type: "post",
-        data: {
-            rsp: rsp,
-            productDataList: productDataList
-        },
-        contentType: "application/json; charset=UTF-8",
+        contentType: "application/json",
+        data: JSON.stringify(data.productData),
+        dataType: "json",
         success: (response)=>{
-            console.log(response.data)
+            console.log(response)
         },
         error: (error) => {
             console.log(error)
