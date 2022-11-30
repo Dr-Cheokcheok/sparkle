@@ -27,7 +27,7 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
             }
         }
 
-        response.sendRedirect("/index");
+
     }
 
 }
