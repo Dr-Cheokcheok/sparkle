@@ -4,6 +4,17 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace ="com.spakle.spakleclone20221104.repository.BagRepository">
+
+    <resultMap id="Bag" type="com.spakle.spakleclone20221104.domain.Bag">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="quantity" column="quantity"></result>
+        <result property="price" column="price"></result>
+        <result property="rate" column="rate"></result>
+        <result property="retail_price" column="retail_price"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
     <insert id="bagAdd" parameterType="com.spakle.spakleclone20221104.domain.BagVO">
         INSERT INTO
             cart
@@ -37,22 +48,22 @@
             user_id = #{user_id}
     </select>
 
-    <select id="getBagList" resultType="com.spakle.spakleclone20221104.dto.shop.BagDetailDto">
+    <select id="getBagList" resultMap="Bag">
         SELECT
-            a.user_id,
-            a.product_id,
-            a.quantity,
-            b.name,
-            b.price,
-            b.rate,
-            b.retail_price
+            pt.id,
+            pt.name,
+            ct.quantity,
+            pt.price,
+            pt.rate,
+            pt.price-pt.retail_price AS `retail_price`,
+            pt.img
         FROM
-            cart a
+            cart ct
         LEFT JOIN
-            product b on b.id = a.product_id
+            product pt on pt.id = ct.product_id
         WHERE
-            a.user_id = #{user_id}
+            ct.user_id = #{user_id}
         ORDER BY
-            a.count
+            ct.count
     </select>
 </mapper>

@@ -6,12 +6,17 @@ import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDto;
 import com.spakle.spakleclone20221104.repository.BagRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BagServicelmpl implements BagService {
 
     private final BagRepository bagRepository;
@@ -46,10 +51,15 @@ public class BagServicelmpl implements BagService {
 
     @Override
     public List<BagDetailDto> getBagList(int user_id) throws Exception{
+        log.info("{}", user_id);
 
-        List<BagDetailDto> bag = bagRepository.getBagList(user_id);
+        List<BagDetailDto> bagList = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
 
-        return bag;
+        bagRepository.getBagList(map, user_id).forEach(Bag -> {
+            bagList.add(Bag.toRespDto());
+        });
+        return bagList;
     }
 
 }

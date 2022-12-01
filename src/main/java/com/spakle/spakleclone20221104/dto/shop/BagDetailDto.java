@@ -7,13 +7,11 @@ import lombok.Data;
 @Data
 public class BagDetailDto {
 
-    public int user_id; //유저id
-    public int product_id;  //제품id
+    public int id;  //제품id
+    public String name; //제품이름
     public int quantity;    //수량
-
-    public String product_name; //제품이름
     public int price;   //가격
     public int rate;    //할인율
-    public int retail_price;    //할인된 가격
-
+    public int retailprice;    //할인된 가격
+    private String img; //제품이미지
 }

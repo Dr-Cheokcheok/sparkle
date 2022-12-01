@@ -74,9 +74,38 @@ function sumTotal(){
 }
 
 // -------------------------------------------------------
+class BagApi {
+    static #instance = null;
 
+    static getInstance(){
+        if(this.#instance == null) {
+            this.#instance = new BagApi();
+        }
+        return this.#instance;
+    }
+
+    getBag(){
+        let responseData = null;
+        
+        $.ajax({
+            async: false,
+            type: "get",
+            url: "/api/bag/userbag",
+            dataType: "json",
+            success: (response) => {
+                responseData = response.data;
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+        
+        return responseData;
+    }
+}
 class BagService {
     static #instance = null;
+
     static getInstance() {
         if(this.#instance == null){
             this.#instance = new BagService();
@@ -95,30 +124,56 @@ class BagService {
 
     getBagList(responseData){
         console.log(responseData)
-        
-    }
+        const borders = document.querySelector("#baglist");
 
+        responseData.forEach(border => {
+
+            borders.innerHTML += `
+            <tr class="border-b">
+                <td class="taL">
+                    <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
+                    <div>
+                        <input type="hidden" name="items[512313][product_id]" value="1301">
+                    </div>
+                </td>
+                <td class="taL pro-option">
+                    <div class="proImg">
+                        <a href="/product/${border.id}">
+                            <img src="/image/product/${border.img}" alt="상품이미지">
+                        </a>
+                    </div>
+                    <div class="proTxt">
+                        <span class="proState">스파클몰</span>
+                        <p><a href="/product/${border.id}">${border.name}</a>
+                            <span>${border.rate}% 할인상품</span>
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <div class="quantity clear">
+                        <button type="button" class="bt-decrease"></button>
+                        <a class="quantity">${border.quantity}</a>
+                        <button type="button" class="bt-increase"></button>
+                    </div>
+                </td>
+                <td class="spoqa">
+                    <div class="pro-price">${border.price}원</div>
+                    <input class="hidden-price" type="hidden" value="">
+                </td>
+                <td class="spoqa">${border.retailprice}원</td>
+                <td class="spoqa">0원</td>
+                <td>무료배송</td>
+                <td>
+                    <a href="javascript:;">
+                        <img src="/static/images/sub/x.png" alt="닫기버튼">
+                    </a>
+                </td>
+            </tr>
+            `;
+        });
+    }
 }
 
 window.onload = () => {
     BagService.getInstance().loadBagList();
 }
-
-// function bagTest(){
-    
-//     $.ajax({
-//         async: false,
-//         type: "get",
-//         url: "/api/bag/",
-//         contentType: "application/json",
-//         data: JSON.stringify(user_id=""),
-//         dataType: "json",
-//         success: (result) => {
-//             count.innerHTML = result;
-//         },
-//         error: (error) => {
-//             console.log("error:" + error);
-//         }
-//     });
-
-// }

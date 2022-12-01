@@ -46,7 +46,7 @@ public class BagApi {
     }
 
     @GetMapping("/bagchk")
-    public int bagCountChk(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+    public int bagCountChk(@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
 
         int chk = 0;
 
@@ -60,10 +60,15 @@ public class BagApi {
         return chk;
     }
 
-//    @GetMapping({userId})
-//    public List<BagDetailDto> getBagList(@AuthenticationPrincipal PrincipalDetails principalDetails,@RequestBody BagDetailDto bagDetailDto) throws Exception{
-//
-//        return;
-//    }
+    @GetMapping("/userbag")
+    public ResponseEntity<?> getBagList(@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
+        if(principalDetails == null){
+            return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", bagService.getBagList(0)));
+        }
+
+        User user = principalDetails.getUser();
+        log.info("{}", bagService.getBagList(user.getId()));
+        return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", bagService.getBagList(user.getId())));
+    }
 
 }

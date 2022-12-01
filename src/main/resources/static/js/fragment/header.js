@@ -77,16 +77,11 @@ function bagCount(){
 
     const count = document.getElementById("count");
 
-    let baginfo = {
-        user_id: "",
-    }
-
     $.ajax({
         async: false,
         type: "get",
         url: "/api/bag/bagchk",
         contentType: "application/json",
-        data: JSON.stringify(baginfo),
         dataType: "json",
         success: (result) => {
             count.innerHTML = result;
