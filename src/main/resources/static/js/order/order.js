@@ -69,20 +69,20 @@ function daumPostcode() {
 // 페이 결제
 
 const payBtn = document.querySelector("#payBtn");
+let formData = new FormData();
 
 payBtn.onclick = (e) => {
     e.preventDefault();
-    payment();
 
-    let formData = new FormData();
+    payment();
 
     formData.append("orderId", data.orderNum);
     formData.append("ordererName", data.ordererName);
     formData.append("recipientName", data.recipientName);
     formData.append("phone", data.phone);
     formData.append("postCode", data.deleveryAddress1);
-    formData.append("address", deleveryAddress2);
-    formData.append("detailAddress", deleveryAddress3);
+    formData.append("address", data.deleveryAddress2);
+    formData.append("detailAddress", data.deleveryAddress3);
     formData.append("shipMsg", data.request),
     formData.append("entrance", data.door);
     formData.append("pet", data.pet);
@@ -91,9 +91,9 @@ payBtn.onclick = (e) => {
 }
 
 function payment() {
-    const pet = document.querySelector("#eventChk");
+    let pet = document.querySelector("#eventChk");
     
-    if(pet.checked()) {
+    if(pet.checked) {
         pet = 1;
     }else {
         pet = 0;
@@ -120,7 +120,7 @@ function payment() {
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
-        pet : pet,        
+        pet : pet,
         totalPrice : 100,
         productData : productDataList
         // totalPrice : Number($("input[id='totalCost']").val())
@@ -178,7 +178,8 @@ function payment() {
     }
 
     paymentCard(data);
-    console.log(data.createOrderNum);
+
+    return data;
 
 }
 
@@ -204,6 +205,7 @@ function paymentCard(data) {
 		if (rsp.success) {
          // 결제 성공 시 로직,
          InfoData(data, rsp); //db 저장 rsp랑 productDataList
+         InfoData2(formData);
          alert("결제가 완료되었습니다!");
          // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
          // location.replace("/account/order/detail");
@@ -222,18 +224,18 @@ function InfoData2(formData){
     $.ajax({
         async: false,
         type: "post",
-        url: "/order/prepare",
+        url: "/api/order/prepare",
         enctype: "multipart/form-data",
-        contentType: false,
-        processType: false,
+        contentType: false, // true로 선언시 일반 text로 구분
+        processType: false, // true로 선언시 문자열이 아닌 일반 문자로 구분
         data: formData,
         dataType: "json",
         success: (response) => {
-            alert("상품 결제 완료!");
-            location.replace("/account/order/detail");
+            alert("formData ajax 실행 성공");
         },
         error: (error) => {
-            alert("상품 결제 실패");
+            alert("formData ajax 실행 실패!!!!!!!");
+            console.log(error);
             return false;
         }
 

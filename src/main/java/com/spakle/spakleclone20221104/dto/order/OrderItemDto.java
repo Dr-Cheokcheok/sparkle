@@ -1,9 +1,7 @@
 package com.spakle.spakleclone20221104.dto.order;
 
-import com.spakle.spakleclone20221104.domain.order.OrderItem;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class OrderDtlReqDto {
-    private int orderId;
+    private String orderId;
     private int productId;
     private int quantity;
 

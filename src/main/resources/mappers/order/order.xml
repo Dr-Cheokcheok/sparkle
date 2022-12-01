@@ -18,13 +18,14 @@
         <result property="ship_msg" column="ship_msg"></result>
         <result property="entrance" column="entrance"></result>
         <result property="pet" column="pet"></result>
+        <result property="total_price" column="total_price"></result>
     </resultMap>
 
     <resultMap id="order_detail" type="com.spakle.spakleclone20221104.domain.order.OrderDetail">
         <result property="order_id" column="order_id"></result>
         <result property="product_id" column="product_id"></result>
         <result property="quantity" column="quantity"></result>
-        <result property="total_price" column="total_price"></result>
+
     </resultMap>
 
     <insert id="saveOrder"
@@ -47,7 +48,8 @@
             #{detail_address},
             #{ship_msg},
             #{entrance},
-            #{pet}
+            #{pet},
+            #{total_price}
         )
     </insert>
 

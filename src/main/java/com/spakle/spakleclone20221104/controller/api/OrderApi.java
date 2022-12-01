@@ -1,13 +1,16 @@
 package com.spakle.spakleclone20221104.controller.api;
 
+import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
+import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
+import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import com.spakle.spakleclone20221104.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RequestMapping("/api")
@@ -17,17 +20,19 @@ public class OrderApi {
 
     private final OrderService orderService;
 
-    @PostMapping("/order")
-    public String insertOrder(@RequestBody List<Map<String,Object>> data){
-        log.info("{}", data);
-        data.forEach(dataMap -> {
-            Integer i = (Integer) dataMap.get("product_id");
-            String id = (String) dataMap.get("order_id");
-            Integer quantity = (Integer) dataMap.get("quantity");
+    @PostMapping("/order/detail")
+    public ResponseEntity<?> insertOrderDtl(@RequestBody List<OrderDtlReqDto> data)throws Exception{
+        return ResponseEntity.ok(new CMRespDto<>(1, "insertOrderDtl", orderService.addOrderDetail(data)));
+    }
 
-        });
+    @PostMapping("/order/prepare")
+    @ResponseBody
+    public ResponseEntity<?> postOrder(@RequestBody OrderInsertDto orderInsertDto, PrincipalDetails principalDetails) throws Exception {
 
+        String userId = principalDetails.getUser().toString();
 
-        return data.toString();
+        orderService.addOrder(orderInsertDto);
+
+        return ResponseEntity.created(null).body(new CMRespDto<>(1, "Successfully", orderService.addOrder(orderInsertDto)));
     }
 }
