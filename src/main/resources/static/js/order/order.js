@@ -69,12 +69,11 @@ function daumPostcode() {
 // 페이 결제
 
 const payBtn = document.querySelector("#payBtn");
-let formData = new FormData();
+   let formData = new FormData();
 
 payBtn.onclick = (e) => {
     e.preventDefault();
-
-    payment();
+    let data = payment();
 
     formData.append("orderId", data.orderNum);
     formData.append("ordererName", data.ordererName);
@@ -83,7 +82,7 @@ payBtn.onclick = (e) => {
     formData.append("postCode", data.deleveryAddress1);
     formData.append("address", data.deleveryAddress2);
     formData.append("detailAddress", data.deleveryAddress3);
-    formData.append("shipMsg", data.request),
+    formData.append("shipMsg", data.request);
     formData.append("entrance", data.door);
     formData.append("pet", data.pet);
     formData.append("totalPrice", data.totalPrice);
@@ -91,6 +90,11 @@ payBtn.onclick = (e) => {
 }
 
 function payment() {
+
+    //제품 정보들 같이 보내기
+
+    productDataList = [];
+
     let pet = document.querySelector("#eventChk");
     
     if(pet.checked) {
@@ -99,15 +103,6 @@ function payment() {
         pet = 0;
     }
 
-
-    //제품 정보들 같이 보내기
-
-
-    //확인하기
-    // productDataList.forEach(productData =>{
-    //     console.log(productData);
-    // });
-    productDataList = [];
     const data = {
         payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
@@ -121,9 +116,9 @@ function payment() {
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
         pet : pet,
-        totalPrice : 100,
+        // totalPrice : Number($("#totalCost").text()),
+        totalPrice:100,
         productData : productDataList
-        // totalPrice : Number($("input[id='totalCost']").val())
     }
 
     const productIdInput = document.querySelectorAll("#productId");
@@ -176,11 +171,9 @@ function payment() {
         alert('전화번호는 11자리의 숫자만 가능합니다.')
         return;
     }
-
     paymentCard(data);
 
     return data;
-
 }
 
 
@@ -204,9 +197,10 @@ function paymentCard(data) {
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         InfoData(data, rsp); //db 저장 rsp랑 productDataList
-         InfoData2(formData);
+         InfoDataDtl(data, rsp); //db 저장 rsp랑 productDataList
+         InfoData(formData);
          alert("결제가 완료되었습니다!");
+         
          // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
          // location.replace("/account/order/detail");
 			
@@ -220,7 +214,39 @@ function paymentCard(data) {
 	});
 }
 
-function InfoData2(formData){
+
+// 장바구니 A 보따리
+// const totalCost = 
+
+function InfoDataDtl(data, rsp){
+    console.log(data);
+    console.log(rsp);
+    // const orderData = {
+    //     amount: data.totalPrice, //string
+    //     name: data.ordererName, //string
+    //     tel: data.phone, //string
+    //     postcode: data.deleveryAddress1, //string
+    //     productDataList: data.productData //list<data 객체>
+    // }
+
+    $.ajax({
+        async: false,
+        url: "/api/order/detail",
+        type: "post",
+        contentType: "application/json",
+        data: JSON.stringify(data.productData),
+        dataType: "json",
+        success: (response)=>{
+            console.log(response)
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    });
+}
+
+
+function InfoData(formData){
     $.ajax({
         async: false,
         type: "post",
@@ -242,39 +268,6 @@ function InfoData2(formData){
         });
     }
 
-// 장바구니 A 보따리
-// const totalCost = 
-
-function InfoData(data, rsp){
-    console.log(data);
-    console.log(rsp);
-    // const orderData = {
-    //     amount: data.totalPrice, //string
-    //     name: data.ordererName, //string
-    //     tel: data.phone, //string
-    //     postcode: data.deleveryAddress1, //string
-    //     productDataList: data.productData //list<data 객체>
-    // }
-
-    $.ajax({
-        async: false,
-        url: "/api/order",
-        type: "post",
-        contentType: "application/json",
-        data: JSON.stringify(data.productData),
-        dataType: "json",
-        success: (response)=>{
-            console.log(response)
-        },
-        error: (error) => {
-            console.log(error)
-        }
-
-    });
-
-
-}
-
 // 주문번호 만들기
 function createOrderNum(){
     const date = new Date();
@@ -288,8 +281,6 @@ function createOrderNum(){
     }
     return orderNum;
 }
-
-
 
 const calcBox = document.querySelector(".calc-box");
 const totalPrices = document.querySelectorAll("#total-price");

@@ -1,13 +1,10 @@
 package com.spakle.spakleclone20221104.domain.order;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
 @Builder
 public class OrderDetail {
     private String order_id;
