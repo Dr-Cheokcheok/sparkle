@@ -11,6 +11,6 @@ public interface OrderRepository {
 
     public int saveOrder(Order order) throws Exception;
 
-    public int saveOrderDtl(OrderDetail orderDetail) throws Exception;
+    public int saveOrderDtl(List<OrderDetail> orderDetail) throws Exception;
 
 }

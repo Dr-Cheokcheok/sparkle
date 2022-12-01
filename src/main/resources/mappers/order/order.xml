@@ -56,6 +56,13 @@
         insert into
             order_detail
         values
-        <foreach collection="OrderDetail"
+        (
+        <foreach collection="list" item="orderDetail" separator=",">
+            #{orderDetail.order_id},
+            #{orderDetail.product_id},
+            #{orderDetail.quantity}
+        </foreach>
+        )
     </insert>
+    
 </mapper>
