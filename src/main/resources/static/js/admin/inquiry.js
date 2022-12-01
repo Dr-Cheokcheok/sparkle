@@ -153,12 +153,8 @@ class AdminInquiryService {
                 }
             });
         }
-
     }
-  
- 
 }
-
 
 window.onload = () => {
     AdminInquiryService.getInstance().loadInquiryList();

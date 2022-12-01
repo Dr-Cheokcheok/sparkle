@@ -73,6 +73,52 @@ function sumTotal(){
     document.querySelector(".calc-tot-amount").textContent = sum.toLocaleString() + "원";
 }
 
-window.onload = () => {
-    
+// -------------------------------------------------------
+
+class BagService {
+    static #instance = null;
+    static getInstance() {
+        if(this.#instance == null){
+            this.#instance = new BagService();
+        }
+
+        return this.#instance;
+    }
+
+    #responseData = null;
+
+    loadBagList(){
+        this.responseData = BagApi.getInstance().getBag();
+        console.log(this.responseData);
+        this.getBagList(this.responseData);
+    }
+
+    getBagList(responseData){
+        console.log(responseData)
+        
+    }
+
 }
+
+window.onload = () => {
+    BagService.getInstance().loadBagList();
+}
+
+// function bagTest(){
+    
+//     $.ajax({
+//         async: false,
+//         type: "get",
+//         url: "/api/bag/",
+//         contentType: "application/json",
+//         data: JSON.stringify(user_id=""),
+//         dataType: "json",
+//         success: (result) => {
+//             count.innerHTML = result;
+//         },
+//         error: (error) => {
+//             console.log("error:" + error);
+//         }
+//     });
+
+// }

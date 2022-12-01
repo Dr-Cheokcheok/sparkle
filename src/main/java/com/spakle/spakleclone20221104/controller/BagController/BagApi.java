@@ -2,6 +2,7 @@ package com.spakle.spakleclone20221104.controller.BagController;
 
 import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDto;
 import com.spakle.spakleclone20221104.service.BagService;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
@@ -10,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -58,5 +61,9 @@ public class BagApi {
     }
 
 //    @GetMapping({userId})
+//    public List<BagDetailDto> getBagList(@AuthenticationPrincipal PrincipalDetails principalDetails,@RequestBody BagDetailDto bagDetailDto) throws Exception{
+//
+//        return;
+//    }
 
 }
