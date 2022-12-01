@@ -8,7 +8,7 @@ public interface BagService {
 
     //장바구니 추가
     public void bagadd(BagDto bagDto) throws Exception;
-
+    //장바구니 제거
     public int deleteBag(int product_id);
 
     public List<BagDto> getBag(String user_id);

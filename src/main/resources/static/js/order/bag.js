@@ -1,4 +1,3 @@
-
 /*  수량 변경  가격 변경 */
 const dcButtons = document.querySelectorAll(".bt-decrease");
 const icButtons = document.querySelectorAll(".bt-increase");
@@ -92,10 +91,23 @@ $(chk).click(function(){
 });
 
 
-/* 장바구니 삭제 버튼 */
-$(".delete_btn").on("click", function(e){
-	e.preventDefault();
-	const product_id = $(this).data("product_id");
-	$(".delete_product_id").val(product_id);
-	$(".quantity_delete_form").submit();
+
+/*서버로 전송할 데이터*/
+const form = {
+    user_id : '${user_id}',
+    product_id : '${product_id}',
+    count : ''
+}
+/*장바구니 추가 버튼*/
+$(".cartBtn").on("click", function(e){
+    form.count = $(".quantity").val();
+    $.ajax({
+        url: '/bag/add',
+        type: 'POST',
+        data: form,
+        success: function(result){
+            bagAlert(result);
+        }
+    })
 });
+/* 장바구니 삭제 버튼 */

@@ -334,7 +334,17 @@ function priceToString(price) {    // 금액에 , 찍어주는 함수
   
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+/*장바구니/위시리스트 팝업*/
+$(".bag").click(function() {
+    var check = confirm("상품이 장바구니에 담겼습니다.\n확인하시겠습니까?");
+    if (check) {
+        location.assign("/bag");
+    }
+});
 
+$(".like").click(function() {
+    alert("상품을 위시리스트에 추가하였습니다.");
+});
 
 window.onload = () => {
   checkCategory();

@@ -49,7 +49,7 @@ public class PrincipalDetails implements UserDetails {
     @Override
     public boolean isAccountNonLocked() {
         return true;
-    }  //계정의 잠김 여부(관리자가 강제로 사용을 금함
+    }  //계정의 잠김 여부(관리자가 강제로 사용을 금함)
 
     @Override
     public boolean isCredentialsNonExpired() {
