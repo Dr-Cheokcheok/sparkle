@@ -69,21 +69,20 @@ function daumPostcode() {
 // 페이 결제
 
 const payBtn = document.querySelector("#payBtn");
+   let formData = new FormData();
 
 payBtn.onclick = (e) => {
     e.preventDefault();
-    payment();
-
-    let formData = new FormData();
+    let data = payment();
 
     formData.append("orderId", data.orderNum);
     formData.append("ordererName", data.ordererName);
     formData.append("recipientName", data.recipientName);
     formData.append("phone", data.phone);
     formData.append("postCode", data.deleveryAddress1);
-    formData.append("address", deleveryAddress2);
-    formData.append("detailAddress", deleveryAddress3);
-    formData.append("shipMsg", data.request),
+    formData.append("address", data.deleveryAddress2);
+    formData.append("detailAddress", data.deleveryAddress3);
+    formData.append("shipMsg", data.request);
     formData.append("entrance", data.door);
     formData.append("pet", data.pet);
     formData.append("totalPrice", data.totalPrice);
@@ -96,9 +95,9 @@ function payment() {
 
     productDataList = [];
 
-    const pet = document.querySelector("#eventChk");
+    let pet = document.querySelector("#eventChk");
     
-    if(pet.checked()) {
+    if(pet.checked) {
         pet = 1;
     }else {
         pet = 0;
@@ -117,7 +116,8 @@ function payment() {
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
         pet : pet,
-        totalPrice : Number($("#totalCost").text()),
+        // totalPrice : Number($("#totalCost").text()),
+        totalPrice:100,
         productData : productDataList
     }
 
@@ -171,10 +171,9 @@ function payment() {
         alert('전화번호는 11자리의 숫자만 가능합니다.')
         return;
     }
-
     paymentCard(data);
-    console.log(data.createOrderNum);
 
+    return data;
 }
 
 
@@ -232,7 +231,7 @@ function InfoDataDtl(data, rsp){
 
     $.ajax({
         async: false,
-        url: "/api/order",
+        url: "/api/order/detail",
         type: "post",
         contentType: "application/json",
         data: JSON.stringify(data.productData),

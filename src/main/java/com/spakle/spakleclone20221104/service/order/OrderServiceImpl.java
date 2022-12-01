@@ -8,6 +8,8 @@ import com.spakle.spakleclone20221104.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -24,9 +26,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean addOrderDetail(OrderDtlReqDto orderDtlReqDto) throws Exception {
+    public boolean addOrderDetail(List<OrderDtlReqDto> orderDtlReqDtos) throws Exception {
 
-        OrderDetail orderDetail = orderDtlReqDto.toOrderDtlEntity();
+
 
         return true;
     }
