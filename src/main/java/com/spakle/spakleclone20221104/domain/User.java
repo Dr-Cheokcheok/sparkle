@@ -20,7 +20,7 @@ public class User {
     private String name;
     private String role;
     private String provider;
-    private int phone;
+    private String  phone;
     private String post_code;
     private String address;
     private String detail_address;

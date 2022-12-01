@@ -99,8 +99,17 @@ function payment() {
         pet = 0;
     }
 
+
+    //제품 정보들 같이 보내기
+
+
+    //확인하기
+    // productDataList.forEach(productData =>{
+    //     console.log(productData);
+    // });
+    productDataList = [];
     const data = {
-        payMethod : $("input[type='radio']:checked").val(),
+        payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
         name : $(".water_name").text(),
         ordererName : $("input[name='name']").val(),
@@ -111,8 +120,22 @@ function payment() {
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
-        pet : pet,
-        totalPrice : Number($("#totalCost").text())
+        pet : pet,        
+        totalPrice : 100,
+        productData : productDataList
+        // totalPrice : Number($("input[id='totalCost']").val())
+    }
+
+    const productIdInput = document.querySelectorAll("#productId");
+    const productQuantity = document.querySelectorAll("#quantity");
+
+    for (let i = 0; i < productIdInput.length; i++) {
+        const productObject = {
+            order_id : data.orderNum,
+            product_id : productIdInput[i].value,
+            quantity: productQuantity[i].value,
+        }
+        productDataList.push(productObject);
     }
 
     const regex = /^[ㄱ-ㅎ|가-힣]+$/;
@@ -176,14 +199,14 @@ function paymentCard(data) {
 	  	buyer_tel: data.phone,
 	  	buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
 	  	buyer_postcode: data.deleveryAddress1
-
   	}, 
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         console.log('빌링키 발급 성공', rsp);
-         InfoData(formData);
+         InfoData(data, rsp); //db 저장 rsp랑 productDataList
          alert("결제가 완료되었습니다!");
+         // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
+         // location.replace("/account/order/detail");
 			
 		} else {
           // 결제 실패 시 로직,
@@ -195,7 +218,7 @@ function paymentCard(data) {
 	});
 }
 
-function InfoData(formData){
+function InfoData2(formData){
     $.ajax({
         async: false,
         type: "post",
@@ -210,9 +233,43 @@ function InfoData(formData){
             location.replace("/account/order/detail");
         },
         error: (error) => {
-            console.log(error);
+            alert("상품 결제 실패");
+            return false;
         }
+
+        });
+    }
+
+// 장바구니 A 보따리
+// const totalCost = 
+
+function InfoData(data, rsp){
+    console.log(data);
+    console.log(rsp);
+    // const orderData = {
+    //     amount: data.totalPrice, //string
+    //     name: data.ordererName, //string
+    //     tel: data.phone, //string
+    //     postcode: data.deleveryAddress1, //string
+    //     productDataList: data.productData //list<data 객체>
+    // }
+
+    $.ajax({
+        async: false,
+        url: "/api/order",
+        type: "post",
+        contentType: "application/json",
+        data: JSON.stringify(data.productData),
+        dataType: "json",
+        success: (response)=>{
+            console.log(response)
+        },
+        error: (error) => {
+            console.log(error)
+        }
+
     });
+
 
 }
 
@@ -233,7 +290,7 @@ function createOrderNum(){
 
 
 const calcBox = document.querySelector(".calc-box");
-const totalPrices = document.querySelectorAll(".total-price");
+const totalPrices = document.querySelectorAll("#total-price");
 const discounts = document.querySelectorAll(".discount");
 let totalPrice = 0;
 let totalDiscount = 0;
@@ -249,7 +306,7 @@ calcBox.innerHTML = `
 <div class="calc-box-in">
     <div class="calc-item">
         <p class="title">총 판매가</p>
-        <p class="selPrice">${totalPrice.toLocaleString()}원</p>
+        <p class="selPrice price-tag">${totalPrice.toLocaleString()}원</p>
     </div>
     <div class="symb plus-symbol">
         <img src="/static/images/sub/plus-symbol.png" alt="">
@@ -263,14 +320,15 @@ calcBox.innerHTML = `
     </div>
     <div class="calc-item">
         <p class="title">할인금액</p>
-        <p class="dcPrice">${totalDiscount.toLocaleString()}원</p>
+        <p class="dcPrice price-tag">${totalDiscount.toLocaleString()}원</p>
     </div>
     <div class="symb equal-symbol">
         <img src="/static/images/sub/equal-symbol.png" alt="">
     </div>
     <div class="calc-item">
         <p class="title">총결제금액</p>
-        <p class="totalCost"><span id="totalCost">${(totalPrice - totalDiscount)}</span>원</p>
+        <p class="totalCost"><span class="totalCost price-tag">${(totalPrice - totalDiscount).toLocaleString()}</span>원</p>
+        <input id="totalCost" type="hidden" value="${(totalPrice - totalDiscount)}">
     </div>
 </div>
 
@@ -279,9 +337,10 @@ const cartTotalPrice = document.querySelector(".cart-total-price");
 cartTotalPrice.innerHTML = "";
 cartTotalPrice.innerHTML = `
 <p>총 결제금액
-    <span class="calc-tot-amount">${(totalPrice - totalDiscount).toLocaleString()}원</span>
+    <span class="calc-tot-amount price-tag">${(totalPrice - totalDiscount).toLocaleString()}원</span>
 </p>
 `;
+
 
 
 window.onload = () => {
