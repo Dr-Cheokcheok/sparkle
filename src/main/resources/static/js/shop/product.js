@@ -38,46 +38,18 @@ function bagChk(result){
         location.replace("/login");
     } else if (result == 1) {
         if(confirm("상품이 장바구니에 담겼습니다.\n지금 장바구니로 이동하시겠습니까?")){
-            // bagCount();
             location.replace("/bag");
         } else {
-            // bagCount();
             return;
         }
     } else {
         if(confirm("장바구니에 이미 상품이 등록되어있습니다.\n지금 장바구니로 이동하시겠습니까?")){
-            // bagCount();
             location.replace("/bag");
         } else {
-            // bagCount();
             return;
         }
     }
 }
-
-// function bagCount(){
-
-//     const count = document.getElementById("count");
-
-//     let baginfo = {
-//         user_id: "",
-//     }
-
-//     $.ajax({
-//         async: false,
-//         type: "post",
-//         url: "/api/bag/bagchk",
-//         contentType: "application/json",
-//         data: JSON.stringify(baginfo),
-//         dataType: "json",
-//         success: (result) => {
-//             count.innerHTML = result;
-//         },
-//         error: (error) => {
-//             console.log("error:" + error);
-//         }
-//     });
-// }
 
 upButton.onclick = () => {
     up();

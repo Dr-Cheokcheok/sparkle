@@ -72,3 +72,7 @@ function sumTotal(){
     document.querySelector(".totalCost").textContent = sum.toLocaleString() + "원";
     document.querySelector(".calc-tot-amount").textContent = sum.toLocaleString() + "원";
 }
+
+window.onload = () => {
+    
+}

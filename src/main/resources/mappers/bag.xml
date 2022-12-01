@@ -15,7 +15,7 @@
         )
     </insert>
 
-    <select id="bagCountChk" parameterType="int" resultType="int">
+    <select id="bagNumberChk" parameterType="int" resultType="int">
         SELECT ifnull(MAX(COUNT),1) FROM
             cart
         WHERE
@@ -28,12 +28,31 @@
             (SELECT 1 FROM cart WHERE user_id = #{user_id} AND product_id = #{product_id} LIMIT 1)
     </select>
 
-<!--    <select id="bagCountChk" parameterType="int" resultType="String">-->
-<!--        SELECT-->
-<!--            COUNT(*)-->
-<!--        FROM-->
-<!--            cart-->
-<!--        WHERE-->
-<!--            user_id = #{user_id}-->
-<!--    </select>-->
+    <select id="bagCountChk" parameterType="int" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            cart
+        WHERE
+            user_id = #{user_id}
+    </select>
+
+    <select id="getBagList" resultType="com.spakle.spakleclone20221104.dto.shop.BagDetailDto">
+        SELECT
+            a.user_id,
+            a.product_id,
+            a.quantity,
+            b.name,
+            b.price,
+            b.rate,
+            b.retail_price
+        FROM
+            cart a
+        LEFT JOIN
+            product b on b.id = a.product_id
+        WHERE
+            a.user_id = #{user_id}
+        ORDER BY
+            a.count
+    </select>
 </mapper>
