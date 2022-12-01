@@ -17,14 +17,13 @@ public class OrderApi {
 
     private final OrderService orderService;
 
-    @PostMapping("/order")
+    @PostMapping("/order/detail")
     public String insertOrder(@RequestBody List<Map<String,Object>> data){
         log.info("{}", data);
         data.forEach(dataMap -> {
             Integer i = (Integer) dataMap.get("product_id");
             String id = (String) dataMap.get("order_id");
             Integer quantity = (Integer) dataMap.get("quantity");
-
         });
 
 

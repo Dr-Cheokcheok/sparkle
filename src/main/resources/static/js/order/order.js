@@ -73,18 +73,37 @@ const payBtn = document.querySelector("#payBtn");
 payBtn.onclick = (e) => {
     e.preventDefault();
     payment();
+
+    let formData = new FormData();
+
+    formData.append("orderId", data.orderNum);
+    formData.append("ordererName", data.ordererName);
+    formData.append("recipientName", data.recipientName);
+    formData.append("phone", data.phone);
+    formData.append("postCode", data.deleveryAddress1);
+    formData.append("address", deleveryAddress2);
+    formData.append("detailAddress", deleveryAddress3);
+    formData.append("shipMsg", data.request),
+    formData.append("entrance", data.door);
+    formData.append("pet", data.pet);
+    formData.append("totalPrice", data.totalPrice);
+    
 }
 
 function payment() {
 
     //제품 정보들 같이 보내기
 
-
-    //확인하기
-    // productDataList.forEach(productData =>{
-    //     console.log(productData);
-    // });
     productDataList = [];
+
+    const pet = document.querySelector("#eventChk");
+    
+    if(pet.checked()) {
+        pet = 1;
+    }else {
+        pet = 0;
+    }
+
     const data = {
         payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
@@ -97,9 +116,9 @@ function payment() {
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
-        totalPrice : 100,
+        pet : pet,
+        totalPrice : Number($("#totalCost").text()),
         productData : productDataList
-        // totalPrice : Number($("input[id='totalCost']").val())
     }
 
     const productIdInput = document.querySelectorAll("#productId");
@@ -179,8 +198,10 @@ function paymentCard(data) {
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         InfoData(data, rsp); //db 저장 rsp랑 productDataList
+         InfoDataDtl(data, rsp); //db 저장 rsp랑 productDataList
+         InfoData(formData);
          alert("결제가 완료되었습니다!");
+         
          // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
          // location.replace("/account/order/detail");
 			
@@ -198,7 +219,7 @@ function paymentCard(data) {
 // 장바구니 A 보따리
 // const totalCost = 
 
-function InfoData(data, rsp){
+function InfoDataDtl(data, rsp){
     console.log(data);
     console.log(rsp);
     // const orderData = {
@@ -218,6 +239,27 @@ function InfoData(data, rsp){
         dataType: "json",
         success: (response)=>{
             console.log(response)
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    });
+}
+
+
+function InfoData(formData){
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/order/prepare",
+        enctype: "multipart/form-data",
+        contentType: false,
+        processType: false,
+        data: formData,
+        dataType: "json",
+        success: (response) => {
+            alert("상품 결제 완료!");
+            location.replace("/account/order/detail");
         },
         error: (error) => {
             console.log(error)

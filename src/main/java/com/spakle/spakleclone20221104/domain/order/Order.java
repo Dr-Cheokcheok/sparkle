@@ -26,6 +26,7 @@ public class Order {
     private String ship_msg;
     private String entrance;
     private int pet;
+    private int total_price;
 
     private List<OrderDetail> orderDetails;
 }
