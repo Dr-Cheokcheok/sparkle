@@ -11,11 +11,8 @@ import java.util.List;
 public interface ProductService {
     public boolean addProduct(ProductAdditionReqDto productAdditionReqDto) throws Exception;
 
-
     public boolean updateProduct(ProductModificationReqDto productModificationReqDto) throws Exception;
-
     public ProductDtlRespDto getProductDtl (int productId)throws  Exception;
-
     public List<ProductListRespDto> getProducts(String category) throws Exception;
     public boolean deleteProduct(int productId) throws Exception;
 
