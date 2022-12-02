@@ -1,10 +1,8 @@
 package com.spakle.spakleclone20221104.controller.api;
 
-import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
-import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
-import com.spakle.spakleclone20221104.domain.order.OrderDetail;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
 import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
+import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
 import com.spakle.spakleclone20221104.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,25 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
-@RequestMapping("/api")
+@RequestMapping("/api/order")
 @RestController
 @RequiredArgsConstructor
 public class OrderApi {
 
     private final OrderService orderService;
 
-    @PostMapping("/order/detail")
+    @PostMapping("/detail")
     public ResponseEntity<?> insertOrderDtl(@RequestBody List<OrderDtlReqDto> data)throws Exception{
         return ResponseEntity.ok(new CMRespDto<>(1, "insertOrderDtl", orderService.addOrderDetail(data)));
     }
 
-    @PostMapping("/order/prepare")
+    @PostMapping("/prepare")
     @ResponseBody
-    public ResponseEntity<?> postOrder(@RequestBody OrderInsertDto orderInsertDto, PrincipalDetails principalDetails) throws Exception {
+    public ResponseEntity<?> insertOrder(@RequestBody OrderInsertDto orderInsertDto) throws Exception {
 
-        String userId = principalDetails.getUser().toString();
-
-        orderService.addOrder(orderInsertDto);
+        log.info("{}", orderInsertDto);
 
         return ResponseEntity.created(null).body(new CMRespDto<>(1, "Successfully", orderService.addOrder(orderInsertDto)));
     }

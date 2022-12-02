@@ -69,23 +69,10 @@ function daumPostcode() {
 // 페이 결제
 
 const payBtn = document.querySelector("#payBtn");
-   let formData = new FormData();
 
 payBtn.onclick = (e) => {
     e.preventDefault();
-    let data = payment();
-
-    formData.append("orderId", data.orderNum);
-    formData.append("ordererName", data.ordererName);
-    formData.append("recipientName", data.recipientName);
-    formData.append("phone", data.phone);
-    formData.append("postCode", data.deleveryAddress1);
-    formData.append("address", data.deleveryAddress2);
-    formData.append("detailAddress", data.deleveryAddress3);
-    formData.append("shipMsg", data.request);
-    formData.append("entrance", data.door);
-    formData.append("pet", data.pet);
-    formData.append("totalPrice", data.totalPrice);
+    payment();
     
 }
 
@@ -104,13 +91,14 @@ function payment() {
     }
 
     const data = {
+        userId : $('input[name="user_id"]').val(),
         payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
         name : $(".water_name").text(),
         ordererName : $("input[name='name']").val(),
         recipientName : $("input[name='r_name']").val(),
         phone : $("input[name='r_phone']").val(),
-        request : $("li[name='deli-select']").val(),
+        request : $("#message").val(),
         door : $("input[name='door_password']").val(),
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
@@ -132,7 +120,7 @@ function payment() {
         }
         productDataList.push(productObject);
     }
-
+    
     const regex = /^[ㄱ-ㅎ|가-힣]+$/;
     const regex2 = /^[0-9]+$/;
 
@@ -173,7 +161,6 @@ function payment() {
     }
     paymentCard(data);
 
-    return data;
 }
 
 
@@ -198,7 +185,7 @@ function paymentCard(data) {
 		if (rsp.success) {
          // 결제 성공 시 로직,
          InfoDataDtl(data, rsp); //db 저장 rsp랑 productDataList
-         InfoData(formData);
+         InfoData(data);
          alert("결제가 완료되었습니다!");
          
          // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
@@ -246,25 +233,34 @@ function InfoDataDtl(data, rsp){
 }
 
 
-function InfoData(formData){
+function InfoData(data){
+
     $.ajax({
         async: false,
         type: "post",
         url: "/api/order/prepare",
-        enctype: "multipart/form-data",
-        contentType: false, // true로 선언시 일반 text로 구분
-        processType: false, // true로 선언시 문자열이 아닌 일반 문자로 구분
-        data: formData,
+        contentType: "application/json",
+        data: JSON.stringify({
+            userId : data.userId,
+            orderId : data.orderNum,
+            ordererName : data.ordererName,
+            recipientName : data.recipientName,
+            phone : data.phone,
+            postCode : data.deleveryAddress1,
+            address : data.deleveryAddress2,
+            detailAddress : data.deleveryAddress3,
+            shipMsg : data.request,
+            entrance : data.door,
+            pet : data.pet,
+            totalPrice : data.totalPrice
+        }),
         dataType: "json",
         success: (response) => {
-            alert("formData ajax 실행 성공");
+            console.log(response);
         },
         error: (error) => {
-            alert("formData ajax 실행 실패!!!!!!!");
             console.log(error);
-            return false;
         }
-
         });
     }
 

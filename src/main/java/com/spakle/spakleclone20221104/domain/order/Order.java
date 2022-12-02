@@ -19,7 +19,7 @@ public class Order {
     private String orderer_name;
     private String recipient_name;
     private String phone;
-    private int post_code;
+    private String  post_code;
     private String address;
     private String detail_address;
     private String ship_msg;

@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div id="cart" class="cart-box w1260">
-                <form name="cartForm" action="/api/order/prepare" method="post">
+                <form name="cartForm" action="api/order/prepare" method="post">
                     <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
                     <input type="hidden" name="cart_id" value="3033722">
                     <div class="cart-top txt">
@@ -106,6 +106,7 @@
                             </dl>
                         </div>
                         <div style="display: none;">
+                            <input type="hidden" name="user_id" th:value="${principalUser.username}">
                             <input type="hidden" name="user_postcode" value="" disabled="">
                             <input type="hidden" name="user_address" value="" disabled="">
                             <input type="hidden" name="user_address_detail" value="" disabled="">
@@ -219,7 +220,7 @@
                     </div>
                     <div class="order-btn-box">
                         <a href="/bag" class="btn_style1">장바구니</a>
-                        <a href="/account/order/detail" id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
+                        <a id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
                         </div>
                     </div>
                 </form>

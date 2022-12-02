@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
         private String ordererName;
         private String recipientName;
         private String phone;
-        private int postCode;
+        private String postCode;
         private String address;
         private String detailAddress;
         private String shipMsg;
