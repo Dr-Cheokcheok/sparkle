@@ -24,5 +24,12 @@ mybatis:
     - /mappers/*.xml
 
 #파일 패스 각자 경로 설정해야 프로젝트폴더 -> upload폴더
+<<<<<<< HEAD
+=======
+
+#file:
+#  path: /Users/yulini/Desktop/spakle/upload/
+
+>>>>>>> origin/cart_changseok
 file:
   path: c:/sparkle/upload/

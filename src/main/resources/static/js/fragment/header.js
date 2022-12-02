@@ -70,3 +70,24 @@ function loadHeader() {
 }
 
 loadHeader();
+
+window.onload = bagCount();
+
+function bagCount(){
+
+    const count = document.getElementById("count");
+
+    $.ajax({
+        async: false,
+        type: "get",
+        url: "/api/bag/bagchk",
+        contentType: "application/json",
+        dataType: "json",
+        success: (result) => {
+            count.innerHTML = result;
+        },
+        error: (error) => {
+            console.log("error:" + error);
+        }
+    });
+}
