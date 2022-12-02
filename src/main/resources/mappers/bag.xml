@@ -25,6 +25,11 @@
             #{quantity}
         )
     </insert>
+
+    <update id="updataBag" parameterType="int">
+
+    </update>
+
     <!--카트삭제-->
     <delete id="deleteBag">
         delete from cart

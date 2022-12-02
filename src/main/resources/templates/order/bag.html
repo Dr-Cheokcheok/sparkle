@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/section.css">
     <link rel="stylesheet" href="/static/css/order/bag.css">
     <link rel="stylesheet" href="/static/css/fragment/layout.css">
     <link rel="stylesheet" href="/static/css/fragment/footer.css">
-<<<<<<< HEAD
-=======
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
->>>>>>> origin/cart_changseok
     <title>스파클몰</title>
 </head>
 <body>
@@ -30,16 +26,17 @@
                         <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
                         <input type="hidden" name="cart_id" value="3033722">
                         <div class="cart-top">
-                            <div class="chkAll-box"><input type="checkbox" id="chkAll">
+                            <div class="chkAll-box">
+                                <input type="checkbox" id="chkAll">
                                 <label for="chkAll">
                                     전체선택
                                     <span>(0/1)</span>
                                 </label>
                             </div>
                             <div class="del-box">
-                                    <a>
-                                        <span>선택삭제</span>
-                                    </a>
+                                <a>
+                                    <span>선택삭제</span>
+                                </a>
                             </div>
                         </div>
                         <table class="cart_table">
@@ -65,102 +62,92 @@
                                 </tr>
                             </thead>
                             <tbody id="baglist">
-                                <!-- <tr class="border-b"> -->
-                                    <!-- <td class="taL">
-                                        <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
-                                        <div>
-                                            <input type="hidden" name="items[512313][product_id]" value="1301">
-                                        </div>
-                                    </td>
-                                    <td class="taL pro-option">
-                                        <div class="proImg">
-<<<<<<< HEAD
-                                            <!---- 상품 이미지, 상세 get  --->
-                                            <a href="/product/8">
-=======
-                                            -- 상품 이미지, 상세 get  -
-                                            <a href="/product/1301">
->>>>>>> origin/cart_changseok
-                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">
-                                            </a>
-                                        </div>
-                                        <div class="proTxt">
-                                            - go-product-text test --
-                                            <span class="proState">스파클몰</span>
-                                            <p><a href="/product/8">스파클링 500ml 40병</a>
-                                                <span>33% 할인상품</span>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="quantity clear">
-                                            <button type="button" class="bt-decrease"></button>
-                                            <input type="text" class="quantity" value="1">-동일상품 개수-
-                                            <button type="button" class="bt-increase"></button>
-                                        </div>
-                                    </td>
-                                    <td class="spoqa">
-                                        -  상품 금액 * num --
-                                        <div class="pro-price">19,900원</div>
-                                        <input class="hidden-price" type="hidden" value="">
-                                    </td>
-                                    <td class="spoqa">0원</td>
-                                    <td class="spoqa">0원</td>
-                                    <td>무료배송</td>
-                                    <td>
-                                        <a>
-                                            <img src="/static/images/sub/x.png" alt="닫기버튼">
-                                        </a>
-<<<<<<< HEAD
-                                    </td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="taL">
-                                        <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
-                                        <div>
-                                            <input type="hidden" name="items[512313][product_id]" value="1301">
-                                        </div>
-                                    </td>
-                                    <td class="taL pro-option">
-                                        <div class="proImg">
-                                            <!---- 상품 이미지, 상세 get 요청  --->
-                                            <a href="/product/8">
-                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">
-                                            </a>
-                                        </div>
-                                        <div class="proTxt">
-                                            <!--- go-product-text test ---->
-                                            <span class="proState">스파클몰</span>
-                                            <p><a href="/product/8">스파클링 500ml 40병</a>
-                                                <span>33% 할인상품</span>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="quantity clear">
-                                            <button type="button" class="bt-decrease"></button>
-                                            <input type="text" class="quantity" value="1"><!---동일상품 개수--->
-                                            <button type="button" class="bt-increase"></button>
-                                        </div>
-                                    </td>
-                                    <td class="spoqa">
-                                        <!---  상품 금액 * num ---->
-                                        <div class="pro-price">19,900원</div>
-                                        <input class="hidden-price" type="hidden" value="">
-                                    </td>
-                                    <td class="spoqa">0원</td>
-                                    <td class="spoqa">0원</td>
-                                    <td>무료배송</td>
-                                    <td>
-                                        <a href="javascript:;">
-                                            <img src="/static/images/sub/x.png" alt="닫기버튼">
-                                        </a>
-                                    </td>
-                                </tr>
-=======
-                                    </td> -->
-                                <!-- </tr> -->
->>>>>>> origin/cart_changseok
+<!--                                 <tr class="border-b">-->
+<!--                                     <td class="taL">-->
+<!--                                        <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">-->
+<!--                                        <div>-->
+<!--                                            <input type="hidden" name="items[512313][product_id]" value="1301">-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                    <td class="taL pro-option">-->
+<!--                                        <div class="proImg">-->
+<!--                                            &lt;!&ndash;&#45;&#45; 상품 이미지, 상세 get  &#45;&#45;&ndash;&gt;-->
+<!--                                            <a href="/product/8">-->
+<!--                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                        <div class="proTxt">-->
+<!--                                            &lt;!&ndash; go-product-text test &ndash;&gt;-->
+<!--                                            <span class="proState">스파클몰</span>-->
+<!--                                            <p><a href="/product/8">스파클링 500ml 40병</a>-->
+<!--                                                <span>33% 할인상품</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <div class="quantity clear">-->
+<!--                                            <button type="button" class="bt-decrease"></button>-->
+<!--                                            <input type="text" class="quantity" value="1">&lt;!&ndash;- 동일상품 개수 -&ndash;&gt;-->
+<!--                                            <button type="button" class="bt-increase"></button>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                    <td class="spoqa">-->
+<!--                                        &lt;!&ndash;  상품 금액 * num &ndash;&gt;-->
+<!--                                        <div class="pro-price">19,900원</div>-->
+<!--                                        <input class="hidden-price" type="hidden" value="">-->
+<!--                                    </td>-->
+<!--                                    <td class="spoqa">0원</td>-->
+<!--                                    <td class="spoqa">0원</td>-->
+<!--                                    <td>무료배송</td>-->
+<!--                                    <td>-->
+<!--                                        <a href="javascript:;">-->
+<!--                                            <img src="/static/images/sub/x.png" alt="닫기버튼">-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr class="border-b">-->
+<!--                                    <td class="taL">-->
+<!--                                        <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">-->
+<!--                                        <div>-->
+<!--                                            <input type="hidden" name="items[512313][product_id]" value="1301">-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                    <td class="taL pro-option">-->
+<!--                                        <div class="proImg">-->
+<!--                                            &lt;!&ndash;&#45;&#45; 상품 이미지, 상세 get 요청  -&ndash;&gt;-->
+<!--                                            <a href="/product/8">-->
+<!--                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                        <div class="proTxt">-->
+<!--                                            &lt;!&ndash;- go-product-text test &#45;&#45;&ndash;&gt;-->
+<!--                                            <span class="proState">스파클몰</span>-->
+<!--                                            <p><a href="/product/8">스파클링 500ml 40병</a>-->
+<!--                                                <span>33% 할인상품</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <div class="quantity clear">-->
+<!--                                            <button type="button" class="bt-decrease"></button>-->
+<!--                                            <input type="text" class="quantity" value="1">&lt;!&ndash;-동일상품 개수-&ndash;&gt;-->
+<!--                                            <button type="button" class="bt-increase"></button>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                    <td class="spoqa">-->
+<!--                                        &lt;!&ndash;-  상품 금액 * num &#45;&#45;&ndash;&gt;-->
+<!--                                        <div class="pro-price">19,900원</div>-->
+<!--                                        <input class="hidden-price" type="hidden" value="">-->
+<!--                                    </td>-->
+<!--                                    <td class="spoqa">0원</td>-->
+<!--                                    <td class="spoqa">0원</td>-->
+<!--                                    <td>무료배송</td>-->
+<!--                                    <td>-->
+<!--                                        <a href="javascript:;">-->
+<!--                                            <img src="/static/images/sub/x.png" alt="닫기버튼">-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
                             </tbody>
                         </table>
                         <div class="calc-box">
@@ -205,11 +192,6 @@
                             <a href="javascript:void(0);" class="btn_style1">선택상품 주문하기</a>
                             <a href="javascript:void(0);" class="btn_style2">전체상품 주문하기</a>
                         </div>
-                        <!--삭제 form-->
-                        <form action="/bag/delete" method="post" class="quantity_delete_form">
-                            <input type="hidden" name="product_id" class="delete_product_id">
-                            <input type="hidden" name="user_id" value="${user.name}">
-                        </form>
                     </form>
                 </div>
             </div>

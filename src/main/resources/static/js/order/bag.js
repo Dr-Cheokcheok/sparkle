@@ -7,6 +7,7 @@ const realPrice = document.querySelectorAll(".hidden-price");
 const cartPrice = document.querySelector(".calc-item .selPrice");
 let priceList = new Array();
 
+
 //전처리-제품 가격 리스트
 calcPrice.forEach((priceDiv, index) => {
     let originPrice = parseInt(priceDiv.textContent.replace(",", ""));
@@ -72,7 +73,6 @@ function sumTotal(){
     document.querySelector(".calc-tot-amount").textContent = sum.toLocaleString() + "원";
 }
 
-<<<<<<< HEAD
 /*장바구니 전체 선택*/
 var allChk = $('#chkAll');
 var chk = $('.chk_style');
@@ -111,9 +111,7 @@ $(".cartBtn").on("click", function(e){
         }
     })
 });
-/* 장바구니 삭제 버튼 */
-=======
-// -------------------------------------------------------
+
 class BagApi {
     static #instance = null;
 
@@ -141,6 +139,21 @@ class BagApi {
         });
         
         return responseData;
+    }
+    productDataDeleteRequest(id) {
+        $.ajax({
+            async: false,
+            type: "delete",
+            url: "/api/bag/userbag" + id,
+            dataType: (response) => {
+                alert("장바구니 삭제 완료!");
+                location.reload();
+            },
+            error: (error) => {
+                alert("장바구니 삭제 실패!");
+                console.log(error);
+            }
+        })
     }
 }
 class BagService {
@@ -171,9 +184,9 @@ class BagService {
             borders.innerHTML += `
             <tr class="border-b">
                 <td class="taL">
-                    <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
+                    <input type="checkbox" name="item_ids[]" class="chk_style" value="">
                     <div>
-                        <input type="hidden" name="items[512313][product_id]" value="1301">
+                        <input type="hidden" name="items[][product_id]" value="">
                     </div>
                 </td>
                 <td class="taL pro-option">
@@ -184,7 +197,8 @@ class BagService {
                     </div>
                     <div class="proTxt">
                         <span class="proState">스파클몰</span>
-                        <p><a href="/product/${border.id}">${border.name}</a>
+                        <p>
+                            <a href="/product/${border.id}">${border.name}</a>
                             <span>${border.rate}% 할인상품</span>
                         </p>
                     </div>
@@ -205,16 +219,40 @@ class BagService {
                 <td>무료배송</td>
                 <td>
                     <a href="javascript:;">
+                        <button type="button" class="del-box">
                         <img src="/static/images/sub/x.png" alt="닫기버튼">
+                        </button>
                     </a>
                 </td>
             </tr>
             `;
+
+        });
+        
+        const deleteBtn = document.querySelectorAll(".del-box");
+        const addBtn = document.querySelectorAll(".cartBtn");
+
+        addBtn.forEach((add, index) => {
+            add.onclick = () => {
+                if(confirm("장바구니에 담겠습니까?")){
+                location.href = "/bag" + responseData[index].id
+                }
+            }
+        });
+        deleteBtn.forEach((deleteBtn, index) => {
+
+            deleteBtn.onclick = () => {
+                if(confirm("장바구니에서 삭제 하시겠습니까?")) {
+                    const bagApi = new BagApi();
+                    bagApi.productDataDeleteRequest(responseData[index].id);
+                }
+            }
         });
     }
+
 }
 
 window.onload = () => {
     BagService.getInstance().loadBagList();
 }
->>>>>>> origin/cart_changseok
+
