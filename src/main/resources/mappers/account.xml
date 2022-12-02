@@ -34,6 +34,22 @@
             now()
         )
     </insert>
+    <update id="updateUser">
+        update
+            user_mst
+        set
+            password = #{password},
+            name = #{name},
+            phone = #{phone},
+            event_sosick = #{event_sosick},
+            post_code = #{post_code},
+            address = #{address},
+            detail_address = #{detail_address},
+            update_date = now()
+        where
+            id = #{id}
+
+    </update>
 
     <select id="findUserByUsername" parameterType="String" resultType="com.spakle.spakleclone20221104.domain.User">
         select

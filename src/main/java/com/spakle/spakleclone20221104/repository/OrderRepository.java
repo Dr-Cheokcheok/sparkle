@@ -13,4 +13,6 @@ public interface OrderRepository {
 
     public int saveOrderDtl(List<OrderDetail> orderDetail) throws Exception;
 
+//    public int deleteUser()
+
 }

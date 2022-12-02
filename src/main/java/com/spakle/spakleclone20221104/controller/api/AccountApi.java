@@ -61,4 +61,12 @@ public class AccountApi {
 
     }
 
+    @PutMapping("/modification")
+    public boolean accountModify(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, String> map) throws Exception {
+        boolean result = false;
+        result = accountService.modification(principalDetails,map);
+
+        return result;
+    }
+
 }

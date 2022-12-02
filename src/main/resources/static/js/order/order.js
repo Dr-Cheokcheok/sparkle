@@ -185,6 +185,7 @@ function paymentCard(data) {
          InfoDataDtl(); 
          InfoData(data);
          alert("결제가 완료되었습니다!");
+         location.replace("/account/order/detail");
 
 		} else {
           // 결제 실패 시 로직,
@@ -211,7 +212,7 @@ function InfoDataDtl(){
         data: JSON.stringify(productDataList),
         dataType: "json",
         success: (response)=>{
-            console.log(response)
+            console.log(response.data)
         },
         error: (error) => {
             console.log(error)
@@ -316,6 +317,8 @@ cartTotalPrice.innerHTML = `
     <span class="calc-tot-amount price-tag">${(totalPrice - totalDiscount).toLocaleString()}원</span>
 </p>
 `;
+const calcAmountText = document.querySelector("#calc-amount-text");
+calcAmountText.textContent = (totalPrice - totalDiscount).toLocaleString()
 
 
 

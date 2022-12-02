@@ -1,6 +1,7 @@
 package com.spakle.spakleclone20221104.service.order;
 
 import com.spakle.spakleclone20221104.domain.order.Order;
+import com.spakle.spakleclone20221104.domain.order.OrderDetail;
 import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
 import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;

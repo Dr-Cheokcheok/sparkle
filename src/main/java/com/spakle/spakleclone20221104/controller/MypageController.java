@@ -32,6 +32,11 @@ public class MypageController {
     @GetMapping("/users/edit")
     public String loadUserEdit(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("principalUser",principalDetails.getUser());
+        if(principalDetails.getUser().getEvent_sosick() == 1){
+            model.addAttribute("eventSosick",true);
+        }else{
+            model.addAttribute("noSosick",true);
+        }
         return "mypage/edit";
     }
 
