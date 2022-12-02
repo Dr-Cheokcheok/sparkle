@@ -24,7 +24,6 @@
         <result property="order_id" column="order_id"></result>
         <result property="product_id" column="product_id"></result>
         <result property="quantity" column="quantity"></result>
-        <result property="total_price" column="total_price"></result>
     </resultMap>
 
     <insert id="saveOrder"
@@ -56,13 +55,14 @@
         insert into
             order_detail
         values
-        (
-        <foreach collection="list" item="orderDetail" separator=",">
-            #{orderDetail.order_id},
-            #{orderDetail.product_id},
-            #{orderDetail.quantity}
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.order_id},
+            #{item.product_id},
+            #{item.quantity}
+            )
         </foreach>
-        )
+
     </insert>
     
 </mapper>

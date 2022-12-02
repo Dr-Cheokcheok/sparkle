@@ -6,11 +6,12 @@ import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
 import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
 import com.spakle.spakleclone20221104.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -32,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
         orderDtlReqDtos.forEach(orderDtlReqDto -> {
             orderDtlList.add(orderDtlReqDto.toOrderDtlEntity());
         });
+
         int resultCount = 0;
         resultCount = orderRepository.saveOrderDtl(orderDtlList);
 

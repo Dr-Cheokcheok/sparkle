@@ -91,12 +91,10 @@ payBtn.onclick = (e) => {
 
 function payment() {
 
+
     //제품 정보들 같이 보내기
-
     productDataList = [];
-
     let pet = document.querySelector("#eventChk");
-    
     if(pet.checked) {
         pet = 1;
     }else {
@@ -115,7 +113,6 @@ function payment() {
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
-        pet : pet,
         // totalPrice : Number($("#totalCost").text()),
         totalPrice:100,
         productData : productDataList
@@ -127,8 +124,8 @@ function payment() {
     for (let i = 0; i < productIdInput.length; i++) {
         const productObject = {
             order_id : data.orderNum,
-            product_id : productIdInput[i].value,
-            quantity: productQuantity[i].value,
+            product_id : Number(productIdInput[i].value),
+            quantity: Number(productQuantity[i].value),
         }
         productDataList.push(productObject);
     }
@@ -197,13 +194,9 @@ function paymentCard(data) {
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         InfoDataDtl(data, rsp); //db 저장 rsp랑 productDataList
-         InfoData(formData);
+         InfoDataDtl();
          alert("결제가 완료되었습니다!");
-         
-         // productdata 확인하는법 : data.productData.forEach => 해서 하나씩 봐짐
-         // location.replace("/account/order/detail");
-			
+
 		} else {
           // 결제 실패 시 로직,
              var msg = '결제에 실패했습니다. \n';
@@ -218,9 +211,8 @@ function paymentCard(data) {
 // 장바구니 A 보따리
 // const totalCost = 
 
-function InfoDataDtl(data, rsp){
-    console.log(data);
-    console.log(rsp);
+function InfoDataDtl(){
+    console.log(productDataList);
     // const orderData = {
     //     amount: data.totalPrice, //string
     //     name: data.ordererName, //string
@@ -234,7 +226,7 @@ function InfoDataDtl(data, rsp){
         url: "/api/order/detail",
         type: "post",
         contentType: "application/json",
-        data: JSON.stringify(data.productData),
+        data: JSON.stringify(productDataList),
         dataType: "json",
         success: (response)=>{
             console.log(response)
