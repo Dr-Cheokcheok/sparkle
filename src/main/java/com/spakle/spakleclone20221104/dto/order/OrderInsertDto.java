@@ -5,18 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
     @Builder
     public class OrderInsertDto {
-        private int orderId;
+        private String orderId;
         private String userId;
         private LocalDateTime orderDate;
         private String ordererName;
         private String recipientName;
         private String phone;
-        private int postCode;
+        private String postCode;
         private String address;
         private String detailAddress;
         private String shipMsg;
@@ -24,7 +23,6 @@ import java.util.List;
         private int pet;
         private int totalPrice;
 
-        private List<Integer> orderDetails;
 
         public Order toOrderEntity() {
             return Order.builder()

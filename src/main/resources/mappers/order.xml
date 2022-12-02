@@ -18,6 +18,7 @@
         <result property="ship_msg" column="ship_msg"></result>
         <result property="entrance" column="entrance"></result>
         <result property="pet" column="pet"></result>
+        <result property="total_price" column="total_price"></result>
     </resultMap>
 
     <resultMap id="order_detail" type="com.spakle.spakleclone20221104.domain.order.OrderDetail">
@@ -46,7 +47,8 @@
             #{detail_address},
             #{ship_msg},
             #{entrance},
-            #{pet}
+            #{pet},
+            #{total_price}
         )
     </insert>
 

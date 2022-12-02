@@ -1,8 +1,8 @@
 package com.spakle.spakleclone20221104.controller.api;
 
-import com.spakle.spakleclone20221104.domain.order.OrderDetail;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
 import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
+import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
 import com.spakle.spakleclone20221104.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,16 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
 @Slf4j
-@RequestMapping("/api")
+@RequestMapping("/api/order")
 @RestController
 @RequiredArgsConstructor
 public class OrderApi {
 
     private final OrderService orderService;
 
-    @PostMapping("/order/detail")
+    @PostMapping("/detail")
     public ResponseEntity<?> insertOrderDtl(@RequestBody List<Map<String , Object>> data)throws Exception{
         List<OrderDtlReqDto> orderDetailList = new ArrayList<>();
 
@@ -35,5 +34,12 @@ public class OrderApi {
         });
 
         return ResponseEntity.ok(new CMRespDto<>(1, "insertOrderDtl", orderService.addOrderDetail(orderDetailList)));
+    }
+
+    @PostMapping("/prepare")
+    @ResponseBody
+    public ResponseEntity<?> insertOrder(@RequestBody OrderInsertDto orderInsertDto) throws Exception {
+
+        return ResponseEntity.created(null).body(new CMRespDto<>(1, "Successfully", orderService.addOrder(orderInsertDto)));
     }
 }

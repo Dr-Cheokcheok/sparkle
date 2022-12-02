@@ -69,23 +69,10 @@ function daumPostcode() {
 // 페이 결제
 
 const payBtn = document.querySelector("#payBtn");
-   let formData = new FormData();
 
 payBtn.onclick = (e) => {
     e.preventDefault();
-    let data = payment();
-
-    formData.append("orderId", data.orderNum);
-    formData.append("ordererName", data.ordererName);
-    formData.append("recipientName", data.recipientName);
-    formData.append("phone", data.phone);
-    formData.append("postCode", data.deleveryAddress1);
-    formData.append("address", data.deleveryAddress2);
-    formData.append("detailAddress", data.deleveryAddress3);
-    formData.append("shipMsg", data.request);
-    formData.append("entrance", data.door);
-    formData.append("pet", data.pet);
-    formData.append("totalPrice", data.totalPrice);
+    payment();
     
 }
 
@@ -102,20 +89,22 @@ function payment() {
     }
 
     const data = {
+        userId : $('input[name="user_id"]').val(),
         payMethod : $('input:radio[name="payment"]:checked').val(),
         orderNum : createOrderNum(),
         name : $(".water_name").text(),
         ordererName : $("input[name='name']").val(),
         recipientName : $("input[name='r_name']").val(),
         phone : $("input[name='r_phone']").val(),
-        request : $("li[name='deli-select']").val(),
+        request : $("#message").val(),
         door : $("input[name='door_password']").val(),
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
         // totalPrice : Number($("#totalCost").text()),
         totalPrice:100,
-        productData : productDataList
+        productData : productDataList,
+        pet : pet
     }
 
     const productIdInput = document.querySelectorAll("#productId");
@@ -129,7 +118,7 @@ function payment() {
         }
         productDataList.push(productObject);
     }
-
+    
     const regex = /^[ㄱ-ㅎ|가-힣]+$/;
     const regex2 = /^[0-9]+$/;
 
@@ -170,7 +159,6 @@ function payment() {
     }
     paymentCard(data);
 
-    return data;
 }
 
 
@@ -194,7 +182,8 @@ function paymentCard(data) {
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         InfoDataDtl();
+         InfoDataDtl(); 
+         InfoData(data);
          alert("결제가 완료되었습니다!");
 
 		} else {
@@ -213,13 +202,6 @@ function paymentCard(data) {
 
 function InfoDataDtl(){
     console.log(productDataList);
-    // const orderData = {
-    //     amount: data.totalPrice, //string
-    //     name: data.ordererName, //string
-    //     tel: data.phone, //string
-    //     postcode: data.deleveryAddress1, //string
-    //     productDataList: data.productData //list<data 객체>
-    // }
 
     $.ajax({
         async: false,
@@ -238,28 +220,36 @@ function InfoDataDtl(){
 }
 
 
-function InfoData(formData){
+function InfoData(data){
+
     $.ajax({
         async: false,
         type: "post",
-        url: "/order/prepare",
-        enctype: "multipart/form-data",
-        contentType: false,
-        processType: false,
-        data: formData,
+        url: "/api/order/prepare",
+        contentType: "application/json",
+        data: JSON.stringify({
+            userId : data.userId,
+            orderId : data.orderNum,
+            ordererName : data.ordererName,
+            recipientName : data.recipientName,
+            phone : data.phone,
+            postCode : data.deleveryAddress1,
+            address : data.deleveryAddress2,
+            detailAddress : data.deleveryAddress3,
+            shipMsg : data.request,
+            entrance : data.door,
+            pet : data.pet,
+            totalPrice : data.totalPrice
+        }),
         dataType: "json",
         success: (response) => {
-            alert("상품 결제 완료!");
-            location.replace("/account/order/detail");
+            console.log(response);
         },
         error: (error) => {
-            console.log(error)
+            console.log(error);
         }
-
-    });
-
-
-}
+        });
+    }
 
 // 주문번호 만들기
 function createOrderNum(){
@@ -274,8 +264,6 @@ function createOrderNum(){
     }
     return orderNum;
 }
-
-
 
 const calcBox = document.querySelector(".calc-box");
 const totalPrices = document.querySelectorAll("#total-price");

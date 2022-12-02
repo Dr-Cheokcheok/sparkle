@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 public class OrderDto {
     /* 주문 번호 */
-    private int orderId;
+    private String orderId;
 
     /* 배송 받는이 */
     private String addressee;
