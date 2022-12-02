@@ -66,5 +66,57 @@
         </foreach>
 
     </insert>
-    
+
+    <select id="getOrderList" resultMap="order">
+        select
+            oe.order_id,
+            oe.user_id,
+            oe.order_date,
+            oe.total_price,
+            od.order_id,
+            od.quantity,
+            od.product_id,
+            dt.name,
+            dt.img
+
+        from
+            `order` oe
+            LEFT OUTER JOIN order_detail od on(oe.order_id = od.order_id)
+            LEFT OUTER JOIN product dt on(od.`product_id` = dt.`id`)
+        where
+            oe.user_id = #{user_id}
+
+    </select>
+
+    <select id="getOrderDetails" resultMap="order">
+
+        select
+            oe.order_id,
+            oe.user_id,
+            oe.order_date,
+            oe.orderer_name,
+            oe.recipient_name,
+            oe.phone,
+            oe.post_code,
+            oe.address,
+            oe.detail_address,
+            oe.ship_msg,
+            oe.entrance,
+            oe.pet,
+            oe.total_price,
+            od.order_id,
+            od.quantity,
+            od.product_id,
+            dt.name,
+            dt.img
+
+        from
+            `order` oe
+            LEFT OUTER JOIN order_detail od on(oe.order_id = od.order_id)
+            LEFT OUTER JOIN product dt on(od.`product_id` = dt.`id`)
+        where
+            oe.user_id = #{user_id}
+
+    </select>
+
 </mapper>

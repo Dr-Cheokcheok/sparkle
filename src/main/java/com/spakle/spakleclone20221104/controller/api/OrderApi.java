@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@RequestMapping("/api/order")
+@RequestMapping("/api")
 @RestController
 @RequiredArgsConstructor
 public class OrderApi {
 
     private final OrderService orderService;
 
-    @PostMapping("/detail")
+    @PostMapping("/order/detail")
     public ResponseEntity<?> insertOrderDtl(@RequestBody List<Map<String , Object>> data)throws Exception{
         List<OrderDtlReqDto> orderDetailList = new ArrayList<>();
 
@@ -36,10 +36,20 @@ public class OrderApi {
         return ResponseEntity.ok(new CMRespDto<>(1, "insertOrderDtl", orderService.addOrderDetail(orderDetailList)));
     }
 
-    @PostMapping("/prepare")
+    @PostMapping("/order/prepare")
     @ResponseBody
     public ResponseEntity<?> insertOrder(@RequestBody OrderInsertDto orderInsertDto) throws Exception {
 
         return ResponseEntity.created(null).body(new CMRespDto<>(1, "Successfully", orderService.addOrder(orderInsertDto)));
+    }
+
+    @GetMapping("/account/order")
+    public ResponseEntity<?> getOrderLists(@PathVariable String userId) throws Exception {
+        return ResponseEntity.ok(new CMRespDto<>(1, "load Successfully", orderService.getOrderList(userId)));
+    }
+
+    @GetMapping("/order/{orderId}")
+    public ResponseEntity<?> getorderDtlList(@PathVariable String orderId)throws Exception {
+        return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", orderService.getOrderDetailList(orderId)));
     }
 }
