@@ -89,6 +89,7 @@ public class AccountServicelmpl implements AccountService {
         }
 
         String password = map.get("password");
+        //패스워드 변경 없으면 password는 기존 password(암호화 o)
         if(password.equals("off")){
             password = user.getPassword();
         }else{
@@ -110,6 +111,10 @@ public class AccountServicelmpl implements AccountService {
                 .build();
 
         result = accountRepository.updateUser(userMod);
+
+        //principalDetail set해줌
+        principalDetails.setPrincipal(userMod.setUserEntity(user));
+
         return result != 0;
     }
 }

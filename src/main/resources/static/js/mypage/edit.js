@@ -27,7 +27,7 @@ function daumPostcode() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById("postcode-input").value = data.zonecode;
             document.getElementById("address").value = roadAddr;
-            document.getElementById("detailAddress").value = "";
+            document.getElementById("detail-address").value = "";
 
         }
     }).open();
@@ -40,7 +40,7 @@ confirmBtn.onclick = () => {
 
 
 function modification(){
-    let event =document.querySelector(".sns_inp:checked").name
+    let event =document.querySelector(".sns_inp:checked").id
     const update = {
         name: document.querySelector("#name").value,
         password : document.querySelector("#password").value,
@@ -51,14 +51,18 @@ function modification(){
         address: document.querySelector("#address").value,
         detailAddress : document.querySelector("#detail-address").value
     };
-    if(update.password != null || update.passwordPermit != null){
-        const regExp = /[a-zA-Z0-9]/g;
-        if(!(regExp.test(data.password) && data.password.length >= 10)){
-            alert("비밀번호는 숫자와 문자를 포함하여 10자 이상이어야합니다.")
+    if(update.password.length !== 0 || update.passwordPermit.length !== 0){
+        const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{10,}$/g;
+        if(!(regExp.test(update.password))){
+            alert("비밀번호는 문자와 숫자 및 특수문자를 포함하여 10자 이상이어야합니다.");
+            document.querySelector("#password").value = "";
+            document.querySelector("#password-permit").value ="";
             return;
         }
         if(update.passwordPermit !== update.password || update.password !== update.passwordPermit){
             alert("비밀번호 확인 항목이 일치하지 않습니다.");
+            document.querySelector("#password-permit").focus();
+            return;
         }
     }else{
         update.password = "off";
@@ -76,7 +80,11 @@ function modification(){
         contentType: "application/json",
         dataType: "json",
         success: (response)=>{
-            console.log(response.data)
+            console.log(response)
+            if(response){
+                alert("성공적으로 수정되었습니다.");
+            }
+            location.reload();
         },
         error: (error) => {
             console.log(error)
