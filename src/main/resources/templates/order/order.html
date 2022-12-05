@@ -27,138 +27,129 @@
             <div class="sub-title">
                 <p>주문결제</p>
             </div>
-        </div>
-        <div id="cart" class="cart-box w1260">
-            <form name="cartForm" action="api/order/prepare" method="post">
-                <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
-                <input type="hidden" name="cart_id" value="3033722">
-                <div class="cart-top txt">
-                    상품정보
-                </div>
-                <table class="cart_table">
-                    <colgroup>
-                        <col width="30%">
-                        <col width="10%">
-                        <col width="20%">
-                        <col width="20%">
-                        <col width="20%">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th>상품/옵션 정보</th>
-                        <th>수량</th>
-                        <th>판매가</th>
-                        <th>할인금액</th>
-                        <th>배송비</th>
-                    </tr>
-                    </thead>
-                    <tbody id = "test">
-                    <tr class="border-b">
-                        <td class="taL pro-option">
-                            <input id="productId" type="hidden" th:value="${order.productId}">
-                            <input id="quantity" type="hidden" th:value="${order.quantity}">
-                            <div class="proImg">
-                                <img th:src="|/image/product/${order.img}|">
-                            </div>
-                            <div class="proTxt">
-                                <span class="proState">스파클몰</span>
-                                <p class="water_name" th:text="${order.name}"></p>
-                                <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="spoqa" th:text="${order.quantity}"></div>
-                        </td>
-                        <td class="spoqa">
-                            <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
-                            <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
-                        </td>
-                        <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
-                        <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
-                        <td>무료배송</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="calc-box">
-                </div>
-                <div class="cart-total-price">
-                </div>
-                <!---      주문자 정보 및 결제 정보      -->
-                <div class="order-in">
-                    <h4 class="com-tit">주문자정보</h4>
-                    <div class="order-detail">
-                        <dl class="clear">
-                            <dt>이름</dt>
-                            <dd>
-                                <input type="text" class="input_1" name="name" th:value="${principalUser.name}">
-                            </dd>
-                        </dl>
-                        <dl class="clear">
-                            <dt>휴대폰</dt>
-                            <dd>
-                                <input type="text" class="input_1" name="phone" th:value="${principalUser.phone}">
-
-                            </dd>
-                        </dl>
+            <div id="cart" class="cart-box w1260">
+                <form name="cartForm" action="api/order/prepare" method="post">
+                    <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
+                    <input type="hidden" name="cart_id" value="3033722">
+                    <div class="cart-top txt">
+                        상품정보
                     </div>
-                    <div style="display: none;">
-                        <input type="hidden" name="user_id" th:value="${principalUser.username}">
-                        <input type="hidden" name="user_postcode" value="" disabled="">
-                        <input type="hidden" name="user_address" value="" disabled="">
-                        <input type="hidden" name="user_address_detail" value="" disabled="">
+                    <table class="cart_table">
+                        <colgroup>
+                            <col width="30%">
+                            <col width="10%">
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>상품/옵션 정보</th>
+                                <th>수량</th>
+                                <th>판매가</th>
+                                <th>할인금액</th>
+                                <th>배송비</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!---- product --->
+                            <tr class="border-b">
+                                <td class="taL pro-option">
+                                <input id="productId" type="hidden" th:value="${order.productId}">
+                                <input id="quantity" type="hidden" th:value="${order.quantity}">
+                                    <div class="proImg">
+                                        <!---- 상품 이미지, 상세 get 요청  --->
+                                        <img th:src="|/image/product/${order.img}|">
+                                    </div>
+                                    <div class="proTxt">
+                                        <!--- go-product-text test ---->
+                                        <span class="proState">스파클몰</span>
+                                        <p class="water_name" th:text="${order.name}"></p>
+                                        <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
+                                    </div>
+                                </td>
+                                <td><!---   동일 상품 주문 개수 --->
+                                    <div class="spoqa" th:text="${order.quantity}"></div>
+                                </td>
+                                <td class="spoqa">
+                                    <!---  상품 금액 * num ---->
+                                    <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
+                                    <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
+                                </td>
+                                <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
+                                <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
+                                <td>무료배송</td>
+                            </tr>
+                        </tbody>
+                        <tbody id="cart-table" style="display: none">
+                            <tr>
+                                <td>
+                                    안녕안녕
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="calc-box">
                     </div>
-
-                    <div class="flex">
-                        <h4 class="com-tit wid225">배송지정보</h4>
+                    <div class="cart-total-price">
                     </div>
-                    <div class="order-detail od2">
-                        <dl class="clear mb10">
-                            <dt>이름</dt>
-                            <dd>
-                                <input type="text" class="input_1" name="r_name" th:value="${principalUser.name}">
-                            </dd>
-                        </dl>
-                        <dl class="clear mb10">
-                            <dt>휴대폰</dt>
-                            <dd>
-                                <input type="text" class="input_1" name="r_phone" th:value="${principalUser.phone}">
-                            </dd>
-                        </dl>
-                        <dl class="clear mb10">
-                            <dt>주소</dt>
-                            <dd>
-                                <div class="address_inp">
-                                    <input type="text" id="postcode" readonly="readonly" class="input_1 mb12 wid350" placeholder="우편번호" th:value="${principalUser.post_code}" style="background: rgba(0,0,0,.1); cursor: default; width: 6em;">
-                                    <input type="button" value="우편번호찾기" class="find_post"> <br>
-                                    <input type="text" id="address" readonly="readonly" placeholder="주소" class="adr" th:value="${principalUser.address}" style="background: rgba(0,0,0,.1); cursor: default;">
-                                    <input type="text" id="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" th:value="${principalUser.detail_address}">
-                                    <input type="hidden" id="address_data" value="">
-                                    <input type="hidden" id="is_deliverable" value="">
-                                    <p class="deliverable-show" style="display: none; color: #00f;">
-                                        선택하신 배송지는 배송이 가능한 지역입니다.
-                                    </p>
-                                    <p class="deliverable-hide" style="display: none; color: #f00;">
-                                        선택하신 배송지는 배송이 불가능한 지역입니다.
-                                    </p>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="clear">
-                            <dt>배송메세지</dt>
-                            <dd>
-                                <div class="flex">
-                                    <li class="deli-select">
-                                        <span class="sel">배송 메세지 선택</span>
-                                        <ul style="display: none;">
-                                            <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
-                                            <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
-                                            <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
-                                            <li onclick="$('#message').val('')" class="selfText">직접입력</li>
-                                        </ul>
-                                        <span class="arrow"></span>
-                                    </li>
-                                    <div class="self">
-                                        <input type="text" class="self-input input_1" id="message" name="message" value="">
+                    <!---      주문자 정보 및 결제 정보      -->
+                    <div class="order-in">
+                        <h4 class="com-tit">주문자정보</h4>
+                        <div class="order-detail">
+                            <dl class="clear">
+                                <dt>이름</dt>
+                                <dd>
+                                    <input type="text" class="input_1" name="name" th:value="${principalUser.name}">
+                                </dd>
+                            </dl>
+                            <dl class="clear">
+                                <dt>휴대폰</dt>
+                                <dd>
+                                    <input type="text" class="input_1" name="phone" th:value="${principalUser.phone}">
+                        
+                                </dd>
+                            </dl>
+                        </div>
+                        <div style="display: none;">
+                            <input type="hidden" name="user_id" th:value="${principalUser.username}">
+                            <input type="hidden" name="user_postcode" value="" disabled="">
+                            <input type="hidden" name="user_address" value="" disabled="">
+                            <input type="hidden" name="user_address_detail" value="" disabled="">
+                        </div>
+    
+                        <div class="flex">
+                            <h4 class="com-tit wid225">배송지정보</h4>
+                        </div>
+                        <div class="order-detail od2">
+                            <dl class="clear mb10">
+                                  <dt>이름</dt>
+                                <dd>
+                                    <input type="text" class="input_1" name="r_name" th:value="${principalUser.name}">
+                                </dd>
+                            </dl>
+                            <dl class="clear mb10">
+                                <dt>휴대폰</dt>
+                                <dd>
+                                    <input type="text" class="input_1" name="r_phone" th:value="${principalUser.phone}">
+                                </dd>
+                            </dl>
+                            <dl class="clear mb10">
+                                <dt>주소</dt>
+                                <dd>
+                                    <div class="address_inp">
+                                        <input type="text" id="postcode" readonly="readonly" class="input_1 mb12 wid350" placeholder="우편번호" th:value="${principalUser.post_code}" style="background: rgba(0,0,0,.1); cursor: default; width: 6em;">
+                                        <input type="button" value="우편번호찾기" class="find_post"> <br>
+                                        <input type="text" id="address" readonly="readonly" placeholder="주소" class="adr" th:value="${principalUser.address}" style="background: rgba(0,0,0,.1); cursor: default;">
+                                        <input type="text" id="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" th:value="${principalUser.detail_address}">
+                                        <input type="hidden" id="address_data" value="">
+                                        <input type="hidden" id="is_deliverable" value="">
+                                        <p class="deliverable-show" style="display: none; color: #00f;">
+                                            선택하신 배송지는 배송이 가능한 지역입니다.
+                                        </p>
+                                        <p class="deliverable-hide" style="display: none; color: #f00;">
+                                            선택하신 배송지는 배송이 불가능한 지역입니다.
+                                        </p>
                                     </div>
                                 </div>
                                 <div>
@@ -217,13 +208,13 @@
                     <div class="order-btn-box">
                         <a href="/bag" class="btn_style1">장바구니</a>
                         <a id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        </section>
+        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
     </section>
-    <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
-</section>
-<script src="/static/js/order/order.js"></script>
+    <script src="/static/js/order/order.js"></script>
 </body>
 </html>

@@ -40,10 +40,11 @@ class Principal {
 }
 
 function loadHeader() {
-    let principal = Principal.getInstance().getPrincipal(); //Object -
+    let principal = Principal.getInstance().getPrincipal(); //principal 가져와서
 
     const utilMenu = document.querySelector(".util-menu");
 
+        //principal없으면  == 로그인 안했으면
     if(principal == "") {
         utilMenu.innerHTML = `
             <li>

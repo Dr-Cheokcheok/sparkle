@@ -336,6 +336,14 @@ function priceToString(price) {    // 금액에 , 찍어주는 함수
 }
 
 
+
+
+//인기상품 뿌리기
+function getIngiProduct(){
+
+}
+
+
 window.onload = () => {
   checkCategory();
   loadStatus = true;

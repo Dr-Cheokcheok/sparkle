@@ -161,6 +161,170 @@ function payment() {
 
 }
 
+// 카드 결제
+function paymentCard(data) {
+		
+	IMP.init("imp14753140"); 
+		
+	IMP.request_pay({ // param
+        pg: "html5_inicis",
+	  	pay_method: data.payMethod,
+	  	merchant_uid: data.orderNum,
+	  	name: data.name,
+	  	amount: data.totalPrice,
+	   	buyer_email: "",
+	   	buyer_name: data.recipientName,
+	  	buyer_tel: data.phone,
+	  	buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
+	  	buyer_postcode: data.deleveryAddress1
+  	}, 
+	function (rsp) { // callback
+		if (rsp.success) {
+         // 결제 성공 시 로직,
+         InfoDataDtl(); 
+         InfoData(data);
+         alert("결제가 완료되었습니다!");
+         location.replace("/account/order/detail");
+
+		} else {
+          // 결제 실패 시 로직,
+             var msg = '결제에 실패했습니다. \n';
+            msg += rsp.error_msg
+            alert(msg);            
+            return false;
+		}
+	});
+}
+
+
+// 장바구니 A 보따리
+// const totalCost = 
+
+function InfoDataDtl(){
+    console.log(productDataList);
+
+    $.ajax({
+        async: false,
+        url: "/api/order/detail",
+        type: "post",
+        contentType: "application/json",
+        data: JSON.stringify(productDataList),
+        dataType: "json",
+        success: (response)=>{
+            console.log(response.data)
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    });
+}
+
+
+function InfoData(data){
+
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/api/order/prepare",
+        contentType: "application/json",
+        data: JSON.stringify({
+            userId : data.userId,
+            orderId : data.orderNum,
+            ordererName : data.ordererName,
+            recipientName : data.recipientName,
+            phone : data.phone,
+            postCode : data.deleveryAddress1,
+            address : data.deleveryAddress2,
+            detailAddress : data.deleveryAddress3,
+            shipMsg : data.request,
+            entrance : data.door,
+            pet : data.pet,
+            totalPrice : data.totalPrice
+        }),
+        dataType: "json",
+        success: (response) => {
+            console.log(response);
+        },
+        error: (error) => {
+            console.log(error);
+        }
+        });
+    }
+
+// 주문번호 만들기
+function createOrderNum(){
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    let orderNum = year + month + day;
+    for(let i=0;i<10;i++) {
+        orderNum += Math.floor(Math.random() * 8);
+    }
+    return orderNum;
+}
+
+const calcBox = document.querySelector(".calc-box");
+const totalPrices = document.querySelectorAll("#total-price");
+const discounts = document.querySelectorAll(".discount");
+let totalPrice = 0;
+let totalDiscount = 0;
+totalPrices.forEach(price => {
+    totalPrice += parseInt(price.value);
+});
+discounts.forEach(discount => {
+    totalDiscount += parseInt(discount.value);
+})
+calcBox.innerHTML = "";
+calcBox.innerHTML = `
+
+<div class="calc-box-in">
+    <div class="calc-item">
+        <p class="title">총 판매가</p>
+        <p class="selPrice price-tag">${totalPrice.toLocaleString()}원</p>
+    </div>
+    <div class="symb plus-symbol">
+        <img src="/static/images/sub/plus-symbol.png" alt="">
+    </div>
+    <div class="calc-item">
+        <p class="title">배송비</p>
+        <p class="deliPrice">0원</p>
+    </div>
+    <div class="symb minus-symbol">
+        <img src="/static/images/sub/minus-symbol.png" alt="">
+    </div>
+    <div class="calc-item">
+        <p class="title">할인금액</p>
+        <p class="dcPrice price-tag">${totalDiscount.toLocaleString()}원</p>
+    </div>
+    <div class="symb equal-symbol">
+        <img src="/static/images/sub/equal-symbol.png" alt="">
+    </div>
+    <div class="calc-item">
+        <p class="title">총결제금액</p>
+        <p class="totalCost"><span class="totalCost price-tag">${(totalPrice - totalDiscount).toLocaleString()}</span>원</p>
+        <input id="totalCost" type="hidden" value="${(totalPrice - totalDiscount)}">
+    </div>
+</div>
+
+`;
+const cartTotalPrice = document.querySelector(".cart-total-price");
+cartTotalPrice.innerHTML = "";
+cartTotalPrice.innerHTML = `
+<p>총 결제금액
+    <span class="calc-tot-amount price-tag">${(totalPrice - totalDiscount).toLocaleString()}원</span>
+</p>
+`;
+const calcAmountText = document.querySelector("#calc-amount-text");
+calcAmountText.textContent = (totalPrice - totalDiscount).toLocaleString()
+
+
+
+window.onload = () => {
+    history.replaceState({}, null, location.pathname);
+}
+
 
 // 카드 결제
 function paymentCard(data) {
@@ -267,10 +431,10 @@ function createOrderNum(){
 }
 
 const calcBox = document.querySelector(".calc-box");
-const totalPrices = document.querySelectorAll("#total-price");
-const discounts = document.querySelectorAll(".discount");
-let totalPrice = 0;
-let totalDiscount = 0;
+// const totalPrices = document.querySelectorAll("#total-price");
+// const discounts = document.querySelectorAll(".discount");
+// let totalPrice = 0;
+// let totalDiscount = 0;
 totalPrices.forEach(price => {
     totalPrice += parseInt(price.value);
 });

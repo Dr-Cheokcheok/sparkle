@@ -49,8 +49,13 @@ public class AccountApi {
 
     @PostMapping("/checkid")
     public int overlappedID(@RequestBody ChkIdDto chkIdDto) throws Exception{
-        int result = accountService.overlappedID(chkIdDto); // 중복확인한 값을 int로 받음
-        return result;
+
+        return accountService.overlappedID(chkIdDto); // 중복확인한 값을 int로 받음
+
     }
 
+    @PutMapping("/modification")
+    public boolean accountModify(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, String> map) throws Exception {
+        return accountService.modification(principalDetails, map);
+    }
 }

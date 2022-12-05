@@ -141,8 +141,6 @@ function reload(input){
                 </li>
                 `;
         }
-        
-       
       }
     });
 
