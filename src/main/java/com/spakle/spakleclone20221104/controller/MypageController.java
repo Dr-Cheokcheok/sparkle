@@ -1,10 +1,12 @@
 package com.spakle.spakleclone20221104.controller;
 
+import com.spakle.spakleclone20221104.dto.order.OrderRespDto;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
 
@@ -20,6 +22,7 @@ public class MypageController {
     @GetMapping("/account/order")
     public String loadOrderDelivery(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("principalUser",principalDetails.getUser());
+
         return "mypage/delivery";
     }
 
@@ -41,9 +44,10 @@ public class MypageController {
         return "mypage/userDelete";
     }
 
-    @GetMapping("/account/order/detail")
-    public String loadOrderDetail(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    @GetMapping("/account/order/{orderId}")
+    public String loadOrderDetail(@PathVariable String orderId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
         model.addAttribute("principalUser",principalDetails.getUser());
+
         return "mypage/orderDetail";
     }
 

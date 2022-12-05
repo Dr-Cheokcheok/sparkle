@@ -2,8 +2,10 @@ package com.spakle.spakleclone20221104.service.order;
 
 import com.spakle.spakleclone20221104.domain.order.Order;
 import com.spakle.spakleclone20221104.domain.order.OrderDetail;
+import com.spakle.spakleclone20221104.domain.order.OrderList;
 import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
 import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
+import com.spakle.spakleclone20221104.dto.order.OrderListRepDto;
 import com.spakle.spakleclone20221104.dto.order.OrderRespDto;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.repository.OrderRepository;
@@ -58,31 +60,24 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderRespDto> getOrderList(String userId) throws Exception {
-        List<OrderRespDto> response = new ArrayList<>();
+    public List<OrderListRepDto> getOrderLists(String userId) throws Exception {
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("userId", userId);
+        List<OrderListRepDto> orderList = new ArrayList<>();
 
-        orderRepository.getOrderList(map).forEach(order -> {
-            response.add(OrderRespDto.builder()
-                            .orderId(order.getOrder_id())
-                            .name(order.getName())
-                            .quantity(order.getQuantity())
-                            .img(order.getImg())
-                            .orderDate(order.getOrder_date())
-                            .build());
+        orderRepository.getOrderList(userId).forEach(order -> {
+            orderList.add(order.toOrderListResp());
         });
 
-        return response;
+        return orderList;
     }
 
     @Override
-    public OrderRespDto getOrderDetailList(String orderId) throws Exception {
+    public List<OrderRespDto> getOrderDetailList(String orderId) throws Exception {
 
-        Order order = orderRepository.getOrderDetails(orderId);
+        List<OrderRespDto> orderRespDto = new ArrayList<>();
 
-        OrderRespDto orderRespDto = OrderRespDto.builder()
+        orderRepository.getOrderDetails(orderId).forEach(order -> {
+            orderRespDto.add(OrderRespDto.builder()
                     .orderId(order.getOrder_id())
                     .userId(order.getUser_id())
                     .orderDate(order.getOrder_date())
@@ -94,13 +89,15 @@ public class OrderServiceImpl implements OrderService {
                     .detailAddress(order.getDetail_address())
                     .shipMsg(order.getShip_msg())
                     .entrance(order.getEntrance())
-                    .pet(order.getPet())
                     .totalPrice(order.getTotal_price())
+                    .retailPrice(order.getRetail_price())
                     .quantity(order.getQuantity())
                     .img(order.getImg())
                     .name(order.getName())
                     .productId(order.getProduct_id())
-                    .build();
+                    .build());
+        });
+
 
         return orderRespDto;
     }

@@ -20,6 +20,7 @@ public class OrderRespDto {
     private String shipMsg;
     private String entrance;
     private int pet;
+    private int retailPrice;
     private int totalPrice;
 
     private int quantity;

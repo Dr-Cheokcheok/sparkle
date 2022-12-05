@@ -10,14 +10,16 @@ class DeliveryApi {
 
     getOrder() {
         let responseData = null;
+        let userId = $("#user-id").val();
     
         $.ajax({
             async: false,
             type : "get",
-            url : "/api/account/order",
+            url : "/api/account/order/" + userId,
             dataType : "json",
             success : (response) => {
                 responseData = response.data;
+                console.log(responseData);
             },
             error : (error) => {
                 console.log(error);
@@ -43,56 +45,52 @@ class DeliveryService {
 
     loadDeliveryList() {
         this.responseData = DeliveryApi.getInstance().getOrder();
-        console.log(this.responseData);
         this.getOrderList(this.responseData);
     }
 
     getOrderList(responseData) {
         const deliveryBoxs = document.querySelector(".delivery-box");
-        const prodBoxs = document.querySelector(".prod-box");
 
         deliveryBoxs.innerHTML = "";
-
-        responseData.forEach(deliveryBox => {
-            let orderDate = deliveryBox.orderDate.substring(0, 10);
-            orderDate = orderDate.replace("-", ".");
-
-            deliveryBoxs.innerHTML += `
+       
+        
+        for(let i = 0; responseData.length > 0; i++) {
+            let orderDate = responseData[i].orderDate.substring(0, 10);
+            orderDate = orderDate.replaceAll("-", ".");
+                    
+                deliveryBoxs.innerHTML += `
                 <div class="txtbx">
                     <span class="date-txt"><small>주문일 : </small>${orderDate}</span>
                     <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                    <span class="order-num"><small>주문번호 : </small>${deliveryBox.orderId}</span>
-                    <a href="/account/order/detail/${deliveryBox.orderId}" class="blue-txt">
+                    <span class="order-num"><small>주문번호 : </small>${responseData[i].orderId}</span>
+                    <a href="/account/order/${responseData[i].orderId}" class="blue-txt">
                         <span>주문상세보기 <img src="/static/images/img/r-arrow.png"></span>
                     </a>
                 </div>
-                <a href="/account/order/detail/${deliveryBox.orderId}" class="prod-box">
-                    
-                </div>
-            </a>
+                <a href="/account/order/${responseData[i].orderId}" class="prod-box" id="prod-box">
+                    <div class="img">
+                        <img src="/image/product/${responseData[i].img}">
+                    </div>
+                    <div class="prod-txt">
+                        <p>${responseData[i].name}</p>
+                        <span class="price spoqa">${responseData[i].totalPrice}원</span>
+                        <span>/ ${responseData[i].quantity}개</span>
+                        <p>
+                            출고준비 &nbsp;
+                            <img src="/static/images/img/r-arrow02.png">
+                        </p>
+                    </div>
+                </a>
             `
 
-            responseData.forEach(prodBox => {
-                
-                prodBoxs.innerHTML += `
-                <div class="img">
-                    <img src="${prodBox.img}">
-                </div>
-                <div class="prod-txt">
-                    <p>${prodBox.name}</p>
-                    <span class="price spoqa">${prodBox.totalPrice}원</span>
-                    <span>/ ${prodBox.quantity}개</span>
-                    <p>
-                        출고준비 &nbsp;
-                        <img src="/static/images/img/r-arrow02.png">
-                    </p>
-                `
-            });
-        });
+             }
 
+            }
 
-    }
-}
+            }
+    
+    
+
 
 window.onload = () => {
     DeliveryService.getInstance().loadDeliveryList();

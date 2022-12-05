@@ -43,12 +43,13 @@ public class OrderApi {
         return ResponseEntity.created(null).body(new CMRespDto<>(1, "Successfully", orderService.addOrder(orderInsertDto)));
     }
 
-    @GetMapping("/account/order")
-    public ResponseEntity<?> getOrderLists(@PathVariable String userId) throws Exception {
-        return ResponseEntity.ok(new CMRespDto<>(1, "load Successfully", orderService.getOrderList(userId)));
+    @GetMapping("/account/order/{userId}")
+    public ResponseEntity<?> OrderList(@PathVariable String userId) throws Exception {
+        log.info("{}", orderService.getOrderLists(userId));
+        return ResponseEntity.ok(new CMRespDto<>(1, "load Successfully", orderService.getOrderLists(userId)));
     }
 
-    @GetMapping("/order/{orderId}")
+    @GetMapping("/order/detail/{orderId}")
     public ResponseEntity<?> getorderDtlList(@PathVariable String orderId)throws Exception {
         return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", orderService.getOrderDetailList(orderId)));
     }
