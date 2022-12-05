@@ -16,7 +16,6 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
-
     <title>주문결제</title>
 </head>
 <body>
@@ -52,8 +51,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="list" items="${order }">
-                                <tr class="border-b">
+                            <!-- <c:forEach var="list" items="${order }"> -->
+                                <tr class="border-b" th:each="OrderReqDto : ${order}">
                                     <td class="taL pro-option">
                                     <input id="productId" type="hidden" th:value="${order.productId}">
                                     <input id="quantity" type="hidden" th:value="${order.quantity}">
@@ -77,7 +76,7 @@
                                     <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
                                     <td>무료배송</td>
                                 </tr>
-                            </c:forEach>
+                            <!-- </c:forEach> -->
                             <!-- -- product -
                             <tr class="border-b">
                                 <td class="taL pro-option">

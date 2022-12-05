@@ -39,7 +39,7 @@ public class OrderController {
 
     //장바구니 매핑
     @GetMapping("/bagall")
-    public String loadOrder(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
+    public String loadOrder2(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
         User user = principalDetails.getUser();
 
         model.addAttribute("order",bagService.getOrderList(user.getId()));
