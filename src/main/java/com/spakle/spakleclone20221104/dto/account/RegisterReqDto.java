@@ -22,11 +22,7 @@ public class RegisterReqDto {
     private String password;
     private String role;
     private String name;
-<<<<<<< HEAD
     private String phone;
-=======
-    private String  phone;
->>>>>>> 58a064315d7a8054503b4b128fb9043b054ff5a4
     private String post_code;
     private String address;
     private String detail_address;
