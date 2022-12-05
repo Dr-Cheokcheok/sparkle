@@ -1,5 +1,6 @@
 package com.spakle.spakleclone20221104.service;
 
+import com.spakle.spakleclone20221104.dto.order.OrderReqDto;
 import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDto;
@@ -20,4 +21,7 @@ public interface BagService {
 
     //장바구니 리스트 불러오기
     public List<BagDetailDto> getBagList(int user_id) throws Exception;
+
+//    public List<OrderReqDto> getOrderList(int user_id) throws Exception;
+
 }

@@ -1,6 +1,7 @@
 package com.spakle.spakleclone20221104.domain.order;
 
 import com.spakle.spakleclone20221104.dto.order.OrderItemDto;
+import com.spakle.spakleclone20221104.dto.order.OrderReqDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -36,4 +37,15 @@ public class OrderItem {
                 .img(img)
                 .build();
     }
+
+//    public OrderReqDto toItemDto(){
+//        return OrderReqDto.builder()
+//                .productId(id)
+//                .name(name)
+//                .originPrice(price)
+//                .rate(rate)
+//                .retailPrice(retail_price)
+//                .img(img)
+//                .build();
+//    }
 }

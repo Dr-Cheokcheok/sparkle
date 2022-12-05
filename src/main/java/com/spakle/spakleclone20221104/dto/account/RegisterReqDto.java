@@ -18,7 +18,6 @@ public class RegisterReqDto {
 //    )
     private int id;
     private String username;
-//    @NotBlank
     private String password;
     private String role;
     private String name;
@@ -32,7 +31,6 @@ public class RegisterReqDto {
 
     public User toUserEntity() {
         return User.builder()
-                // .username(id)
                 .id(id)
                 .username(username)
                 .password(new BCryptPasswordEncoder().encode(password))

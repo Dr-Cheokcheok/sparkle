@@ -13,15 +13,11 @@ public class OrderReqDto {
     private int rate;
     private int quantity;
     private String img;
-
-
     public int getDiscountAmount() {
         return (originPrice - retailPrice) * quantity;
     }
     public int getTotalPrice(){
         return originPrice * quantity;
     }
-
-
 
 }

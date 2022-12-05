@@ -23,7 +23,8 @@
         <div id="section">
             <div id="section-in">
                 <div id="cart" class="cart-box w1260">
-                    <form name="cartForm" action="/order/prepare" method="get">
+                    <form name="cartForm" method="get">
+                        <!-- <form name="cartForm" action="/order/prepare" method="get">-->
                         <!-- <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
                         <input type="hidden" name="cart_id" value="3033722"> -->
                         <div class="cart-top">
@@ -102,9 +103,9 @@
                             </p>
                         </div>
                         <div class="order-btn-box"><!---  javascript 선택상품 검사  --->
-                            <a href="javascript:void(0);" class="btn_style1">선택상품 주문하기</a>
+                            <button type ="submit" class="btn_style1" onclick="javascript: form.action='/order/bagselect';">선택상품 주문하기</button>
                             <!-- <a href="javascript:void(0);" class="btn_style2">전체상품 주문하기</a> -->
-                            <a href="/order" class="btn_style2">전체상품 주문하기</a>
+                            <button type = "submit" class="btn_style2" onclick="javascript: form.action='/order/bagall';">전체상품 주문하기</button>
                         </div>
                     </form>
                 </div>

@@ -2,6 +2,7 @@ package com.spakle.spakleclone20221104.repository;
 
 import com.spakle.spakleclone20221104.domain.Bag;
 import com.spakle.spakleclone20221104.domain.BagVO;
+import com.spakle.spakleclone20221104.domain.order.OrderItem;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,5 +21,7 @@ public interface BagRepository {
     public int bagCountChk(int user_id) throws Exception;
 
     public List<Bag> getBagList(Map<String, Object> map, int user_id) throws Exception;
+
+     public List<OrderItem> getOrderList(Map<String, Object> map, int user_id) throws Exception;
 
 }

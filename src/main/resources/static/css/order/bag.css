@@ -290,6 +290,22 @@
     margin: 0 7px;
     transition: all .3s;
 }
+.order-btn-box button {
+    width: 250px;
+    height: 55px;
+    line-height: 54px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+    letter-spacing: -0.5px;
+    color: #009eff;
+    border: 1px solid #009eff;
+    margin: 0 7px;
+    transition: all .3s;
+}
 .order-btn-box .btn_style2 {
     background-color: #009eff;
     color: #fff;

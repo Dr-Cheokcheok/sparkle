@@ -66,4 +66,23 @@
         ORDER BY
             ct.count
     </select>
+
+    <select id="getOrderList" resultMap="OrderItem">
+        SELECT
+        pt.id,
+        pt.name,
+        ct.quantity,
+        pt.price,
+        pt.rate,
+        pt.price-pt.retail_price AS `retail_price`,
+        pt.img
+        FROM
+        cart ct
+        LEFT JOIN
+        product pt on pt.id = ct.product_id
+        WHERE
+        ct.user_id = #{user_id}
+        ORDER BY
+        ct.count
+    </select>
 </mapper>
