@@ -4,14 +4,16 @@ import com.spakle.spakleclone20221104.domain.BagVO;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
+import java.util.List;
+
 @Data
-public class BagDto {
+public abstract class BagDto {
 
     private int user_id;
     private int count;
     private int product_id;
     private int quantity;
+
 
     public BagVO toBagEntity(){
         return BagVO.builder()
@@ -21,4 +23,5 @@ public class BagDto {
                 .quantity(quantity)
                 .build();
     }
+
 }

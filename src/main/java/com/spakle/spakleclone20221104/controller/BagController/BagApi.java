@@ -30,7 +30,7 @@ public class BagApi {
         return ResponseEntity.ok().body(new CMRespDto<>(1,"Successfully registered",bagDto));
     }
 
-    public int bagaddd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
+    public int bagadd(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody BagDto bagDto) throws Exception{
 
         int result = 0;
 

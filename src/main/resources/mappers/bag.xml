@@ -5,7 +5,7 @@
 
 <mapper namespace ="com.spakle.spakleclone20221104.repository.BagRepository">
 
-    <resultMap id="Bag" type="com.spakle.spakleclone20221104.domain.Bag">
+    <resultMap id="cart" type="com.spakle.spakleclone20221104.domain.Bag">
         <result property="id" column="id"></result>
         <result property="name" column="name"></result>
         <result property="quantity" column="quantity"></result>
@@ -25,20 +25,70 @@
             #{quantity}
         )
     </insert>
-
-    <update id="updataBag" parameterType="int">
-
+    <insert id="insertBag">
+        INSERT INTO cart(
+            user_id,
+            count,
+            product_id,
+            quantity)
+        values(
+            seq_cart.NEXT VAL,
+            #{user_id},
+            #{count},
+            #{product_id},
+            #{quantity})
+    </insert>
+    <select id="listBag" resultType="com.spakle.spakleclone20221104.domain.BagVO">
+        SELECT
+            c.cart_id AS cartId,
+            c.user_id AS user_id,
+            p.product_id AS product_id,
+            m.user_name AS userName,
+            p.product_name AS productName,
+            c.count,
+            p.product_price AS productPrice,
+            (product_price * count) money
+        FROM
+            user_mst m, product p, cart c
+        WHERE m.user_id = c.user_id
+            AND p.product_id = c.product_id
+            AND c.user_id = #{user_id}
+        ORDER BY
+            c.cart_id
+    </select>
+    <select id="sumMoney" resultType="int">
+        SELECT NVL(SUM(product_price * count), 0) money
+        FROM cart c, product p
+        WHERE c.product_id = p.product_id AND c.user_id = #{user_id}
+    </select>
+    <update id="modifyBag">
+        UPDATE cart
+        SET count = #{count}
+        WHERE user_id = #{userId}
+        AND product_id = #{productId}
     </update>
-
     <!--카트삭제-->
     <delete id="deleteBag">
-        delete from cart
-        where product_id = #{product_id}
+        DELETE from cart
+        where cart_id = #{cart_id}
     </delete>
+    <select id="countBag" resultType="int">
+        SELECT COUNT(*)
+        FROM cart
+        WHERE user_id = #{userId}
+        AND product_id = #{productId}
+    </select>
+    <update id="updateBag">
+        UPDATE cart
+        SET count = count + #{count}
+        WHERE user_id = #{userId}
+        AND product_id = #{productId}
+    </update>
+
 
 
     <select id="bagNumberChk" parameterType="int" resultType="int">
-        SELECT ifnull(MAX(COUNT),1) FROM
+        SELECT if null(MAX(COUNT),1) FROM
             cart
         WHERE
             user_id=#{user_id}
@@ -59,22 +109,22 @@
             user_id = #{user_id}
     </select>
 
-    <select id="getBagList" resultMap="Bag">
-        SELECT
-            pt.id,
-            pt.name,
-            ct.quantity,
-            pt.price,
-            pt.rate,
-            pt.price-pt.retail_price AS `retail_price`,
-            pt.img
-        FROM
-            cart ct
-        LEFT JOIN
-            product pt on pt.id = ct.product_id
-        WHERE
-            ct.user_id = #{user_id}
-        ORDER BY
-            ct.count
-    </select>
+<!--    <select id="getBagList" resultMap="Bag">-->
+<!--        SELECT-->
+<!--            pt.id,-->
+<!--            pt.name,-->
+<!--            ct.quantity,-->
+<!--            pt.price,-->
+<!--            pt.rate,-->
+<!--            pt.price-pt.retail_price AS `retail_price`,-->
+<!--            pt.img-->
+<!--        FROM-->
+<!--            cart ct-->
+<!--        LEFT JOIN-->
+<!--            product pt on pt.id = ct.product_id-->
+<!--        WHERE-->
+<!--            ct.user_id = #{user_id}-->
+<!--        ORDER BY-->
+<!--            ct.count-->
+<!--    </select>-->
 </mapper>

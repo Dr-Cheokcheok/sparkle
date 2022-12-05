@@ -1,6 +1,8 @@
 package com.spakle.spakleclone20221104.service;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import com.spakle.spakleclone20221104.domain.BagVO;
+import com.spakle.spakleclone20221104.dto.shop.BagDao;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDto;
 import com.spakle.spakleclone20221104.repository.BagRepository;
@@ -19,6 +21,8 @@ import java.util.Map;
 @Slf4j
 public class BagServicelmpl implements BagService {
 
+    @JacksonInject
+    BagDao bagDao;
 
     private final BagRepository bagRepository;
 
@@ -26,9 +30,50 @@ public class BagServicelmpl implements BagService {
     public void bagadd(BagDto bagDto) throws Exception{
 
         BagVO bagEntity = bagDto.toBagEntity();
-        bagRepository.bagAdd(bagEntity);
+        bagDao.insert(bagEntity);
 
     }
+
+    @Override
+    public void insert(BagVO vo) {
+        bagDao.insert(vo);
+    }
+
+    @Override
+    public int deleteBag(int product_id) {
+        return 0;
+    }
+
+    @Override
+    public List<BagDto> getBag(String user_id) {
+        return null;
+    }
+
+//    @Override
+//    public List<BagVO> listBag(int user_id) {
+//        return bagDao.listBag(user_id);
+//    }
+    @Override
+    public void delete(int bagId) {
+        bagDao.delete(bagId);
+    }
+    @Override
+    public void modifyBag(BagVO vo){
+        bagDao.modifyBag(vo);
+    }
+    @Override
+    public int sumMoney(int user_id) {
+        return bagDao.sumMoney(user_id);
+    }
+    @Override
+    public int countBag(int product_id, int user_id){
+        return bagDao.countBag(product_id, user_id);
+    }
+    @Override
+    public void updateBag(BagVO vo) {
+        bagDao.updateBag(vo);
+    }
+
 
     @Override
     public int bagNumberChk(int user_id) throws Exception{
@@ -38,16 +83,12 @@ public class BagServicelmpl implements BagService {
 
     }
 
-    @Override
-    public List<BagDto> getBag(String user_id){
+//    @Override
+//    public List<BagVO> listBag(String user_id) {
+//        return null;
+//    }
 
-        return null;
-    }
 
-    @Override
-    public int deleteBag(int bagId) {
-        return bagRepository.deleteBag(bagId);
-    }
     public boolean bagOverlapChk(int user_id, int product_id) throws Exception{
         boolean chk = bagRepository.bagOverlapChk(user_id, product_id);
         return chk;

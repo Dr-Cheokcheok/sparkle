@@ -11,6 +11,20 @@ import java.util.Map;
 @Mapper
 public interface BagRepository {
 
+    static void modifyBag(BagVO vo) {
+    }
+
+    public static void delete(int bagId) {
+    }
+
+//    public static List<BagVO> listBag(String user_id) {
+//        return null;
+//    }
+
+    public static void insert(BagVO vo) {
+
+    }
+
     public void bagAdd(BagVO bagVO) throws Exception;
 
     public int bagNumberChk(int user_id) throws Exception;
