@@ -185,7 +185,7 @@
     display: inline-block;
     vertical-align: top;
 }
-.cart_table .proState {
+.cart_table .proTxt .proState {
     background-color: #bbb;
     color: #fff;
     font-size: 14px;
@@ -209,6 +209,14 @@
     display: block;
 }
 .cart_table .proTxt .water-rate {
+    font-size: 15px;
+    color: #888;
+    display: block;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-top: 10px;
+}
+.cart_table .proTxt span {
     font-size: 15px;
     color: #888;
     display: block;

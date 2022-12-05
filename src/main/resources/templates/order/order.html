@@ -52,34 +52,60 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!---- product --->
+                            <c:forEach var="list" items="${order }">
+                                <tr class="border-b">
+                                    <td class="taL pro-option">
+                                    <input id="productId" type="hidden" th:value="${order.productId}">
+                                    <input id="quantity" type="hidden" th:value="${order.quantity}">
+                                        <div class="proImg">
+                                            <img th:src="|/image/product/${order.img}|">
+                                        </div>
+                                        <div class="proTxt">
+                                            <span class="proState">스파클몰</span>
+                                            <p class="water_name" th:text="${order.name}"></p>
+                                            <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="spoqa" th:text="${order.quantity}"></div>
+                                    </td>
+                                    <td class="spoqa">
+                                        <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
+                                        <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
+                                    </td>
+                                    <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
+                                    <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
+                                    <td>무료배송</td>
+                                </tr>
+                            </c:forEach>
+                            <!-- -- product -
                             <tr class="border-b">
                                 <td class="taL pro-option">
                                 <input id="productId" type="hidden" th:value="${order.productId}">
                                 <input id="quantity" type="hidden" th:value="${order.quantity}">
                                     <div class="proImg">
-                                        <!---- 상품 이미지, 상세 get 요청  --->
+                                        -- 상품 이미지, 상세 get 요청  -
                                         <img th:src="|/image/product/${order.img}|">
                                     </div>
                                     <div class="proTxt">
-                                        <!--- go-product-text test ---->
+                                        - go-product-text test --
                                         <span class="proState">스파클몰</span>
                                         <p class="water_name" th:text="${order.name}"></p>
                                         <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
                                     </div>
                                 </td>
-                                <td><!---   동일 상품 주문 개수 --->
+                                <td>-   동일 상품 주문 개수 -
                                     <div class="spoqa" th:text="${order.quantity}"></div>
                                 </td>
                                 <td class="spoqa">
-                                    <!---  상품 금액 * num ---->
+                                    -  상품 금액 * num --
                                     <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
                                     <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
                                 </td>
                                 <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
                                 <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
                                 <td>무료배송</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                         <!-- <tbody id="cart-table" style="display: none">
                             <tr>

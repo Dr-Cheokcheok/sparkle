@@ -15,6 +15,16 @@
         <result property="img" column="img"></result>
     </resultMap>
 
+    <resultMap id="BagList" type="com.spakle.spakleclone20221104.domain.BagList">
+        <result property="productId" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="originPrice" column="price"></result>
+        <result property="retailPrice" column="retail_price"></result>
+        <result property="rate" column="rate"></result>
+        <result property="quantity" column="quantity"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
     <insert id="bagAdd" parameterType="com.spakle.spakleclone20221104.domain.BagVO">
         INSERT INTO
             cart
@@ -67,14 +77,14 @@
             ct.count
     </select>
 
-    <select id="getOrderList" resultMap="OrderItem">
+    <select id="getOrderList" resultMap="BagList">
         SELECT
         pt.id,
         pt.name,
-        ct.quantity,
         pt.price,
-        pt.rate,
         pt.price-pt.retail_price AS `retail_price`,
+        pt.rate,
+        ct.quantity,
         pt.img
         FROM
         cart ct

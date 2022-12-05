@@ -1,6 +1,7 @@
 package com.spakle.spakleclone20221104.repository;
 
 import com.spakle.spakleclone20221104.domain.Bag;
+import com.spakle.spakleclone20221104.domain.BagList;
 import com.spakle.spakleclone20221104.domain.BagVO;
 import com.spakle.spakleclone20221104.domain.order.OrderItem;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
@@ -22,6 +23,6 @@ public interface BagRepository {
 
     public List<Bag> getBagList(Map<String, Object> map, int user_id) throws Exception;
 
-     public List<OrderItem> getOrderList(Map<String, Object> map, int user_id) throws Exception;
+     public List<BagList> getOrderList(int user_id) throws Exception;
 
 }

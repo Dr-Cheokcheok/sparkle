@@ -1,10 +1,12 @@
 package com.spakle.spakleclone20221104.dto.order;
 
+import com.spakle.spakleclone20221104.domain.BagList;
+import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-
-
+@Builder
 public class OrderReqDto {
     private int productId;
     private String name;

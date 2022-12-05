@@ -22,6 +22,6 @@ public interface BagService {
     //장바구니 리스트 불러오기
     public List<BagDetailDto> getBagList(int user_id) throws Exception;
 
-//    public List<OrderReqDto> getOrderList(int user_id) throws Exception;
+    public List<OrderReqDto> getOrderList(int user_id) throws Exception;
 
 }
