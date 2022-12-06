@@ -83,15 +83,19 @@ function decrease(index){
     if(Number(su.innerHTML) > 1){
         su = Number(su.innerHTML) - 1;
 
-        let test = document.querySelectorAll(".hidden-price")[index].innerHTML;
+        let test = document.querySelectorAll(".hidden-price")[index];
 
-        document.querySelectorAll(".pro-price")[index].innerHTML = 
-        (Number(document.querySelectorAll(".hidden-price")[index].innerHTML) * Number(su)).toLocaleString('ko-KR') + "원";
+        test.value = Number(test.value) * su;
+        // document.querySelectorAll(".pro-price")[index].innerHTML = 
 
         document.querySelectorAll("#spoqa")[index].innerHTML = 
         (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
     }
 
+}
+
+function deleteList(index){
+    document.getElementById(`item-${index}`).remove();
 }
 
 
@@ -155,7 +159,7 @@ class BagService {
             retailPrice = Number(retailPrice) + (Number(`${border.retailprice}`) * Number(`${border.quantity}`));
 
             borders.innerHTML += `
-            <tr class="border-b">
+            <tr id="item-${index}" class="border-b">
                 <td class="taL">
                     <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
                     <div>
@@ -190,7 +194,7 @@ class BagService {
                 <input class="hidden-retail-price" type="hidden" value="${border.retailprice}">
                 <td>무료배송</td>
                 <td>
-                    <a href="javascript:;">
+                    <a href="javascript:deleteList(${index});">
                         <img src="/static/images/sub/x.png" alt="닫기버튼">
                     </a>
                 </td>
