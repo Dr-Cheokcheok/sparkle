@@ -127,6 +127,24 @@ class BagApi {
         
         return responseData;
     }
+
+    bagDeleteRequest(id) {
+        $ajax({
+            async: false,
+            type: "delete",
+            url: "/api/bag/userbag",
+            dataType: "json",
+            success: (response) => {
+                alert("장바구니 삭제 완료!");
+                location.reload();
+            },
+            error: (error) => {
+                alert("상품 삭제 실패!");
+                console.log(error);
+            }
+        });
+    }
+
 }
 class BagService {
     static #instance = null;
@@ -182,7 +200,7 @@ class BagService {
                 <td>
                     <div class="quantity clear">
                         <button type="button" class="bt-decrease" onclick = "decrease(${index})"></button>
-                        <a class="quantity" id = "quantity">${border.quantity}</a>
+                        <input type="text" class="quantity" value = ${border.quantity}>
                         <button type="button" class="bt-increase"></button>
                     </div>
                 </td>
@@ -194,7 +212,7 @@ class BagService {
                 <input class="hidden-retail-price" type="hidden" value="${border.retailprice}">
                 <td>무료배송</td>
                 <td>
-                    <a href="javascript:deleteList(${index});">
+                    <a class="deleteList" href="javascript:deleteList(${index});">
                         <img src="/static/images/sub/x.png" alt="닫기버튼">
                     </a>
                 </td>
@@ -204,6 +222,48 @@ class BagService {
             document.querySelectorAll(".pro-price")[index].innerHTML = (Number(`${border.price}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
             document.querySelectorAll("#spoqa")[index].innerHTML = (Number(`${border.retailprice}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
 
+        });
+        const deleteButtons = document.querySelectorAll(".deleteList");
+
+        deleteButtons.forEach((deleteButton, index) => {
+
+            deleteButton.onclick = () => {
+                if (confirm("장바구니를 삭제 하시겠습니까?")) {
+                    const bagApi = new BagApi();
+                    bagApi.bagDeleteRequest(responseData[index].id);
+                }
+            }
+        });
+
+        // 장바구니 전체선택
+        var allChk = $('#chkAll');
+        var chk = $('.chk_style');
+
+        $(allChk).click(function(){
+         if($(allChk).prop("checked")){
+             $(chk).prop("checked",true);
+         }else{
+             $(chk).prop("checked",false);
+         }
+        });
+
+        $(chk).click(function(){
+         if(!($(chk).prop("checked"))){
+             $(allChk).prop("checked",false);
+         }
+        });
+
+        // 수량 버튼 조작
+        let quantity = $(".quantity").val();
+        $(".bt-increase").on("click", function(){
+            $(".quantity").val(++quantity);
+            console.log(quantity)
+        });
+        $(".bt-decrease").on("click", function(){
+            if(quantity > 1){
+                $(".quantity").val(--quantity);
+            }
+            console.log(quantity)
         });
 
         document.querySelector(".selPrice").innerHTML = calPrice.toLocaleString('ko-KR') + "원";
