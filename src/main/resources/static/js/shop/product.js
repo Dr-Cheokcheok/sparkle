@@ -203,24 +203,46 @@ class ProductDetailService {
 }
 
 function priceToString(price) {
-  
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
 
-// // 구매버튼 클릭 -> 상품 구매 -> 뷰에서 가져올 값
-// const buyBtn = document.querySelector("#buyBtn");
-// buyBtn.onclick = () => {
-//     let id = $('#productId').val();
-//     let ea = $('#quantity').val();
-//     let url = "/order/" + id;
-//     if (parseInt(ea) > 1) url += "/" + ea;
-//     else url += "/1";
-//     location.href = url;
-// }
+function like(){
+    const likeBtn = document.querySelector("#interestBtn");
+    likeBtn.onclick = () => {
+            const likeInfo = {
+                productId:document.querySelector("#productId").value
+            };
+
+            $.ajax({
+                async:false,
+                url:"/api/account/like",
+                type:"post",
+                data: JSON.stringify(likeInfo),
+                contentType: "application/json",
+                dataType: "json",
+                success: (response)=>{
+                    console.log(response)
+                    if(response === 0){
+                        alert("이미 등록된 상품입니다.");
+                    }else if(response === 1){
+                        alert("관심상품으로 등록했습니다.");
+                    }else{
+                        alert("로그인이 필요합니다.");
+                        location.href = "/login";
+                    }
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            });
+        }
+}
+
 
 
 
 window.onload = () => {
     ProductDetailService.getInstance().loadProductDetail();
+    like();
 }

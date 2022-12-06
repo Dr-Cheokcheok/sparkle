@@ -137,8 +137,8 @@ const getInterval3 = () => {
 let interval3 = getInterval3(); // interval 등록
 
 
-// md추천
 
+// md추천
 function checkCategory() {
 
   const categoryBtns = document.querySelectorAll(".category-btn");
@@ -152,8 +152,6 @@ function checkCategory() {
    
     }
   });
-
-
 
 }
 
@@ -241,7 +239,6 @@ function reload(input){
   const products = document.querySelector(".products");
 
   if(input.checked){
-
     products.innerHTML = "";
     
     this.responseData.forEach(product => {
@@ -297,8 +294,6 @@ function reload(input){
         }  
       }
     });
-
-    
     slick();    // 화면넘어가는 함수
   }
 
@@ -339,10 +334,72 @@ function priceToString(price) {    // 금액에 , 찍어주는 함수
 
 
 //인기상품 뿌리기
-function getIngiProduct(){
+let IngiData;
+$.ajax({
+  async:false,
+  url:"api/ingi",
+  type:"get",
+  success: (response) => {
+    console.log(response.data);
+    IngiData = response.data;
+  },
+  error:(error) => {
+    console.log(error);
+  }
+});
 
-}
+const ingiProducts = document.querySelector(".ingi-products");
+ingiProducts.innerHTML = "";
+IngiData.forEach(ingiProduct => {
+  if(ingiProduct.rate == 0) {    // 할인율이 0인 경우 판매가만 남음
+    ingiProducts.innerHTML += `
+              <li class="product">
+                <figure>
+                  <a href= "/product/${ingiProduct.productId}">
+                      <img src="/image/product/${ingiProduct.img}" alt="인기상품 이미지 01">
+                      <!----  best 아이템에만 figcaption  --->
+                        <figcaption>BEST</figcaption>
+                  </a>
+                      <div class="time-icon">
+                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                      </div>
+                </figure>
+                <div class="product-text">
+                  <a href="/product/${ingiProduct.productId}">${ingiProduct.name}</a>
+                  <p class="price spoqa">
+                      ${priceToString(ingiProduct.retailPrice)}원
+                  </p>
+                </div>
+              </li>
+          `;
 
+  }else {
+    ingiProducts.innerHTML += `
+                <li class="product">
+                  <figure>
+                    <a href= "/product/${ingiProduct.productId}">
+                        <img src="/image/product/${ingiProduct.img}" alt="인기상품 이미지 01">
+                        <!----  best 아이템에만 figcaption  --->
+                          <figcaption>BEST</figcaption>
+                    </a>
+                        <div class="time-icon">
+                          <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
+                          <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
+                        </div>
+                  </figure>
+                  <div class="product-text">
+                    <a href="/product/${ingiProduct.productId}">${ingiProduct.name}</a>
+                    <p class="price spoqa">
+                        <span class="blue">${ingiProduct.rate}%</span>
+                        ${priceToString(ingiProduct.retailPrice)}원
+                        <span class="gray spoqa">${priceToString(ingiProduct.price)}원</span>
+                    </p>
+                  </div>
+                </li>
+                `;
+  }
+});
 
 window.onload = () => {
   checkCategory();

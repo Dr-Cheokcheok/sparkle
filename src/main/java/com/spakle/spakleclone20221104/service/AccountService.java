@@ -15,5 +15,7 @@ public interface AccountService {
 
     public boolean register(RegisterReqDto registerReqDto) throws Exception;
     public boolean modification(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String ,String > map)throws Exception;
+
+    public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String ,Object > map)throws Exception;
 }
 

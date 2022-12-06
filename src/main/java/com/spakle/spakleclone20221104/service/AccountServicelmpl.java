@@ -117,4 +117,18 @@ public class AccountServicelmpl implements AccountService {
 
         return result != 0;
     }
+
+    @Override
+    public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String, Object> map) throws Exception {
+        if(principalDetails == null){
+            return -1;
+        }
+        int userId = principalDetails.getUser().getId();
+        int productId = Integer.parseInt((String) map.get("productId")); //이게 맞나???????????????
+        Map<String ,Integer> newMap = new HashMap<>();
+        newMap.put("userId", userId);
+        newMap.put("productId", productId);
+
+        return accountRepository.like(newMap);
+    }
 }

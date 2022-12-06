@@ -3,6 +3,8 @@ package com.spakle.spakleclone20221104.dto.shop;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Data
 public class ShopListRespDto {
@@ -16,6 +18,6 @@ public class ShopListRespDto {
     private int retailPrice;
 
     private String img;
-    private int totalCount;
+    private LocalDateTime updateDate;
 
 }

@@ -34,6 +34,25 @@
             now()
         )
     </insert>
+
+    <insert id="like">
+        INSERT INTO
+            likes (id, user_id, product_id)
+        SELECT
+            0,
+            #{userId},
+            #{productId} FROM DUAL
+        WHERE NOT EXISTS
+            (SELECT
+                user_id,
+                product_id
+            FROM
+                likes
+            WHERE
+                user_id = #{userId} and product_id = #{productId})
+
+    </insert>
+
     <update id="updateUser">
         update
             user_mst

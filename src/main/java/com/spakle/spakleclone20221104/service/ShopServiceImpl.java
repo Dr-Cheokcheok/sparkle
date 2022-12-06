@@ -24,11 +24,9 @@ public class ShopServiceImpl implements ShopService{
     public List<ShopListRespDto> getCollections(String category) throws Exception {
         List<ShopListRespDto> response = new ArrayList<ShopListRespDto>();
 
-        //map으로 안해도되지 않나
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("category", category);
+        //map으로 안해도되지 않나 -> 안해도됨
 
-        shopRepository.getCollectionList(map).forEach(collection -> {
+        shopRepository.getCollectionList(category).forEach(collection -> {
             response.add(collection.toListRespDto());
         });
 
@@ -58,5 +56,16 @@ public class ShopServiceImpl implements ShopService{
                 .build();
 
         return productDetailRespDto;
+    }
+
+    @Override
+    public List<ShopListRespDto> getIngiProduct() throws Exception {
+        List<ShopListRespDto> ingiProducts = new ArrayList<>();
+        shopRepository.getIngiProduct().forEach(collectionProduct -> {
+            ingiProducts.add(collectionProduct.toListRespDto());
+
+        });
+
+        return ingiProducts;
     }
 }

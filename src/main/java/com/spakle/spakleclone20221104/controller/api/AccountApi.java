@@ -18,10 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 
 @Valid
 @Slf4j
@@ -64,5 +61,10 @@ public class AccountApi {
     @PutMapping("/modification")
     public boolean accountModify(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, String> map) throws Exception {
         return accountService.modification(principalDetails, map);
+    }
+
+    @PostMapping("/like")
+    public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, Object> map)throws Exception{
+        return accountService.like(principalDetails ,map); //0이면 이미 있는거 , 1이면 정상
     }
 }

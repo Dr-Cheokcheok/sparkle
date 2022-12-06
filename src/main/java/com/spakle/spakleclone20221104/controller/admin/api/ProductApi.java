@@ -37,7 +37,7 @@ public class ProductApi {
     @GetMapping("/{productId}")
     public ResponseEntity<?> getDtl(@PathVariable int productId)throws Exception{
         return ResponseEntity
-                .created(null)
+                .ok()
                 .body(new CMRespDto<>(1, "Successfully", productService.getProductDtl(productId)));
     }
 
