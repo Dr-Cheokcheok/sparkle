@@ -20,9 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Controller
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/order")
 public class OrderController {
@@ -42,7 +41,7 @@ public class OrderController {
     public String loadOrder2(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
         User user = principalDetails.getUser();
 
-        model.addAttribute("order",bagService.getOrderList(user.getId()));
+        model.addAttribute("orderList",bagService.getOrderList(user.getId()));
         model.addAttribute("principalUser", principalDetails.getUser());
 
         return "order/order";
