@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/css/section.css">
     <link rel="stylesheet" href="/static/css/order/bag.css">
     <link rel="stylesheet" href="/static/css/fragment/footer.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <title>스파클몰</title>
 </head>
@@ -23,17 +24,21 @@
         <div id="section">
             <div id="section-in">
                 <div id="cart" class="cart-box w1260">
-                    <form name="cartForm" action="/order/prepare" method="post">
-                        <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
-                        <input type="hidden" name="cart_id" value="3033722">
+                    <form name="cartForm" method="get">
+                        <!-- <form name="cartForm" action="/order/prepare" method="get">-->
+                        <!-- <input type="hidden" name="_token" value="ruPLtRASwAVoleNEubZayjjilBhYR68ZbXEkmhJT">
+                        <input type="hidden" name="cart_id" value="3033722"> -->
                         <div class="cart-top">
+                            <div class="chkAll-box">
+                                <input type="checkbox" id="chkAll"> 
+                                <label for="chkAll">전체선택</label>
+                            </div>
 
                             <div class="del-box">
                                 <a href="javascript:void(0);">
                                     <span>선택삭제</span>
                                 </a>
                             </div>
-
                         </div>
                         
                         <table class="cart_table">
@@ -58,101 +63,15 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!---- product --->
-                                <tr class="border-b">
-                                    <td class="taL">
-                                        <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
-                                        <div>
-                                            <input type="hidden" name="items[512313][product_id]" value="1301">
-                                        </div>
-                                    </td>
-                                    <td class="taL pro-option">
-                                        <div class="proImg">
-                                            <!---- 상품 이미지, 상세 get  --->
-                                            <a href="/product/1301">
-                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">
-                                            </a>
-                                        </div>
-                                        <div class="proTxt">
-                                            <!--- go-product-text test ---->
-                                            <span class="proState">스파클몰</span>
-                                            <p><a href="/product/1301">스파클링 500ml 40병</a>
-                                                <span>33% 할인상품</span>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="quantity clear">
-                                            <button type="button" class="bt-decrease"></button>
-                                            <input type="text" class="quantity" value="1"><!---동일상품 개수--->
-                                            <button type="button" class="bt-increase"></button>
-                                        </div>
-                                    </td>
-                                    <td class="spoqa">
-                                        <!---  상품 금액 * num ---->
-                                        <div class="pro-price">19,900원</div>
-                                        <input class="hidden-price" type="hidden" value="">
-                                    </td>
-                                    <td class="spoqa">0원</td>
-                                    <td class="spoqa">0원</td>
-                                    <td>무료배송</td>
-                                    <td>
-                                        <a href="javascript:;">
-                                            <img src="/static/images/sub/x.png" alt="닫기버튼">
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="taL">
-                                        <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
-                                        <div>
-                                            <input type="hidden" name="items[512313][product_id]" value="1301">
-                                        </div>
-                                    </td>
-                                    <td class="taL pro-option">
-                                        <div class="proImg">
-                                            <!---- 상품 이미지, 상세 get 요청  --->
-                                            <a href="/product/1301">
-                                                <img src="/static/images/product/500ml40.jpg" alt="상품이미지">
-                                            </a>
-                                        </div>
-                                        <div class="proTxt">
-                                            <!--- go-product-text test ---->
-                                            <span class="proState">스파클몰</span>
-                                            <p><a href="/product/1301">스파클링 500ml 40병</a>
-                                                <span>33% 할인상품</span>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="quantity clear">
-                                            <button type="button" class="bt-decrease"></button>
-                                            <input type="text" class="quantity" value="1"><!---동일상품 개수--->
-                                            <button type="button" class="bt-increase"></button>
-                                        </div>
-                                    </td>
-                                    <td class="spoqa">
-                                        <!---  상품 금액 * num ---->
-                                        <div class="pro-price">19,900원</div>
-                                        <input class="hidden-price" type="hidden" value="">
-                                    </td>
-                                    <td class="spoqa">0원</td>
-                                    <td class="spoqa">0원</td>
-                                    <td>무료배송</td>
-                                    <td>
-                                        <a href="javascript:;">
-                                            <img src="/static/images/sub/x.png" alt="닫기버튼">
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tbody id="baglist">
+                                <!-- 장바구니 리스트 -->
                             </tbody>
                         </table>
                         <div class="calc-box">
                             <div class="calc-box-in">
                                 <div class="calc-item">
                                     <p class="title">총 판매가</p>
-                                    <p class="selPrice">28,300원</p>
+                                    <p class="selPrice"></p>
                                 </div>
                                 <div class="symb plus-symbol">
                                     <img src="/static/images/sub/plus-symbol.png" alt="">
@@ -166,30 +85,30 @@
                                 </div>
                                 <div class="calc-item">
                                     <p class="title">할인금액</p>
-                                    <p class="dcPrice">0원</p>
+                                    <p class="dcPrice"></p>
                                 </div>
                                 <div class="symb equal-symbol">
                                     <img src="/static/images/sub/equal-symbol.png" alt="">
                                 </div>
                                 <div class="calc-item">
                                     <p class="title">총결제금액</p>
-                                    <p class="totalCost">28,300원</p>
+                                    <p class="totalCost"></p>
                                 </div>
-                                <div class="calc-item">
+                                <!-- <div class="calc-item">
                                     <p class="title">예상적립금</p>
                                     <p class="deliPrice">0원</p>
-                                </div>
-
+                                </div> -->
                             </div>
                         </div>
                         <div class="cart-total-price">
                             <p>총 결제금액
-                                <span class="calc-tot-amount">28,300원</span>
+                                <span class="calc-tot-amount"></span>
                             </p>
                         </div>
                         <div class="order-btn-box"><!---  javascript 선택상품 검사  --->
-                            <a href="javascript:void(0);" class="btn_style1">선택상품 주문하기</a>
-                            <a href="javascript:void(0);" class="btn_style2">전체상품 주문하기</a>
+                            <button type ="submit" class="btn_style1" onclick="javascript: form.action='/order/bagselect';">선택상품 주문하기</button>
+                            <!-- <a href="javascript:void(0);" class="btn_style2">전체상품 주문하기</a> -->
+                            <button type = "submit" class="btn_style2" onclick="javascript: form.action='/order/bagall';">전체상품 주문하기</button>
                         </div>
                     </form>
                 </div>

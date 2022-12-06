@@ -15,20 +15,9 @@
 </head>
 <body>
 <header th:replace="~{fragment/header :: headerFragment}"></header>
-        <div class="myInfo-top">
+    <div th:replace="~{fragment/memberInfo :: memberInfo(${principalUser})}"></div>
 
-            <ul>
-                <li><img src="/static/images/img/my_face.png"></li>
-                <li><p class="username">temp</p><p class="user-id">username</p></li>
-                <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
-                <li><a href=""><p>정기배송</p><p class="blue-t">0</p></a></li>
-                <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">0</p></a></li>
-                <li><a href="/account"><p>관심상품</p><p class="blue-t">0</p></a></li>
-                <li><a href=""><p>쿠폰</p><p class="blue-t">0개</p></a></li>
-                <li><a href=""><p>적립금</p><p class="blue-t">0원</p></a></li>
-            </ul>
-        </div>
-        <div class="main-box">
+    <div class="main-box">
             <section class="mypage-box">
                 <h1>MYPAGE</h1>
                 <ul>
@@ -53,32 +42,32 @@
                                 <tr class="table-top">
                                     <td>이름</td>
                                     <td>
-                                        <input type="text" placeholder="홍길동" name="name">
+                                        <input type="text" id="name" placeholder="홍길동" name="name" th:value="${principalUser.name}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>아이디</td>
-                                    <td>username</td>
+                                    <td name="username" id="username" th:text="${principalUser.username}"></td>
                                 </tr>
                                 <tr>
                                     <td>비밀번호</td>
                                     <td>
-                                        <input type="password" placeholder="비밀번호를 입력해주세요">
+                                        <input id="password" type="password" placeholder="비밀번호를 입력해주세요">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>비밀번호확인</td>
                                     <td>
-                                        <input type="password" placeholder="비밀번호를 한 번 더 입력해주세요">
+                                        <input id="password-permit" type="password" placeholder="비밀번호를 한 번 더 입력해주세요">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>휴대전화</td>
                                     <td>
-                                        <input type="text" placeholder="010-1234-5678" class="update_phone">
-                                        <button type="button" class="find_post update_post btn_style3" id="btn_cert">인증요청</button>
-                                        <input type="text" class="w165" placeholder="인증번호" style="display:none;">
-                                        <button type="button" class="find_post btn_style3" id="btn_cert_confirm" style="display:none;">인증확인</button>
+                                        <input id="phone" type="text" class="update_phone" th:value="${principalUser.phone}">
+<!--                                        <button type="button" class="find_post update_post btn_style3" id="btn_cert">인증요청</button>-->
+<!--                                        <input type="text" class="w165" placeholder="인증번호" style="display:none;">-->
+<!--                                        <button type="button" class="find_post btn_style3" id="btn_cert_confirm" style="display:none;">인증확인</button>-->
                                     </td>
                                 </tr>
                                 <tr>
@@ -86,9 +75,9 @@
                                     <td>
                                         <div class="sns-box">
                                             <input type="hidden">
-                                            <input type="radio" name="sns-ck" class="sns_inp">
+                                            <input type="radio" name="sns" class="sns_inp" th:checked="${eventSosick}" id="sns">
                                             <label for="sns">수신함</label>
-                                            <input type="radio" name="sns-ck" class="sns_inp">
+                                            <input type="radio" name="sns" class="sns_inp" th:checked="${noSosick}" id="no-sns">
                                             <label for="no-sns">수신안함</label>
                                         </div>
                                     </td>
@@ -96,10 +85,10 @@
                                 <tr>
                                     <td>주소</td>
                                     <td class="address_inp">
-                                        <input type="text" id="postCode" readonly="readonly" class="w168" placeholder="00000">
+                                        <input type="text" id="postcode-input" readonly="readonly" class="w168" th:value="${principalUser.post_code}">
                                         <button type="button" class="find_post">우편번호찾기</button>
-                                        <input type="text" id="roadAddress" readonly="readonly" placeholder="서울 특별시 강동구 강일동 123">
-                                        <input type="text" id="detailAddress" class="mb0" placeholder="가나빌딩 1층">
+                                        <input type="text" id="address" readonly="readonly" th:value="${principalUser.address}">
+                                        <input type="text" id="detail-address" class="mb0" th:value="${principalUser.detail_address}">
                                         <input type="hidden" name="address_data" value="">
                                     </td>
                                 </tr>
@@ -110,9 +99,8 @@
                         </div>
                 </div>
             </section>
-            <script type="text/javascript" src="/static/js/mypage/edit.js"></script>
         </div>
-
+<script type="text/javascript" src="/static/js/mypage/edit.js"></script>
 <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
 </body>
 </html>

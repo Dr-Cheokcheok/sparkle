@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace ="com.spakle.spakleclone20221104.repository.BagRepository">
+
+    <resultMap id="Bag" type="com.spakle.spakleclone20221104.domain.Bag">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="quantity" column="quantity"></result>
+        <result property="price" column="price"></result>
+        <result property="rate" column="rate"></result>
+        <result property="retail_price" column="retail_price"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
+    <resultMap id="BagList" type="com.spakle.spakleclone20221104.domain.BagList">
+        <result property="productId" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="originPrice" column="price"></result>
+        <result property="retailPrice" column="retail_price"></result>
+        <result property="rate" column="rate"></result>
+        <result property="quantity" column="quantity"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
+    <insert id="bagAdd" parameterType="com.spakle.spakleclone20221104.domain.BagVO">
+        INSERT INTO
+            cart
+        VALUES (
+            #{user_id},
+            #{count},
+            #{product_id},
+            #{quantity}
+        )
+    </insert>
+
+    <select id="bagNumberChk" parameterType="int" resultType="int">
+        SELECT ifnull(MAX(COUNT),1) FROM
+            cart
+        WHERE
+            user_id=#{user_id}
+    </select>
+
+    <select id="bagOverlapChk" parameterType="int" resultType="boolean">
+        SELECT
+            EXISTS
+            (SELECT 1 FROM cart WHERE user_id = #{user_id} AND product_id = #{product_id} LIMIT 1)
+    </select>
+
+    <select id="bagCountChk" parameterType="int" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            cart
+        WHERE
+            user_id = #{user_id}
+    </select>
+
+    <select id="getBagList" resultMap="Bag">
+        SELECT
+            pt.id,
+            pt.name,
+            ct.quantity,
+            pt.price,
+            pt.rate,
+            pt.price-pt.retail_price AS `retail_price`,
+            pt.img
+        FROM
+            cart ct
+        LEFT JOIN
+            product pt on pt.id = ct.product_id
+        WHERE
+            ct.user_id = #{user_id}
+        ORDER BY
+            ct.count
+    </select>
+
+    <select id="getOrderList" resultMap="BagList">
+        SELECT
+        pt.id,
+        pt.name,
+        pt.price,
+        pt.price-pt.retail_price AS `retail_price`,
+        pt.rate,
+        ct.quantity,
+        pt.img
+        FROM
+        cart ct
+        LEFT JOIN
+        product pt on pt.id = ct.product_id
+        WHERE
+        ct.user_id = #{user_id}
+        ORDER BY
+        ct.count
+    </select>
+</mapper>

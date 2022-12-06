@@ -1,9 +1,11 @@
 package com.spakle.spakleclone20221104.service;
 
 
+import com.spakle.spakleclone20221104.domain.order.OrderItem;
 import com.spakle.spakleclone20221104.domain.product.Product;
 import com.spakle.spakleclone20221104.domain.product.ProductDetail;
 import com.spakle.spakleclone20221104.domain.product.ProductImgFile;
+import com.spakle.spakleclone20221104.dto.order.OrderItemDto;
 import com.spakle.spakleclone20221104.dto.product.ProductAdditionReqDto;
 import com.spakle.spakleclone20221104.dto.product.ProductDtlRespDto;
 import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
@@ -88,7 +90,6 @@ public class ProductServiceImpl implements ProductService{
         return tempName;
     }
 
-
     private List<ProductImgFile> getProductImgFiles(List<MultipartFile> files, int productId) throws Exception{
         List<ProductImgFile> productImgFiles = new ArrayList<ProductImgFile>();
 
@@ -132,6 +133,7 @@ public class ProductServiceImpl implements ProductService{
 
         return productList;
     }
+
 
     @Override
     public boolean updateProduct(ProductModificationReqDto productModificationReqDto) throws Exception {

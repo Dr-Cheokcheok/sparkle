@@ -163,7 +163,6 @@
             pt.name,
             pt.retail_price,
             pt.img
-
         FROM
             product pt
 
@@ -172,5 +171,20 @@
 
     </select>
 
+
+    <select id="getIngiProduct"
+            resultMap="Product">
+
+        select
+            product_id,
+            sum(quantity)
+        from
+            order_detail
+        group by
+            product_id
+        order by
+            sum(quantity) desc
+
+    </select>
 
 </mapper>

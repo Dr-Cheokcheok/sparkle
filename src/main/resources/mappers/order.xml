@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spakle.spakleclone20221104.repository.OrderRepository">
+
+    <resultMap id="order" type="com.spakle.spakleclone20221104.domain.order.Order">
+        <result property="order_id" column="order_id"></result>
+        <result property="user_id" column="user_id"></result>
+        <result property="order_date" column="order_date"></result>
+        <result property="orderer_name" column="orderer_name"></result>
+        <result property="recipient_name" column="recipient_name"></result>
+        <result property="phone" column="phone"></result>
+        <result property="post_code" column="post_code"></result>
+        <result property="address" column="address"></result>
+        <result property="detail_address" column="detail_address"></result>
+        <result property="ship_msg" column="ship_msg"></result>
+        <result property="entrance" column="entrance"></result>
+        <result property="pet" column="pet"></result>
+        <result property="total_price" column="total_price"></result>
+    </resultMap>
+
+    <resultMap id="order_detail" type="com.spakle.spakleclone20221104.domain.order.OrderDetail">
+        <result property="order_id" column="order_id"></result>
+        <result property="product_id" column="product_id"></result>
+        <result property="quantity" column="quantity"></result>
+    </resultMap>
+
+    <insert id="saveOrder"
+            parameterType="com.spakle.spakleclone20221104.domain.order.Order"
+            useGeneratedKeys="true"
+            keyProperty="order_id"
+    >
+        insert into
+            `order`
+        values
+        (
+            #{order_id},
+            #{user_id},
+            now(),
+            #{orderer_name},
+            #{recipient_name},
+            #{phone},
+            #{post_code},
+            #{address},
+            #{detail_address},
+            #{ship_msg},
+            #{entrance},
+            #{pet},
+            #{total_price}
+        )
+    </insert>
+
+    <insert id="saveOrderDtl"
+            parameterType="java.util.List">
+        insert into
+            order_detail
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.order_id},
+            #{item.product_id},
+            #{item.quantity}
+            )
+        </foreach>
+
+    </insert>
+    
+</mapper>

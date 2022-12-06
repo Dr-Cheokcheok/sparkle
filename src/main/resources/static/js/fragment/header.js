@@ -40,10 +40,11 @@ class Principal {
 }
 
 function loadHeader() {
-    let principal = Principal.getInstance().getPrincipal(); //Object -
+    let principal = Principal.getInstance().getPrincipal(); //principal 가져와서
 
     const utilMenu = document.querySelector(".util-menu");
 
+        //principal없으면  == 로그인 안했으면
     if(principal == "") {
         utilMenu.innerHTML = `
             <li>
@@ -70,3 +71,24 @@ function loadHeader() {
 }
 
 loadHeader();
+
+window.onload = bagCount();
+
+function bagCount(){
+
+    const count = document.getElementById("count");
+
+    $.ajax({
+        async: false,
+        type: "get",
+        url: "/api/bag/bagchk",
+        contentType: "application/json",
+        dataType: "json",
+        success: (result) => {
+            count.innerHTML = result;
+        },
+        error: (error) => {
+            console.log("error:" + error);
+        }
+    });
+}
