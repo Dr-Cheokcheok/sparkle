@@ -77,22 +77,22 @@
 
 // -------------------------------------------------------
 
-function decrease(index){
-    let su = document.querySelectorAll("#quantity")[index];
+// function decrease(index){
+//     let su = document.querySelectorAll("#quantity")[index];
     
-    if(Number(su.innerHTML) > 1){
-        su = Number(su.innerHTML) - 1;
+//     if(Number(su.innerHTML) > 1){
+//         su = Number(su.innerHTML) - 1;
 
-        let test = document.querySelectorAll(".hidden-price")[index];
+//         let test = document.querySelectorAll(".hidden-price")[index];
 
-        test.value = Number(test.value) * su;
-        // document.querySelectorAll(".pro-price")[index].innerHTML = 
+//         test.value = Number(test.value) * su;
+//         // document.querySelectorAll(".pro-price")[index].innerHTML = 
 
-        document.querySelectorAll("#spoqa")[index].innerHTML = 
-        (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
-    }
+//         document.querySelectorAll("#spoqa")[index].innerHTML = 
+//         (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
+//     }
 
-}
+// }
 
 function deleteList(index){
     document.getElementById(`item-${index}`).remove();
@@ -199,8 +199,8 @@ class BagService {
                 </td>
                 <td>
                     <div class="quantity clear">
-                        <button type="button" class="bt-decrease" onclick = "decrease(${index})"></button>
-                        <input type="text" class="quantity" value = ${border.quantity}>
+                        <button type="button" class="bt-decrease"></button>
+                        <input type="text" class="quantity" value = "${border.quantity}">
                         <button type="button" class="bt-increase"></button>
                     </div>
                 </td>
@@ -221,6 +221,7 @@ class BagService {
 
             document.querySelectorAll(".pro-price")[index].innerHTML = (Number(`${border.price}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
             document.querySelectorAll("#spoqa")[index].innerHTML = (Number(`${border.retailprice}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
+
 
         });
         const deleteButtons = document.querySelectorAll(".deleteList");
@@ -253,17 +254,18 @@ class BagService {
          }
         });
 
-        // 수량 버튼 조작
-        let quantity = $(".quantity").val();
+        /* 수량버튼 */
         $(".bt-increase").on("click", function(){
-            $(".quantity").val(++quantity);
+            let quantity = $(this).parent("div").find("input").val();
+            $(this).parent("div").find("input").val(++quantity);
             console.log(quantity)
         });
         $(".bt-decrease").on("click", function(){
+            let quantity = $(this).parent("div").find("input").val();
             if(quantity > 1){
-                $(".quantity").val(--quantity);
+                $(this).parent("div").find("input").val(--quantity);	
+                console.log(quantity)	
             }
-            console.log(quantity)
         });
 
         document.querySelector(".selPrice").innerHTML = calPrice.toLocaleString('ko-KR') + "원";
