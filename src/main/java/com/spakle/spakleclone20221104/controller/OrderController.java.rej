@@ -1,0 +1,14 @@
+diff a/src/main/java/com/spakle/spakleclone20221104/controller/OrderController.java b/src/main/java/com/spakle/spakleclone20221104/controller/OrderController.java	(rejected hunks)
+@@ -16,11 +16,10 @@
+ import java.util.Map;
+ 
+ @Controller
+-@RequestMapping("/order")
+ public class OrderController {
+ 
+     //제품 한개
+-    @GetMapping("")
++    @GetMapping("/order")
+     public String loadOrder(Model model, OrderReqDto orderReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception{
+         model.addAttribute("order", orderReqDto);
+         model.addAttribute("principalUser",principalDetails.getUser());

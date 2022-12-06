@@ -16,10 +16,11 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/order")
 public class OrderController {
 
     //제품 한개
-    @GetMapping("/order")
+    @GetMapping("")
     public String loadOrder(Model model, OrderReqDto orderReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception{
         model.addAttribute("order", orderReqDto);
         model.addAttribute("principalUser",principalDetails.getUser());
