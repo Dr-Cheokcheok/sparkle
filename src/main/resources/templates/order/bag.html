@@ -29,12 +29,12 @@
                         <input type="hidden" name="cart_id" value="3033722"> -->
                         <div class="cart-top">
                             <div class="chkAll-box">
-                                <input type="checkbox" id="chkAll"> 
+                                <input type="checkbox" id="chkAll" onclick="allChk()"> 
                                 <label for="chkAll">전체선택</label>
                             </div>
 
                             <div class="del-box">
-                                <a href="javascript:void(0);">
+                                <a href="javascript:chkDelete();">
                                     <span>선택삭제</span>
                                 </a>
                             </div>
@@ -100,8 +100,8 @@
                             </p>
                         </div>
                         <div class="order-btn-box"><!---  javascript 선택상품 검사  --->
-                            <button type ="submit" class="btn_style1" onclick="javascript: form.action='/order/bagselect';">선택상품 주문하기</button>
-                            <button type = "submit" class="btn_style2" onclick="javascript: form.action='/order/bagall';">전체상품 주문하기</button>
+                            <button type ="submit" class="btn_style1" onclick="javascript:productchk();">선택상품 주문하기</button>
+                            <button type = "submit" class="btn_style2" onclick="javascript:productall();">전체상품 주문하기</button>
                         </div>
                     </form>
                 </div>

@@ -30,7 +30,7 @@ public class OrderController {
     @GetMapping("")
     public String loadOrder(Model model, OrderReqDto orderReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception{
 
-        model.addAttribute("order", orderReqDto);
+        model.addAttribute("orderList", orderReqDto);
         model.addAttribute("principalUser",principalDetails.getUser());
 
         return "order/order";
