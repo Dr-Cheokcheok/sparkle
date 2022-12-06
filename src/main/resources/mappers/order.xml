@@ -32,9 +32,10 @@
     </resultMap>
 
     <resultMap id="order_detail" type="com.spakle.spakleclone20221104.domain.order.OrderDetail">
-        <result property="order_id" column="order_id"></result>
+        <result property="order_id" column="order_dtl_id"></result>
         <result property="product_id" column="product_id"></result>
         <result property="quantity" column="quantity"></result>
+        <collection property="product" resultMap="product"></collection>
     </resultMap>
 
     <resultMap id="orderList" type="com.spakle.spakleclone20221104.domain.order.OrderList">
@@ -42,10 +43,7 @@
         <result property="order_id" column="order_id"></result>
         <result property="order_date" column="order_date"></result>
         <result property="total_price" column="total_price"></result>
-        <result property="img" column="img"></result>
-        <result property="name" column="name"></result>
-        <result property="product_id" column="product_id"></result>
-        <result property="quantity" column="quantity"></result>
+        <collection property="orderDetailList" javaType="list" resultMap="order_detail"></collection>
     </resultMap>
 
     <insert id="saveOrder"
@@ -96,11 +94,12 @@
             oe.user_id,
             oe.order_date,
             oe.total_price,
-            od.order_id,
+            od.order_id as order_dtl_id,
             od.quantity,
-            od.`product_id`,
+            od.product_id,
             dt.name,
-            dt.img
+            dt.img,
+            dt.retail_price
 
         from
             `order` oe

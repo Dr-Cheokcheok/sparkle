@@ -50,46 +50,108 @@ class DeliveryService {
 
     getOrderList(responseData) {
         const deliveryBoxs = document.querySelector(".delivery-box");
-
         deliveryBoxs.innerHTML = "";
        
-        
-        for(let i = 0; responseData.length > 0; i++) {
-            let orderDate = responseData[i].orderDate.substring(0, 10);
-            orderDate = orderDate.replaceAll("-", ".");
-                    
-                deliveryBoxs.innerHTML += `
+        console.log(responseData)
+
+        responseData.forEach((data, index) => {
+            deliveryBoxs.innerHTML += `
                 <div class="txtbx">
-                    <span class="date-txt"><small>주문일 : </small>${orderDate}</span>
+                    <span class="date-txt"><small>주문일 : </small>${data.orderDate}</span>
                     <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                    <span class="order-num"><small>주문번호 : </small>${responseData[i].orderId}</span>
-                    <a href="/account/order/${responseData[i].orderId}" class="blue-txt">
+                    <span class="order-num"><small>주문번호 : </small>${data.orderId}</span>
+                    <a href="/account/order/${data.orderId}" class="blue-txt">
                         <span>주문상세보기 <img src="/static/images/img/r-arrow.png"></span>
                     </a>
                 </div>
-                <a href="/account/order/${responseData[i].orderId}" class="prod-box" id="prod-box">
-                    <div class="img">
-                        <img src="/image/product/${responseData[i].img}">
-                    </div>
-                    <div class="prod-txt">
-                        <p>${responseData[i].name}</p>
-                        <span class="price spoqa">${responseData[i].totalPrice}원</span>
-                        <span>/ ${responseData[i].quantity}개</span>
-                        <p>
-                            출고준비 &nbsp;
-                            <img src="/static/images/img/r-arrow02.png">
-                        </p>
-                    </div>
-                </a>
-            `
+                <div class="prod-boxs">
+                    
+                </div>
+            `;
 
-             }
+            const prodBoxs = document.querySelectorAll(".prod-boxs");
+            data.orderDetailList.forEach((orderDetail) => {
+                prodBoxs[index].innerHTML += `
+                    <a href="/account/order/${orderDetail.orderId}" class="prod-box" id="prod-box">
+                        <div class="img">
+                            <img src="/image/product/${orderDetail.product.img}">
+                        </div>
+                        <div class="prod-txt">
+                            <p>${orderDetail.product.name}</p>
+                            <span class="price spoqa">${orderDetail.product.retail_price.toLocaleString()}원</span>
+                            <span>/ ${orderDetail.quantity}개</span>
+                            <p>
+                                출고준비 &nbsp;
+                                <img src="/static/images/img/r-arrow02.png">
+                            </p>
+                        </div>
+                    </a>
+                `;
+            });
+            
+        });
 
-            }
+        //     if(responseData[i].orderId == responseData[i + 1].orderId) {
+                
 
-            }
+
+                
+        //     //     deliveryBoxs.innerHTML += `
+        //     //         <div class="txtbx">
+        //     //             <span class="date-txt"><small>주문일 : </small>${orderDate}</span>
+        //     //             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        //     //             <span class="order-num"><small>주문번호 : </small>${responseData[i].orderId}</span>
+        //     //             <a href="/account/order/${responseData[i].orderId}" class="blue-txt">
+        //     //                 <span>주문상세보기 <img src="/static/images/img/r-arrow.png"></span>
+        //     //             </a>
+        //     //         </div>
+        //     //         <div class="prod-boxs">
+                       
+        //     //         </div>
+        //     //     `;
+
+        //     //     prodBoxs.innerHTML += `
+        //     //         <a href="/account/order/${responseData[i].orderId}" class="prod-box" id="prod-box">
+        //     //             <div class="img">
+        //     //                 <img src="/image/product/${responseData[i].img}">
+        //     //             </div>
+        //     //             <div class="prod-txt">
+        //     //                 <p>${responseData[i].name}</p>
+        //     //                 <span class="price spoqa">${responseData[i].totalPrice}원</span>
+        //     //                 <span>/ ${responseData[i].quantity}개</span>
+        //     //                 <p>
+        //     //                     출고준비 &nbsp;
+        //     //                     <img src="/static/images/img/r-arrow02.png">
+        //     //                 </p>
+        //     //             </div>
+        //     //         </a>
+                    
+        //     //         <a href="/account/order/${responseData[i + 1].orderId}" class="prod-box" id="prod-box">
+        //     //             <div class="img">
+        //     //                 <img src="/image/product/${responseData[i + 1].img}">
+        //     //             </div>
+        //     //             <div class="prod-txt">
+        //     //                 <p>${responseData[i + 1].name}</p>
+        //     //                 <span class="price spoqa">${responseData[i + 1].totalPrice}원</span>
+        //     //                 <span>/ ${responseData[i + 1].quantity}개</span>
+        //     //                 <p>
+        //     //                     출고준비 &nbsp;
+        //     //                     <img src="/static/images/img/r-arrow02.png">
+        //     //                 </p>
+        //     //             </div>
+        //     //         </a>
+                    
+        //     //     `;
+
+        //     // }else {
+
+                
+        //     // }
+        // }
     
-    
+        
+    }
+}
 
 
 window.onload = () => {

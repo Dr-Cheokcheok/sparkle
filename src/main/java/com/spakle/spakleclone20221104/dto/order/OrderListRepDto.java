@@ -1,9 +1,10 @@
 package com.spakle.spakleclone20221104.dto.order;
 
+import com.spakle.spakleclone20221104.domain.order.OrderDetail;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -11,10 +12,7 @@ public class OrderListRepDto {
 
     private String userId;
     private String orderId;
-    private LocalDateTime orderDate;
+    private String orderDate;
     private int totalPrice;
-    private String img;
-    private int productId;
-    private int quantity;
-    private String name;
+    private List<OrderDetail> orderDetailList;
 }
