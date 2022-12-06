@@ -67,4 +67,9 @@ public class AccountApi {
     public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, Object> map)throws Exception{
         return accountService.like(principalDetails ,map); //0이면 이미 있는거 , 1이면 정상
     }
+
+    @GetMapping("/likes")
+    public ResponseEntity<?> getLikes(@AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception{
+        return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully",accountService.getLikes(principalDetails)));
+    }
 }

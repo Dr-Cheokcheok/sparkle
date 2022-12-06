@@ -2,9 +2,11 @@ package com.spakle.spakleclone20221104.service;
 
 import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
+import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import java.util.List;
 import java.util.Map;
 
 public interface AccountService {
@@ -17,5 +19,6 @@ public interface AccountService {
     public boolean modification(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String ,String > map)throws Exception;
 
     public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String ,Object > map)throws Exception;
+    public List<ShopListRespDto> getLikes(@AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception;
 }
 

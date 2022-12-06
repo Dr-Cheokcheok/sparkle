@@ -5,7 +5,7 @@ import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
 import com.spakle.spakleclone20221104.dto.account.UserMod;
-import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
+import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 import com.spakle.spakleclone20221104.exception.CustomValidationException;
 import com.spakle.spakleclone20221104.repository.AccountRepository;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
@@ -130,5 +130,17 @@ public class AccountServicelmpl implements AccountService {
         newMap.put("productId", productId);
 
         return accountRepository.like(newMap);
+    }
+
+    @Override
+    public List<ShopListRespDto> getLikes(PrincipalDetails principalDetails) throws Exception {
+        List<ShopListRespDto> likeList = new ArrayList<>();
+        int id = principalDetails.getUser().getId();
+
+        accountRepository.getLikes(id).forEach(collectionProduct -> {
+            likeList.add(collectionProduct.toListRespDto());
+        });
+
+        return likeList;
     }
 }

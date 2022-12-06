@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.Principal;
 
 @Controller
 public class MypageController {
@@ -26,7 +25,7 @@ public class MypageController {
     @GetMapping("/account/likes")
     public String loadLikes(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("principalUser",principalDetails.getUser());
-        return "mypage/likes";
+        return "mypage/mypage";
     }
 
     @GetMapping("/users/edit")

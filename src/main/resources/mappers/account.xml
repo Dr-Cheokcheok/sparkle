@@ -96,5 +96,18 @@
         select count(username) From user_mst where username=#{id}
     </select>
 
-
+    <select id="getLikes" resultType="com.spakle.spakleclone20221104.domain.CollectionProduct">
+        select
+            pm.id,
+            pm.name,
+            pm.rate,
+            pm.retail_price,
+            img,
+            update_date
+        from
+            likes li
+            left outer join product pm on(pm.id = li.product_id)
+        where
+            li.user_id = #{id}
+    </select>
 </mapper>
