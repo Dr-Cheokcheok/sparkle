@@ -23,6 +23,6 @@ public interface BagRepository {
 
     public List<Bag> getBagList(Map<String, Object> map, int user_id) throws Exception;
 
-     public List<BagList> getOrderList(int user_id) throws Exception;
+    public List<BagList> getOrderList(int user_id) throws Exception;
 
 }

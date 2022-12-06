@@ -104,6 +104,23 @@ class BagApi {
         
         return responseData;
     }
+
+    bagDeleteRequest(id) {
+        $ajax({
+            async: false,
+            type: "delete",
+            url: "/api/bag/userbag",
+            dataType: "json",
+            success: (response) => {
+                alert("장바구니 삭제 완료!");
+                location.reload();
+            },
+            error: (error) => {
+                alert("상품 삭제 실패!");
+                console.log(error);
+            }
+        })
+    }
 }
 class BagService {
     static #instance = null;
@@ -175,29 +192,43 @@ class BagService {
                 <td>무료배송</td>
                 <td>
                     <a href="javascript:;">
+                        <button class="deleteBtn">
                         <img src="/static/images/sub/x.png" alt="닫기버튼">
+                        </button>
                     </a>
                 </td>
             </tr>
             `;
         });
+        const deleteButtons = document.querySelectorAll(".deleteBtn");
+
+        deleteButtons.forEach((deleteButton, index) => {
+
+            deleteButton.onclick = () => {
+                if (confirm("장바구니를 삭제 하시겠습니까?")) {
+                    const bagApi = new BagApi();
+                    bagApi.bagDeleteRequest(responseData[index].id);
+                }
+            }
+        });
+
         // 장바구니 전체선택
-     var allChk = $('#chkAll');
-     var chk = $('.chk_style');
+         var allChk = $('#chkAll');
+         var chk = $('.chk_style');
 
-     $(allChk).click(function(){
-         if($(allChk).prop("checked")){
-             $(chk).prop("checked",true);
-         }else{
-             $(chk).prop("checked",false);
-         }
-     });
+         $(allChk).click(function(){
+             if($(allChk).prop("checked")){
+                 $(chk).prop("checked",true);
+             }else{
+                 $(chk).prop("checked",false);
+             }
+         });
 
-     $(chk).click(function(){
-         if(!($(chk).prop("checked"))){
-             $(allChk).prop("checked",false);
-         }
-     });
+         $(chk).click(function(){
+             if(!($(chk).prop("checked"))){
+                 $(allChk).prop("checked",false);
+             }
+         });
 
         calbox.innerHTML = calPrice + "원";
         retailbox.innerHTML = retailPrice + "원";
