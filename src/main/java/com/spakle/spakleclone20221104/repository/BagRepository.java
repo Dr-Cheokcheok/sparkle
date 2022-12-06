@@ -17,9 +17,9 @@ public interface BagRepository {
     public static void delete(int bagId) {
     }
 
-//    public static List<BagVO> listBag(String user_id) {
-//        return null;
-//    }
+    public static List<BagVO> listBag(String user_id) {
+        return null;
+    }
 
     public static void insert(BagVO vo) {
 
@@ -35,5 +35,4 @@ public interface BagRepository {
 
     public int deleteBag(int bagId);
     public List<Bag> getBagList(Map<String, Object> map, int user_id) throws Exception;
-
 }

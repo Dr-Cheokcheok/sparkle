@@ -49,10 +49,10 @@ public class BagServicelmpl implements BagService {
         return null;
     }
 
-//    @Override
-//    public List<BagVO> listBag(int user_id) {
-//        return bagDao.listBag(user_id);
-//    }
+    @Override
+    public List<BagVO> listBag(int user_id) {
+        return bagDao.listBag(user_id);
+    }
     @Override
     public void delete(int bagId) {
         bagDao.delete(bagId);
@@ -83,10 +83,6 @@ public class BagServicelmpl implements BagService {
 
     }
 
-//    @Override
-//    public List<BagVO> listBag(String user_id) {
-//        return null;
-//    }
 
 
     public boolean bagOverlapChk(int user_id, int product_id) throws Exception{

@@ -137,7 +137,7 @@ class BagService {
         /*  수량 변경  가격 변경 */
         const dcButtons = document.querySelectorAll(".bt-decrease");
         const icButtons = document.querySelectorAll(".bt-increase");
-        const quantities = document.querySelectorAll(".quantity .quantity");
+        const quantities = document.querySelectorAll(".quantity");
         const calcPrice = document.querySelectorAll(".pro-price");
         const realPrice = document.querySelectorAll(".hidden-price");
         const cartPrice = document.querySelector(".calc-item .selPrice");
@@ -154,12 +154,13 @@ class BagService {
                 originPrice = originPrice / quantity;
             }
             priceList.push(originPrice); //19000 이케 들어감
+            console.log(quantity)
         });
 
 
         for(let i = 0; i < dcButtons.length; i++){
             let price = parseInt(priceList[i]);
-            let value = quantities[i].value;
+            let value = parseInt(quantities[i].value);
             dcButtons[i].onclick = () => {
                 value = down(i);
                 calcPrice[i].textContent = (price * value).toLocaleString() + "원";
@@ -172,8 +173,12 @@ class BagService {
 
         for(let i = 0; i < icButtons.length; i++){
             let price = parseInt(priceList[i]);
-            let value = quantities[i].value;
+            let value = parseInt(quantities[i].value);
             icButtons[i].onclick = () => {
+                console.log(priceList)
+                console.log(quantities)
+                console.log(price)
+                console.log(value)
                 value = up(i);
                 calcPrice[i].textContent = (price * value).toLocaleString() + "원";
                 realPrice[i].value = (price * value);
@@ -241,7 +246,9 @@ class BagService {
             deleteBtn.onclick = () => {
                 if(confirm("장바구니에서 삭제 하시겠습니까?")) {
                     const bagApi = new BagApi();
-                    bagApi.productDataDeleteRequest(responseData[index].id);
+                    console.log(responseData)
+                    console.log(index)
+                    bagApi.productDataDeleteRequest(responseData[index - 1].id);
                 }
             }
         });

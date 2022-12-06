@@ -16,7 +16,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/shop/bag/*")
+@RequestMapping("/shop/bag")
 public class bagController {
     @JacksonInject
     @Autowired
@@ -40,22 +40,22 @@ public class bagController {
         }else {
             bagService.updateBag(vo);
         }
-        return "redirect:/shop/bag/list";
+        return "redirect:/shop/bagList";
     }
 
-//    @RequestMapping("bagList")
-//    public ModelAndView list(HttpSession session, ModelAndView mav){
-//        int user_id = (int) session.getAttribute("user_id");
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        List<BagVO> list = bagService.listBag(user_id);
-//        int sumMoney = bagService.sumMoney(user_id);
-//        map.put("list", list);
-//        map.put("count", list.size());
-//        map.put("allSum", sumMoney);
-//        mav.setViewName("shop/bag");
-//        mav.addObject("map", map);
-//        return mav;
-//    }
+    @RequestMapping("bagList")
+    public ModelAndView list(HttpSession session, ModelAndView mav){
+        int user_id = (int) session.getAttribute("user_id");
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<BagVO> list = bagService.listBag(user_id);
+        int sumMoney = bagService.sumMoney(user_id);
+        map.put("list", list);
+        map.put("count", list.size());
+        map.put("allSum", sumMoney);
+        mav.setViewName("shop/bag");
+        mav.addObject("map", map);
+        return mav;
+    }
     @RequestMapping("delete")
     public String delete(@RequestParam int bagId){
         bagService.delete(bagId);
@@ -71,7 +71,7 @@ public class bagController {
             vo.setProduct_id(product_id[i]);
             bagService.modifyBag(vo);
         }
-        return "redirect:/shop/bag/list";
+        return "redirect:/shop/bagList";
     }
 
 }
