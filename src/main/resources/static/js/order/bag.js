@@ -76,6 +76,25 @@
 // }
 
 // -------------------------------------------------------
+
+function decrease(index){
+    let su = document.querySelectorAll("#quantity")[index];
+    
+    if(Number(su.innerHTML) > 1){
+        su = Number(su.innerHTML) - 1;
+
+        let test = document.querySelectorAll(".hidden-price")[index].innerHTML;
+
+        document.querySelectorAll(".pro-price")[index].innerHTML = 
+        (Number(document.querySelectorAll(".hidden-price")[index].innerHTML) * Number(su)).toLocaleString('ko-KR') + "원";
+
+        document.querySelectorAll("#spoqa")[index].innerHTML = 
+        (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
+    }
+
+}
+
+
 class BagApi {
     static #instance = null;
 
@@ -127,16 +146,13 @@ class BagService {
     getBagList(responseData){
         console.log(responseData)
         const borders = document.querySelector("#baglist");
-        let calbox = document.querySelector(".selPrice");
-        let retailbox = document.querySelector(".dcPrice");
-        let totalbox = document.querySelector(".totalCost");
         let calPrice = "0";
         let retailPrice = "0";
         let totalPrice = "0";
 
-        responseData.forEach(border => {
-            calPrice = Number(calPrice) + Number(`${border.price}`);
-            retailPrice = Number(retailPrice) + Number(`${border.retailprice}`);
+        responseData.forEach((border, index) => {
+            calPrice = Number(calPrice) + (Number(`${border.price}`) * Number(`${border.quantity}`));
+            retailPrice = Number(retailPrice) + (Number(`${border.retailprice}`) * Number(`${border.quantity}`));
 
             borders.innerHTML += `
             <tr class="border-b">
@@ -161,17 +177,17 @@ class BagService {
                 </td>
                 <td>
                     <div class="quantity clear">
-                        <button type="button" class="bt-decrease"></button>
-                        <a class="quantity">${border.quantity}</a>
+                        <button type="button" class="bt-decrease" onclick = "decrease(${index})"></button>
+                        <a class="quantity" id = "quantity">${border.quantity}</a>
                         <button type="button" class="bt-increase"></button>
                     </div>
                 </td>
                 <td class="spoqa">
-                    <div class="pro-price">${border.price}원</div>
-                    <input class="hidden-price" type="hidden" value="">
+                    <div class="pro-price"></div>
+                    <input class="hidden-price" type="hidden" value="${border.price}">
                 </td>
-                <td class="spoqa">${border.retailprice}원</td>
-                <td class="spoqa">0원</td>
+                <td class="spoqa" id = "spoqa"></td>
+                <input class="hidden-retail-price" type="hidden" value="${border.retailprice}">
                 <td>무료배송</td>
                 <td>
                     <a href="javascript:;">
@@ -180,10 +196,17 @@ class BagService {
                 </td>
             </tr>
             `;
+
+            document.querySelectorAll(".pro-price")[index].innerHTML = (Number(`${border.price}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
+            document.querySelectorAll("#spoqa")[index].innerHTML = (Number(`${border.retailprice}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
+
         });
 
-        calbox.innerHTML = calPrice + "원";
-        retailbox.innerHTML = retailPrice + "원";
+        document.querySelector(".selPrice").innerHTML = calPrice.toLocaleString('ko-KR') + "원";
+        document.querySelector(".dcPrice").innerHTML = retailPrice.toLocaleString('ko-KR') + "원";
+        document.querySelector(".totalCost").innerHTML = (Number(calPrice) - Number(retailPrice)).toLocaleString('ko-KR') + "원";
+        document.querySelector(".calc-tot-amount").innerHTML = (Number(calPrice) - Number(retailPrice)).toLocaleString('ko-KR') + "원";
+
     }
 }
 
