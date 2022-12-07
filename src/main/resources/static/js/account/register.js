@@ -88,7 +88,7 @@ function chkId(str){
         type: "post",
         url: "/api/account/checkid",
         contentType: "application/json",
-        data: JSON.stringify({id: str.value}),
+        data: JSON.stringify({username: str.value}),
         dataType: "json",
         success: function (result) {
             if(result == 1) {

@@ -1,6 +1,56 @@
 const upButton = document.querySelector("#calPlus");
 const downButton = document.querySelector("#calMinus");
 
+const bagButton = document.querySelector("#cartBtn");
+const quantity = document.querySelector("#quantity");
+
+bagButton.onclick = () => {
+
+    const uri = location.href;
+    const productId = uri.substring(uri.lastIndexOf("/") + 1);
+
+    let baginfo = {
+        user_id: "",
+        count: "",
+        product_id: productId,
+        quantity: quantity.value,
+    }
+
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/api/bag/add",
+        contentType: "application/json",
+        data: JSON.stringify(baginfo),
+        dataType: "json",
+        success: (result) => {
+            bagChk(result);
+        },
+        error: (error) => {
+            console.log("error:" + error);
+        }
+    });
+}
+
+function bagChk(result){
+    if(result == 0) {
+        alert("로그인이 필요합니다.");
+        location.replace("/login");
+    } else if (result == 1) {
+        if(confirm("상품이 장바구니에 담겼습니다.\n지금 장바구니로 이동하시겠습니까?")){
+            location.replace("/bag");
+        } else {
+            return;
+        }
+    } else {
+        if(confirm("장바구니에 이미 상품이 등록되어있습니다.\n지금 장바구니로 이동하시겠습니까?")){
+            location.replace("/bag");
+        } else {
+            return;
+        }
+    }
+}
+
 upButton.onclick = () => {
     up();
 }

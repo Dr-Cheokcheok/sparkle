@@ -16,17 +16,15 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
-
     <title>주문결제</title>
 </head>
 <body>
-    <section id="wrap">
-        <header th:replace="~{fragment/header :: headerFragment}"></header>
-        <section id="content" class="member">
-            <div class="new-box w1260">
-                <div class="sub-title">
-                    <p>주문결제</p>
-                </div>
+<section id="wrap">
+    <header th:replace="~{fragment/header :: headerFragment}"></header>
+    <section id="content" class="member">
+        <div class="new-box w1260">
+            <div class="sub-title">
+                <p>주문결제</p>
             </div>
             <div id="cart" class="cart-box w1260">
                 <form name="cartForm" action="api/order/prepare" method="post">
@@ -53,27 +51,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!---- product --->
-                            <tr class="border-b">
+                            <tr class="border-b" th:each="order : ${orderList}">
                                 <td class="taL pro-option">
                                 <input id="productId" type="hidden" th:value="${order.productId}">
                                 <input id="quantity" type="hidden" th:value="${order.quantity}">
                                     <div class="proImg">
-                                        <!---- 상품 이미지, 상세 get 요청  --->
                                         <img th:src="|/image/product/${order.img}|">
                                     </div>
                                     <div class="proTxt">
-                                        <!--- go-product-text test ---->
                                         <span class="proState">스파클몰</span>
                                         <p class="water_name" th:text="${order.name}"></p>
                                         <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
                                     </div>
                                 </td>
-                                <td><!---   동일 상품 주문 개수 --->
+                                <td>
                                     <div class="spoqa" th:text="${order.quantity}"></div>
                                 </td>
                                 <td class="spoqa">
-                                    <!---  상품 금액 * num ---->
                                     <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
                                     <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
                                 </td>
@@ -81,13 +75,32 @@
                                 <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
                                 <td>무료배송</td>
                             </tr>
-                        </tbody>
-                        <tbody id="cart-table" style="display: none">
-                            <tr>
-                                <td>
-                                    안녕안녕
+                            <!--
+                            <tr class="border-b">
+                                <td class="taL pro-option">
+                                <input id="productId" type="hidden" th:value="${order.productId}">
+                                <input id="quantity" type="hidden" th:value="${order.quantity}">
+                                    <div class="proImg">
+                                        <img th:src="|/image/product/${order.img}|">
+                                    </div>
+                                    <div class="proTxt">
+                                        - go-product-text test --
+                                        <span class="proState">스파클몰</span>
+                                        <p class="water_name" th:text="${order.name}"></p>
+                                        <span class="water-rate" th:text="|${order.rate}% 할인상품|"></span>
+                                    </div>
                                 </td>
-                            </tr>
+                                <td>
+                                    <div class="spoqa" th:text="${order.quantity}"></div>
+                                </td>
+                                <td class="spoqa">
+                                    <div class="price-tag" th:text="|${order.getTotalPrice()}원|"></div>
+                                    <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
+                                </td>
+                                <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
+                                <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
+                                <td>무료배송</td>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div class="calc-box">
@@ -108,7 +121,7 @@
                                 <dt>휴대폰</dt>
                                 <dd>
                                     <input type="text" class="input_1" name="phone" th:value="${principalUser.phone}">
-                        
+
                                 </dd>
                             </dl>
                         </div>
@@ -118,7 +131,7 @@
                             <input type="hidden" name="user_address" value="" disabled="">
                             <input type="hidden" name="user_address_detail" value="" disabled="">
                         </div>
-    
+
                         <div class="flex">
                             <h4 class="com-tit wid225">배송지정보</h4>
                         </div>
@@ -152,26 +165,6 @@
                                             선택하신 배송지는 배송이 불가능한 지역입니다.
                                         </p>
                                     </div>
-                                </dd>
-                            </dl>
-                            <dl class="clear">
-                                <dt>배송메세지</dt>
-                                <dd>
-                                    <div class="flex">
-                                        <li class="deli-select">
-                                            <span class="sel">배송 메세지 선택</span>
-                                            <ul style="display: none;">
-                                                <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
-                                                <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
-                                                <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
-                                                <li onclick="$('#message').val('')" class="selfText">직접입력</li>
-                                            </ul>
-                                            <span class="arrow"></span>
-                                        </li>
-                                        <div class="self">
-                                            <input type="text" class="self-input input_1" id="message" name="message" value="">
-                                        </div>
-                                    </div>
                                     <div>
                                         <div class="door-inp"><input type="text" placeholder="공동현관" class="door" name="door_password" value=""></div>
                                         <div class="event">
@@ -187,54 +180,55 @@
                         </div>
                         <h4 class="com-tit">결제정보</h4>
                         <div class="order-detail od3">
-                        <dl class="clear">
-                            <dt>결제수단</dt>
-                            <dd>
-                                <ul class="clear dd1">
-                                    <li>
-                                        <input type="radio" name="payment" value="card" id="credit">
-                                        <label for="credit">신용카드</label>
-                                    </li>
-                                    
-                                    <li>
-                                        <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam" checked="">
-                                        <label for="naverpay-direct" class="vam ti-9999 n_pay">네이버페이</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam">
-                                        <label for="kakaopay-direct" class="vam ti-9999 k_pay">카카오페이</label>
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                        <dl class="clear">
-                            <dt>매출증빙</dt>
-                            <dd>
-                                <ul class="clear dd2">
-                                    <li>
-                                        <input type="radio" name="receipt" value="none" id="noR" checked="">
-                                        <label for="noR">발급안함</label>
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                        <dl class="clear">
-                            <dt>최종결제금액</dt>
-                            <dd>
-                                <span id="calc-amount-text"></span>원
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="order-btn-box">
-                        <a href="/bag" class="btn_style1">장바구니</a>
-                        <a id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
+                            <dl class="clear">
+                                <dt>결제수단</dt>
+                                <dd>
+                                    <ul class="clear dd1">
+                                        <li>
+                                            <input type="radio" name="payment" value="card" id="credit">
+                                            <label for="credit">신용카드</label>
+                                        </li>
+
+                                        <li>
+                                            <input type="radio" name="payment" value="naverpay" id="naverpay-direct" class="vam" checked="">
+                                            <label for="naverpay-direct" class="vam ti-9999 n_pay">네이버페이</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="payment" value="kakaopay" id="kakaopay-direct" class="vam">
+                                            <label for="kakaopay-direct" class="vam ti-9999 k_pay">카카오페이</label>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="clear">
+                                <dt>매출증빙</dt>
+                                <dd>
+                                    <ul class="clear dd2">
+                                        <li>
+                                            <input type="radio" name="receipt" value="none" id="noR" checked="">
+                                            <label for="noR">발급안함</label>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="clear">
+                                <dt>최종결제금액</dt>
+                                <dd>
+                                    <span id="calc-amount-text"></span>원
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="order-btn-box">
+                            <a href="/bag" class="btn_style1">장바구니</a>
+                            <a id="payBtn" class="btn_style2 deliverable-show">결제하기</a>
                         </div>
                     </div>
                 </form>
             </div>
-        </section>
-        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+        </div>
     </section>
+    <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+</section>
     <script src="/static/js/order/order.js"></script>
 </body>
 </html>

@@ -25,7 +25,6 @@ public class ProductApi {
                 .body(new CMRespDto<>(1, "Successfully", productService.addProduct(productAdditionReqDto)));
     }
 
-
     @PostMapping("/product/modification")
     public ResponseEntity<?> getModification(ProductModificationReqDto productModificationReqDto) throws Exception{
 
