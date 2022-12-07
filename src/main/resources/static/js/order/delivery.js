@@ -51,8 +51,19 @@ class DeliveryService {
     getOrderList(responseData) {
         const deliveryBoxs = document.querySelector(".delivery-box");
         deliveryBoxs.innerHTML = "";
-       
-        console.log(responseData)
+        const myInfoTop = document.querySelector(".myInfo-top");
+
+        myInfoTop.innerHTML += `
+        <ul>
+            <li><img src="/static/images/img/my_face.png"></li>
+            <li><p class="username"">${responseData[0].myInfoCount.realName}</p><p class="user-id">${responseData[0].myInfoCount.username}</p></li>
+            <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
+            <li><a href="/bag"><p>장바구니</p><p class="blue-t">${responseData[0].myInfoCount.cartCount}</p></a></li>
+            <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">${responseData[0].myInfoCount.orderCount}</p></a></li>
+            <li><a href="/account"><p>관심상품</p><p class="blue-t">${responseData[0].myInfoCount.likesCount}</p></a></li>
+        </ul>
+            `
+        
 
         responseData.forEach((data, index) => {
             deliveryBoxs.innerHTML += `
@@ -72,7 +83,7 @@ class DeliveryService {
             const prodBoxs = document.querySelectorAll(".prod-boxs");
             data.orderDetailList.forEach((orderDetail) => {
                 prodBoxs[index].innerHTML += `
-                    <a href="/account/order/${orderDetail.orderId}" class="prod-box" id="prod-box">
+                    <a href="/account/order/${data.orderId}" class="prod-box" id="prod-box">
                         <div class="img">
                             <img src="/image/product/${orderDetail.product.img}">
                         </div>

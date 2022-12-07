@@ -1,22 +1,18 @@
 package com.spakle.spakleclone20221104.service.order;
 
+import com.spakle.spakleclone20221104.domain.order.MyInfoCount;
 import com.spakle.spakleclone20221104.domain.order.Order;
 import com.spakle.spakleclone20221104.domain.order.OrderDetail;
-import com.spakle.spakleclone20221104.domain.order.OrderList;
-import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
-import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
-import com.spakle.spakleclone20221104.dto.order.OrderListRepDto;
-import com.spakle.spakleclone20221104.dto.order.OrderRespDto;
+import com.spakle.spakleclone20221104.dto.order.*;
 import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
 import com.spakle.spakleclone20221104.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Service
@@ -64,38 +60,52 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderListRepDto> orderList = new ArrayList<>();
 
+        MyInfoCount myInfoCount = orderRepository.getCounts(userId);
+
         orderRepository.getOrderList(userId).forEach(order -> {
-            orderList.add(order.toOrderListResp());
+            orderList.add(OrderListRepDto.builder()
+                    .myInfoCount(myInfoCount)
+                    .userId(order.getUser_id())
+                    .orderDate(order.getOrder_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                    .orderId(order.getOrder_id())
+                    .totalPrice(order.getTotal_price())
+                    .orderDetailList(order.getOrderDetailList())
+                    .build());
+
+
         });
 
         return orderList;
     }
 
     @Override
-    public List<OrderRespDto> getOrderDetailList(String orderId) throws Exception {
+    public List<OrderRespDto> getOrderDetailList(String orderId, String userId) throws Exception {
 
         List<OrderRespDto> orderRespDto = new ArrayList<>();
 
+        MyInfoCount myInfoCount = orderRepository.getCounts(userId);
+
         orderRepository.getOrderDetails(orderId).forEach(order -> {
             orderRespDto.add(OrderRespDto.builder()
-                    .orderId(order.getOrder_id())
-                    .userId(order.getUser_id())
-                    .orderDate(order.getOrder_date())
-                    .ordererName(order.getOrderer_name())
-                    .recipientName(order.getRecipient_name())
-                    .phone(order.getPhone())
-                    .postCode(order.getPost_code())
-                    .address(order.getAddress())
-                    .detailAddress(order.getDetail_address())
-                    .shipMsg(order.getShip_msg())
-                    .entrance(order.getEntrance())
-                    .totalPrice(order.getTotal_price())
-                    .retailPrice(order.getRetail_price())
-                    .quantity(order.getQuantity())
-                    .img(order.getImg())
-                    .name(order.getName())
-                    .productId(order.getProduct_id())
-                    .build());
+                            .orderId(order.getOrder_id())
+                            .userId(order.getUser_id())
+                            .orderDate(order.getOrder_date())
+                            .ordererName(order.getOrderer_name())
+                            .recipientName(order.getRecipient_name())
+                            .phone(order.getPhone())
+                            .postCode(order.getPost_code())
+                            .address(order.getAddress())
+                            .detailAddress(order.getDetail_address())
+                            .shipMsg(order.getShip_msg())
+                            .entrance(order.getEntrance())
+                            .totalPrice(order.getTotal_price())
+                            .retailPrice(order.getRetail_price())
+                            .quantity(order.getQuantity())
+                            .img(order.getImg())
+                            .name(order.getName())
+                            .productId(order.getProduct_id())
+                            .myInfoCount(myInfoCount)
+                            .build());
         });
 
 

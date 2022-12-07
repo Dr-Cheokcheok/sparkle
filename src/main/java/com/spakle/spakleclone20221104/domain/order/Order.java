@@ -34,4 +34,6 @@ public class Order {
     private String name;
     private String img;
 
+    private MyInfoCount myInfoCount;
+
 }

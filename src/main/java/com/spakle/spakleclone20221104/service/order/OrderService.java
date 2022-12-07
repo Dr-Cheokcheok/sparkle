@@ -15,6 +15,6 @@ public interface OrderService {
 
     public List<OrderListRepDto> getOrderLists(String userId) throws Exception;
 
-    public List<OrderRespDto> getOrderDetailList(String orderId) throws Exception;
+    public List<OrderRespDto> getOrderDetailList(String orderId, String userId) throws Exception;
 }
 

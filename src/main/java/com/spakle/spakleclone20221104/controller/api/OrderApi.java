@@ -3,10 +3,12 @@ package com.spakle.spakleclone20221104.controller.api;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
 import com.spakle.spakleclone20221104.dto.order.OrderDtlReqDto;
 import com.spakle.spakleclone20221104.dto.order.OrderInsertDto;
+import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import com.spakle.spakleclone20221104.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -50,7 +52,8 @@ public class OrderApi {
     }
 
     @GetMapping("/order/detail/{orderId}")
-    public ResponseEntity<?> getorderDtlList(@PathVariable String orderId)throws Exception {
-        return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", orderService.getOrderDetailList(orderId)));
+    public ResponseEntity<?> getorderDtlList(@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable String orderId)throws Exception {
+
+        return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", orderService.getOrderDetailList(orderId, principalDetails.getUser().getUsername())));
     }
 }

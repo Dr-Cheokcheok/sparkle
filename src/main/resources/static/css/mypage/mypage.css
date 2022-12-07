@@ -34,8 +34,8 @@ body {
 .myInfo-top ul li {
     vertical-align: top;
     border-right: 1px solid #ddd;
-    width: 160px;
-    height: 70px;
+    width: 250px;
+    height: 90px;
 }
 
 .myInfo-top ul li:nth-child(1) {
@@ -54,7 +54,7 @@ body {
 
 .myInfo-top ul li:nth-child(3) {
     text-align: left;
-    margin-top: 23px;
+    margin-top: 10px;
     margin-right: 60px;
     border: 0;
     width: auto;
@@ -69,14 +69,14 @@ body {
     font-weight: 500;
     letter-spacing: -0.5px;
     color: #333;
-    margin: 0px 0px 15px 0px;
+    margin: 0px 0px 25px 0px;
 }
 
 .myInfo-top li .username {
     font-size: 25px;
     font-weight: 700;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     margin-right: 38px;
     display: inline-block;
     vertical-align: top;

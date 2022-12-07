@@ -1,12 +1,12 @@
 package com.spakle.spakleclone20221104.repository;
 
+import com.spakle.spakleclone20221104.domain.order.MyInfoCount;
 import com.spakle.spakleclone20221104.domain.order.Order;
 import com.spakle.spakleclone20221104.domain.order.OrderDetail;
 import com.spakle.spakleclone20221104.domain.order.OrderList;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface OrderRepository {
@@ -18,4 +18,6 @@ public interface OrderRepository {
     public List<OrderList> getOrderList(String userId) throws Exception;
 
     public List<Order> getOrderDetails(String orderId) throws Exception;
+
+    public MyInfoCount getCounts(String userId) throws Exception;
 }
