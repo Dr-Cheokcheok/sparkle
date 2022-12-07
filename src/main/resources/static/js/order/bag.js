@@ -129,11 +129,14 @@ class BagApi {
     }
 
     bagDeleteRequest(id) {
-        $ajax({
+        $.ajax({
             async: false,
             type: "delete",
             url: "/api/bag/userbag",
             dataType: "json",
+            data: JSON.stringify({
+            id: id}),
+            contentType: "application/json",
             success: (response) => {
                 alert("장바구니 삭제 완료!");
                 location.reload();
@@ -231,7 +234,7 @@ class BagService {
             deleteButton.onclick = () => {
                 if (confirm("장바구니를 삭제 하시겠습니까?")) {
                     const bagApi = new BagApi();
-                    bagApi.bagDeleteRequest(responseData[index].id);
+                    bagApi.bagDeleteRequest(Number(responseData[index].id));
                 }
             }
         });

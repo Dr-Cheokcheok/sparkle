@@ -13,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -69,6 +70,11 @@ public class BagApi {
         User user = principalDetails.getUser();
         log.info("{}", bagService.getBagList(user.getId()));
         return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", bagService.getBagList(user.getId())));
+    }
+    @DeleteMapping("/userbag")
+    public  boolean deleteBag(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String ,Integer>map)throws Exception {
+
+        return bagService.deleteList(principalDetails.getUser().getId(),map.get("id"));
     }
 
 }

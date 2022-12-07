@@ -25,4 +25,6 @@ public interface BagRepository {
 
     public List<BagList> getOrderList(int user_id) throws Exception;
 
+    public int deleteList(Map<String, Integer> map) throws Exception;
+
 }
