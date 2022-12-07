@@ -76,6 +76,29 @@
 // }
 
 // -------------------------------------------------------
+
+// function decrease(index){
+//     let su = document.querySelectorAll("#quantity")[index];
+    
+//     if(Number(su.innerHTML) > 1){
+//         su = Number(su.innerHTML) - 1;
+
+//         let test = document.querySelectorAll(".hidden-price")[index];
+
+//         test.value = Number(test.value) * su;
+//         // document.querySelectorAll(".pro-price")[index].innerHTML = 
+
+//         document.querySelectorAll("#spoqa")[index].innerHTML = 
+//         (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
+//     }
+
+// }
+
+function deleteList(index){
+    document.getElementById(`item-${index}`).remove();
+}
+
+
 class BagApi {
     static #instance = null;
 
@@ -144,19 +167,16 @@ class BagService {
     getBagList(responseData){
         console.log(responseData)
         const borders = document.querySelector("#baglist");
-        let calbox = document.querySelector(".selPrice");
-        let retailbox = document.querySelector(".dcPrice");
-        let totalbox = document.querySelector(".totalCost");
         let calPrice = "0";
         let retailPrice = "0";
         let totalPrice = "0";
 
-        responseData.forEach(border => {
-            calPrice = Number(calPrice) + Number(`${border.price}`);
-            retailPrice = Number(retailPrice) + Number(`${border.retailprice}`);
+        responseData.forEach((border, index) => {
+            calPrice = Number(calPrice) + (Number(`${border.price}`) * Number(`${border.quantity}`));
+            retailPrice = Number(retailPrice) + (Number(`${border.retailprice}`) * Number(`${border.quantity}`));
 
             borders.innerHTML += `
-            <tr class="border-b">
+            <tr id="item-${index}" class="border-b">
                 <td class="taL">
                     <input type="checkbox" name="item_ids[]" class="chk_style" value="512313">
                     <div>
@@ -179,28 +199,32 @@ class BagService {
                 <td>
                     <div class="quantity clear">
                         <button type="button" class="bt-decrease"></button>
-                        <a class="quantity">${border.quantity}</a>
+                        <input type="text" class="quantity" value = "${border.quantity}">
                         <button type="button" class="bt-increase"></button>
                     </div>
                 </td>
                 <td class="spoqa">
-                    <div class="pro-price">${border.price}원</div>
-                    <input class="hidden-price" type="hidden" value="">
+                    <div class="pro-price"></div>
+                    <input class="hidden-price" type="hidden" value="${border.price}">
                 </td>
-                <td class="spoqa">${border.retailprice}원</td>
-                <td class="spoqa">0원</td>
+                <td class="spoqa" id = "spoqa"></td>
+                <input class="hidden-retail-price" type="hidden" value="${border.retailprice}">
                 <td>무료배송</td>
                 <td>
-                    <a href="javascript:;">
-                        <button class="deleteBtn">
+                    <a class="deleteList" href="javascript:deleteList(${index});">
                         <img src="/static/images/sub/x.png" alt="닫기버튼">
                         </button>
                     </a>
                 </td>
             </tr>
             `;
+
+            document.querySelectorAll(".pro-price")[index].innerHTML = (Number(`${border.price}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
+            document.querySelectorAll("#spoqa")[index].innerHTML = (Number(`${border.retailprice}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
+
+
         });
-        const deleteButtons = document.querySelectorAll(".deleteBtn");
+        const deleteButtons = document.querySelectorAll(".deleteList");
 
         deleteButtons.forEach((deleteButton, index) => {
 
@@ -230,8 +254,43 @@ class BagService {
              }
          });
 
-        calbox.innerHTML = calPrice + "원";
-        retailbox.innerHTML = retailPrice + "원";
+        // 장바구니 전체선택
+        var allChk = $('#chkAll');
+        var chk = $('.chk_style');
+
+        $(allChk).click(function(){
+         if($(allChk).prop("checked")){
+             $(chk).prop("checked",true);
+         }else{
+             $(chk).prop("checked",false);
+         }
+        });
+
+        $(chk).click(function(){
+         if(!($(chk).prop("checked"))){
+             $(allChk).prop("checked",false);
+         }
+        });
+
+        /* 수량버튼 */
+        $(".bt-increase").on("click", function(){
+            let quantity = $(this).parent("div").find("input").val();
+            $(this).parent("div").find("input").val(++quantity);
+            console.log(quantity)
+        });
+        $(".bt-decrease").on("click", function(){
+            let quantity = $(this).parent("div").find("input").val();
+            if(quantity > 1){
+                $(this).parent("div").find("input").val(--quantity);	
+                console.log(quantity)	
+            }
+        });
+
+        document.querySelector(".selPrice").innerHTML = calPrice.toLocaleString('ko-KR') + "원";
+        document.querySelector(".dcPrice").innerHTML = retailPrice.toLocaleString('ko-KR') + "원";
+        document.querySelector(".totalCost").innerHTML = (Number(calPrice) - Number(retailPrice)).toLocaleString('ko-KR') + "원";
+        document.querySelector(".calc-tot-amount").innerHTML = (Number(calPrice) - Number(retailPrice)).toLocaleString('ko-KR') + "원";
+
     }
 }
 

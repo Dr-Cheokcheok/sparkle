@@ -35,6 +35,11 @@
             #{quantity}
         )
     </insert>
+    
+    <delete id="deleteList">
+        delete from cart
+        where user_id = #{user_id}
+    </delete>
 
     <select id="bagNumberChk" parameterType="int" resultType="int">
         SELECT ifnull(MAX(COUNT),1) FROM
