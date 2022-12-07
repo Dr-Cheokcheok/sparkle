@@ -100,7 +100,6 @@ function setReq(index, su){
         error: (error) => {
 
         }
-
     });
 }
 
