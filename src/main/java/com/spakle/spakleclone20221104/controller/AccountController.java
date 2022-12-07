@@ -1,12 +1,15 @@
 package com.spakle.spakleclone20221104.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 @Controller
 public class AccountController {
 
@@ -20,7 +23,13 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String loadLogin() {return "account/login";}
+    public String loadLogin(@RequestParam(value = "error", required = false) String error,
+                            @RequestParam(value = "exception", required = false) String exception, Model model) {
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
+        log.info("loginForm view resolve");
+        return "account/login";
+    }
 
     @GetMapping("/register")
     public String loadRegister() {return "account/register";}

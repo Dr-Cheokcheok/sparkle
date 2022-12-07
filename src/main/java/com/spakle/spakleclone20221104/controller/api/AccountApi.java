@@ -75,7 +75,7 @@ public class AccountApi {
     }
 
     @DeleteMapping("/likes")
-    public boolean delLikes(@AuthenticationPrincipal PrincipalDetails principalDetails, int productId)throws Exception{
-        return accountService.deleteLikes(principalDetails, productId);
+    public boolean delLikes(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String,Integer> map)throws Exception{
+        return accountService.deleteLikes(principalDetails, map.get("productId"));
     }
 }

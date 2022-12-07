@@ -90,7 +90,9 @@ if(location.href.includes("/users/edit")){
 
         });
     }
+
 }else if(location.href.includes("/likes")){
+
     window.onload = () => {
         getLikes();
     }
@@ -132,34 +134,56 @@ if(location.href.includes("/users/edit")){
         deleteLikes();
     }
 
+    // function goCart(){
+    //     const cartPlus = document.querySelectorAll(".buttons .carier-plus");
+    //     const likeIds = document.querySelectorAll("#like-id");
+    //     cartPlus.forEach((go, index) => {
+    //         go.onclick = () => {
+    //             let productId = Number(likeIds[index].value);
+    //             $.ajax({
+    //                 async:false,
+    //                 type: "post",
+    //                 url:
+    //             })
+    //         }
+    //     })
+    // }
+
     function deleteLikes(){
     const likesDelete = document.querySelectorAll(".buttons .likes-delete");
     const likeIds = document.querySelectorAll("#like-id");
     likesDelete.forEach((del, index) => {
         del.onclick = () => {
             if(confirm("삭제하시겠습니까?")){
-                $.ajax({
-                    async: false,
-                    type: "delete",
-                    url: "/api/account/likes",
-                    data: likeIds[index].value,
-                    contentType: "application/json",
-                    success: (response) => {
-                        if(!response){
-                            alert("삭제실패");
-                        }
-                        getLikes();
-                    },
-                    error: (error) =>{
-                        console.log(error)
-                    }
-                });
+                let productId = Number(likeIds[index].value);
+                delReq(productId);
             }
 
         }
     });
     }
 
+function delReq(productId){
+    $.ajax({
+        async: false,
+        type: "delete",
+        url: "/api/account/likes",
+        contentType: "application/json",
+        data: {
+            productId : productId
+        },
+        dataType: "json",
+        success: (response) => {
+            if(!response){
+                alert("삭제실패");
+            }
+            getLikes();
+        },
+        error: (error) =>{
+            console.log(error)
+        }
+    });
+}
 
 
 }
