@@ -17,12 +17,10 @@ function productchk(){
         let checkArr = "";
 
         while(count < document.querySelectorAll(".chk_style").length ){
-            
             if(document.querySelectorAll(".chk_style")[count].checked == true){
                 checkArr = checkArr + document.querySelectorAll(".idname")[count].id.replace("id-","") + ",";
             }
             count++;
-
         }
 
         checkArr = checkArr.substring(0,checkArr.length - 1);
@@ -39,7 +37,9 @@ function productall(){
     if(document.querySelectorAll(".border-b").length < 1){
         alert("장바구니에 제품이 존재하지 않습니다.");
     } else {
+        const form = document.querySelector("#cartForm");
         form.action='/order/bagall';
+        form.submit();
     }
 }
 

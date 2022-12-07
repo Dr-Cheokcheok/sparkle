@@ -72,7 +72,7 @@
                                     <input type="hidden" id="total-price" th:value="${order.getTotalPrice()}">
                                 </td>
                                 <td class="spoqa price-tag" th:text="|${order.getDiscountAmount()}원|"></td>
-                                <input class="discount" type="hidden" th:value="${order.getDiscountAmount()}">
+                                <input class="discount" type="hidden" th:value="|${order.getDiscountAmount()}|">
                                 <td>무료배송</td>
                             </tr>
                             <!--

@@ -19,7 +19,6 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
 
-
     @Override
     public boolean addOrder(OrderInsertDto orderInsertDto) throws Exception {
 
@@ -38,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean addOrderDetail(List<OrderDtlReqDto> orderDtlReqDtos) throws Exception {
         List<OrderDetail> orderDtlList = new ArrayList<>();
+
         orderDtlReqDtos.forEach(orderDtlReqDto -> {
             orderDtlList.add(orderDtlReqDto.toOrderDtlEntity());
         });

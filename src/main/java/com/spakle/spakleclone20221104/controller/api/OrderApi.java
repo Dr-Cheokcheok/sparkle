@@ -29,7 +29,7 @@ public class OrderApi {
             String orderId = (String) orderDtl.get("order_id");
             Integer productId = (Integer) orderDtl.get("product_id");
             Integer quantity = (Integer) orderDtl.get("quantity");
-            OrderDtlReqDto orderDtlReqDto = new OrderDtlReqDto(orderId, productId,quantity );
+            OrderDtlReqDto orderDtlReqDto = new OrderDtlReqDto(orderId, productId,quantity);
             orderDetailList.add(orderDtlReqDto);
         });
 

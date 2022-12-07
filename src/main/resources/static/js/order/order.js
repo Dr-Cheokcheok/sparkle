@@ -67,13 +67,11 @@ function daumPostcode() {
 }
 
 // 페이 결제
-
 const payBtn = document.querySelector("#payBtn");
 
 payBtn.onclick = (e) => {
     e.preventDefault();
     payment();
-    
 }
 
 function payment() {
@@ -310,7 +308,6 @@ function InfoDataDtl(){
 
 
 function InfoData(data){
-
     $.ajax({
         async: false,
         type: "post",
@@ -395,7 +392,6 @@ calcBox.innerHTML = `
             <input id="totalCost" type="hidden" value="${(totalPrice - totalDiscount)}">
         </div>
     </div>
-
     `;
 
 const cartTotalPrice = document.querySelector(".cart-total-price");

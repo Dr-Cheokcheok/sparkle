@@ -25,7 +25,6 @@ public class OrderItem {
 
     private String img;
 
-
     public OrderItemDto toItemDto(){
         return OrderItemDto.builder()
                 .productId(id)

@@ -11,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -77,7 +74,14 @@ public class BagServicelmpl implements BagService {
     @Override
     public List<OrderReqDto> getChkOrderList(int user_id,String checkArr) throws Exception{
         List<OrderReqDto> chkorderList = new ArrayList<>();
-        bagRepository.getChkOrderList(user_id,checkArr).forEach(BagList -> {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_id", user_id);
+        map.put("checkArrs", Arrays.asList(checkArr.split(",")));
+
+        List<BagList> list = bagRepository.getChkOrderList(map);
+
+        list.forEach(BagList -> {
             chkorderList.add(BagList.toItemsDto());
         });
 

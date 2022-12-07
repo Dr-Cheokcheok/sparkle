@@ -19,12 +19,12 @@ public class BagList {
     private int rate;
     private int quantity;
     private String img;
-//    public int getDiscountAmount() {
-//        return (originPrice - retailPrice) * quantity;
-//    }
-//    public int getTotalPrice(){
-//        return originPrice * quantity;
-//    }
+    public int getDiscountAmount() {
+        return (originPrice - retailPrice) * quantity;
+    }
+    public int getTotalPrice(){
+        return originPrice * quantity;
+    }
 
     public OrderReqDto toItemsDto(){
         return OrderReqDto.builder()

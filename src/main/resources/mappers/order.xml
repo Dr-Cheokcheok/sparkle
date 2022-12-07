@@ -30,8 +30,8 @@
     <insert id="saveOrder"
             parameterType="com.spakle.spakleclone20221104.domain.order.Order"
             useGeneratedKeys="true"
-            keyProperty="order_id"
-    >
+            keyProperty="order_id">
+
         insert into
             `order`
         values

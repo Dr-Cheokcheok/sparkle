@@ -25,6 +25,16 @@
         <result property="img" column="img"></result>
     </resultMap>
 
+    <resultMap id="BagList2" type="com.spakle.spakleclone20221104.domain.BagList">
+        <result property="productId" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="originPrice" column="price"></result>
+        <result property="retailPrice" column="retail_price"></result>
+        <result property="rate" column="rate"></result>
+        <result property="quantity" column="quantity"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
     <insert id="bagAdd" parameterType="com.spakle.spakleclone20221104.domain.BagVO">
         INSERT INTO
             cart
@@ -82,7 +92,8 @@
             pt.id,
             pt.name,
             pt.price,
-            pt.price-pt.retail_price AS `retail_price`,
+<!--            pt.price-pt.retail_price AS `retail_price`,-->
+            pt.retail_price AS `retail_price`,
             pt.rate,
             ct.quantity,
             pt.img
@@ -96,7 +107,7 @@
             ct.count
     </select>
 
-    <select id="getChkOrderList" resultMap="BagList">
+    <select id="getChkOrderList" parameterType="hashmap" resultMap="BagList">
         SELECT
             pt.id,
             pt.name,
@@ -112,7 +123,10 @@
         WHERE
             ct.user_id = #{user_id}
         AND
-            pt.id in (#{checkArr})
+            pt.id in
+        <foreach item="checkArr" collection="checkArrs" open="(" separator="," close=")">
+            #{checkArr}
+        </foreach>
         ORDER BY
             ct.count
     </select>
