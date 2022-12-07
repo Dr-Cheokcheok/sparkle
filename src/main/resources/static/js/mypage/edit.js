@@ -132,22 +132,57 @@ if(location.href.includes("/users/edit")){
             `;
         });
         deleteLikes();
+        goCart();
     }
 
-    // function goCart(){
-    //     const cartPlus = document.querySelectorAll(".buttons .carier-plus");
-    //     const likeIds = document.querySelectorAll("#like-id");
-    //     cartPlus.forEach((go, index) => {
-    //         go.onclick = () => {
-    //             let productId = Number(likeIds[index].value);
-    //             $.ajax({
-    //                 async:false,
-    //                 type: "post",
-    //                 url:
-    //             })
-    //         }
-    //     })
-    // }
+    function goCart(){
+        const cartPlus = document.querySelectorAll(".buttons .carier-plus");
+        const likeIds = document.querySelectorAll("#like-id");
+        cartPlus.forEach((go, index) => {
+            go.onclick = () => {
+                let productId = Number(likeIds[index].value);
+                let bagInfo = {
+                    user_id: "",
+                    count: "",
+                    product_id: productId,
+                    quantity: 1,
+                }
+                $.ajax({
+                    async:false,
+                    type: "post",
+                    url: "/api/bag/add",
+                    contentType: "application/json",
+                    data: JSON.stringify(bagInfo),
+                    dataType:"json",
+                    success: (result) => {
+                        bagChk(result, productId);
+                    },
+                    error: (error) => {
+                        console.log("error:" + error);
+                    }
+
+                })
+            }
+        })
+    }
+    function bagChk(result, productId){
+        if(result === 0) {
+            alert("로그인이 필요합니다.");
+            location.replace("/login");
+        } else if (result === 1) {
+            if(confirm("상품이 장바구니에 담겼습니다.\n지금 장바구니로 이동하시겠습니까?")){
+                delReq(productId);
+                location.replace("/bag");
+            } else {
+
+            }
+        } else {
+            if(confirm("장바구니에 이미 상품이 등록되어있습니다.\n지금 장바구니로 이동하시겠습니까?")){
+                location.replace("/bag");
+            } else {
+            }
+        }
+    }
 
     function deleteLikes(){
     const likesDelete = document.querySelectorAll(".buttons .likes-delete");
@@ -169,9 +204,9 @@ function delReq(productId){
         type: "delete",
         url: "/api/account/likes",
         contentType: "application/json",
-        data: {
+        data: JSON.stringify({
             productId : productId
-        },
+        }),
         dataType: "json",
         success: (response) => {
             if(!response){
