@@ -126,4 +126,12 @@
             user_id = #{user_id} and product_id = #{product_id}
     </delete>
 
+    <update id="setQuantity">
+        update
+            cart
+        set
+            quantity = #{quantity}
+        where
+            user_id = #{userId} and product_id = #{productId}
+    </update>
 </mapper>

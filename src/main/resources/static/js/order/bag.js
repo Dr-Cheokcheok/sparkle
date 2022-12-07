@@ -79,8 +79,34 @@ function deleteList(index){
     totalsum();
 }
 
+function setReq(index, su){
+    const id = document.querySelectorAll(".id-name")[index];
+
+    let setData = {
+        productId : Number(id.value),
+        quantity: su
+    }
+
+    $.ajax({
+        async:false,
+        url: "/api/bag/userbag",
+        type: "put",
+        data: JSON.stringify(setData),
+        contentType: "application/json",
+        dataType: "json",
+        success: (response) => {
+
+        },
+        error: (error) => {
+
+        }
+
+    });
+}
+
 //-버튼
 function decrease(index){
+
     let su = document.querySelector(`#quantity-${index}`);
     
     if(Number(su.innerHTML) > 1){
@@ -88,50 +114,16 @@ function decrease(index){
         document.querySelector(`#quantity-${index}`).innerHTML = su;
         document.querySelector(`#pro-price-${index}`).innerHTML = (Number(document.querySelector(`#hidden-price-${index}`).value) * su).toLocaleString("ko-KR") + "원";
         document.querySelector(`#spoqa-${index}`).innerHTML = (Number(document.querySelector(`#hidden-retail-price-${index}`).value) * su).toLocaleString('ko-KR') + "원";
+
+        setReq(index, su);
         totalsum();
 
-        const update = {
-            productId: document.querySelector(`#id-${index}`).replace("id-",""),
-            userId : "",
-        };
+
     }
+
 }
 
-//        const update = {
-//            productId: document.querySelector(`#id-${index}`).replace("id-",""),
-//            userId : "",
-//        };
-        // $.ajax({
-        //     async: false,
-        //     type: "post",
-        //     url: "/api/bag/product/decrease",
-        //     contentType: "application/json",
-        //     data: JSON.stringify(update),
-        //     dataType: "json",
-        //     success: (result) => {
-        //         console.log(result);
-        //     },
-        //     error: (error) => {
-        //         console.log("error:" + error);
-        //     }
-        // });
-    // }
-// function decrease(index){
-//     let su = document.querySelectorAll("#quantity")[index];
-    
-//     if(Number(su.innerHTML) > 1){
-//         su = Number(su.innerHTML) - 1;
 
-//         let test = document.querySelectorAll(".hidden-price")[index];
-
-//         test.value = Number(test.value) * su;
-//         // document.querySelectorAll(".pro-price")[index].innerHTML = 
-
-//         document.querySelectorAll("#spoqa")[index].innerHTML = 
-//         (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
-//     }
-
-// }
 
 //+버튼
 function increase(index){
@@ -142,6 +134,7 @@ function increase(index){
         document.querySelector(`#quantity-${index}`).innerHTML = su;
         document.querySelector(`#pro-price-${index}`).innerHTML = (Number(document.querySelector(`#hidden-price-${index}`).value) * su).toLocaleString("ko-KR") + "원";
         document.querySelector(`#spoqa-${index}`).innerHTML = (Number(document.querySelector(`#hidden-retail-price-${index}`).value) * su).toLocaleString('ko-KR') + "원";
+        setReq(index,su);
         totalsum();
     }
 
@@ -217,9 +210,10 @@ class BagApi {
                 alert("상품 삭제 실패!");
                 console.log(error);
             }
-        })
+        });
     }
 }
+
 class BagService {
     static #instance = null;
 
@@ -254,7 +248,7 @@ class BagService {
                 <td class="taL">
                     <input type="checkbox" name="item_ids[]" class="chk_style" value="">
                     <div>
-                        <input type="hidden" id ="id-${border.id}" class = "idname" name="items[512313][product_id]" value="">
+                        <input type="hidden" id ="id-${border.id}" class = "id-name" name="items[512313][product_id]" value="${border.id}">
                     </div>
                 </td>
                 <td class="taL pro-option">

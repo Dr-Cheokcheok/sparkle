@@ -7,6 +7,7 @@ import com.spakle.spakleclone20221104.dto.shop.BagDto;
 
 import java.rmi.server.ExportException;
 import java.util.List;
+import java.util.Map;
 
 public interface BagService {
 
@@ -26,5 +27,6 @@ public interface BagService {
 
     public List<OrderReqDto> getChkOrderList(int user_id,String checkArr) throws Exception;
     public boolean deleteList(int user_id, int product_id) throws Exception;
+    public void setQuantity(Map<String, Integer> map)throws Exception;
 
 }

@@ -28,4 +28,6 @@ public interface BagRepository {
     public int deleteList(Map<String, Integer> map) throws Exception;
 
      public List<BagList> getChkOrderList(int user_id,String checkArr) throws Exception;
+
+     public int setQuantity(Map<String, Integer> setMap)throws Exception;
 }

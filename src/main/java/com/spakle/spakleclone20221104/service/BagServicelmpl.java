@@ -93,4 +93,10 @@ public class BagServicelmpl implements BagService {
             result =bagRepository.deleteList(map);
         return result != 0 ;
     }
+
+    @Override
+    public void setQuantity(Map<String, Integer> map) throws Exception {
+        int result = bagRepository.setQuantity(map);
+    }
+
 }
