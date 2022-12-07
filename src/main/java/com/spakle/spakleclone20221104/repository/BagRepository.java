@@ -25,4 +25,5 @@ public interface BagRepository {
 
      public List<BagList> getOrderList(int user_id) throws Exception;
 
+     public List<BagList> getChkOrderList(int user_id,String checkArr) throws Exception;
 }

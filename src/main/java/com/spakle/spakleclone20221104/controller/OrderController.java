@@ -37,11 +37,22 @@ public class OrderController {
     }
 
     //장바구니 매핑
-    @GetMapping("/bagall")
-    public String loadOrder2(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
+    @PostMapping("/bagall")
+    public String bagAll(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
         User user = principalDetails.getUser();
 
         model.addAttribute("orderList",bagService.getOrderList(user.getId()));
+        model.addAttribute("principalUser", principalDetails.getUser());
+
+        return "order/order";
+    }
+    @PostMapping("/bagselect")
+    public String bagSelect(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails,
+                            String checkArr) throws Exception{
+
+        User user = principalDetails.getUser();
+
+        model.addAttribute("orderList",bagService.getChkOrderList(user.getId(),checkArr));
         model.addAttribute("principalUser", principalDetails.getUser());
 
         return "order/order";

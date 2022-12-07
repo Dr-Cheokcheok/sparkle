@@ -73,4 +73,14 @@ public class BagServicelmpl implements BagService {
 
         return orderList;
     }
+
+    @Override
+    public List<OrderReqDto> getChkOrderList(int user_id,String checkArr) throws Exception{
+        List<OrderReqDto> chkorderList = new ArrayList<>();
+        bagRepository.getChkOrderList(user_id,checkArr).forEach(BagList -> {
+            chkorderList.add(BagList.toItemsDto());
+        });
+
+        return chkorderList;
+    }
 }

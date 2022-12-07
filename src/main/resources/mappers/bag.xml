@@ -79,20 +79,41 @@
 
     <select id="getOrderList" resultMap="BagList">
         SELECT
-        pt.id,
-        pt.name,
-        pt.price,
-        pt.price-pt.retail_price AS `retail_price`,
-        pt.rate,
-        ct.quantity,
-        pt.img
+            pt.id,
+            pt.name,
+            pt.price,
+            pt.price-pt.retail_price AS `retail_price`,
+            pt.rate,
+            ct.quantity,
+            pt.img
         FROM
-        cart ct
+            cart ct
         LEFT JOIN
-        product pt on pt.id = ct.product_id
+            product pt on pt.id = ct.product_id
         WHERE
-        ct.user_id = #{user_id}
+            ct.user_id = #{user_id}
         ORDER BY
-        ct.count
+            ct.count
+    </select>
+
+    <select id="getChkOrderList" resultMap="BagList">
+        SELECT
+            pt.id,
+            pt.name,
+            pt.price,
+            pt.price-pt.retail_price AS `retail_price`,
+            pt.rate,
+            ct.quantity,
+            pt.img
+        FROM
+            cart ct
+        LEFT JOIN
+            product pt on pt.id = ct.product_id
+        WHERE
+            ct.user_id = #{user_id}
+        AND
+            pt.id in (#{checkArr})
+        ORDER BY
+            ct.count
     </select>
 </mapper>

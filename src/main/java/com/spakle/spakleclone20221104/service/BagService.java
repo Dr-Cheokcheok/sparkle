@@ -24,4 +24,6 @@ public interface BagService {
 
     public List<OrderReqDto> getOrderList(int user_id) throws Exception;
 
+    public List<OrderReqDto> getChkOrderList(int user_id,String checkArr) throws Exception;
+
 }
