@@ -150,10 +150,10 @@ function decrease(index){
         document.querySelector(`#spoqa-${index}`).innerHTML = (Number(document.querySelector(`#hidden-retail-price-${index}`).value) * su).toLocaleString('ko-KR') + "원";
         totalsum();
 
-        const update = {
-            productId: document.querySelector(`#id-${index}`).replace("id-",""),
-            userId : "",
-        };
+//        const update = {
+//            productId: document.querySelector(`#id-${index}`).replace("id-",""),
+//            userId : "",
+//        };
     }
 }
         // $.ajax({
