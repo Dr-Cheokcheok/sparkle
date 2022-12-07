@@ -27,5 +27,5 @@ public interface BagService {
 
     public List<OrderReqDto> getChkOrderList(int user_id,String checkArr) throws Exception;
 
-    public boolean bagDelList(List<OrderBagDelDto> orderBagDelDtos) throws Exception;
+    public void bagDelList(List<OrderBagDelDto> orderBagDelDto) throws Exception;
 }

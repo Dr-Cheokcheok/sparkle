@@ -10,7 +10,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class OrderBagDelDto {
-    private int userId;
+    private String userId;
     private int productId;
     private int quantity;
 

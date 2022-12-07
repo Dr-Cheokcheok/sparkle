@@ -91,14 +91,14 @@ public class BagServicelmpl implements BagService {
     }
 
     @Override
-    public boolean bagDelList(List<OrderBagDelDto> orderBagDelDtos) throws Exception {
+    public void bagDelList(List<OrderBagDelDto> orderBagDelDto) throws Exception {
         List<OrderBag> bagDelList = new ArrayList<>();
 
-        orderBagDelDtos.forEach(OrderBagDelDto -> {
+        orderBagDelDto.forEach(OrderBagDelDto -> {
             bagDelList.add(OrderBagDelDto.toBagDelEntity());
         });
 
-        return bagRepository.bagDelete(bagDelList);
+        bagRepository.bagDelete(bagDelList);
 
     }
 }

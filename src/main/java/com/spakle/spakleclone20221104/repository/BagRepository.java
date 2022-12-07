@@ -28,6 +28,6 @@ public interface BagRepository {
 
      public List<BagList> getChkOrderList(Map<String, Object> map) throws Exception;
 
-     public boolean bagDelete(List<OrderBag> orderBag) throws Exception;
+     public void bagDelete(List<OrderBag> orderBag) throws Exception;
 
 }

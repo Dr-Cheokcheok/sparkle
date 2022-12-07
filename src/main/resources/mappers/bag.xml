@@ -5,6 +5,12 @@
 
 <mapper namespace ="com.spakle.spakleclone20221104.repository.BagRepository">
 
+    <resultMap id="Order_Bag" type="com.spakle.spakleclone20221104.domain.order.OrderBag">
+        <result property="user_id" column="user_id"></result>
+        <result property="product_id" column="product_id"></result>
+        <result property="quantity" column="quantity"></result>
+    </resultMap>
+
     <resultMap id="Bag" type="com.spakle.spakleclone20221104.domain.Bag">
         <result property="id" column="id"></result>
         <result property="name" column="name"></result>
@@ -132,13 +138,13 @@
     </select>
 
     <delete id="bagDelete" parameterType="java.util.List">
-        delete
-            from cart
-        where
-        
-
-
-
+        delete from cart ct
+        LEFT JOIN user_mst um ON ct.user_id = um.id
+        <where>
+            <foreach collection="list" item="item" separator="or">
+                (um.`username` = #{item.user_id} and ct.`product_id` = #{item.product_id})
+            </foreach>
+        </where>
     </delete>
 
 </mapper>

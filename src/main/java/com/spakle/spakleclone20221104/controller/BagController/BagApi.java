@@ -75,11 +75,11 @@ public class BagApi {
         return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", bagService.getBagList(user.getId())));
     }
     @DeleteMapping("/bagdelete")
-    public ResponseEntity<?> bagDelete(@RequestBody List<Map<String , Object>> data) throws Exception{
+    public void bagDelete(@RequestBody List<Map<String , Object>> data) throws Exception{
         List<OrderBagDelDto> bagDelList = new ArrayList<>();
 
         data.forEach(bagDel -> {
-            Integer userId = (Integer) bagDel.get("user_id");
+            String userId = (String) bagDel.get("user_id");
             Integer productId = (Integer) bagDel.get("product_id");
             Integer quantity = (Integer) bagDel.get("quantity");
 
@@ -87,8 +87,8 @@ public class BagApi {
             bagDelList.add(orderBagDelDto);
 
         });
-
-        return ResponseEntity.ok(new CMRespDto<>(1, "insertOrderDtl", bagService.bagDelList(bagDelList)));
+        bagService.bagDelList(bagDelList);
+//        return ResponseEntity.ok(new CMRespDto<>(1, "deleteBagList", bagService.bagDelList(bagDelList)));
 
     }
 

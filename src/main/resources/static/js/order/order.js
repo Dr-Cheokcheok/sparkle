@@ -161,95 +161,6 @@ function payment() {
 
 // 카드 결제
 function paymentCard(data) {
-		
-	IMP.init("imp14753140"); 
-		
-	IMP.request_pay({ // param
-        pg: "html5_inicis",
-	  	pay_method: data.payMethod,
-	  	merchant_uid: data.orderNum,
-	  	name: data.name,
-	  	amount: data.totalPrice,
-	   	buyer_email: "",
-	   	buyer_name: data.recipientName,
-	  	buyer_tel: data.phone,
-	  	buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
-	  	buyer_postcode: data.deleveryAddress1
-  	}, 
-	function (rsp) { // callback
-		if (rsp.success) {
-         // 결제 성공 시 로직,
-         InfoDataDtl();
-         InfoData(data);
-         alert("결제가 완료되었습니다!");
-         location.replace("/account/order/detail");
-
-		} else {
-          // 결제 실패 시 로직,
-             var msg = '결제에 실패했습니다. \n';
-            msg += rsp.error_msg
-            alert(msg);            
-            return false;
-		}
-	});
-}
-
-// 장바구니 A 보따리
-// const totalCost = 
-
-function InfoDataDtl(){
-    console.log(productDataList);
-
-    $.ajax({
-        async: false,
-        url: "/api/order/detail",
-        type: "post",
-        contentType: "application/json",
-        data: JSON.stringify(productDataList),
-        dataType: "json",
-        success: (response)=>{
-            console.log(response.data)
-        },
-        error: (error) => {
-            console.log(error)
-        }
-    });
-}
-
-
-function InfoData(data){
-
-    $.ajax({
-        async: false,
-        type: "post",
-        url: "/api/order/prepare",
-        contentType: "application/json",
-        data: JSON.stringify({
-            userId : data.userId,
-            orderId : data.orderNum,
-            ordererName : data.ordererName,
-            recipientName : data.recipientName,
-            phone : data.phone,
-            postCode : data.deleveryAddress1,
-            address : data.deleveryAddress2,
-            detailAddress : data.deleveryAddress3,
-            shipMsg : data.request,
-            entrance : data.door,
-            pet : data.pet,
-            totalPrice : data.totalPrice
-        }),
-        dataType: "json",
-        success: (response) => {
-            console.log(response);
-        },
-        error: (error) => {
-            console.log(error);
-        }
-        });
-    }
-
-// 카드 결제
-function paymentCard(data) {
       
    IMP.init("imp14753140"); 
       
@@ -407,6 +318,8 @@ calcAmountText.textContent = (totalPrice - totalDiscount).toLocaleString()
 //결제 시 카트에서 상품 지우기
 function bagDelete(){
 
+    productDataList = [];
+
     const data = {
         userId : $('input[name="user_id"]').val(),
         productData : productDataList
@@ -417,6 +330,7 @@ function bagDelete(){
 
     for (let i = 0; i < productIdInput.length; i++) {
         const productObject = {
+            user_id : data.userId,
             product_id : Number(productIdInput[i].value),
             quantity: Number(productQuantity[i].value),
         }
@@ -433,7 +347,7 @@ function bagDelete(){
         data: JSON.stringify(productDataList),
         dataType: "json",
         success: (response)=>{
-            console.log(response.data)
+            // console.log(response.data)
         },
         error: (error) => {
             console.log(error)
