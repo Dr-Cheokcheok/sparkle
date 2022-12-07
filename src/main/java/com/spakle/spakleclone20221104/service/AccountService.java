@@ -20,5 +20,6 @@ public interface AccountService {
 
     public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String ,Object > map)throws Exception;
     public List<ShopListRespDto> getLikes(@AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception;
+    public boolean deleteLikes(@AuthenticationPrincipal PrincipalDetails principalDetails, int productId)throws Exception;
 }
 

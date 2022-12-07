@@ -10,6 +10,7 @@ import com.spakle.spakleclone20221104.service.AccountService;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -71,5 +72,10 @@ public class AccountApi {
     @GetMapping("/likes")
     public ResponseEntity<?> getLikes(@AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception{
         return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully",accountService.getLikes(principalDetails)));
+    }
+
+    @DeleteMapping("/likes")
+    public boolean delLikes(@AuthenticationPrincipal PrincipalDetails principalDetails, int productId)throws Exception{
+        return accountService.deleteLikes(principalDetails, productId);
     }
 }

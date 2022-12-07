@@ -131,7 +131,6 @@ public class AccountServicelmpl implements AccountService {
 
         return accountRepository.like(newMap);
     }
-
     @Override
     public List<ShopListRespDto> getLikes(PrincipalDetails principalDetails) throws Exception {
         List<ShopListRespDto> likeList = new ArrayList<>();
@@ -140,7 +139,14 @@ public class AccountServicelmpl implements AccountService {
         accountRepository.getLikes(id).forEach(collectionProduct -> {
             likeList.add(collectionProduct.toListRespDto());
         });
-
         return likeList;
     }
+
+    @Override
+    public boolean deleteLikes(PrincipalDetails principalDetails, int productId) throws Exception {
+        int userId = principalDetails.getUser().getId();
+        return accountRepository.deleteLikes(userId,productId) != 0;
+    }
+
+
 }

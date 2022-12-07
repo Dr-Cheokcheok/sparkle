@@ -94,8 +94,9 @@ if(location.href.includes("/users/edit")){
     window.onload = () => {
         getLikes();
     }
+    const likesBox = document.querySelector(".likes-box");
     function getLikes(){
-
+        likesBox.innerHTML = "";
         $.ajax({
             async: false,
             type: "get",
@@ -111,12 +112,10 @@ if(location.href.includes("/users/edit")){
 
     }
     function likesView(responseData){
-        const likesBox = document.querySelector(".likes-box");
-        likesBox.innerHTML = "";
-
         responseData.forEach(product =>{
             likesBox.innerHTML +=`
                 <div class="like-product">
+                    <input type="hidden" value="${product.productId}" id="like-id">
                     <img class="product-img" src="/image/product/${product.img}">
                     <div class="product-explan">
                         <p>${product.name}</p>
@@ -130,7 +129,39 @@ if(location.href.includes("/users/edit")){
                 </div>
             `;
         });
+        deleteLikes();
     }
+
+    function deleteLikes(){
+    const likesDelete = document.querySelectorAll(".buttons .likes-delete");
+    const likeIds = document.querySelectorAll("#like-id");
+    likesDelete.forEach((del, index) => {
+        del.onclick = () => {
+            if(confirm("삭제하시겠습니까?")){
+                $.ajax({
+                    async: false,
+                    type: "delete",
+                    url: "/api/account/likes",
+                    data: likeIds[index].value,
+                    contentType: "application/json",
+                    success: (response) => {
+                        if(!response){
+                            alert("삭제실패");
+                        }
+                        getLikes();
+                    },
+                    error: (error) =>{
+                        console.log(error)
+                    }
+                });
+            }
+
+        }
+    });
+    }
+
+
+
 }
 
 

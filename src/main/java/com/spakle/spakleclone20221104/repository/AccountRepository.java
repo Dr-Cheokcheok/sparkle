@@ -22,5 +22,6 @@ public interface AccountRepository {
     public int like(Map<String, Integer>map);//관심상품
 
     public List<CollectionProduct> getLikes(int id);
+    public int deleteLikes(int userId, int productId);
 
 }

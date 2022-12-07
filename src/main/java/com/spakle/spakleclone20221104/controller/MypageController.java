@@ -4,6 +4,7 @@ import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -27,6 +28,7 @@ public class MypageController {
         model.addAttribute("principalUser",principalDetails.getUser());
         return "mypage/mypage";
     }
+
 
     @GetMapping("/users/edit")
     public String loadUserEdit(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
