@@ -105,11 +105,12 @@
             user_id = #{userId} and product_id = #{productId}
     </delete>
 
-    <delete id="deleteUser" parameterType="Integer">
+    <delete id="deleteUser">
+
         delete
             from
                 user_mst
             where
-                id = #{userId}
+                username = #{username}
     </delete>
 </mapper>

@@ -1,15 +1,23 @@
 const confirmBtn = document.querySelector(".confirm-btn");
 const cancelBtn = document.querySelector(".cancel-btn");
 const agreeCk = document.querySelector(".agree-ck");
-
+let dltReason = document.querySelectorAll(".dlt-reason");
 let username = $("#user-id").val();
-let st = 0;
-
-let dltReason = $("input:radio[name='reason']:radio[value='" + st + "']").prop('checked', true);
 
 confirmBtn.onclick = () => {
-    alert(st);
-    if(st > 5 || st < 0) {
+
+    let flag = false;
+    let reason;
+
+    dltReason.forEach(radio => {
+
+        if(radio.checked){
+            reason = radio.value;
+            flag = true;
+        }
+    });
+
+    if(!flag){
         alert("탈퇴 사유를 선택해주세요.");
         location.reload();
 
@@ -38,10 +46,12 @@ cancelBtn.onclick = () => {
         url: "/api/account/delete/" + username,
         dataType: "json",
         success: (response) => {
-            alert("회원 탈퇴가 정상적으로 처리되었습니다.");
-            location.replace("/login");
+            alert(username);
+            alert("회원 탈퇴가 성공적으로 처리되었습니다.");
+            location.replace("/logout");
         },
         error: (error) => {
+            alert(username);
             alert("회원 탈퇴 처리가 실패하였습니다.");
             console.log(error);
         }

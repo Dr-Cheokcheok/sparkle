@@ -183,7 +183,7 @@ function paymentCard(data) {
          InfoDataDtl(); 
          InfoData(data);
          alert("결제가 완료되었습니다!");
-         location.replace("/account/order/detail/" + data.orderNum);
+         location.replace("/account/order/" + data.orderNum);
 
 		} else {
           // 결제 실패 시 로직,

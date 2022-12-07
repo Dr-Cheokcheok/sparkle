@@ -22,7 +22,6 @@ public interface AccountRepository {
 
     public List<CollectionProduct> getLikes(int id);
     public int deleteLikes(int userId, int productId);
-
-    public int deleteUser(int userId);
+    public int deleteUser(String username);
 
 }

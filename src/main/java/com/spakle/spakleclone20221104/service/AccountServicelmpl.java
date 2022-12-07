@@ -133,15 +133,8 @@ public class AccountServicelmpl implements AccountService {
 
     @Override
     public boolean deleteUser(PrincipalDetails principalDetails, String username) throws Exception {
-
-        if(username == principalDetails.getUsername()) {
-            int userId = principalDetails.getUser().getId();
-            accountRepository.deleteUser(userId);
-
-            return true;
-        }
-
-        return false;
+        log.info("dddddddddddddddddddddddddddddddddddddddd : {}", username);
+        return accountRepository.deleteUser(username) != 0;
     }
 
 

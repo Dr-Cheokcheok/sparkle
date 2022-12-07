@@ -71,7 +71,8 @@ public class AccountApi {
     }
 
     @DeleteMapping("/delete/{username}")
-    public boolean deleteUser(@AuthenticationPrincipal PrincipalDetails principalDetails, String username) throws Exception {
+    public boolean deleteUser(@AuthenticationPrincipal PrincipalDetails principalDetails,@PathVariable String username) throws Exception {
+
         return accountService.deleteUser(principalDetails, username);
     }
 }
