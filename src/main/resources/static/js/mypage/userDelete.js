@@ -3,25 +3,28 @@ const cancelBtn = document.querySelector(".cancel-btn");
 const agreeCk = document.querySelector(".agree-ck");
 
 let username = $("#user-id").val();
-let st = 0;
 
-let dltReason = $("input:radio[name='reason']:radio[value='" + st + "']").prop('checked', true);
+let dltReason = document.querySelectorAll(".dlt-reason");
 
 confirmBtn.onclick = () => {
-    alert(st);
-    if(st > 5 || st < 0) {
+    let flag = false;
+    let reason;
+    dltReason.forEach(radio => {
+        if(radio.checked){
+            reason = radio.value;
+            flag = true;
+        }
+    });
+
+    if(!flag){
         alert("탈퇴 사유를 선택해주세요.");
         location.reload();
-
-    }else if(!agreeCk.checked){
+    } else if(!agreeCk.checked){
         alert("정보삭제에 동의를 체크하셔야합니다.");
         location.reload();
-
     }else {
-
         alert("정말로 탈퇴하시겠습니까?");
         deleteUser(username);
-
     }
 }
 
