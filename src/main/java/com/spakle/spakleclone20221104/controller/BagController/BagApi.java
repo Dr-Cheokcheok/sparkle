@@ -71,5 +71,14 @@ public class BagApi {
         log.info("{}", bagService.getBagList(user.getId()));
         return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", bagService.getBagList(user.getId())));
     }
+//    @PutMapping("/product/decrease")
+//    public boolean accountModify(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, String> map) throws Exception {
+//        return accountService.modification(principalDetails, map);
+//    }
+    @DeleteMapping("/userbag")
+    public  boolean deleteBag(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String ,Integer>map)throws Exception {
+
+        return bagService.deleteList(principalDetails.getUser().getId(),map.get("id"));
+    }
 
 }

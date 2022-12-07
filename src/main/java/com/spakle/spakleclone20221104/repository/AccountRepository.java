@@ -18,7 +18,7 @@ public interface AccountRepository {
     public int overlappedID(ChkId chkId);
 
     public int updateUser(UserMod userMod);
-    public int like(Map<String, Integer>map);//관심상품
+    public int like(Map<String, Integer> map);//관심상품
 
     public List<CollectionProduct> getLikes(int id);
     public int deleteLikes(int userId, int productId);

@@ -83,4 +83,14 @@ public class BagServicelmpl implements BagService {
 
         return chkorderList;
     }
+    
+    @Override
+    public boolean deleteList(int user_id, int product_id)  throws Exception{
+        Map<String, Integer> map = new HashMap<>();
+            map.put("user_id", user_id);
+            map.put("product_id", product_id);
+            int result = 0;
+            result =bagRepository.deleteList(map);
+        return result != 0 ;
+    }
 }
