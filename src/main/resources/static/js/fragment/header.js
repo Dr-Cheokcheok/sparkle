@@ -57,7 +57,20 @@ function loadHeader() {
                 <a href="">고객센터</a>
             </li>
         `;
-    } else {
+
+    } else if(principal.authorities[0].authority === "ROLE_ADMIN"){
+        utilMenu.innerHTML = `
+            <li>
+                <a href="/admin/addition">관리자 페이지</a>
+            </li>
+            <li>
+                <a href="/logout">로그아웃</a>
+            </li>
+            <li>
+                <a href="">고객센터</a>
+            </li>
+        `;
+    }else{
         utilMenu.innerHTML = `
             <li>
                 <a href="/logout">로그아웃</a>

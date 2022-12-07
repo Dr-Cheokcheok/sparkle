@@ -24,7 +24,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean addOrder(OrderInsertDto orderInsertDto) throws Exception {
-
         int resultCount = 0;
 
         Order order = orderInsertDto.toOrderEntity();
@@ -33,7 +32,6 @@ public class OrderServiceImpl implements OrderService {
         if (resultCount == 0) {
             throw new CustomInternalServerErrorException("결제 정보 등록 실패");
         }
-
         return true;
     }
 

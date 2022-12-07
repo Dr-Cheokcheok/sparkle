@@ -23,7 +23,11 @@ public interface BagRepository {
 
     public List<Bag> getBagList(Map<String, Object> map, int user_id) throws Exception;
 
-     public List<BagList> getOrderList(int user_id) throws Exception;
+    public List<BagList> getOrderList(int user_id) throws Exception;
+
+    public int deleteList(Map<String, Integer> map) throws Exception;
 
      public List<BagList> getChkOrderList(int user_id,String checkArr) throws Exception;
+
+     public int setQuantity(Map<String, Integer> setMap)throws Exception;
 }

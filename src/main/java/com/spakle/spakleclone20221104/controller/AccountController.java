@@ -23,10 +23,15 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String loadLogin(@RequestParam(value = "error", required = false) String error,
+    public String loadLogin(HttpServletRequest request, @RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "exception", required = false) String exception, Model model) {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
+
+        String uri = request.getHeader("Referer");
+        if (uri != null && !uri.contains("/login")) {
+            request.getSession().setAttribute("prevPage", uri);
+        }
         log.info("loginForm view resolve");
         return "account/login";
     }
