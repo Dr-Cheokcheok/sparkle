@@ -116,6 +116,7 @@ public class AccountServicelmpl implements AccountService {
     @Override
     public List<ShopListRespDto> getLikes(PrincipalDetails principalDetails) throws Exception {
         List<ShopListRespDto> likeList = new ArrayList<>();
+
         int id = principalDetails.getUser().getId();
 
         accountRepository.getLikes(id).forEach(collectionProduct -> {
@@ -128,6 +129,19 @@ public class AccountServicelmpl implements AccountService {
     public boolean deleteLikes(PrincipalDetails principalDetails, int productId) throws Exception {
         int userId = principalDetails.getUser().getId();
         return accountRepository.deleteLikes(userId,productId) != 0;
+    }
+
+    @Override
+    public boolean deleteUser(PrincipalDetails principalDetails, String username) throws Exception {
+
+        if(username == principalDetails.getUsername()) {
+            int userId = principalDetails.getUser().getId();
+            accountRepository.deleteUser(userId);
+
+            return true;
+        }
+
+        return false;
     }
 
 

@@ -19,5 +19,9 @@ public interface OrderRepository {
 
     public List<Order> getOrderDetails(String orderId) throws Exception;
 
-    public MyInfoCount getCounts(String userId) throws Exception;
+    public MyInfoCount getOrderCount(String userId) throws Exception;
+
+    public MyInfoCount getCartCount(String userId) throws Exception;
+
+    public MyInfoCount getLikesCount(String userId) throws Exception;
 }

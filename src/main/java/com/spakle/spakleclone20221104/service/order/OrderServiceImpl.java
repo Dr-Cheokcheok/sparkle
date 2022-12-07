@@ -60,11 +60,8 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderListRepDto> orderList = new ArrayList<>();
 
-        MyInfoCount myInfoCount = orderRepository.getCounts(userId);
-
         orderRepository.getOrderList(userId).forEach(order -> {
             orderList.add(OrderListRepDto.builder()
-                    .myInfoCount(myInfoCount)
                     .userId(order.getUser_id())
                     .orderDate(order.getOrder_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                     .orderId(order.getOrder_id())
@@ -82,8 +79,6 @@ public class OrderServiceImpl implements OrderService {
     public List<OrderRespDto> getOrderDetailList(String orderId, String userId) throws Exception {
 
         List<OrderRespDto> orderRespDto = new ArrayList<>();
-
-        MyInfoCount myInfoCount = orderRepository.getCounts(userId);
 
         orderRepository.getOrderDetails(orderId).forEach(order -> {
             orderRespDto.add(OrderRespDto.builder()
@@ -104,12 +99,27 @@ public class OrderServiceImpl implements OrderService {
                             .img(order.getImg())
                             .name(order.getName())
                             .productId(order.getProduct_id())
-                            .myInfoCount(myInfoCount)
                             .build());
         });
 
 
         return orderRespDto;
+    }
+
+    @Override
+    public List<MyInfoCount> getCount(String userId) throws Exception {
+
+        List<MyInfoCount> myInfoList = new ArrayList<>();
+
+        MyInfoCount myInfoCount1 = orderRepository.getOrderCount(userId);
+        MyInfoCount myInfoCount2 = orderRepository.getCartCount(userId);
+        MyInfoCount myInfoCount3 = orderRepository.getLikesCount(userId);
+
+        myInfoList.add(myInfoCount1);
+        myInfoList.add(myInfoCount2);
+        myInfoList.add(myInfoCount3);
+
+        return myInfoList;
     }
 
 }

@@ -28,6 +28,27 @@ class orderDtlApi {
 
         return responseData;
     }
+
+    getCount() {
+        let countData = null;
+        let userId = $("#user-id").val();
+
+        $.ajax({
+            async: false,
+            type: "get",
+            url: "/api/order/count/" + userId,
+            dataType: "json",
+            success: (response) => {
+                countData = response.data;
+                console.log(countData);
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+
+        return countData;
+    }
 }
 
 class OrderDetailService {
@@ -41,27 +62,31 @@ class OrderDetailService {
 
     loadOrderDtl() {
         this.responseData = orderDtlApi.getInstance().getOrderDetail();
-        console.log(this.responseData);
+        this.countData = orderDtlApi.getInstance().getCount();
         this.getOrderDtl(this.responseData);
+        this.getCountList(this.countData);
     }
+
+    getCountList(countData) {
+        const myInfoTop = document.querySelector(".myInfo-top");
+
+     myInfoTop.innerHTML += `
+     <ul>
+         <li><img src="/static/images/img/my_face.png"></li>
+         <li><p class="username"">${countData[0].realName}</p><p class="user-id">${countData[0].username}</p></li>
+         <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
+         <li><a href="/bag"><p>장바구니</p><p class="blue-t">${countData[1].cartCount}</p></a></li>
+         <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">${countData[0].orderCount}</p></a></li>
+         <li><a href="/account"><p>관심상품</p><p class="blue-t">${countData[2].likesCount}</p></a></li>
+     </ul>
+         `
+ }
 
     getOrderDtl(responseData) {
         const txtbx = document.querySelector(".txtbx");
         const orderLists = document.querySelector(".order-list");
         const dtlone = document.querySelector(".dtl-one");
         const dtltwo = document.querySelector(".dtl-two");
-        const myInfoTop = document.querySelector(".myInfo-top");
-
-        myInfoTop.innerHTML += `
-        <ul>
-            <li><img src="/static/images/img/my_face.png"></li>
-            <li><p class="username"">${responseData[0].myInfoCount.realName}</p><p class="user-id">${responseData[0].myInfoCount.username}</p></li>
-            <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
-            <li><a href="/bag"><p>장바구니</p><p class="blue-t">${responseData[0].myInfoCount.cartCount}</p></a></li>
-            <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">${responseData[0].myInfoCount.orderCount}</p></a></li>
-            <li><a href="/account"><p>관심상품</p><p class="blue-t">${responseData[0].myInfoCount.likesCount}</p></a></li>
-        </ul>
-        `;
 
         let orderDate = responseData[0].orderDate.substring(0, 10);
         orderDate = orderDate.replaceAll("-", ".");

@@ -82,7 +82,7 @@ let interval2 = getInterval2(); // interval 등록
 
 
 
-/*  기획전 배너    */ 
+/*  기획전 배너    */
 
 /*
   div사이즈 동적으로 구하기
@@ -145,11 +145,11 @@ function checkCategory() {
   const category = "생수";
 
   categoryBtns.forEach(categoryBtn => {
-  if(category == categoryBtn.value){
+    if(category == categoryBtn.value){
 
-    categoryBtn.checked = true;
-    toggleBtn(categoryBtn.id);
-   
+      categoryBtn.checked = true;
+      toggleBtn(categoryBtn.id);
+
     }
   });
 
@@ -240,9 +240,9 @@ function reload(input){
 
   if(input.checked){
     products.innerHTML = "";
-    
+
     this.responseData.forEach(product => {
-      
+
       if (product.group == input.value) {
         if(product.rate == 0) {    // 할인율이 0인 경우 판매가만 남음
           products.innerHTML += `
@@ -268,7 +268,7 @@ function reload(input){
           `;
 
         }else {
-           products.innerHTML += `
+          products.innerHTML += `
                 <li class="product">
                   <figure>
                     <a href= "/product/${product.productId}">
@@ -291,7 +291,7 @@ function reload(input){
                   </div>
                 </li>
                 `;
-        }  
+        }
       }
     });
     slick();    // 화면넘어가는 함수
@@ -315,9 +315,9 @@ function slick() {
 
 $(window).scroll(function(){
   if ($(this).scrollTop() > 300){
-      $('.btn_gotop').show();
+    $('.btn_gotop').show();
   } else{
-      $('.btn_gotop').hide();
+    $('.btn_gotop').hide();
   }
 });
 $('.btn_gotop').click(function(){
@@ -326,7 +326,7 @@ $('.btn_gotop').click(function(){
 });
 
 function priceToString(price) {    // 금액에 , 찍어주는 함수
-  
+
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 

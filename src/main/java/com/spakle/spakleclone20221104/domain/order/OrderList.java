@@ -19,7 +19,6 @@ public class OrderList {
     private LocalDateTime order_date;
     private int total_price;
 
-    private MyInfoCount myInfoCount;
     private List<OrderDetail> orderDetailList;
 
 }
