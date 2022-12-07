@@ -3,6 +3,8 @@ package com.spakle.spakleclone20221104.service;
 import com.spakle.spakleclone20221104.domain.BagList;
 import com.spakle.spakleclone20221104.domain.BagVO;
 import com.spakle.spakleclone20221104.domain.User;
+import com.spakle.spakleclone20221104.domain.order.OrderBag;
+import com.spakle.spakleclone20221104.dto.order.OrderBagDelDto;
 import com.spakle.spakleclone20221104.dto.order.OrderReqDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDto;
@@ -86,5 +88,17 @@ public class BagServicelmpl implements BagService {
         });
 
         return chkorderList;
+    }
+
+    @Override
+    public boolean bagDelList(List<OrderBagDelDto> orderBagDelDtos) throws Exception {
+        List<OrderBag> bagDelList = new ArrayList<>();
+
+        orderBagDelDtos.forEach(OrderBagDelDto -> {
+            bagDelList.add(OrderBagDelDto.toBagDelEntity());
+        });
+
+        return bagRepository.bagDelete(bagDelList);
+
     }
 }

@@ -71,6 +71,7 @@ const payBtn = document.querySelector("#payBtn");
 
 payBtn.onclick = (e) => {
     e.preventDefault();
+    bagDelete();
     payment();
 }
 
@@ -178,7 +179,7 @@ function paymentCard(data) {
 	function (rsp) { // callback
 		if (rsp.success) {
          // 결제 성공 시 로직,
-         InfoDataDtl(); 
+         InfoDataDtl();
          InfoData(data);
          alert("결제가 완료되었습니다!");
          location.replace("/account/order/detail");
@@ -192,7 +193,6 @@ function paymentCard(data) {
 		}
 	});
 }
-
 
 // 장바구니 A 보따리
 // const totalCost = 
@@ -403,6 +403,44 @@ cartTotalPrice.innerHTML = `
     `;
 const calcAmountText = document.querySelector("#calc-amount-text");
 calcAmountText.textContent = (totalPrice - totalDiscount).toLocaleString()
+
+//결제 시 카트에서 상품 지우기
+function bagDelete(){
+
+    const data = {
+        userId : $('input[name="user_id"]').val(),
+        productData : productDataList
+    }
+
+    const productIdInput = document.querySelectorAll("#productId");
+    const productQuantity = document.querySelectorAll("#quantity");
+
+    for (let i = 0; i < productIdInput.length; i++) {
+        const productObject = {
+            product_id : Number(productIdInput[i].value),
+            quantity: Number(productQuantity[i].value),
+        }
+        productDataList.push(productObject);
+    }
+
+    console.log(productDataList);
+
+    $.ajax({
+        async: false,
+        url: "/api/bag/bagdelete",
+        type: "delete",
+        contentType: "application/json",
+        data: JSON.stringify(productDataList),
+        dataType: "json",
+        success: (response)=>{
+            console.log(response.data)
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    });
+
+}
 
 window.onload = () => {
     history.replaceState({}, null, location.pathname);

@@ -1,5 +1,6 @@
 package com.spakle.spakleclone20221104.service;
 
+import com.spakle.spakleclone20221104.dto.order.OrderBagDelDto;
 import com.spakle.spakleclone20221104.dto.order.OrderReqDto;
 import com.spakle.spakleclone20221104.dto.product.ProductListRespDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
@@ -26,4 +27,5 @@ public interface BagService {
 
     public List<OrderReqDto> getChkOrderList(int user_id,String checkArr) throws Exception;
 
+    public boolean bagDelList(List<OrderBagDelDto> orderBagDelDtos) throws Exception;
 }

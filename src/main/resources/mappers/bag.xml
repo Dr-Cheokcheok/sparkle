@@ -130,4 +130,15 @@
         ORDER BY
             ct.count
     </select>
+
+    <delete id="bagDelete" parameterType="java.util.List">
+        delete
+            from cart
+        where
+        
+
+
+
+    </delete>
+
 </mapper>

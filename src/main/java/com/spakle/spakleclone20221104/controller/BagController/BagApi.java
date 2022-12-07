@@ -2,6 +2,7 @@ package com.spakle.spakleclone20221104.controller.BagController;
 
 import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.dto.account.CMRespDto;
+import com.spakle.spakleclone20221104.dto.order.OrderBagDelDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDetailDto;
 import com.spakle.spakleclone20221104.dto.shop.BagDto;
 import com.spakle.spakleclone20221104.service.BagService;
@@ -12,8 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -71,4 +74,22 @@ public class BagApi {
         log.info("{}", bagService.getBagList(user.getId()));
         return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully", bagService.getBagList(user.getId())));
     }
+    @DeleteMapping("/bagdelete")
+    public ResponseEntity<?> bagDelete(@RequestBody List<Map<String , Object>> data) throws Exception{
+        List<OrderBagDelDto> bagDelList = new ArrayList<>();
+
+        data.forEach(bagDel -> {
+            Integer userId = (Integer) bagDel.get("user_id");
+            Integer productId = (Integer) bagDel.get("product_id");
+            Integer quantity = (Integer) bagDel.get("quantity");
+
+            OrderBagDelDto orderBagDelDto = new OrderBagDelDto(userId, productId, quantity);
+            bagDelList.add(orderBagDelDto);
+
+        });
+
+        return ResponseEntity.ok(new CMRespDto<>(1, "insertOrderDtl", bagService.bagDelList(bagDelList)));
+
+    }
+
 }
