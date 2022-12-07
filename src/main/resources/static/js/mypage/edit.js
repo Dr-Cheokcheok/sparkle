@@ -1,10 +1,16 @@
 // 수정페이지
 if(location.href.includes("/users/edit")){
+    
+    window.onload = () => {
+        getCount();
+    }
+
     const findPost = document.querySelector(".find_post");
 
     findPost.onclick = () => {
         daumPostcode();
     }
+
     function daumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -39,7 +45,6 @@ if(location.href.includes("/users/edit")){
         modification();
     }
 
-
     function modification(){
         let event =document.querySelector(".sns_inp:checked").id
         const update = {
@@ -52,19 +57,23 @@ if(location.href.includes("/users/edit")){
             address: document.querySelector("#address").value,
             detailAddress : document.querySelector("#detail-address").value
         };
+
         if(update.password.length !== 0 || update.passwordPermit.length !== 0){
             const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{10,}$/g;
+            
             if(!(regExp.test(update.password))){
                 alert("비밀번호는 문자와 숫자 및 특수문자를 포함하여 10자 이상이어야합니다.");
                 document.querySelector("#password").value = "";
                 document.querySelector("#password-permit").value ="";
                 return;
             }
+            
             if(update.passwordPermit !== update.password || update.password !== update.passwordPermit){
                 alert("비밀번호 확인 항목이 일치하지 않습니다.");
                 document.querySelector("#password-permit").focus();
                 return;
             }
+        
         }else{
             update.password = "off";
             update.passwordPermit = "off";
@@ -91,14 +100,86 @@ if(location.href.includes("/users/edit")){
         });
     }
 
+    function getCount() {
+        let countData = null;
+        let userId = $("#user-id").val();
+
+        $.ajax({
+            async: false,
+            type: "get",
+            url: "/api/order/count/" + userId,
+            dataType: "json",
+            success: (response) => {
+                countData = response.data;
+                console.log(countData);
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+
+        const myInfoTop = document.querySelector(".myInfo-top");
+
+        myInfoTop.innerHTML += `
+        <ul>
+            <li><img src="/static/images/img/my_face.png"></li>
+            <li><p class="username"">${countData[0].realName}</p><p class="user-id">${countData[0].username}</p></li>
+            <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
+            <li><a href="/bag"><p>장바구니</p><p class="blue-t">${countData[1].cartCount}</p></a></li>
+            <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">${countData[0].orderCount}</p></a></li>
+            <li><a href="/account"><p>관심상품</p><p class="blue-t">${countData[2].likesCount}</p></a></li>
+        </ul>
+            `
+
+    }
+
+
 }else if(location.href.includes("/likes")){
 
     window.onload = () => {
         getLikes();
+        getCount();
     }
+
+    function getCount() {
+        let countData = null;
+        let userId = $("#user-id").val();
+
+        $.ajax({
+            async: false,
+            type: "get",
+            url: "/api/order/count/" + userId,
+            dataType: "json",
+            success: (response) => {
+                countData = response.data;
+                console.log(countData);
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+
+        const myInfoTop = document.querySelector(".myInfo-top");
+
+        myInfoTop.innerHTML += `
+        <ul>
+            <li><img src="/static/images/img/my_face.png"></li>
+            <li><p class="username"">${countData[0].realName}</p><p class="user-id">${countData[0].username}</p></li>
+            <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
+            <li><a href="/bag"><p>장바구니</p><p class="blue-t">${countData[1].cartCount}</p></a></li>
+            <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">${countData[0].orderCount}</p></a></li>
+            <li><a href="/account"><p>관심상품</p><p class="blue-t">${countData[2].likesCount}</p></a></li>
+        </ul>
+            `
+
+    }
+
     const likesBox = document.querySelector(".likes-box");
+
     function getLikes(){
+
         likesBox.innerHTML = "";
+
         $.ajax({
             async: false,
             type: "get",
@@ -113,7 +194,9 @@ if(location.href.includes("/users/edit")){
         });
 
     }
+    
     function likesView(responseData){
+
         responseData.forEach(product =>{
             likesBox.innerHTML +=`
                 <div class="like-product">
@@ -136,10 +219,13 @@ if(location.href.includes("/users/edit")){
     }
 
     function goCart(){
+
         const cartPlus = document.querySelectorAll(".buttons .carier-plus");
         const likeIds = document.querySelectorAll("#like-id");
+
         cartPlus.forEach((go, index) => {
             go.onclick = () => {
+
                 let productId = Number(likeIds[index].value);
                 let bagInfo = {
                     user_id: "",
@@ -147,6 +233,7 @@ if(location.href.includes("/users/edit")){
                     product_id: productId,
                     quantity: 1,
                 }
+
                 $.ajax({
                     async:false,
                     type: "post",
@@ -161,11 +248,15 @@ if(location.href.includes("/users/edit")){
                         console.log("error:" + error);
                     }
 
-                })
+                });
+
+                location.reload();
             }
         })
     }
+
     function bagChk(result, productId){
+
         if(result === 0) {
             alert("로그인이 필요합니다.");
             location.href = "/login";
@@ -174,6 +265,7 @@ if(location.href.includes("/users/edit")){
                 delReq(productId);
                 location.href = "/bag";
             }
+
         } else {
             if(confirm("장바구니에 이미 상품이 등록되어있습니다.\n지금 장바구니로 이동하시겠습니까?")){
                 delReq(productId);
@@ -183,13 +275,17 @@ if(location.href.includes("/users/edit")){
     }
 
     function deleteLikes(){
+
     const likesDelete = document.querySelectorAll(".buttons .likes-delete");
     const likeIds = document.querySelectorAll("#like-id");
+
     likesDelete.forEach((del, index) => {
+
         del.onclick = () => {
             if(confirm("삭제하시겠습니까?")){
                 let productId = Number(likeIds[index].value);
                 delReq(productId);
+                location.reload();
             }
 
         }
@@ -197,6 +293,7 @@ if(location.href.includes("/users/edit")){
     }
 
 function delReq(productId){
+
     $.ajax({
         async: false,
         type: "delete",

@@ -56,4 +56,9 @@ public class OrderApi {
 
         return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", orderService.getOrderDetailList(orderId, principalDetails.getUser().getUsername())));
     }
+
+    @GetMapping("/order/count/{userId}")
+    public ResponseEntity<?> getCounts(@PathVariable String userId) throws Exception {
+        return ResponseEntity.ok(new CMRespDto<>(1, "count load", orderService.getCount(userId)));
+    }
 }

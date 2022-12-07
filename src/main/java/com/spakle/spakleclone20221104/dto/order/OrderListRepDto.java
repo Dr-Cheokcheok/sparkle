@@ -1,6 +1,5 @@
 package com.spakle.spakleclone20221104.dto.order;
 
-import com.spakle.spakleclone20221104.domain.order.MyInfoCount;
 import com.spakle.spakleclone20221104.domain.order.OrderDetail;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +14,5 @@ public class OrderListRepDto {
     private String orderId;
     private String orderDate;
     private int totalPrice;
-    private MyInfoCount myInfoCount;
     private List<OrderDetail> orderDetailList;
 }

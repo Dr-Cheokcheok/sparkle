@@ -183,7 +183,7 @@ function paymentCard(data) {
          InfoDataDtl(); 
          InfoData(data);
          alert("결제가 완료되었습니다!");
-         location.replace("/account/order/detail");
+         location.replace("/account/order/detail/" + data.orderNum);
 
 		} else {
           // 결제 실패 시 로직,
@@ -246,42 +246,6 @@ function InfoData(data){
         }
         });
     }
-
-// 카드 결제
-function paymentCard(data) {
-      
-   IMP.init("imp14753140"); 
-      
-   IMP.request_pay({ // param
-        pg: "html5_inicis",
-        pay_method: data.payMethod,
-        merchant_uid: data.orderNum,
-        name: data.name,
-        amount: data.totalPrice,
-         buyer_email: "",
-         buyer_name: data.recipientName,
-        buyer_tel: data.phone,
-        buyer_addr: data.deleveryAddress2 + " " + data.deleveryAddress3,
-        buyer_postcode: data.deleveryAddress1
-     }, 
-   function (rsp) { // callback
-      if (rsp.success) {
-         // 결제 성공 시 로직,
-         InfoDataDtl(); 
-         InfoData(data);
-         alert("결제가 완료되었습니다!");
-         location.replace("/account/order/detail");
-
-      } else {
-          // 결제 실패 시 로직,
-             var msg = '결제에 실패했습니다. \n';
-            msg += rsp.error_msg
-            alert(msg);            
-            return false;
-      }
-   });
-}
-
 
 // 장바구니 A 보따리
 // const totalCost = 

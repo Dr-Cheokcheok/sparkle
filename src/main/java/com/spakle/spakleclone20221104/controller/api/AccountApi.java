@@ -10,16 +10,14 @@ import com.spakle.spakleclone20221104.service.AccountService;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Delete;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
-import java.util.*;
+import java.util.Map;
 
 @Valid
 @Slf4j
@@ -70,5 +68,10 @@ public class AccountApi {
     @DeleteMapping("/likes")
     public boolean delLikes(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String,Integer> map)throws Exception{
         return accountService.deleteLikes(principalDetails, map.get("productId"));
+    }
+
+    @DeleteMapping("/delete/{username}")
+    public boolean deleteUser(@AuthenticationPrincipal PrincipalDetails principalDetails, String username) throws Exception {
+        return accountService.deleteUser(principalDetails, username);
     }
 }

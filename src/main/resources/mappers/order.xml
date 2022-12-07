@@ -155,31 +155,51 @@
             oe.order_id = #{orderId}
 
     </select>
-    <select id="getCounts" resultType="com.spakle.spakleclone20221104.domain.order.MyInfoCount">
+    <select id="getOrderCount" resultMap="MyInfoCount">
 
         SELECT
             um.username,
-            um.name AS realName,
-            um.id AS userId,
-            oe.user_id AS orderUserId,
-            ct.user_id AS cartId,
-            li.user_id AS likesId,
-
-            count(oe.order_id) AS orderCount,
-            COUNT(ct.user_id) AS cartCount,
-            COUNT(li.user_id) AS likesCount
+            um.name as realName,
+            um.id as userId,
+            oe.user_id as orderUserId,
+            count(oe.order_id) as orderCount
 
         FROM
-            `order` oe
-            LEFT OUTER JOIN user_mst um ON (oe.user_id = um.username)
-            LEFT OUTER JOIN cart ct ON (um.id = ct.user_id)
-            LEFT OUTER JOIN likes li ON (um.id = li.user_id)
-
+            `order` oe LEFT JOIN user_mst um on (oe.user_id = um.username)
 
         WHERE
             um.username = #{userId}
 
+    </select>
+    <select id="getCartCount" resultMap="MyInfoCount">
+        SELECT
+            um.username,
+            um.name as realName,
+            um.id as userId,
+            ct.user_id as cartId,
+            count(ct.user_id) as cartCount
 
+        FROM
+            cart ct LEFT JOIN user_mst um on (ct.user_id = um.id)
+
+        WHERE
+            um.username = #{userId}
+
+    </select>
+
+    <select id="getLikesCount" resultMap="MyInfoCount">
+        SELECT
+            um.username,
+            um.name as realName,
+            um.id as userId,
+            li.user_id as likesId,
+            count(li.user_id) as likesCount
+
+        FROM
+            likes li LEFT JOIN user_mst um on (li.user_id = um.id)
+
+        WHERE
+            um.username = #{userId}
     </select>
 
 </mapper>

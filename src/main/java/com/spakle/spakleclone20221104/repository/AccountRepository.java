@@ -3,7 +3,6 @@ package com.spakle.spakleclone20221104.repository;
 import com.spakle.spakleclone20221104.domain.ChkId;
 import com.spakle.spakleclone20221104.domain.CollectionProduct;
 import com.spakle.spakleclone20221104.domain.User;
-import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.UserMod;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -22,5 +21,7 @@ public interface AccountRepository {
 
     public List<CollectionProduct> getLikes(int id);
     public int deleteLikes(int userId, int productId);
+
+    public int deleteUser(int userId);
 
 }

@@ -44,7 +44,7 @@ class InquiryApi {
                 alert("상품 삭제 실패!");
                 console.log(error);
             }
-        })
+        });
     }
 }
 
