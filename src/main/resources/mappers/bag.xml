@@ -35,6 +35,8 @@
             #{quantity}
         )
     </insert>
+    
+
 
     <select id="bagNumberChk" parameterType="int" resultType="int">
         SELECT ifnull(MAX(COUNT),1) FROM
@@ -95,4 +97,12 @@
         ORDER BY
         ct.count
     </select>
+
+    <delete id="deleteList">
+        delete from
+            cart
+        where
+            user_id = #{user_id} and product_id = #{product_id}
+    </delete>
+
 </mapper>

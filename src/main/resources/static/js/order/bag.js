@@ -154,7 +154,8 @@ function decrease(index){
             productId: document.querySelector(`#id-${index}`).replace("id-",""),
             userId : "",
         };
-
+    }
+}
         // $.ajax({
         //     async: false,
         //     type: "post",
@@ -169,9 +170,23 @@ function decrease(index){
         //         console.log("error:" + error);
         //     }
         // });
-    }
+    // }
+// function decrease(index){
+//     let su = document.querySelectorAll("#quantity")[index];
+    
+//     if(Number(su.innerHTML) > 1){
+//         su = Number(su.innerHTML) - 1;
 
-}
+//         let test = document.querySelectorAll(".hidden-price")[index];
+
+//         test.value = Number(test.value) * su;
+//         // document.querySelectorAll(".pro-price")[index].innerHTML = 
+
+//         document.querySelectorAll("#spoqa")[index].innerHTML = 
+//         (Number(document.querySelectorAll(".hidden-retail-price")[index].innerHTML) * Number(su.innerHTML)).toLocaleString('ko-KR') + "원";
+//     }
+
+// }
 
 //+버튼
 function increase(index){
@@ -239,6 +254,26 @@ class BagApi {
         
         return responseData;
     }
+
+    bagDeleteRequest(id) {
+        $.ajax({
+            async: false,
+            type: "delete",
+            url: "/api/bag/userbag",
+            dataType: "json",
+            data: JSON.stringify({
+            id: id}),
+            contentType: "application/json",
+            success: (response) => {
+                alert("장바구니 삭제 완료!");
+                location.reload();
+            },
+            error: (error) => {
+                alert("상품 삭제 실패!");
+                console.log(error);
+            }
+        })
+    }
 }
 class BagService {
     static #instance = null;
@@ -305,8 +340,9 @@ class BagService {
                 <input class="hidden-retail-price" id = "hidden-retail-price-${index}" type="hidden" value="${border.retailprice}">
                 <td>무료배송</td>
                 <td>
-                    <a href="javascript:deleteList(${index});">
+                    <a class="deleteList" href="javascript:deleteList(${index});">
                         <img src="/static/images/sub/x.png" alt="닫기버튼">
+                        </button>
                     </a>
                 </td>
             </tr>
@@ -315,7 +351,37 @@ class BagService {
             document.querySelector(`#pro-price-${index}`).innerHTML = (Number(`${border.price}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
             document.querySelector(`#spoqa-${index}`).innerHTML = (Number(`${border.retailprice}`) * Number(`${border.quantity}`)).toLocaleString('ko-KR') + "원";
 
+
         });
+        const deleteButtons = document.querySelectorAll(".deleteList");
+
+        deleteButtons.forEach((deleteButton, index) => {
+
+            deleteButton.onclick = () => {
+                if (confirm("장바구니를 삭제 하시겠습니까?")) {
+                    const bagApi = new BagApi();
+                    bagApi.bagDeleteRequest(Number(responseData[index].id));
+                }
+            }
+        });
+        // 장바구니 전체선택
+        var allChk = $('#chkAll');
+        var chk = $('.chk_style');
+
+        $(allChk).click(function(){
+         if($(allChk).prop("checked")){
+             $(chk).prop("checked",true);
+         }else{
+             $(chk).prop("checked",false);
+         }
+        });
+
+        $(chk).click(function(){
+         if(!($(chk).prop("checked"))){
+             $(allChk).prop("checked",false);
+         }
+        });
+
 
         document.querySelector(".selPrice").innerHTML = calPrice.toLocaleString('ko-KR') + "원";
         document.querySelector(".dcPrice").innerHTML = retailPrice.toLocaleString('ko-KR') + "원";

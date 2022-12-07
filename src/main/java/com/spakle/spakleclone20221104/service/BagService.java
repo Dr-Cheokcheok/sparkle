@@ -24,4 +24,6 @@ public interface BagService {
 
     public List<OrderReqDto> getOrderList(int user_id) throws Exception;
 
+    public boolean deleteList(int user_id, int product_id) throws Exception;
+
 }

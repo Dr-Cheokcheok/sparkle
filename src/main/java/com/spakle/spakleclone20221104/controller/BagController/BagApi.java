@@ -75,4 +75,10 @@ public class BagApi {
 //    public boolean accountModify(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, String> map) throws Exception {
 //        return accountService.modification(principalDetails, map);
 //    }
+    @DeleteMapping("/userbag")
+    public  boolean deleteBag(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String ,Integer>map)throws Exception {
+
+        return bagService.deleteList(principalDetails.getUser().getId(),map.get("id"));
+    }
+
 }
