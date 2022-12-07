@@ -1,286 +1,287 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>스파클몰</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <link rel="stylesheet" href="/static/css/style-main.css">
-  <link rel="stylesheet" href="/static/css/fragment/layout.css">
-  <link rel="stylesheet" href="/static/css/index/index.css">
-  <link rel="stylesheet" href="/static/css/fragment/footer.css">
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스파클몰</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style-main.css">
+    <link rel="stylesheet" href="/static/css/fragment/layout.css">
+    <link rel="stylesheet" href="/static/css/index/index.css">
+    <link rel="stylesheet" href="/static/css/fragment/footer.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 </head>
 <body>
 <header th:replace="~{fragment/header :: headerFragment}"></header>
 
-    <main>
-        <div class="outer">
-            <div class="inner-list">
-              <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
-              <div class="inner">
+<main>
+    <div class="outer">
+        <div class="inner-list">
+            <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+            <div class="inner">
                 <a href="#">
-                  <img src="/static/images-banner-mungi/banner1.jpeg" alt="">
+                    <img src="/static/images-banner-mungi/banner1.jpeg" alt="">
                 </a>
-              </div>
-              <div class="inner">
+            </div>
+            <div class="inner">
                 <a href="https://www.sparklemall.co.kr/main">
-                  <img src="/static/images-banner-mungi/banner2.jpeg" alt="">
+                    <img src="/static/images-banner-mungi/banner2.jpeg" alt="">
                 </a>
-              </div>
-              <div class="inner">
-                <a href="#">
-                  <img src="/static/images-banner-mungi/banner3.jpeg" alt="">
-                </a>
-              </div>
-              <div class="inner">
-                <a href="#">
-                  <img src="/static/images-banner-mungi/banner4.jpeg" alt="" style="max-width: 1876px;">
-                </a>
-              </div>
-              <div class="inner">
-                <a href="#">
-                  <img src="/static/images-banner-mungi/banner5.jpeg" alt="">
-                </a>
-              </div>
-              <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
             </div>
-            <div class="m-visual slick-initialized slick-slider">
+            <div class="inner">
+                <a href="#">
+                    <img src="/static/images-banner-mungi/banner3.jpeg" alt="">
+                </a>
             </div>
-          </div>
+            <div class="inner">
+                <a href="#">
+                    <img src="/static/images-banner-mungi/banner4.jpeg" alt="" style="max-width: 1876px;">
+                </a>
+            </div>
+            <div class="inner">
+                <a href="#">
+                    <img src="/static/images-banner-mungi/banner5.jpeg" alt="">
+                </a>
+            </div>
+            <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+        </div>
+        <div class="m-visual slick-initialized slick-slider">
+        </div>
+    </div>
 
-          <!---             인기상품        -->
+    <!---             인기상품        -->
 
-          <section class="mid-area">
-            <div class="main-menu">
-              <div class="best-menu-box">
+    <section class="mid-area">
+        <div class="main-menu">
+            <div class="best-menu-box">
                 <div class="txt-box">
-                  <h2>인기상품</h2>
-                  <span>가장 많이 팔리는 베스트상품입니다.</span>
+                    <h2>인기상품</h2>
+                    <span>가장 많이 팔리는 베스트상품입니다.</span>
                 </div>
                 <div class="go-menu">
                     <ul class="ingi-products">
-                      <!--- 뿌리기  time-icon 찜, 장바구니페이지 연결 --->
+                        <!--- 뿌리기  time-icon 찜, 장바구니페이지 연결 --->
 
                     </ul>
                 </div>
-              </div>
             </div>
+        </div>
 
-            <!--         두번째 배너           -->
-            
-              <div class="outer2">
-                <div class="inner-list2">
-                  <div class="inner2">
+        <!--         두번째 배너           -->
+
+        <div class="outer2">
+            <div class="inner-list2">
+                <div class="inner2">
                     <a href="/product/1">
-                      <img src="/static/images/banner/second_ban1.jpeg" alt="">
+                        <img src="/static/images/banner/second_ban1.jpeg" alt="">
                     </a>
-                  </div>
-                  <div class="inner2">
+                </div>
+                <div class="inner2">
                     <a href="/product/1">
-                      <img src="/static/images/banner/second_ban2.jpeg" alt="">
+                        <img src="/static/images/banner/second_ban2.jpeg" alt="">
                     </a>
-                  </div>
-                  <div class="inner2">
+                </div>
+                <div class="inner2">
                     <a href="/product/1">
-                      <img src="/static/images/banner/second_ban3.jpeg" alt="">
+                        <img src="/static/images/banner/second_ban3.jpeg" alt="">
                     </a>
-                  </div>
+                </div>
                 <div class="m-visual slick-initialized slick-slider">
                 </div>
-                </div>
-              </div>
-          
-          </section>
+            </div>
+        </div>
 
-          <!---               md 추천             --->
+    </section>
 
-          <section class="md-sec">
-              <div class="md-sec3">
-                <div class="md-sec-in">
-                  <div class="m-tit-box">
+    <!---               md 추천             --->
+
+    <section class="md-sec">
+        <div class="md-sec3">
+            <div class="md-sec-in">
+                <div class="m-tit-box">
                     <h4 class="m-tit">MD 추천</h4>
                     <span class="m-sub-tit">가격부터 구성까지! 합리적인 제품만 추천드립니다.</span>
-                  </div>
-
-
-                  <div class="md-tab">
-                    <!--- 클릭시 on 추가 버튼 인덱스 = categoryList 인덱스 -->
-
-                      <input id="button1" name ="car" class = "category-btn" type ="radio" value = "생수" onclick = "toggleBtn(id)"checked>
-                      <label class="button-label" for="button1"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></label>
-
-                      <input id="button2" name ="car" class = "category-btn" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
-                      <label class="button-label" for="button2"><span><img src="/static/images/img/md-icon02.png" alt=""> 탄산음료</span></label>
-
-                      <input id="button3" name = "car" class = "category-btn" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
-                      <label class="button-label" for="button3"><span><img src="/static/images/img/md-icon04.png" alt=""> 생수 부자재</span></label>
-
-                  </div>
-                  
-                    <!--- group 버튼. li 지우고 js에서 group 별로 뿌리기 -->
-                  <div class="tab-sub-btn">
-
-                      <div id = "category_button1">
-                          <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L">
-                          <label class="sub-button-label" for = "category1">2L</label>
-                          <input id="category2" name = "sub_car" class = "sub-btn" type = "radio" value = "500mL" >
-                          <label class="sub-button-label" for = "category2">500mL</label>
-                          <input id="category3" name = "sub_car" class = "sub-btn" type = "radio" value = "330mL" >
-                          <label class="sub-button-label" for = "category3">330mL</label>
-                          <input id="category4" name = "sub_car" class = "sub-btn" type = "radio" value = "18.9L" >
-                          <label class="sub-button-label" for = "category4">18.9L</label>
-                      </div>
-
-
-                      <div id = "category_button2" style = "display: none;">
-                          <input id="category5" name = "sub_car" class = "sub-btn" type = "radio" value = "스파클링">
-                          <label class="sub-button-label" for = "category5">스파클링</label>
-                      </div>
-
-                      <div id = "category_button3" style="display: none;">
-                          <input id="category6" name = "sub_car" class = "sub-btn" type = "radio" value = "냉온수기">
-                          <label class="sub-button-label" for = "category6">냉온수기</label>
-                          <input id="category7" name = "sub_car" class = "sub-btn" type = "radio" value = "거치대" >
-                          <label class="sub-button-label" for = "category7">거치대</label>
-                          <input id="category8" name = "sub_car" class = "sub-btn" type = "radio" value = "펌프" >
-                          <label class="sub-button-label" for = "category8">펌프</label>
-                      </div>
-
-
-                  </div>
-
-
-                  <!-- product 가져와서 뿌리기  -->
-                  <div class="md-contents m-product2">
-                    <div class="con-box">
-                      <!-- product 가져와서 뿌리기  생수 = product1 -->
-                      <ul class="products">
-                                
-                      </ul>
-                    </div>
-                  </div>
-              
-                  </div>
-              </div>
-              </section>
-
-
-
-
-              <section class="mid-area">
-
-              <!---       기획전 배너        --->
-
-              <div class="exhibitions-box">
-                <div class="m-tit-box">
-                  <h4 class="m-tit">기획전</h4>
-                  <span class="m-sub-tit">스파클의 특별기획전입니다.</span>
                 </div>
-                <div class="outer3">
-                  <button class="slick-prev always" aria-label="Previous" type="button" style=""><img src="/static/images/img/m-sec-prev.png" alt="">Previous</button>
-                  <div class="inner-list3">
+
+
+                <div class="md-tab">
+                    <!--- 클릭시 on 추가 버튼 인덱스 = categoryList 인덱스 -->
+                    <input id="button1" name ="car" class = "category-btn" type ="radio" value = "생수" onclick = "toggleBtn(id)"checked>
+                    <label class="button-label" for="button1"><span><img src="/static/images/img/md-icon01.png" alt=""> 생수</span></label>
+
+                    <input id="button2" name ="car" class = "category-btn" type ="radio" value = "탄산" onclick = "toggleBtn(id)">
+                    <label class="button-label" for="button2"><span><img src="/static/images/img/md-icon02.png" alt=""> 탄산음료</span></label>
+
+                    <input id="button3" name = "car" class = "category-btn" type = "radio" value = "생수부자재" onclick = "toggleBtn(id)">
+                    <label class="button-label" for="button3"><span><img src="/static/images/img/md-icon04.png" alt=""> 생수 부자재</span></label>
+
+                </div>
+
+                <!--- group 버튼. li 지우고 js에서 group 별로 뿌리기 -->
+                <div class="tab-sub-btn">
+
+                    <div id = "category_button1">
+                        <input id="category1" name = "sub_car" class = "sub-btn" type = "radio" value = "2L">
+                        <label class="sub-button-label" for = "category1">2L</label>
+                        <input id="category2" name = "sub_car" class = "sub-btn" type = "radio" value = "500mL" >
+                        <label class="sub-button-label" for = "category2">500mL</label>
+                        <input id="category3" name = "sub_car" class = "sub-btn" type = "radio" value = "330mL" >
+                        <label class="sub-button-label" for = "category3">330mL</label>
+                        <input id="category4" name = "sub_car" class = "sub-btn" type = "radio" value = "18.9L" >
+                        <label class="sub-button-label" for = "category4">18.9L</label>
+                    </div>
+
+
+                    <div id = "category_button2" style = "display: none;">
+                        <input id="category5" name = "sub_car" class = "sub-btn" type = "radio" value = "스파클링">
+                        <label class="sub-button-label" for = "category5">스파클링</label>
+                    </div>
+
+                    <div id = "category_button3" style="display: none;">
+                        <input id="category6" name = "sub_car" class = "sub-btn" type = "radio" value = "냉온수기">
+                        <label class="sub-button-label" for = "category6">냉온수기</label>
+                        <input id="category7" name = "sub_car" class = "sub-btn" type = "radio" value = "거치대" >
+                        <label class="sub-button-label" for = "category7">거치대</label>
+                        <input id="category8" name = "sub_car" class = "sub-btn" type = "radio" value = "펌프" >
+                        <label class="sub-button-label" for = "category8">펌프</label>
+                    </div>
+
+
+                </div>
+
+
+                <!-- product 가져와서 뿌리기  -->
+                <div class="md-contents m-product2">
+                    <div class="con-box">
+                        <!-- product 가져와서 뿌리기  생수 = product1 -->
+                        <ul class="products">
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="mid-area">
+
+        <!---       기획전 배너        --->
+
+        <div class="exhibitions-box">
+            <div class="m-tit-box">
+                <h4 class="m-tit">기획전</h4>
+                <span class="m-sub-tit">스파클의 특별기획전입니다.</span>
+            </div>
+            <div class="outer3">
+                <button class="slick-prev always" aria-label="Previous" type="button" style=""><img src="/static/images/img/m-sec-prev.png" alt="">Previous</button>
+                <div class="inner-list3">
                     <!----  한 줄 --->
                     <div class="exhibitions">
-                      <div class="exhibition">
+                        <div class="exhibition">
 
-                        <a href="/product/72"><img src="/static/images/img/m-img04.jpg" alt=""></a>
-                      </div>
-                      <div class="exhibition">
-                          <img src="/static/images/img/m-img05.jpg" alt="">
-                      </div>
+                            <a href="/product/72"><img src="/static/images/img/m-img04.jpg" alt=""></a>
+                        </div>
+                        <div class="exhibition">
+                            <img src="/static/images/img/m-img05.jpg" alt="">
+                        </div>
                     </div>
                     <!----  한 줄  --->
                     <div class="exhibitions ">
-                      <div class="exhibition">
-                          <img src="/static/images/img/m-img04.jpg" alt="">
-                      </div>
-                      <div class="exhibition">
-                        <img src="/static/images/img/m-img05.jpg" alt="">
-                      </div>
+                        <div class="exhibition">
+                            <img src="/static/images/img/m-img04.jpg" alt="">
+                        </div>
+                        <div class="exhibition">
+                            <img src="/static/images/img/m-img05.jpg" alt="">
+                        </div>
                     </div>
-                  </div>
-                    <button class="slick-next always" aria-label="Next" type="button" style=""><img src="/static/images/img/m-sec-next.png" alt="">Next</button>
                 </div>
-              </div>
+                <button class="slick-next always" aria-label="Next" type="button" style=""><img src="/static/images/img/m-sec-next.png" alt="">Next</button>
+            </div>
+        </div>
 
-              <div class="m-sec6 w1260">
-                <div class="m-tit-box">
-                    <h4 class="m-tit">스파클의 다양한 서비스를 이용해 보세요!</h4>
-                </div>
-                <div class="m-link-box">
-                    <ul class="clear">
-                        <li>
-                            <a href="https://www.sparklemall.co.kr/support?category=notice">
-                                <div class="img"><img src="/static/images/img/panel-icon01.png" alt="공지사항"></div>
-                                <span>공지사항</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://blog.naver.com/sparklemall/221468801748" target="_black">
-                                <div class="img"><img src="/static/images/img/panel-icon02.png" alt="생수의모든것"></div>
-                                <span>생수의모든것</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.sparklewater.net/pro/pro05.php" target="_black">
-                                <div class="img"><img src="/static/images/img/panel-icon03.png" alt="전국물류센터"></div>
-                                <span>전국물류센터</span>
-                            </a>
-                        </li>
-                        <li>
-    
-                            <a href="https://www.sparklemall.co.kr/support?category=faq&amp;class=">
-                                <div class="img"><img src="/static/images/img/panel-icon04.png" alt="자주하는질문"></div>
-                                <span>자주하는질문</span>
-                            </a>
-                        </li>
-                        <li>
-    
-                            <a href="https://www.sparklemall.co.kr/account/board?category=qna">
-                                <div class="img"><img src="/static/images/img/panel-icon05.png" alt="1:1 문의"></div>
-                                <span>1:1 문의</span>
-                            </a>
-                        </li>
-                        <li>
-    
-                            <a href="https://www.sparklemall.co.kr/support">
-                                <div class="img"><img src="/static/images/img/panel-icon06.png" alt="고객센터"></div>
-                                <span>고객센터</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.sparklewater.net/about/" target="_blank">
-                                <div class="img"><img src="/static/images/img/panel-icon07.png" alt="회사소개"></div>
-                                <span>회사소개</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.sparklewater.net/about/about04.php" target="_blank">
-                                <div class="img"><img src="/static/images/img/panel-icon08.png" alt="오시는길"></div>
-                                <span>오시는길</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-              </div>
-            </section>
-            <div id="quick" style="opacity: 1;">
-              <a href="#" class="btn_gotop">
+        <div class="m-sec6 w1260">
+            <div class="m-tit-box">
+                <h4 class="m-tit">스파클의 다양한 서비스를 이용해 보세요!</h4>
+            </div>
+            <div class="m-link-box">
+                <ul class="clear">
+                    <li>
+                        <a href="https://www.sparklemall.co.kr/support?category=notice">
+                            <div class="img"><img src="/static/images/img/panel-icon01.png" alt="공지사항"></div>
+                            <span>공지사항</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://blog.naver.com/sparklemall/221468801748" target="_black">
+                            <div class="img"><img src="/static/images/img/panel-icon02.png" alt="생수의모든것"></div>
+                            <span>생수의모든것</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.sparklewater.net/pro/pro05.php" target="_black">
+                            <div class="img"><img src="/static/images/img/panel-icon03.png" alt="전국물류센터"></div>
+                            <span>전국물류센터</span>
+                        </a>
+                    </li>
+                    <li>
+
+                        <a href="https://www.sparklemall.co.kr/support?category=faq&amp;class=">
+                            <div class="img"><img src="/static/images/img/panel-icon04.png" alt="자주하는질문"></div>
+                            <span>자주하는질문</span>
+                        </a>
+                    </li>
+                    <li>
+
+                        <a href="https://www.sparklemall.co.kr/account/board?category=qna">
+                            <div class="img"><img src="/static/images/img/panel-icon05.png" alt="1:1 문의"></div>
+                            <span>1:1 문의</span>
+                        </a>
+                    </li>
+                    <li>
+
+                        <a href="https://www.sparklemall.co.kr/support">
+                            <div class="img"><img src="/static/images/img/panel-icon06.png" alt="고객센터"></div>
+                            <span>고객센터</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.sparklewater.net/about/" target="_blank">
+                            <div class="img"><img src="/static/images/img/panel-icon07.png" alt="회사소개"></div>
+                            <span>회사소개</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.sparklewater.net/about/about04.php" target="_blank">
+                            <div class="img"><img src="/static/images/img/panel-icon08.png" alt="오시는길"></div>
+                            <span>오시는길</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div id="quick" style="opacity: 1;">
+        <a href="#" class="btn_gotop">
                 <span class="glyphicon glyphicon-chevron-up">
                 </span>
-              </a>
-          </div>
-        <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
-    </main>
+        </a>
+    </div>
+    <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+</main>
 
-    <!-- <script src="/static/js/productList.js"></script> -->
-    <script src="/static/js/index/main.js"></script>
+<script type="text/javascript">
+    $.noConflict();
+</script>
+<script src="/static/js/index/main.js"></script>
 
 </body>
 </html>
