@@ -121,7 +121,6 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<ProductListRespDto> getProducts(String category) throws Exception {
-        log.info("{}", category);
 
         List<ProductListRespDto> productList = new ArrayList<>();
 

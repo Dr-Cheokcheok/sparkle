@@ -196,9 +196,6 @@ function paymentCard(data) {
 }
 
 
-// 장바구니 A 보따리
-// const totalCost = 
-
 function InfoDataDtl(){
     console.log(productDataList);
 
