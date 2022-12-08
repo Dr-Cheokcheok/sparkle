@@ -53,9 +53,6 @@ function loadHeader() {
             <li>
                 <a href="/register">회원가입</a>
             </li>
-            <li>
-                <a href="">고객센터</a>
-            </li>
         `;
 
     } else if(principal.authorities[0].authority === "ROLE_ADMIN"){
@@ -66,17 +63,11 @@ function loadHeader() {
             <li>
                 <a href="/logout">로그아웃</a>
             </li>
-            <li>
-                <a href="">고객센터</a>
-            </li>
         `;
     }else{
         utilMenu.innerHTML = `
             <li>
                 <a href="/logout">로그아웃</a>
-            </li>
-            <li>
-                <a href="">고객센터</a>
             </li>
         `;
     }
