@@ -95,8 +95,7 @@ function payment() {
         deleveryAddress1 : $("#postcode").val(),
         deleveryAddress2 : $("#address").val(),
         deleveryAddress3 : $("#address_detail").val(),
-        // totalPrice : Number($("#totalCost").text()),
-        totalPrice:100,
+        totalPrice : Number($("#totalCost").val()),
         productData : productDataList,
         pet : pet
     }

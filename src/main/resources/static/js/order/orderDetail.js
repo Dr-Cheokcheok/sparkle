@@ -77,7 +77,7 @@ class OrderDetailService {
          <li><a href="/users/edit"><img src="/static/images/img/setting.png"></a></li>
          <li><a href="/bag"><p>장바구니</p><p class="blue-t">${countData[1].cartCount}</p></a></li>
          <li><a href="/account/order"><p>주문&#183;배송</p><p class="blue-t">${countData[0].orderCount}</p></a></li>
-         <li><a href="/account"><p>관심상품</p><p class="blue-t">${countData[2].likesCount}</p></a></li>
+         <li><a href="/account/likes"><p>관심상품</p><p class="blue-t">${countData[2].likesCount}</p></a></li>
      </ul>
          `
  }
