@@ -138,13 +138,13 @@
     </select>
 
     <delete id="bagDelete" parameterType="java.util.List">
-        delete from cart ct
-        LEFT JOIN user_mst um ON ct.user_id = um.id
-        <where>
+        delete cart from
+            cart
+            LEFT OUTER JOIN user_mst ON user_id = id
+            WHERE
             <foreach collection="list" item="item" separator="or">
-                (um.`username` = #{item.user_id} and ct.`product_id` = #{item.product_id})
+                (username = #{item.user_id} and product_id = #{item.product_id})
             </foreach>
-        </where>
     </delete>
 
 </mapper>

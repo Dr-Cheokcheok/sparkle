@@ -98,6 +98,7 @@ public class BagServicelmpl implements BagService {
             bagDelList.add(OrderBagDelDto.toBagDelEntity());
         });
 
+
         bagRepository.bagDelete(bagDelList);
 
     }

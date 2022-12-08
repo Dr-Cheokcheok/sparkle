@@ -71,7 +71,6 @@ const payBtn = document.querySelector("#payBtn");
 
 payBtn.onclick = (e) => {
     e.preventDefault();
-    bagDelete();
     payment();
 }
 
@@ -182,6 +181,7 @@ function paymentCard(data) {
          InfoDataDtl(); 
          InfoData(data);
          alert("결제가 완료되었습니다!");
+         bagDelete();
          location.replace("/account/order/detail");
 
       } else {
