@@ -24,10 +24,14 @@ public interface BagRepository {
 
     public List<Bag> getBagList(Map<String, Object> map, int user_id) throws Exception;
 
-     public List<BagList> getOrderList(int user_id) throws Exception;
+    public List<BagList> getOrderList(int user_id) throws Exception;
+
+    public int deleteList(Map<String, Integer> map) throws Exception;
 
      public List<BagList> getChkOrderList(Map<String, Object> map) throws Exception;
 
      public void bagDelete(List<OrderBag> orderBag) throws Exception;
+
+     public int setQuantity(Map<String, Integer> setMap)throws Exception;
 
 }

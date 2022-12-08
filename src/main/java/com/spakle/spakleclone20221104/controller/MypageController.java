@@ -4,9 +4,9 @@ import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.security.Principal;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MypageController {
@@ -20,14 +20,16 @@ public class MypageController {
     @GetMapping("/account/order")
     public String loadOrderDelivery(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("principalUser",principalDetails.getUser());
+
         return "mypage/delivery";
     }
 
     @GetMapping("/account/likes")
     public String loadLikes(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("principalUser",principalDetails.getUser());
-        return "mypage/likes";
+        return "mypage/mypage";
     }
+
 
     @GetMapping("/users/edit")
     public String loadUserEdit(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -46,9 +48,10 @@ public class MypageController {
         return "mypage/userDelete";
     }
 
-    @GetMapping("/account/order/detail")
-    public String loadOrderDetail(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    @GetMapping("/account/order/{orderId}")
+    public String loadOrderDetail(@PathVariable String orderId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
         model.addAttribute("principalUser",principalDetails.getUser());
+
         return "mypage/orderDetail";
     }
 

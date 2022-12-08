@@ -25,7 +25,12 @@ public class ShopApi {
 
     @GetMapping("/product/{id}")
     public ResponseEntity<?> GetProduct(@PathVariable int id) throws Exception {
-        log.info("{}", shopService.getProductDetails(id));
         return ResponseEntity.ok(new CMRespDto<>(1, "Successfully", shopService.getProductDetails(id)));
+    }
+
+
+    @GetMapping("/ingi")
+    public ResponseEntity<?> getIngiProduct()throws Exception{
+        return ResponseEntity.ok().body(new CMRespDto<>(1, "Load Successfully", shopService.getIngiProduct()));
     }
 }

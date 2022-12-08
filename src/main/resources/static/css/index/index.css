@@ -122,11 +122,12 @@ main{
 .main-menu{
   height: 730px;
   padding: 100px 0;
+  margin: 0 auto;
 }
 
 
 .best-menu-box{
-  width: 100%;
+  width: 1260px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -428,18 +429,18 @@ font-weight: 700;
   display: flex;
 }
 
-.product {
-  display: inline-block;
-  width: 310px;
-  margin: 0 30px 0 0;
-}
+/*.product {*/
+/*  display: inline-block;*/
+/*  width: 310px;*/
+/*  margin: 0 30px 0 0;*/
+/*}*/
 
-.product img{
-  width: 298px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+/*.product img{*/
+/*  width: 298px;*/
+/*  border: 1px solid #ddd;*/
+/*  border-radius: 20px;*/
 
-}
+/*}*/
 
 .exhibitions-box{
   padding: 100px 0;

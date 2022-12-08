@@ -68,4 +68,25 @@
             pt.id = #{id}
     </select>
 
+    <select id="getIngiProduct" resultType="com.spakle.spakleclone20221104.domain.CollectionProduct">
+        SELECT
+            od.product_id as id,
+            pm.category,
+            pm.`group`,
+            pm.name,
+            pm.price,
+            pm.rate,
+            pm.retail_price,
+            pm.img,
+            pm.update_date
+        FROM
+            order_detail od
+            LEFT OUTER JOIN product pm ON(pm.id = od.product_id)
+        GROUP BY
+            product_id
+        order BY
+            SUM(quantity) desc, product_id
+        LIMIT 4
+
+    </select>
 </mapper>

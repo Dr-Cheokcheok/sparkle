@@ -19,16 +19,15 @@
         <section class="mypage-box">
             <h1>MYPAGE</h1>
             <ul>
-                <li><a href="/account">관심상품</a></li>
+                <li><a href="/account/likes">관심상품</a></li>
                 <li><a href="/account/order">주문&#183;배송</a></li>
-                <li><a>상품후기</a></li>
-                <li><a>고객센터</a></li>
                 <li><a href="/users/edit">개인정보관리</a></li>
                 <li><a href="/users/delete">회원탈퇴</a></li>
             </ul>
         </section>
         <section class="right-sec">
             <h1>회원탈퇴</h1>
+            <input type="hidden" id="user-id" th:value="${principalUser.username}">
             <table class="new-tbl">
                 <colgroup>
                     <col width="200px">
@@ -40,23 +39,23 @@
                         <div class="reason-td">
                             <ul class="reason-list">
                                 <li>
-                                    <input type="radio" id="guitar" name="reason" class="dlt-reason">
+                                    <input type="radio" id="guitar" name="reason" class="dlt-reason" value="1">
                                     <label for="guitar">기타</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="" name="reason" class="dlt-reason">
+                                    <input type="radio" name="reason" class="dlt-reason" value="2">
                                     <label for="reason">배송 주문 불만족</label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <input type="radio" name="reason" class="dlt-reason" value="3">
                                     <label for="reason">사이트 이용 불편</label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="reason" class="dlt-reason">
+                                    <input type="radio" name="reason" class="dlt-reason" value="4">
                                     <label for="reason">상품품질 불만족</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="reason" name="reason" class="dlt-reason">
+                                    <input type="radio" id="reason" name="reason" class="dlt-reason" value="5">
                                     <label for="reason">서비스 불만족</label>
                                 </li>
                             </ul>
@@ -81,11 +80,12 @@
                 <label for="agree">정보삭제에 동의합니다.</label>
             </div>
             <div class="add-btn-bx">
-                <button class="confirm-btn">확인</button>
-                <button class="cancel-btn">취소</button>
+                <button type="button" class="confirm-btn">확인</button>
+                <button type="button" class="cancel-btn">취소</button>
             </div>
         </section>
     </div>
     <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+    <script src="/static/js/mypage/userDelete.js"></script>
 </body>
 </html>

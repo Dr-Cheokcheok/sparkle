@@ -19,12 +19,45 @@
         <result property="entrance" column="entrance"></result>
         <result property="pet" column="pet"></result>
         <result property="total_price" column="total_price"></result>
+
+        <result property="quantity" column="quantity"></result>
+        <result property="name" column="name"></result>
+        <result property="img" column="img"></result>
+    </resultMap>
+
+    <resultMap id="product" type="com.spakle.spakleclone20221104.domain.product.Product">
+        <result property="name" column="name"></result>
+        <result property="img" column="img"></result>
+        <result property="retail_price" column="retail_price"></result>
     </resultMap>
 
     <resultMap id="order_detail" type="com.spakle.spakleclone20221104.domain.order.OrderDetail">
-        <result property="order_id" column="order_id"></result>
+        <result property="order_id" column="order_dtl_id"></result>
         <result property="product_id" column="product_id"></result>
         <result property="quantity" column="quantity"></result>
+        <collection property="product" resultMap="product"></collection>
+    </resultMap>
+
+    <resultMap id="orderList" type="com.spakle.spakleclone20221104.domain.order.OrderList">
+        <result property="user_id" column="user_id"></result>
+        <result property="order_id" column="order_id"></result>
+        <result property="order_date" column="order_date"></result>
+        <result property="total_price" column="total_price"></result>
+        <collection property="orderDetailList" javaType="list" resultMap="order_detail"></collection>
+    </resultMap>
+
+    <resultMap id="MyInfoCount" type="com.spakle.spakleclone20221104.domain.order.MyInfoCount">
+        <result property="username" column="username"></result>
+        <result property="realName" column="realName"></result>
+        <result property="orderId" column="order_id"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="cartId" column="cartId"></result>
+        <result property="likesId" column="likesId"></result>
+        <result property="orderUserId" column="orderUserId"></result>
+
+        <result property="orderCount" column="orderCount"></result>
+        <result property="cartCount" column="cartCount"></result>
+        <result property="likesCount" column="likesCount"></result>
     </resultMap>
 
     <insert id="saveOrder"
@@ -66,5 +99,107 @@
         </foreach>
 
     </insert>
-    
+
+    <select id="getOrderList"
+            resultMap="orderList">
+
+        select
+            oe.order_id,
+            oe.user_id,
+            oe.order_date,
+            oe.total_price,
+            od.order_id as order_dtl_id,
+            od.quantity,
+            od.product_id,
+            dt.name,
+            dt.img,
+            dt.retail_price
+
+        from
+            `order` oe
+            LEFT OUTER JOIN order_detail od on(oe.order_id = od.order_id)
+            LEFT OUTER JOIN product dt on(od.`product_id` = dt.`id`)
+        where
+            oe.user_id = #{userId}
+
+    </select>
+
+    <select id="getOrderDetails" resultMap="order">
+
+        select
+            oe.order_id,
+            oe.user_id,
+            oe.order_date,
+            oe.orderer_name,
+            oe.recipient_name,
+            oe.phone,
+            oe.post_code,
+            oe.address,
+            oe.detail_address,
+            oe.ship_msg,
+            oe.entrance,
+            oe.pet,
+            oe.total_price,
+            od.order_id,
+            od.quantity,
+            od.product_id,
+            dt.name,
+            dt.img,
+            dt.retail_price
+
+        from
+            `order` oe
+            LEFT OUTER JOIN order_detail od on(oe.order_id = od.order_id)
+            LEFT OUTER JOIN product dt on(od.`product_id` = dt.`id`)
+        where
+            oe.order_id = #{orderId}
+
+    </select>
+    <select id="getOrderCount" resultMap="MyInfoCount">
+
+        SELECT
+            um.username,
+            um.name as realName,
+            um.id as userId,
+            oe.user_id as orderUserId,
+            count(oe.order_id) as orderCount
+
+        FROM
+            `order` oe LEFT JOIN user_mst um on (oe.user_id = um.username)
+
+        WHERE
+            um.username = #{userId}
+
+    </select>
+    <select id="getCartCount" resultMap="MyInfoCount">
+        SELECT
+            um.username,
+            um.name as realName,
+            um.id as userId,
+            ct.user_id as cartId,
+            count(ct.user_id) as cartCount
+
+        FROM
+            cart ct LEFT JOIN user_mst um on (ct.user_id = um.id)
+
+        WHERE
+            um.username = #{userId}
+
+    </select>
+
+    <select id="getLikesCount" resultMap="MyInfoCount">
+        SELECT
+            um.username,
+            um.name as realName,
+            um.id as userId,
+            li.user_id as likesId,
+            count(li.user_id) as likesCount
+
+        FROM
+            likes li LEFT JOIN user_mst um on (li.user_id = um.id)
+
+        WHERE
+            um.username = #{userId}
+    </select>
+
 </mapper>

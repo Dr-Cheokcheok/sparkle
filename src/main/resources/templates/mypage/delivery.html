@@ -20,64 +20,22 @@
             <section class="mypage-box">
                 <h1>MYPAGE</h1>
                 <ul>
-                    <li><a href="/account">관심상품</a></li>
+                    <li><a href="/account/likes">관심상품</a></li>
                     <li><a href="/account/order">주문&#183;배송</a></li>
-                    <li><a>상품후기</a></li>
-                    <li><a>고객센터</a></li>
                     <li><a href="/users/edit">개인정보관리</a></li>
                     <li><a href="/users/delete">회원탈퇴</a></li>
                 </ul>
             </section>
             <section class="right-sec">
                 <h1>주문&#183;배송</h1>
+                <input type="hidden" id="user-id" th:value="${principalUser.username}">
                 <div class="delivery-box">
-                    <div class="date-buttons">
-                        <div class="date-box">
-                            <div class="date-select">
-                                <input type="text" class="date-show">
-                                <img src="/static/images/img/date.png">
-                            </div>
-                            <div class="date-select">
-                                <input type="text" class="date-show">
-                                <img src="/static/images/img/date.png">
-                            </div>
-                            <button class="date-button-1">조회</button>
-                        </div>
-                        <div class="date-btns">
-                            <button class="date-button">오늘</button>
-                            <button class="date-button">일주일</button>
-                            <button class="date-button">1개월</button>
-                            <button class="date-button">3개월</button>
-                            <button class="date-button">전체</button>
-                        </div>
-                    </div>
-
-                    <div class="txtbx">
-                        <span class="date-txt"><small>주문일 : </small>2022.11.08</span>
-                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                        <span class="order-num"><small>주문번호 : </small>RKR4AJY9LQ8P</span>
-                        <a href="/account/order/detail" class="blue-txt">
-                            <span>주문상세보기 <img src="/static/images/img/r-arrow.png"></span>
-                        </a>
-                    </div>
-                    <a href="/account/order/detail" class="prod-box">
-                        <div class="img">
-                            <img src="/static/images/product/500ml20.jpg">
-                        </div>
-                        <div class="prod-txt">
-                            <p>스파클 500ml 20병</p>
-                            <span class="price spoqa">6,000원</span>
-                            <span>/ 1개</span>
-                            <p>
-                                출고준비 &nbsp;
-                                <img src="/static/images/img/r-arrow02.png">
-                            </p>
-                        </div>
-                    </a>
+                    
                 </div>
             </section>
         </div>
     </div>
     <footer th:replace="~{fragment/footer :: footerFragment}"></footer>
+    <script src="/static/js/order/delivery.js"></script>
 </body>
 </html>

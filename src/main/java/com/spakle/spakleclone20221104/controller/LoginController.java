@@ -21,6 +21,7 @@ public class LoginController {
             session.setAttribute("principal", user);
             return "redirect:/index";
         }else {
+
         return "redircet:/login";
 
         }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/fragment/footer.css">
     <link rel="stylesheet" href="/static/css/section.css">
@@ -130,14 +131,26 @@
                                         <input type="button" value="우편번호찾기" class="find_post"> <br>
                                         <input type="text" id="address" readonly="readonly" placeholder="주소" class="adr" th:value="${principalUser.address}" style="background: rgba(0,0,0,.1); cursor: default;">
                                         <input type="text" id="address_detail" class="mb0 sub-adr" placeholder="상세주소 입력" th:value="${principalUser.detail_address}">
-                                        <input type="hidden" id="address_data" value="">
-                                        <input type="hidden" id="is_deliverable" value="">
-                                        <p class="deliverable-show" style="display: none; color: #00f;">
-                                            선택하신 배송지는 배송이 가능한 지역입니다.
-                                        </p>
-                                        <p class="deliverable-hide" style="display: none; color: #f00;">
-                                            선택하신 배송지는 배송이 불가능한 지역입니다.
-                                        </p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="clear">
+                                <dt>배송메세지</dt>
+                                <dd>
+                                    <div class="flex">
+                                        <li class="deli-select">
+                                            <span class="sel">배송 메세지 선택</span>
+                                            <ul style="display: none;">
+                                                <li onclick="$('#message').val('문 앞에 놓아주세요')">문 앞에 놓아주세요</li>
+                                                <li onclick="$('#message').val('부재 시 경비실에 맡겨주세요')">부재 시 경비실에 맡겨주세요</li>
+                                                <li onclick="$('#message').val('부재 시 연락주세요')">부재 시 연락주세요</li>
+                                                <li onclick="$('#message').val('')" class="selfText">직접입력</li>
+                                            </ul>
+                                            <span class="arrow"></span>
+                                        </li>
+                                        <div class="self">
+                                            <input type="text" class="self-input input_1" id="message" name="message" value="">
+                                        </div>
                                     </div>
                                     <div>
                                         <div class="door-inp"><input type="text" placeholder="공동현관" class="door" name="door_password" value=""></div>

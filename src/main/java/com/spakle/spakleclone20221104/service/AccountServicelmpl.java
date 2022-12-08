@@ -5,7 +5,7 @@ import com.spakle.spakleclone20221104.domain.User;
 import com.spakle.spakleclone20221104.dto.account.ChkIdDto;
 import com.spakle.spakleclone20221104.dto.account.RegisterReqDto;
 import com.spakle.spakleclone20221104.dto.account.UserMod;
-import com.spakle.spakleclone20221104.exception.CustomInternalServerErrorException;
+import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 import com.spakle.spakleclone20221104.exception.CustomValidationException;
 import com.spakle.spakleclone20221104.repository.AccountRepository;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
@@ -99,4 +99,43 @@ public class AccountServicelmpl implements AccountService {
 
         return result != 0;
     }
+
+    @Override
+    public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, Map<String, Object> map) throws Exception {
+        if(principalDetails == null){
+            return -1;
+        }
+        int userId = principalDetails.getUser().getId();
+        int productId = Integer.parseInt((String) map.get("productId")); //이게 맞나???????????????
+        Map<String ,Integer> newMap = new HashMap<>();
+        newMap.put("userId", userId);
+        newMap.put("productId", productId);
+
+        return accountRepository.like(newMap);
+    }
+    @Override
+    public List<ShopListRespDto> getLikes(PrincipalDetails principalDetails) throws Exception {
+        List<ShopListRespDto> likeList = new ArrayList<>();
+
+        int id = principalDetails.getUser().getId();
+
+        accountRepository.getLikes(id).forEach(collectionProduct -> {
+            likeList.add(collectionProduct.toListRespDto());
+        });
+        return likeList;
+    }
+
+    @Override
+    public boolean deleteLikes(PrincipalDetails principalDetails, int productId) throws Exception {
+        int userId = principalDetails.getUser().getId();
+        return accountRepository.deleteLikes(userId,productId) != 0;
+    }
+
+    @Override
+    public boolean deleteUser(PrincipalDetails principalDetails, String username) throws Exception {
+        log.info("dddddddddddddddddddddddddddddddddddddddd : {}", username);
+        return accountRepository.deleteUser(username) != 0;
+    }
+
+
 }

@@ -10,18 +10,14 @@ import com.spakle.spakleclone20221104.service.AccountService;
 import com.spakle.spakleclone20221104.service.auth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 
 @Valid
 @Slf4j
@@ -57,5 +53,26 @@ public class AccountApi {
     @PutMapping("/modification")
     public boolean accountModify(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, String> map) throws Exception {
         return accountService.modification(principalDetails, map);
+    }
+
+    @PostMapping("/like")
+    public int like(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String, Object> map)throws Exception{
+        return accountService.like(principalDetails ,map); //0이면 이미 있는거 , 1이면 정상
+    }
+
+    @GetMapping("/likes")
+    public ResponseEntity<?> getLikes(@AuthenticationPrincipal PrincipalDetails principalDetails)throws Exception{
+        return ResponseEntity.ok().body(new CMRespDto<>(1, "Successfully",accountService.getLikes(principalDetails)));
+    }
+
+    @DeleteMapping("/likes")
+    public boolean delLikes(@AuthenticationPrincipal PrincipalDetails principalDetails, @RequestBody Map<String,Integer> map)throws Exception{
+        return accountService.deleteLikes(principalDetails, map.get("productId"));
+    }
+
+    @DeleteMapping("/delete/{username}")
+    public boolean deleteUser(@AuthenticationPrincipal PrincipalDetails principalDetails,@PathVariable String username) throws Exception {
+
+        return accountService.deleteUser(principalDetails, username);
     }
 }

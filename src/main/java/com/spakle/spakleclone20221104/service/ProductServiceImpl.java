@@ -121,13 +121,10 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<ProductListRespDto> getProducts(String category) throws Exception {
-        log.info("{}", category);
 
         List<ProductListRespDto> productList = new ArrayList<>();
-        Map<String, Object> map = new HashMap<>();
-        map.put("category", category);
 
-        productRepository.getProductInquiry(map).forEach(product -> {
+        productRepository.getProductInquiry(category).forEach(product -> {
             productList.add(product.toRespDto());
         });
 

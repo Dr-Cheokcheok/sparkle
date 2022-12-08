@@ -19,6 +19,9 @@
                     <div class="sub-title login-title">
                         <p>로그인</p>
                     </div>
+                    <div th:if="${param.error}" class="alert-div">
+                        <p th:text="${exception}" class="alert alert-danger"></p>
+                    </div>
                     
                     <div class="loginF-wrap">
                         <div class="logForm on">

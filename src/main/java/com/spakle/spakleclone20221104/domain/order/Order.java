@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
@@ -24,6 +24,14 @@ public class Order {
     private String detail_address;
     private String ship_msg;
     private String entrance;
-    private int pet;
     private int total_price;
+    private int retail_price;
+    private int pet;
+
+    private int quantity;
+    private int product_id;
+
+    private String name;
+    private String img;
+
 }

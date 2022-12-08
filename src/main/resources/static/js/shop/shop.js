@@ -102,10 +102,6 @@ function reload(input){
                       <!----  best 아이템에만 figcaption  --->
                         <figcaption>BEST</figcaption>
                   </a>
-                      <div class="time-icon">
-                        <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                        <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                      </div>
                 </figure>
                 <div class="product-text">
                   <a href="/product/${product.productId}">${product.name}</a>
@@ -125,10 +121,6 @@ function reload(input){
                         <!----  best 아이템에만 figcaption  --->
                           <figcaption>BEST</figcaption>
                     </a>
-                        <div class="time-icon">
-                          <button type="button" class="like"><img src="/static/images/img/best-icon01.png" alt=""></button>
-                          <button type="button" class="bag"><img src="/static/images/img/best-icon02.png" alt=""></button>
-                        </div>
                   </figure>
                   <div class="product-text">
                     <a href="/product/${product.productId}">${product.name}</a>

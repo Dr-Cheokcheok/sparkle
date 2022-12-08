@@ -23,6 +23,25 @@
             now()
         )
     </insert>
+
+    <insert id="like">
+        INSERT INTO
+            likes (id, user_id, product_id)
+        SELECT
+            0,
+            #{userId},
+            #{productId} FROM DUAL
+        WHERE NOT EXISTS
+            (SELECT
+                user_id,
+                product_id
+            FROM
+                likes
+            WHERE
+                user_id = #{userId} and product_id = #{productId})
+
+    </insert>
+
     <update id="updateUser">
         update
             user_mst
@@ -64,5 +83,34 @@
         select count(username) From user_mst where username=#{username}
     </select>
 
+    <select id="getLikes" resultType="com.spakle.spakleclone20221104.domain.CollectionProduct">
+        select
+            pm.id,
+            pm.name,
+            pm.rate,
+            pm.retail_price,
+            img,
+            update_date
+        from
+            likes li
+            left outer join product pm on(pm.id = li.product_id)
+        where
+            li.user_id = #{id}
+    </select>
 
+    <delete id="deleteLikes">
+        delete from
+            likes
+        where
+            user_id = #{userId} and product_id = #{productId}
+    </delete>
+
+    <delete id="deleteUser">
+
+        delete
+            from
+                user_mst
+            where
+                username = #{username}
+    </delete>
 </mapper>

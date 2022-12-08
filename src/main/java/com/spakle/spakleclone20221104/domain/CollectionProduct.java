@@ -2,6 +2,8 @@ package com.spakle.spakleclone20221104.domain;
 
 import com.spakle.spakleclone20221104.dto.shop.ShopListRespDto;
 
+import java.time.LocalDateTime;
+
 public class CollectionProduct {
 
     private int id; //스파클 product_id
@@ -14,7 +16,7 @@ public class CollectionProduct {
     private int retail_price;
 
     private String img; // 스파클 img
-    private int total_count;
+    private LocalDateTime update_date;
 
     public ShopListRespDto toListRespDto() {
         return ShopListRespDto.builder()
@@ -26,7 +28,7 @@ public class CollectionProduct {
                 .retailPrice(retail_price)
                 .rate(rate)
                 .img(img)
-                .totalCount(total_count)
+                .updateDate(update_date)
                 .build();
     }
 }
