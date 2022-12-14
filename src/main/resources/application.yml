@@ -27,7 +27,7 @@ mybatis:
 
 file:
 #  path: /Users/yulini/Desktop/spakle/upload/
-  path: /home/ubuntu/spakle/upload/
+  path: /home/ubuntu/upload/
 #  path: /home/ubuntu/springboot/project/upload/
 
 # file:
