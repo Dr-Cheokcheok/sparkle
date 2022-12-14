@@ -19,10 +19,10 @@ public class LoginController {
     public String login(User user){
         if (user != null){
             session.setAttribute("principal", user);
-            return "redirect:/index";
+            return "index/index";
         }else {
 
-        return "redircet:/login";
+        return "account/login";
 
         }
     }
