@@ -18,7 +18,7 @@ function productchk(){
 
         while(count < document.querySelectorAll(".chk_style").length ){
             if(document.querySelectorAll(".chk_style")[count].checked == true){
-                checkArr = checkArr + document.querySelectorAll(".idname")[count].id.replace("id-","") + ",";
+                checkArr = checkArr + document.querySelectorAll(".id-name")[count].id.replace("id-","") + ",";
             }
             count++;
         }
