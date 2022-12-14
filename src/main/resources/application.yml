@@ -26,7 +26,8 @@ mybatis:
 #파일 패스 각자 경로 설정해야 프로젝트폴더 -> upload폴더
 
 file:
-  path: /home/ubuntu/upload/
+#  path: /Users/yulini/Desktop/spakle/upload/
+  path: /home/ubuntu/spakle/upload/
 #  path: /home/ubuntu/springboot/project/upload/
 
 # file:
