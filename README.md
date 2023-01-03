@@ -11,42 +11,51 @@
 
 ||기간 (2022)|
 |:------:|---|
-|총 기간| 2월 25일 ~ 4월 8일 (6주)|
+|총 기간| 11월 9일 ~ 12월 7일 (4주)|
 
 ## 기술스택
 >### Platforms & Languages
 <p align='center'>
-  <img src='https://img.shields.io/badge/React-v17.0.2-blue?logo=React'/>
-  <img src='https://img.shields.io/badge/ReactRouter-v5.2.1-pink?logo=React Router'/>
-  <img src='https://img.shields.io/badge/StyledComponents-v5.3.3-violet?logo=styled-components'/>
-  <img src='https://img.shields.io/badge/Redux-v4.1.2-764ABC?logo=Redux'/>
+  <img src='https://img.shields.io/badge/HTML5-E34F26?logo=HTML5&logoColor=white'/>
+  <img src='https://img.shields.io/badge/CSS3-1572B6?logo=CSS3&logoColor=white'/>
+  <img src='https://img.shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=white'/>
+  <img src='https://img.shields.io/badge/jQuery-0769AD?logo=jQuery&logoColor=white'/>
   </br>
- 
-  <img src='https://img.shields.io/badge/socket.io-v4.4.1-white?logo=Socket.io'/>
-  <img src='https://img.shields.io/badge/Axios-v0.26.0-pink?'/>
-  <img src='https://img.shields.io/badge/yarn-v1.22.17-yellow?logo=yarn'/>
-  </br>
-  <img src='https://img.shields.io/badge/WebRTC-333333?logo=WebRTC&logoColor=white'/>
-  <img src="https://img.shields.io/badge/CloudFront-D95043?logo=CloudFront&logoColor=white" />
-  <img src="https://img.shields.io/badge/Route 53-F38536?logo=Route 53&logoColor=white" />
-  <img src="https://img.shields.io/badge/Amazon S3-569A31?logo=Amazon S3&logoColor=white" />
-  <img src="https://img.shields.io/badge/Amazon AWS-232F3E?logo=Amazon AWS&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=OpenJDK&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring-6DB33F?logo=spring&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat&logo=Spring Boot&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=Amazon AWS&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MariaDB-003545?style=flat&logo=MariaDB&logoColor=white"/>
 </p>
 
 >### Tools
 <p align='center'>
-  <img src='https://img.shields.io/badge/Node-v16.13.1-green?logo=Node.js'/>
-  <img src='https://img.shields.io/badge/socket.io-v4.4.1-white?logo=Socket.io'/>
-  <img src="https://img.shields.io/badge/Express-v4.17.3-009688?logo=Express&logoColor=white" />
-  <img src="https://img.shields.io/badge/MySQL-v8.0.23-4479a1?logo=MySQL&logoColor=white" />
-  <img src="https://img.shields.io/badge/Sequelize-v6.17.0-52b0e7?logo=Sequelize&logoColor=white" />
+  <img src='https://img.shields.io/badge/IntelliJ IDEA-FF9B00?logo=IntelliJ IDEA&logoColor=white'/>
+  <img src='https://img.shields.io/badge/Visual Studio Code-007ACC?logo=Visual Studio Code&logoColor=white'/>
+  <img src='https://img.shields.io/badge/Tomcat-F8DC75?logo=Apache Tomcat&logoColor=white'/>
   </br>
-  <img src="https://img.shields.io/badge/MongoDB-v5.0.6-47A248?logo=MongoDB&logoColor=white" />
-  <img src="https://img.shields.io/badge/Passport-v0.5.2-34E27A?logo=Passport&logoColor=white" />
-  <img src="https://img.shields.io/badge/Json Web Token-v8.5.1-8a8a8a?logo=JSON Web Tokens&logoColor=white" />
-  </br>
-  <img src="https://img.shields.io/badge/Travis CI-3EAAAF?logo=Travis CI&logoColor=white" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?logo=Docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Amazon AWS-232F3E?logo=Amazon AWS&logoColor=white" />
+  <img src='https://img.shields.io/badge/GitHub-181717?logo=GitHub&logoColor=white'/>
+  <img src='https://img.shields.io/badge/Sourcetree-0052CC?logo=Sourcetree&logoColor=white'/>
 </p>
+
+## 프로젝트 동기
+생수를 구매해서 먹는 사람들이 증가함에 따라 편리하게 웹 사이트를 통해서 생수를 주문할 수 있도록 제작
+
 </br>
+
+## 전체 기능
+- 로그인 및 회원가입
+- 제품 구매(결제) 기능
+- 장바구니 기능
+- 마이페이지 기능(제품 구매 목록 확인, 개인정보 수정 및 탈퇴)
+- 관리자 기능
+
+</br>
+
+## ▇ SparkleMall 팀원 소개
+|Name|GitHub / Contact|Position|
+|------|---|---|
+|조문기🔰||FE / BE|
+|백민경||FE / BE|
+|조창석|https://github.com/changseokjo|FE / BE|
+|이정민||FE / BE|
