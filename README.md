@@ -71,7 +71,7 @@
 </br>
 
 ## :grey_exclamation: 페이지 별 기능 구현
-![image](https://user-images.githubusercontent.com/67142147/210391345-5e41d0c0-310c-463f-80cc-feab514402c1.png)
+![image](https://user-images.githubusercontent.com/67142147/210406496-a1b2f7f9-21bc-43cc-9b87-56fb279f3947.png)
 
 </br>
 
