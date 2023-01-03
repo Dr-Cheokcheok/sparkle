@@ -1,18 +1,18 @@
-# ▇ SparkleMall (스파클몰)
+#  :white_square_button: SparkleMall (스파클몰)
 ![image](https://user-images.githubusercontent.com/67142147/210392328-b9eb3ce3-63d2-4f1a-b256-c0596dba846f.png)
 
 
 
-## 바로가기
-- <a href="http://15.165.54.208:8000/index"> ▇ 스파클몰 바로가기 </a></br>
+## :door: 바로가기
+- <a href="http://15.165.54.208:8000/index"> 스파클몰 바로가기 </a></br>
 
-## 프로젝트 기간
+## :date: 프로젝트 기간
 
 ||기간 (2022)|
 |:------:|---|
 |총 기간| 11월 9일 ~ 12월 7일 (4주)|
 
-## 기술스택
+## :computer: 기술스택
 >### Platforms & Languages
 <p align='center'>
   <img src='https://img.shields.io/badge/HTML5-E34F26?logo=HTML5&logoColor=white'/>
@@ -37,12 +37,12 @@
   <img src='https://img.shields.io/badge/Sourcetree-0052CC?logo=Sourcetree&logoColor=white'/>
 </p>
 
-## 프로젝트 동기
+## :memo: 프로젝트 동기
 생수를 구매해서 먹는 사람들이 증가함에 따라 편리하게 웹 사이트를 통해서 생수를 주문할 수 있도록 제작
 
 </br>
 
-## 전체 기능
+## :exclamation: 전체 기능
   - 로그인 및 회원가입
   - 제품 구매(결제) 기능
   - 장바구니 기능
@@ -51,7 +51,7 @@
 
 </br>
 
-## 프로젝트 세부 계획
+## :bookmark_tabs: 프로젝트 세부 계획
 + 회원관리 서비스
   - 회원가입
   - 회원탈퇴
@@ -70,17 +70,17 @@
 
 </br>
 
-## 페이지 별 기능 구현
+## :grey_exclamation: 페이지 별 기능 구현
 ![image](https://user-images.githubusercontent.com/67142147/210391345-5e41d0c0-310c-463f-80cc-feab514402c1.png)
 
 </br>
 
-## DB 구조
+## :floppy_disk: DB 구조
 ![image](https://user-images.githubusercontent.com/67142147/210391609-f7a22fb4-419d-4360-beec-83b3f24da7e7.png)
 
 </br>
 
-## ▇ SparkleMall 팀원 소개
+## :two_men_holding_hands: SparkleMall 팀원 소개
 |Name|GitHub / Contact|Position|
 |------|---|---|
 |조문기🔰|https://github.com/jjmmkk9|FE / BE|
