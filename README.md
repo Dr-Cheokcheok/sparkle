@@ -30,7 +30,6 @@
 <p align='center'>
   <img src='https://img.shields.io/badge/IntelliJ IDEA-FF9B00?logo=IntelliJ IDEA&logoColor=white'/>
   <img src='https://img.shields.io/badge/Visual Studio Code-007ACC?logo=Visual Studio Code&logoColor=white'/>
-  <img src='https://img.shields.io/badge/Tomcat-F8DC75?logo=Apache Tomcat&logoColor=white'/>
   </br>
   <img src='https://img.shields.io/badge/GitHub-181717?logo=GitHub&logoColor=white'/>
   <img src='https://img.shields.io/badge/Sourcetree-0052CC?logo=Sourcetree&logoColor=white'/>
