@@ -1,11 +1,10 @@
-# ▇ sparklemall (스파클몰)
+# ▇ SparkleMall (스파클몰)
+![image](https://user-images.githubusercontent.com/67142147/210392328-b9eb3ce3-63d2-4f1a-b256-c0596dba846f.png)
 
-<p>
-<img src="https://capsule-render.vercel.app/api?type=Cylinder&color=6FC7E1&height=200&section=header&text=SparkleMall&fontSize=90&fontColor=FFFFFF" 
-</p>
+
 
 ## 바로가기
-- <a href="https://nemowithme.com"> ▇ 스파클몰 바로가기 </a></br>
+- <a href="http://15.165.54.208:8000/index"> ▇ 스파클몰 바로가기 </a></br>
 
 ## 프로젝트 기간
 
@@ -49,6 +48,16 @@
 - 장바구니 기능
 - 마이페이지 기능(제품 구매 목록 확인, 개인정보 수정 및 탈퇴)
 - 관리자 기능
+
+</br>
+
+## 페이지 별 기능 구현
+![image](https://user-images.githubusercontent.com/67142147/210391345-5e41d0c0-310c-463f-80cc-feab514402c1.png)
+
+</br>
+
+## DB 구조
+![image](https://user-images.githubusercontent.com/67142147/210391609-f7a22fb4-419d-4360-beec-83b3f24da7e7.png)
 
 </br>
 
