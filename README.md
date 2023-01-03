@@ -20,7 +20,7 @@
   <img src='https://img.shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=white'/>
   <img src='https://img.shields.io/badge/jQuery-0769AD?logo=jQuery&logoColor=white'/>
   </br>
-  <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=OpenJDK&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white"/>
   <img src="https://img.shields.io/badge/Spring-6DB33F?logo=spring&logoColor=white"/>
   <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat&logo=Spring Boot&logoColor=white"/>
   <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=Amazon AWS&logoColor=white"/>
