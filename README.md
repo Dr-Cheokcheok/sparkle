@@ -88,13 +88,13 @@
     관리자 아이디 로그인 시 관리자 페이지 링크 헤더에 생성
 
 ### 카테고리
-<img width="400" alt="카테고리" src="https://user-images.githubusercontent.com/109320970/236783291-adc62806-56b4-4312-9a2c-76219c999a7e.jpg">
+<img width="800" alt="카테고리" src="https://user-images.githubusercontent.com/109320970/236783291-adc62806-56b4-4312-9a2c-76219c999a7e.jpg">
 
     원하는 카테고리 클릭 시 보고 싶은 제품군만 조회 가능
     용량 별 분류 가능
 
 ### 제품상세
-<img width="400" alt="제품상세" src="https://user-images.githubusercontent.com/109320970/236782040-7f03e5ca-7b1c-4904-b2d7-8e538348d6b0.png">
+<img width="800" alt="제품상세" src="https://user-images.githubusercontent.com/109320970/236782040-7f03e5ca-7b1c-4904-b2d7-8e538348d6b0.png">
 
     제품의 상세 이름과 이미지 및 금액 조회 가능
     수량에 따른 금액 자동 계산
@@ -110,7 +110,7 @@
     결제 수단에 따른 결제 방법 선택 가능 (아임포트 api 사용)
 
 ### MY PAGE
-<img width="400" alt="관심상품" src="https://user-images.githubusercontent.com/109320970/236782721-0ecd697f-0012-4b86-b2d2-8f1b184882ec.png">
+<img width="800" alt="관심상품" src="https://user-images.githubusercontent.com/109320970/236782721-0ecd697f-0012-4b86-b2d2-8f1b184882ec.png">
 
     회원 ID로 저장된 각 DB 카테고리 갯수 들고와서 조회
     삭제 / 장바구니 담기 버튼을 통해 삭제 또는 장바구니로 이동 가능
@@ -120,26 +120,26 @@
     결제까지 진행되어 구매된 주문 내역 조회 (각 상자 클릭 시 상세 내역 조회 페이지)
     주문번호는 구매 날짜 + 랜덤 숫자로 무작위 생성
 
-<img width="400" alt="회원정보수정" src="https://user-images.githubusercontent.com/109320970/236782862-06293a3b-bf88-493e-ae97-a58bfd7d3c8e.png">
+<img width="800" alt="회원정보수정" src="https://user-images.githubusercontent.com/109320970/236782862-06293a3b-bf88-493e-ae97-a58bfd7d3c8e.png">
 
     기존의 저장된 회원 정보가 기본으로 들고와지고, text 수정 후 버튼 누르면 수정 완료 됨
     우편번호 찾기는 카카오 주소 API 사용
  
-<img width="400" alt="회원탈퇴" src="https://user-images.githubusercontent.com/109320970/236782934-5441caba-91af-482e-af2d-b14a3027ddaa.png">
+<img width="800" alt="회원탈퇴" src="https://user-images.githubusercontent.com/109320970/236782934-5441caba-91af-482e-af2d-b14a3027ddaa.png">
 
     탈퇴 사유 선택, 동의 칸에 체크 후 탈퇴 누르면 회원정보가 DB에서 삭제
     탈퇴 시 DB에서 해당 사용자, 장바구니, 관심상품까지 모두 삭제 됨
     SQL 트리거 기능 이용
    
 ### 관리자 페이지
-<img width="400" alt="상품등록" src="https://user-images.githubusercontent.com/109320970/236782992-429e3a38-1e98-430a-8b6c-d3a9bac6a74e.png">
+<img width="800" alt="상품등록" src="https://user-images.githubusercontent.com/109320970/236782992-429e3a38-1e98-430a-8b6c-d3a9bac6a74e.png">
 
     추가 상품의 카테고리 선택 후 정보 입력
     원가와 할인율 입력시 판매가 자동 계산
     form data를 이용해 이미지 파일 다중 저장
     (메인 이미지는 하나만, 상세 페이지는 여러장 가능. 상세 페이지는 하단 박스에 보여짐)
 
-<img width="400" alt="등록상품조회" src="https://user-images.githubusercontent.com/109320970/236783032-ed3d8f04-be02-4e60-b067-16c08b18858b.png">
+<img width="800" alt="등록상품조회" src="https://user-images.githubusercontent.com/109320970/236783032-ed3d8f04-be02-4e60-b067-16c08b18858b.png">
 
     카테고리 클릭 시 해당 카테고리 제품 리스트 조회
     삭제 / 수정 버튼을 통해 제품 삭제 / 수정 가능
